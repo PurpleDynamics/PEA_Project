@@ -1,72 +1,48 @@
-<<<<<<< HEAD
+<div align="center">
 
-# Getting Started with Create React App
+# P.E.A (Permanent Energy-saving Affect)
+## 중고 거래 웹 사이트
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+[![PEA](https://github.com/PurpleDynamics/PEA_Project/assets/98089768/e97c607d-a658-41bb-8e3b-9bfd5435df07)](http://test.test)
 
-## Available Scripts
+클릭 시, 배포된 주소로 이동합니다.(X)
 
-In the project directory, you can run:
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+<br/>
+<br/>
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## STACKS
+![s](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
+![s](https://img.shields.io/badge/Node-339933?style=for-the-badge&logo=node.js&logoColor=white)
+![s](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+## 프로젝트 기간
+2024.01.08 - 2024.02.25
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## 프로젝트 팀원
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+<table>
+  <tbody>
+    <tr>
+      <td align="center"><a href="https://github.com/TransparentDeveloper"><img src="https://avatars.githubusercontent.com/u/50646145?v=4"width="100px;" alt=""/><br /><sub><b>이윤신</b></sub></a><br /></td>
+      <td align="center"><a href="https://github.com/keeprok"><img src="https://avatars.githubusercontent.com/u/140785214?v=4" width="100px;" alt=""/><br /><sub><b>이영록</b></sub></a><br /></td>
+      <td align="center"><a href="https://github.com/jjjiyoung0130"><img src="https://avatars.githubusercontent.com/u/142701370?v=4" width="100px;" alt=""/><br /><sub><b>장지영</b></sub></a><br /></td>
+      <td align="center"><a href="https://github.com/KR-HeoJU"><img src="https://avatars.githubusercontent.com/u/142701420?v=4" width="100px;" alt=""/><br /><sub><b>허진욱</b></sub></a><br /></td>
+      <tr/>
+      <td align="center"><a href="https://github.com/ijimlnosk"><img src="https://avatars.githubusercontent.com/u/98089768?v=4" width="100px;" alt=""/><br /><sub><b>김진솔</b></sub></a><br /></td>
+      <td align="center"><a href="https://github.com/hayoung78"><img src="https://avatars.githubusercontent.com/u/142880051?v=4" width="100px;" alt=""/><br /><sub><b>최하영</b></sub></a><br /></td>
+      <td align="center"><a href="https://github.com/snkchan"><img src="https://avatars.githubusercontent.com/u/144839872?v=4" width="100px;" alt=""/><br /><sub><b>박채윤</b></sub></a><br /></td>
+    </tr>
+  </tbody>
+</table>
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-# This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+</div>
