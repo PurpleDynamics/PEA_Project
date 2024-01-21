@@ -34,7 +34,7 @@
       <td align="center"><a href="https://github.com/jjjiyoung0130"><img src="https://avatars.githubusercontent.com/u/142701370?v=4" width="100px;" alt=""/><br /><sub><b>장지영</b></sub></a><br /></td>
       <td align="center"><a href="https://github.com/KR-HeoJU"><img src="https://avatars.githubusercontent.com/u/142701420?v=4" width="100px;" alt=""/><br /><sub><b>허진욱</b></sub></a><br /></td>
       <tr/>
-      <td align="center"><a href="https://github.com/ijimlnosk"><img src="https://avatars.githubusercontent.com/u/98089768?v=4" width="100px;" alt=""/><br /><sub><b>김진솔</b></sub></a><br /></td>
+      <td align="center"><a href="https://github.com/ijimlnosk"><img src="https://github.com/PurpleDynamics/PEA_Project/assets/98089768/94ed48aa-8180-4f9c-9226-c946bf46982c" width="100px;" alt=""/><br /><sub><b>김진솔</b></sub></a><br /></td>
       <td align="center"><a href="https://github.com/hayoung78"><img src="https://github.com/PurpleDynamics/PEA_Project/assets/98089768/68df05c9-fb51-4b9c-afaf-db72a725557c" width="100px;" alt=""/><br /><sub><b>최하영</b></sub></a><br /></td>
       <td align="center"><a href="https://github.com/snkchan"><img src="https://avatars.githubusercontent.com/u/144839872?v=4" width="100px;" alt=""/><br /><sub><b>박채윤</b></sub></a><br /></td>
     </tr>
