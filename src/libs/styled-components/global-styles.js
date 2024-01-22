@@ -1,6 +1,8 @@
-import { createGlobalStyle } from "styled-components"
-import '../../assets/fonts/index.css'
-import { BREAK_POINT, COLOR, FONT_SIZE } from './reference-tokens'
+import "../../assets/fonts/index.css";
+
+import { createGlobalStyle } from "styled-components";
+
+import { BREAK_POINT, COLOR, FONT_SIZE } from "./reference-tokens";
 
 const GlobalStyles = createGlobalStyle`
   *{
@@ -47,6 +49,6 @@ const GlobalStyles = createGlobalStyle`
   ul, li {
     list-style: none;
   }
-`
+`;
 
-export default GlobalStyles
+export default GlobalStyles;
