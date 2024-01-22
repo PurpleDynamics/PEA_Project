@@ -1,27 +1,3 @@
-## 🔥 Issue
-
-<!-- [여기서부터 주석]
-
-👋🏼 이 주석 영역 아래, "Issue" 항목을 다음과 같은 형식으로 작성해주세요.
-
-형식)
-- #이슈번호
-
-[여기까지 주석] -->
-
-
-
-
-
-
-<br/>
-<br/>
-
-
-
-
-
-
 ## 🎯 작업 내용
 
 <!-- [여기서부터 주석]
@@ -72,9 +48,9 @@
 [여기까지 주석] -->
 
 - [ ] Main 브랜치 Pull 받기
-- [ ] PR 제목 (컨벤션에 따랐는지?) 확인 
+- [ ] PR 제목 (컨벤션에 따랐는지) 확인 
+- [ ] Label 확인
 - [ ] Assignees 설정 확인
-- [ ] Label 설정 확인
 - [ ] Reviewers 설정 확인
 
 
@@ -95,11 +71,7 @@
 ### 👍 문제가 없다고 생각된다면...
 1. "FileChanged" Tab 으로 이동합니다.
 2. "Review Changes" Button 클릭합니다.
-3. Comment 입력(선택사항) 후, "Approve" 선택하고 "Submit Review" 버튼을 클릭합니다.
-
-<div align="center">
-<img width="648" alt="Approve" src="https://github.com/PurpleDynamics/OrcaOrbit/assets/50646145/15866f3a-9224-46f6-b3e6-c43d760de02a">
-</div>
+3. Comment 입력 (__*Optional__) 후, "Approve" 선택하고 "Submit Review" 버튼을 클릭합니다.
 
 <br/>
 
@@ -116,10 +88,6 @@
 ```
 2. Comment 에 템플릿을 붙혀넣고, `where` / `how` / `why` 3하 원칙(?) 에 따라, 구체적인 요청사항을 작성해주세요.
 3. "Request changes" 선택하고 "Submit Review" 버튼을 클릭합니다.
-
-<div align="center">
-<img width="652" alt="Request changes" src="https://github.com/PurpleDynamics/OrcaOrbit/assets/50646145/38c5361f-f1ed-4c27-af67-910de2233f30">
-</div>
 
 <br/>
 <br/>
