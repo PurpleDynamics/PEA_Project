@@ -1,18 +1,12 @@
-const { default: RootLayout } = require("../../layouts/layout");
-const { default: ChatPage } = require("../../pages/chat/chat-page");
-const { default: MainPage } = require("../../pages/main/main-page");
-const { default: MyPage } = require("../../pages/my-page/my-page");
-const {
-	default: DetailProductPage,
-} = require("../../pages/products/detail-product/ditail-product-page");
-const {
-	default: PostProductPage,
-} = require("../../pages/products/post-product/post-product-page");
-const {
-	default: UsedProductPage,
-} = require("../../pages/products/used-product/used-product-page");
-const { default: SignInPage } = require("../../pages/sign/signin-page");
-const { default: SignUpPage } = require("../../pages/sign/signup-page");
+import RootLayout from "../../layouts/layout";
+import ChatPage from "../../pages/chat/chat-page";
+import MainPage from "../../pages/main/main-page";
+import MyPage from "../../pages/my-page/my-page";
+import DetailProductPage from "../../pages/products/detail-product/ditail-product-page";
+import PostProductPage from "../../pages/products/post-product/post-product-page";
+import UsedProductPage from "../../pages/products/used-product/used-product-page";
+import SignInPage from "../../pages/sign/signin-page";
+import SignUpPage from "../../pages/sign/signup-page";
 
 const router = createBrowserRouter([
 	{
