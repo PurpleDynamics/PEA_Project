@@ -4,7 +4,7 @@ const SYSTEM = {
 	success: "#05B4FF",
 };
 const MAIN = {
-	default: "#82D932", // 400 과 동일값
+	base: "#82D932", // 400 과 동일값
 	0: "#C7FF93",
 	200: "#A3F05A",
 	400: "#82D932",
@@ -13,7 +13,7 @@ const MAIN = {
 	1000: "#316501",
 };
 const SUB = {
-	default: "#FF6B00", // 400 과 동일값
+	base: "#FF6B00", // 400 과 동일값
 	0: "#FFBC8B",
 	200: "#FF8F3D",
 	400: "#FF6B00",
@@ -30,34 +30,34 @@ const COMMON = {
 	900: "#F1F1F1",
 	1000: "#FFFFFF",
 };
-const PLATTE = {
+const PALETTE = {
 	magenta: {
-		default: "#F53A71",
+		base: "#F53A71",
 		light: "#FF6A95",
 		weight: "#942042",
 	},
 	orange: {
-		default: "#F94D42",
+		base: "#F94D42",
 		light: "#F97E76",
 		weight: "#BE3A31",
 	},
 	yellow: {
-		default: "#EBC833",
+		base: "#EBC833",
 		light: "#FFE263",
 		weight: "#917C24",
 	},
 	mint: {
-		default: "#35DE83",
+		base: "#35DE83",
 		light: "#85FFBD",
 		weight: "#197D47",
 	},
 	cyan: {
-		default: "#2696CE",
+		base: "#2696CE",
 		light: "#80D4FF",
 		weight: "#154A65",
 	},
 	purple: {
-		default: "#CF32DC",
+		base: "#CF32DC",
 		light: "#F36EFF",
 		weight: "#6D1775",
 	},
@@ -68,5 +68,5 @@ export const COLOR = {
 	MAIN,
 	SUB,
 	COMMON,
-	PLATTE,
+	PALETTE,
 };

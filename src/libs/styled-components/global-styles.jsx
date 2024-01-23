@@ -15,20 +15,17 @@ const GlobalStyles = createGlobalStyle`
   html{
     /** 배경 색상 */
     background-color: ${COLOR.COMMON[1000]};
-
-    /** 컨텐츠 색상 */
+    /** 폰트 등 색상 */
     color: ${COLOR.COMMON[0]};
-
     /** 폰트 설정 */
     font-family: 'SOYO_Maple_Bold';
-
     /** 폰트 크기 */
-    font-size: 62.5%;
+    font-size: 62.5%; // '1rem' = '10px'
     @media screen and (max-width: ${BREAK_POINT.md}) {
-      font-size: 56.25%;
+      font-size: 56.25%; // '1rem' = '9px'
     }
     @media screen and (max-width: ${BREAK_POINT.sm}) {
-      font-size: 50%;
+      font-size: 50%; // '1rem' = '8px'
     }
   }
   h1 {
