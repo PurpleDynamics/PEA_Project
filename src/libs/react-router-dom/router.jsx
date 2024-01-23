@@ -1,12 +1,6 @@
-import RootLayout from "../../layouts/layout";
-import ChatPage from "../../pages/chat/chat-page";
-import MainPage from "../../pages/main/main-page";
-import MyPage from "../../pages/my-page/my-page";
-import DetailProductPage from "../../pages/products/detail-product/ditail-product-page";
-import PostProductPage from "../../pages/products/post-product/post-product-page";
-import UsedProductPage from "../../pages/products/used-product/used-product-page";
-import SignInPage from "../../pages/sign/signin-page";
-import SignUpPage from "../../pages/sign/signup-page";
+
+import { ProductListPage, MyInfo, DetailProductPage, RegisterProductPage, UsedProductPage } from './pages';
+
 
 const router = createBrowserRouter([
 	{
@@ -15,35 +9,31 @@ const router = createBrowserRouter([
 		children: [
 			{
 				path: "",
-				element: <MainPage />,
+				element: <ProductListPage />,
 			},
 			{
-				path: "/SignInPage",
+				path: "/signin",
 				element: <SignInPage />,
 			},
 			{
-				path: "/SignUpPage",
+				path: "/signup",
 				element: <SignUpPage />,
 			},
 			{
-				path: "/DeialProductPage",
+				path: "/detail-product",
 				element: <DetailProductPage />,
 			},
 			{
-				path: "/PostProductPage",
-				element: <PostProductPage />,
+				path: "/register-product",
+				element: <RegisterProductPage />,
 			},
 			{
-				path: "/UserdProductPage",
+				path: "/used-product",
 				element: <UsedProductPage />,
 			},
 			{
-				path: "/MyPage",
-				element: <MyPage />,
-			},
-			{
-				path: "/ChatPage",
-				element: <ChatPage />,
+				path: "/my-info",
+				element: <MyInfo />,
 			},
 		],
 	},
