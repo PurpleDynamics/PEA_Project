@@ -1,8 +1,8 @@
-const MyInfo = () => {
+const MyInfoPage = () => {
 	return (
 		<>
 			<div>My Infomation Page</div>
 		</>
 	);
 };
-export default MyInfo;
+export default MyInfoPage;

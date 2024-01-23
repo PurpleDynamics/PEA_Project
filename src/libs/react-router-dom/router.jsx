@@ -1,6 +1,12 @@
-
-import { ProductListPage, MyInfo, DetailProductPage, RegisterProductPage, UsedProductPage } from './pages';
-
+import {
+	DetailProductPage,
+	MyInfoPage,
+	ProductListPage,
+	RegisterProductPage,
+	SigninPage,
+	SignupPage,
+	UsedProductPage,
+} from "../../pages/index";
 
 const router = createBrowserRouter([
 	{
@@ -13,11 +19,11 @@ const router = createBrowserRouter([
 			},
 			{
 				path: "/signin",
-				element: <SignInPage />,
+				element: <SigninPage />,
 			},
 			{
 				path: "/signup",
-				element: <SignUpPage />,
+				element: <SignupPage />,
 			},
 			{
 				path: "/detail-product",
@@ -33,7 +39,7 @@ const router = createBrowserRouter([
 			},
 			{
 				path: "/my-info",
-				element: <MyInfo />,
+				element: <MyInfoPage />,
 			},
 		],
 	},
