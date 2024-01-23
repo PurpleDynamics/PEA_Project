@@ -29,6 +29,6 @@ export const pickPaletteOneByText = ({ text }) => {
 		textToNumber += text.charCodeAt(i) % numberOfPalette;
 	}
 	// reduce 적용해보기
-	const mod = textToNumber % numberOfPalette; // id 를 팔레트 색상의 갯수 나눴을 때, 나머지
+	const mod = textToNumber % numberOfPalette; // text 를 팔레트 색상의 갯수 나눴을 때, 나머지
 	return paletteArray[mod];
 };
