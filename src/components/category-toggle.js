@@ -4,25 +4,33 @@ import styled from "styled-components";
 import { COLOR } from "../libs/styled-components/reference-tokens";
 
 /**
- * @param {string} categoryName 카테고리 이름
- * @param {voidFunction} callbackFunc 토글 (활성화/비활성화) 시, 실행로직
- * @param {boolean} initActiveState 카테고리 이름
+ * @component
+ * @parameter children : string - 카테고리 이름 (문자열 데이터 전달바랍니다.)
+ * @parameter callbackFunc : voidFunction - 토글 (활성화/비활성화) 시, 실행로직
+ * @parameter initActiveState : boolean - 활성화 초기 상태
  * @returns {JSX.Element}
  *
  * @description
  * - 호버/클릭 시, 색상이 변경 및 추가적인 로직을 수행하는 토글입니다.
- * - 전달된 'categoryName' 에 의해, 호버/클릭 시 색상이 결정됩니다.
- * - 'callbackFunc' 는/은 반환형이 없는 함수를 전달하셔야 합니다.
+ * - 전달된 "categoryName" 에 의해, 호버/클릭 시 색상이 결정됩니다.
+ * - "callbackFunc" 는/은 반환형이 없는 함수를 전달하셔야 합니다.
  * - 토글이 활성화 되어있는지에 대한 상태를 자체적으로 관리합니다.
+ * - children 이 string 타입으로 전달되지 않을 경우, "no_string" 문자열이 카테고리 이름으로 출력됩니다.
+ *
+ * @example
+ * <CategoryToggle> 카테고리 이름 </CategoryToggle>
  */
 const CategoryToggle = ({
-	categoryName = "no_data",
 	callbackFunc = () => {},
 	initActiveState = false,
+	children = "no_string",
+	...rest
 }) => {
 	const [isActive, setIsActive] = useState(initActiveState);
 
 	const palette = COLOR.PALETTE.cyan;
+
+	if (typeof children != "string") children = "no_string";
 
 	const onClickToggle = () => {
 		setIsActive((prev) => {
@@ -37,8 +45,9 @@ const CategoryToggle = ({
 			$palette={palette}
 			$bgColor={isActive ? COLOR.COMMON[200] : COLOR.COMMON[1000]}
 			$color={isActive ? palette.light : COLOR.COMMON[0]}
+			{...rest}
 		>
-			{categoryName}
+			{children}
 		</S.ToggleWrapper>
 	);
 };
