@@ -62,6 +62,8 @@ const ToggleWrapper = styled.div`
 	min-height: 2.4rem;
 	padding: 0.5rem 1rem;
 
+	display: inline-block;
+
 	border: 0.2rem solid ${COLOR.COMMON[0]};
 	border-radius: 100rem;
 
