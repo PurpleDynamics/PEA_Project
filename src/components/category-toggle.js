@@ -2,6 +2,7 @@ import { useState } from "react";
 import styled from "styled-components";
 
 import { COLOR } from "../libs/styled-components/reference-tokens";
+import { pickPaletteOneByText } from "../utils/auto-color-manager";
 
 /**
  * @component
@@ -28,9 +29,9 @@ const CategoryToggle = ({
 }) => {
 	const [isActive, setIsActive] = useState(initActiveState);
 
-	const palette = COLOR.PALETTE.cyan;
-
+	// children 이 string 타입으로 전달되지 않을 경우, "no_string" 문자열이 카테고리 이름으로 출력됩니다.
 	if (typeof children != "string") children = "no_string";
+	const palette = pickPaletteOneByText({ text: children });
 
 	const onClickToggle = () => {
 		setIsActive((prev) => {
