@@ -1,2 +1,3 @@
 import CategoryToggle from "./category-toggle";
-export { CategoryToggle };
+import RootLayout from "./layouts/layout";
+export { CategoryToggle, RootLayout };
