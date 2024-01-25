@@ -31,6 +31,7 @@ const CategoryToggle = ({
 
 	// children 이 string 타입으로 전달되지 않을 경우, "no_string" 문자열이 카테고리 이름으로 출력됩니다.
 	if (typeof children != "string") children = "no_string";
+	children = children.trim();
 
 	// COLOR.PALETTE 속성('magenta','cyan' 등) 중 하나의 {'base','light','weight'} 객체가 할당됩니다.
 	const palette = pickPaletteOneByText({ text: children });
