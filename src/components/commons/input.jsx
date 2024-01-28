@@ -88,7 +88,7 @@ const BorderBox = styled.div`
 	border: 1px solid ${COLOR.COMMON[800]};
 	border-radius: 0.5rem;
 
-	padding: 0.2rem;
+	padding: 0.2rem 1rem;
 `;
 const BorderInput = styled.input`
 	width: 100%;
