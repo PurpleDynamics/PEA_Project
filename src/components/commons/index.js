@@ -1,2 +1,2 @@
-import Icon from "./icon";
-export { Icon };
+import ResponsiveIcon from "./responsive-icon";
+export { ResponsiveIcon };

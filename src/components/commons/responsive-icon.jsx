@@ -4,33 +4,33 @@ import { COLOR, FONT_SIZE } from "../../libs/styled-components";
 
 /**
  * @component
- * @parameter 파라미터명 : 타입 - 파라미터 설명
  * @parameter icon : IconType - import한 icon컴포넌트.
  * @parameter size : number - icon의 크기 FONT_SIZE에서 원하는 값을 사용.
  * @parameter color : number - icon의 색상 COlOR에서 사용.
  * @returns {JSX.Element}
  *
  * @description
- * - 외부에서 아이콘 데이터를 주입받아, scale 확대 효과를 적용합니다.
+ * - 외부에서 주입받은 아이콘 콤포넌트에, 호버 시 scale 확대 효과를 적용합니다.
  *
  * @example
- * <Icon icon={BsCollectionFill}/>
- * <Icon icon={BsCollectionFill} size={FONT_SIZE.md}/>
- * <Icon icon={BsCollectionFill} color={COLOR.PALETTE.light}/>
+ * <ResponsiveIcon icon={BsCollectionFill}/>
+ * <ResponsiveIcon icon={BsCollectionFill} size={FONT_SIZE.md}/>
+ * <ResponsiveIcon icon={BsCollectionFill} color={COLOR.PALETTE.light}/>
  */
-const Icon = ({
+const ResponsiveIcon = ({
 	icon: IconData,
 	size = FONT_SIZE.lg,
 	color = COLOR.COMMON[0],
+	...rest
 }) => {
 	return (
-		<S.IconContainer>
+		<S.IconContainer {...rest}>
 			<IconData size={size} color={color} />
 		</S.IconContainer>
 	);
 };
 
-export default Icon;
+export default ResponsiveIcon;
 
 const IconContainer = styled.div`
 	width: fit-content;
@@ -40,7 +40,7 @@ const IconContainer = styled.div`
 	align-items: center;
 	justify-content: center;
 
-	transition: scale 0.3s;
+	transition: scale 0.2s;
 	&:hover {
 		scale: 1.2;
 	}
