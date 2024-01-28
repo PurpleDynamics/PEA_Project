@@ -3,6 +3,11 @@ import styled from "styled-components";
 
 import { COLOR } from "../../libs/styled-components";
 import { ResponsiveIcon, SearchBar } from "../commons";
+/**
+ * @component
+ * @description Header
+ * @returns {JSX.Element}
+ */
 const Header = () => {
 	return (
 		<S.HeaderContainer>

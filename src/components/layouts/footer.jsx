@@ -4,6 +4,11 @@ import {
 	COLOR,
 	FONT_SIZE,
 } from "../../libs/styled-components/reference-tokens";
+/**
+ * @component
+ * @description Footer
+ * @returns {JSX.Element}
+ */
 const Footer = () => {
 	return (
 		<S.MainContainer>

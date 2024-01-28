@@ -3,6 +3,11 @@ import styled from "styled-components";
 
 import { COLOR } from "../../libs/styled-components";
 import ResponsiveIcon from "./responsive-icon";
+/**
+ * @component
+ * @description 검색어 입력을 위한 검색창 component입니다.
+ * @returns {JSX.Element}
+ */
 const SearchBar = () => {
 	return (
 		<>
