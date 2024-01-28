@@ -43,6 +43,7 @@ const IconContainer = styled.div`
 	transition: scale 0.2s;
 	&:hover {
 		scale: 1.2;
+		cursor: pointer;
 	}
 `;
 
