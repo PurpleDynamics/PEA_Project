@@ -1,2 +1,4 @@
+import Button from './button;
+import Input from "./input";
 import ResponsiveIcon from "./responsive-icon";
-export { Button, ResponsiveIcon };
+export { Button, Input, ResponsiveIcon };
