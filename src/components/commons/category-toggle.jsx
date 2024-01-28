@@ -1,8 +1,8 @@
 import { useState } from "react";
 import styled from "styled-components";
 
-import { COLOR } from "../libs/styled-components/reference-tokens";
-import { pickPaletteOneByText } from "../utils/auto-color-manager";
+import { COLOR } from "../../libs/styled-components";
+import { pickPaletteOneByText } from "../../utils/auto-color-manager";
 
 /**
  * @component
