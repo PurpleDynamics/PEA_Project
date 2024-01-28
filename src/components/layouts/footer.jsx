@@ -46,6 +46,7 @@ const LeftTextBox = styled.div`
 	width: 70rem;
 	display: flex;
 	flex-direction: column;
+	margin-left: ${FONT_SIZE.ti};
 `;
 
 const RightTextBox = styled.div`
@@ -58,11 +59,19 @@ const RightTextBox = styled.div`
 const Number = styled.p`
 	font-size: ${FONT_SIZE.md};
 	padding: 1rem 0;
+	&:hover {
+		text-decoration: underline;
+		cursor: pointer;
+	}
 `;
 const Text = styled.p`
 	padding: 1rem 0;
 	font-size: ${FONT_SIZE.sm};
 	font-family: "SOYO_Maple_Regular";
+	&:hover {
+		text-decoration: underline;
+		cursor: default;
+	}
 `;
 
 const S = {
