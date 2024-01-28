@@ -11,14 +11,15 @@ const GlobalStyles = createGlobalStyle`
     box-sizing: border-box;
 
     font-size: ${FONT_SIZE.md};
+
+    /** 폰트 설정 */
+    font-family: 'SOYO_Maple_Bold';
   }
   html{
     /** 배경 색상 */
     background-color: ${COLOR.COMMON[1000]};
     /** 폰트 등 색상 */
     color: ${COLOR.COMMON[0]};
-    /** 폰트 설정 */
-    font-family: 'SOYO_Maple_Bold';
     /** 폰트 크기 */
     font-size: 62.5%; // '1rem' = '10px'
     @media screen and (max-width: ${BREAK_POINT.md}) {
