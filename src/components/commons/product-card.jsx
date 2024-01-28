@@ -32,6 +32,7 @@ import { CategoryToggle, HighlightedText } from "./";
  * - 클릭 에 대한 콜백함수를 전달받아, 페이지를 이동시키는 등의 작업을 할 수 있습니다.
  * - '찜'/'관심 표현'에 대한 상태를 자체적으로 관리합니다. (외부에서 초기값을 지정할 수 있습니다.)
  * - 'disabled' 값이 true 일 경우, 클릭 등의 이벤트가 발생하지 않습니다.
+ * - category 는 최소 1개, 최대 2개까지 노출됩니다.
  */
 const ProductCard = ({
 	productId = 0,
