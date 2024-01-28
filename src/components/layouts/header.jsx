@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 import { COLOR } from "../../../libs/styled-components/reference-tokens/color";
 import { HeaderIcons, SearchBar } from "../..";
-
+// import { BsFileEarmarkText, BsGeoAlt, BsHeart, BsPerson } from "react-icons/bs";
 const Header = () => {
 	return (
 		<S.HeaderContainer>
@@ -15,6 +15,12 @@ const Header = () => {
 	);
 };
 export default Header;
+// const IconsWrapper = styled.ul`
+// 	width: 100%;
+// 	display: grid;
+// 	grid-template-columns: 1fr 1fr 1fr 1fr;
+// 	grid-gap: 2rem;
+// `;
 
 const HeaderContainer = styled.div`
 	position: fixed;
