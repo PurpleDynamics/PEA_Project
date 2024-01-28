@@ -1,26 +1,25 @@
+import { BsFileEarmarkText, BsGeoAlt, BsHeart, BsPerson } from "react-icons/bs";
 import styled from "styled-components";
 
-import { COLOR } from "../../../libs/styled-components/reference-tokens/color";
-import { HeaderIcons, SearchBar } from "../..";
-// import { BsFileEarmarkText, BsGeoAlt, BsHeart, BsPerson } from "react-icons/bs";
+import { COLOR } from "../../libs/styled-components";
+import { ResponsiveIcon, SearchBar } from "../commons";
 const Header = () => {
 	return (
 		<S.HeaderContainer>
 			<S.MainWrapper>
 				<S.Logo src="https://url.kr/trjdsn" />
 				<SearchBar />
-				<HeaderIcons />
+				<S.IconsWrapper>
+					<ResponsiveIcon icon={BsFileEarmarkText} />
+					<ResponsiveIcon icon={BsGeoAlt} />
+					<ResponsiveIcon icon={BsHeart} />
+					<ResponsiveIcon icon={BsPerson} />
+				</S.IconsWrapper>
 			</S.MainWrapper>
 		</S.HeaderContainer>
 	);
 };
 export default Header;
-// const IconsWrapper = styled.ul`
-// 	width: 100%;
-// 	display: grid;
-// 	grid-template-columns: 1fr 1fr 1fr 1fr;
-// 	grid-gap: 2rem;
-// `;
 
 const HeaderContainer = styled.div`
 	position: fixed;
@@ -32,7 +31,7 @@ const HeaderContainer = styled.div`
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	box-shadow: 0 2px 4px ${COLOR.COMMON[800]}; // 구분을 위한 임시 조치
+	box-shadow: 0 2px 4px ${COLOR.COMMON[800]};
 	background-color: ${COLOR.COMMON[1000]};
 `;
 const MainWrapper = styled.div`
@@ -42,6 +41,13 @@ const MainWrapper = styled.div`
 	width: 125rem;
 	height: 8rem;
 `;
+const IconsWrapper = styled.ul`
+	width: 100%;
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr;
+	grid-gap: 2rem;
+`;
+
 const Logo = styled.img`
 	padding-bottom: 1rem;
 	width: 11rem;
@@ -53,5 +59,6 @@ const Logo = styled.img`
 const S = {
 	HeaderContainer,
 	MainWrapper,
+	IconsWrapper,
 	Logo,
 };
