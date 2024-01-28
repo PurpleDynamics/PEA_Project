@@ -1,2 +1,2 @@
 import ResponsiveIcon from "./responsive-icon";
-export { ResponsiveIcon };
+export { Button, ResponsiveIcon };
