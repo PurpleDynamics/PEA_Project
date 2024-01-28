@@ -11,7 +11,7 @@ import { COLOR, FONT_SIZE } from "../../libs/styled-components";
  * @parameter register : function - react-hook-form 을 통해 유효성 검사 규칙을 적용해야 할 등록 함수
  * @parameter validate : object - 유효성 검사 규칙
  * @parameter errors : object - error message 가 담길 객체
- * @parameter onClickButton : function - Input 컴포넌트 내부에 버튼이 있어야할 경우, 버튼 클릭 이벤트를 처리할 콜백함수
+ * @parameter handleButton : function - Input 컴포넌트 내부에 버튼이 있어야할 경우, 버튼 클릭 이벤트를 처리할 콜백함수
  * @returns {JSX.Element}
  *
  * @description
@@ -29,7 +29,7 @@ const Input = ({
 	register = () => {},
 	validate = {},
 	errors = {},
-	onClickButton = () => {},
+	handleButton = () => {},
 	...rest
 }) => {
 	return (
@@ -47,7 +47,7 @@ const Input = ({
 				{buttonText.trim() && (
 					<S.TextButton
 						onClick={(e) => {
-							onClickButton();
+							handleButton();
 							e.preventDefault(); // form 태그 내부에 작성된 버튼이기 때문에, 제출 이벤트를 방지합니다.
 						}}
 					>
