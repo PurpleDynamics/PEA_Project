@@ -251,5 +251,4 @@ const RotatedCompletionMessage = styled.h1`
 	-moz-transform: rotate(-45deg);
 	-o-transform: rotate(-45deg);
 	-moz-transform: rotate(-45deg);
-	text-shadow: 0.1rem 0.1rem 0.1rem ${COLOR.COMMON[0]};
 `;
