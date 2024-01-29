@@ -18,10 +18,6 @@ const AdminRoute = () => {
 		if (!auth) navigate("/signin");
 	}, [auth, navigate]);
 
-	return (
-		<>
-			<RootLayout />
-		</>
-	);
+	return <RootLayout />;
 };
 export default AdminRoute;
