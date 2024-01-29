@@ -1,6 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
 
-import { RootLayout } from "../../components/layouts";
 import {
 	DetailProductPage,
 	MyInfoPage,
@@ -11,7 +10,7 @@ import {
 	SignupPage,
 	UsedProductPage,
 } from "../../pages";
-import AdminRoute from "./admin-router";
+import { AdminRoute } from "./";
 
 /**
  * @router
@@ -71,7 +70,6 @@ const PUBLIC_ROUTER = [
 
 const router = createBrowserRouter([
 	{
-		element: <RootLayout />,
 		children: [...PUBLIC_ROUTER, ADMIN_ROUTER],
 	},
 ]);
