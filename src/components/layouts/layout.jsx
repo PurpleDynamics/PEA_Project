@@ -1,20 +1,13 @@
 import { Outlet } from "react-router-dom";
 
 import { Footer, Header } from ".";
-const RootLayout = () => {
-	const auth = localStorage.getItem("access_token");
 
+const RootLayout = () => {
 	return (
 		<>
-			{auth ? (
-				<>
-					<Header />
-					<Outlet />
-					<Footer />
-				</>
-			) : (
-				<Outlet />
-			)}
+			<Header />
+			<Outlet />
+			<Footer />
 		</>
 	);
 };
