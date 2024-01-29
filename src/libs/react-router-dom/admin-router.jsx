@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { RootLayout } from "../../components/layouts";
@@ -12,6 +13,7 @@ import { RootLayout } from "../../components/layouts";
 
 const AdminRoute = () => {
 	const auth = localStorage.getItem("token");
+	console.log(auth);
 	const navigate = useNavigate();
 
 	useEffect(() => {
