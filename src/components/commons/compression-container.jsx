@@ -1,5 +1,16 @@
 import styled from "styled-components";
 
+/**
+ * @components
+ * @parameter children : 내부에 들어갈 dom요소
+ * @returns {JSX.Element}
+ *
+ * @description
+ * - tb => top-bottom
+ * - lr => left-right
+ * - 값 입니다.
+ */
+
 const ComressoionContainer = ({ lr = "0rem", tb = "0rem", children }) => {
 	return (
 		<>
