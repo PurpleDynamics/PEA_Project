@@ -168,7 +168,6 @@ const CardWrapper = styled.div`
 					background-color: ${COLOR.COMMON[400]};
 				`
 			: css`
-					box-shadow: none;
 					box-shadow: ${COLOR.COMMON[200]} 0 0.5rem;
 					color: ${COLOR.COMMON[0]};
 					background-color: ${COLOR.COMMON[1000]};
