@@ -85,7 +85,7 @@ const ProductCard = ({
 						}}
 					>
 						<RotatedCompletionMessage>
-							거래완료
+							거 래 완 료
 						</RotatedCompletionMessage>
 					</BlockFilter>
 				)
@@ -260,9 +260,12 @@ const BlockFilter = styled.div`
 `;
 const RotatedCompletionMessage = styled.h1`
 	text-align: center;
-	letter-spacing: 2rem;
+	word-spacing: 2rem;
+	transform: rotate(-45deg);
 	-webkit-transform: rotate(-45deg);
 	-moz-transform: rotate(-45deg);
 	-o-transform: rotate(-45deg);
 	-moz-transform: rotate(-45deg);
+
+	text-shadow: 0.1rem 0.1rem 0.1rem ${COLOR.COMMON[0]};
 `;
