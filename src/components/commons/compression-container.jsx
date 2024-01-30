@@ -7,8 +7,7 @@ import styled from "styled-components";
  *
  * @description
  * - tb => top-bottom
- * - lr => left-right
- * - 값 입니다.
+ * - lr => left-right 입니다.
  */
 
 const ComressoionContainer = ({ lr = "0rem", tb = "0rem", children }) => {
