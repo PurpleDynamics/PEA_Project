@@ -16,7 +16,7 @@ import { COLOR } from "../../libs/styled-components";
  * @description
  *
  * @example
- * - <Modal modalText="사용 가능한 이메일 입니다" modalWidth="250px" modalHeight="110px" baseBtn={BaseBtn} baseText="확인" addBtn={AddBtn} addText="취소" />
+ * - <Modal modalText="사용 가능한 이메일 입니다" modalWidth="25rem" modalHeight="11rem" baseBtn={BaseBtn} baseText="확인" addBtn={AddBtn} addText="취소" />
  * - const Success = () => {};
  * - const Cancel = () => {};
 
@@ -46,8 +46,8 @@ const Modal = ({
 0;
 export default Modal;
 const Wrapper = styled.div`
-	width: ${({ width }) => width || "300px"}; //사이즈 글씨에 따라 변형
-	height: ${({ height }) => height || "150px"};
+	width: ${({ width }) => width || "30rem"}; //사이즈 글씨에 따라 변형
+	height: ${({ height }) => height || "15rem"};
 	border: 0.1rem solid ${COLOR.COMMON[600]};
 	color: ${COLOR.COMMON[400]};
 	border-radius: 8px; //임의 못찾음
