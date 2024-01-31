@@ -112,13 +112,15 @@ const BorderInput = styled.input`
 	}
 `;
 const TextButton = styled.button`
-	width: auto;
+	width: 6rem;
 	padding: 1rem;
+	color: ${COLOR.COMMON[400]};
 	background-color: ${COLOR.COMMON[800]};
 	font-size: ${FONT_SIZE.ti};
 	border-radius: 0.5rem;
 	word-break: keep-all;
 	&:hover {
+		color: ${COLOR.COMMON[200]};
 		background-color: ${COLOR.COMMON[600]};
 	}
 `;
