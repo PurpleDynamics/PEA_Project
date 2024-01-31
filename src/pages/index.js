@@ -1,10 +1,11 @@
+import NotFoundPage from "./404-page";
+import DetailProductPage from "./detail-product-page";
 import MyInfoPage from "./my-info-page";
-import DetailProductPage from "./products/detail-product-page";
-import ProductListPage from "./products/product-list-page";
-import RegisterProductPage from "./products/register-product-page";
-import UsedProductPage from "./products/used-product-page";
-import SigninPage from "./sign/signin-page";
-import SignupPage from "./sign/signup-page";
+import ProductListPage from "./product-list-page";
+import RegisterProductPage from "./register-product-page";
+import SigninPage from "./signin-page";
+import SignupPage from "./signup-page";
+import UsedProductPage from "./used-product-page";
 
 export {
 	DetailProductPage,
@@ -14,4 +15,5 @@ export {
 	SigninPage,
 	SignupPage,
 	UsedProductPage,
+	NotFoundPage,
 };
