@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import { COLOR } from "../../libs/styled-components";
+import { COLOR, FONT_SIZE } from "../../libs/styled-components";
 /**
  * @component
  * @parameter modalText : string - 모달컨텐츠
@@ -52,7 +52,9 @@ const Wrapper = styled.div`
 	grid-template-rows: 50% 50%;
 	align-items: center;
 	justify-content: center;
+	text-align: center;
 	position: relative;
+	font-family: "SOYO_Maple_Regular";
 `;
 const Line = styled.hr`
 	position: absolute;
@@ -71,11 +73,13 @@ const BaseBtn = styled.button`
 	background-color: ${COLOR.COMMON[1000]};
 	color: ${COLOR.SYSTEM.success};
 	cursor: pointer;
+	font-size: ${FONT_SIZE.bg};
 `;
 const AddBTN = styled.button`
 	background-color: ${COLOR.COMMON[1000]};
 	color: ${COLOR.COMMON[400]};
 	cursor: pointer;
+	font-size: ${FONT_SIZE.bg};
 `;
 
 const S = {
