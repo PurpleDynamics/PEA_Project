@@ -5,6 +5,7 @@ import { COLOR, FONT_SIZE } from "../../libs/styled-components";
 /**
  * @component
  * @parameter palette : "default" | "magenta" | "orange" | "yellow" | "mint" | "cyan" | "purple" | "magentaUp" | "orangeUp" | "yellowUp" | "mintUp" | "cyanUp" | "purpleUp" - 버튼의 색상 테마
+ * @parameter width : string - 버튼 너비
  * @parameter icon : IconType - 아이콘 컴포넌트 (react-icons), (* 아이콘 없이 버튼 사용할 수도 있습니다.)
  * @parameter children : string - 카테고리 이름 (문자열 데이터 전달바랍니다.)
  * @returns {JSX.Element}
@@ -21,37 +22,35 @@ import { COLOR, FONT_SIZE } from "../../libs/styled-components";
  * - <Button palette="orange">오렌지</Button>
  * - <Button palette="orangeUp">오렌지 업!</Button>
  */
-const Button = ({ palette = "default", icon: IconData, children, ...rest }) => {
+const Button = ({
+	palette = "default",
+	width = "10rem",
+	icon: IconData,
+	children,
+	...rest
+}) => {
 	// children 이 string 타입으로 전달되지 않을 경우, "no_string" 문자열이 출력됩니다.
 	if (typeof children != "string") children = "no_string";
 	children = children.trim();
 
 	return (
-		<S.ButtonContainer>
-			<S.ButtonBody $palette={palette} {...rest}>
-				<TextAndIconContainer>
-					{children}
-					{IconData && <IconData size={FONT_SIZE.bg} />}
-				</TextAndIconContainer>
-			</S.ButtonBody>
-		</S.ButtonContainer>
+		<S.ButtonBody $palette={palette} $width={width} {...rest}>
+			<TextAndIconContainer>
+				{children}
+				{IconData && <IconData size={FONT_SIZE.bg} />}
+			</TextAndIconContainer>
+		</S.ButtonBody>
 	);
 };
 
 export default Button;
 
-const ButtonContainer = styled.div`
-	width: fit-content;
-	height: 5rem;
-
-	display: flex;
-	flex-direction: column;
-	justify-content: flex-end;
-`;
 const ButtonBody = styled.button`
-	width: fit-content;
+	width: ${({ $width }) => {
+		return $width;
+	}};
 	min-width: 10rem;
-	height: 100%;
+	height: 5rem;
 
 	padding: 0.5rem 0.5rem 1.2rem 0.5rem;
 	border-radius: 1.1rem;
@@ -71,7 +70,9 @@ const ButtonBody = styled.button`
 
 	&:active {
 		padding: 0.5rem;
-		height: 90%;
+		height: 4rem;
+
+		transform: translateY(0.5rem);
 
 		div {
 			background-color: ${({ $palette }) => {
@@ -167,4 +168,4 @@ const buttonTheme = {
 	},
 };
 
-const S = { ButtonContainer, ButtonBody, TextAndIconContainer };
+const S = { ButtonBody, TextAndIconContainer };
