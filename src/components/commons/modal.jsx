@@ -4,29 +4,26 @@ import { COLOR } from "../../libs/styled-components";
 /**
  * @component
  * @parameter modalText : string - 모달컨텐츠
- * @parameter modalWidth : string - 모달 가로사이즈
+ * @parameter modalWidth : string ||30rem - 모달 가로사이즈
  * @parameter modalHeight : string - 모달 세로 사이즈
  * @parameter baseBtn : function - 기본 버튼 기능
- * @parameter baseText : string - 기본 버튼 TEXT
  * @parameter addBTN : function - 추가 버튼 기능
  * @parameter addText : string - 추가 버튼 TEXT
- * 
  * @returns {JSX.Element}
  *
  * @description
- *
+ * 전달된 "baseBtn" 에 의해 , "확인" 클릭 시 기능작동합니다
+ * 기본적으로 하나의 버튼만 보여집니다
+ * "addText"이 추가 될시 화면상 왼쪽부분에 추가됩니다
+ * "modalWidth","modalHeight" 전달되지않을 경우 default값 30rem , 15rem 사이즈가 출력됩니다
  * @example
- * - <Modal modalText="사용 가능한 이메일 입니다" modalWidth="25rem" modalHeight="11rem" baseBtn={BaseBtn} baseText="확인" addBtn={AddBtn} addText="취소" />
- * - const Success = () => {};
- * - const Cancel = () => {};
-
+ * - <Modal modalText="사용 가능한 이메일 입니다" modalWidth="25rem" modalHeight="11rem" baseBtn={BaseBtn}  addBtn={AddBtn} addText="취소" />
  */
 const Modal = ({
 	modalText,
-	modalWidth,
-	modalHeight,
+	modalWidth = "30rem",
+	modalHeight = "15rem",
 	baseBtn,
-	baseText,
 	addBTN,
 	addText,
 }) => {
@@ -35,18 +32,18 @@ const Modal = ({
 			<S.Wrapper width={modalWidth} height={modalHeight}>
 				{modalText}
 				<S.Line></S.Line>
-				<S.BtnBox cancelText={cancelText}>
+				<S.BtnBox addText={addText}>
 					{addText && <S.AddBTN onClick={addBTN}>{addText}</S.AddBTN>}
-					<S.BaseBtn onClick={baseBtn}>{baseText}</S.BaseBtn>
+					<S.BaseBtn onClick={baseBtn}>확인</S.BaseBtn>
 				</S.BtnBox>
 			</S.Wrapper>
 		</>
 	);
 };
-0;
+
 export default Modal;
 const Wrapper = styled.div`
-	width: ${({ width }) => width || "30rem"}; //사이즈 글씨에 따라 변형
+	width: ${({ width }) => width || "30rem"};
 	height: ${({ height }) => height || "15rem"};
 	border: 0.1rem solid ${COLOR.COMMON[600]};
 	color: ${COLOR.COMMON[400]};
@@ -73,10 +70,12 @@ const BtnBox = styled.div`
 const BaseBtn = styled.button`
 	background-color: ${COLOR.COMMON[1000]};
 	color: ${COLOR.SYSTEM.success};
+	cursor: pointer;
 `;
 const AddBTN = styled.button`
 	background-color: ${COLOR.COMMON[1000]};
 	color: ${COLOR.COMMON[400]};
+	cursor: pointer;
 `;
 
 const S = {
