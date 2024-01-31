@@ -8,6 +8,7 @@ import { COLOR, FONT_SIZE } from "../../libs/styled-components";
  * @parameter titleText : string - 입력받아야 할 항목의 제목
  * @parameter buttonText : string - Input 컴포넌트 내부에 버튼이 있어야할 경우, 버튼에 적힐 텍스트
  * @parameter unitText : string - 단위가 필요할 경우, 해당 단위 ( 화페 단위(원), 상품 갯수(개) 등 )
+ * @parameter registerKey : string - Input 태그의 고유한 key, 유효성 검사 key
  * @parameter register : function - react-hook-form 을 통해 유효성 검사 규칙을 적용해야 할 등록 함수
  * @parameter validate : object - 유효성 검사 규칙
  * @parameter errors : object - error message 가 담길 객체
@@ -26,6 +27,7 @@ const Input = ({
 	titleText = " ",
 	buttonText = "",
 	unitText = "",
+	registerKey = "",
 	register = () => {},
 	validate = {},
 	errors = {},
@@ -38,7 +40,7 @@ const Input = ({
 			<S.BorderBox>
 				<S.BorderInput
 					$align={unitText.length ? "right" : "left"} // 'unitText' 값이 있다면, 텍스트 우측 정렬됩니다.
-					{...register(titleText, validate)}
+					{...register(registerKey, validate)}
 					{...rest}
 				/>
 				{
@@ -55,7 +57,9 @@ const Input = ({
 					</S.TextButton>
 				)}
 			</S.BorderBox>
-			<S.Error>{errors[titleText] && errors[titleText].message}</S.Error>
+			<S.Error>
+				{errors[registerKey] && errors[registerKey].message}
+			</S.Error>
 		</S.InputWrapper>
 	);
 };
