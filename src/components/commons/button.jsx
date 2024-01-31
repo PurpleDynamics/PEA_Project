@@ -35,10 +35,10 @@ const Button = ({
 
 	return (
 		<S.ButtonBody $palette={palette} $width={width} {...rest}>
-			<TextAndIconContainer>
+			<S.TextAndIconContainer>
 				{children}
 				{IconData && <IconData size={FONT_SIZE.bg} />}
-			</TextAndIconContainer>
+			</S.TextAndIconContainer>
 		</S.ButtonBody>
 	);
 };
@@ -62,17 +62,19 @@ const ButtonBody = styled.button`
 		}};
 	}
 
-	&:hover > div {
-		background-color: ${({ $palette }) => {
-			return buttonTheme[$palette].hoverColor;
-		}};
+	&:hover {
+		cursor: pointer;
+		div {
+			background-color: ${({ $palette }) => {
+				return buttonTheme[$palette].hoverColor;
+			}};
+		}
 	}
 
 	&:active {
 		padding: 0.5rem;
-		height: 4rem;
 
-		transform: translateY(0.5rem);
+		transform: translateY(0.3rem);
 
 		div {
 			background-color: ${({ $palette }) => {
