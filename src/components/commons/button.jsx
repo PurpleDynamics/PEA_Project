@@ -35,10 +35,10 @@ const Button = ({
 
 	return (
 		<S.ButtonBody $palette={palette} $width={width} {...rest}>
-			<TextAndIconContainer>
+			<S.TextAndIconContainer>
 				{children}
 				{IconData && <IconData size={FONT_SIZE.bg} />}
-			</TextAndIconContainer>
+			</S.TextAndIconContainer>
 		</S.ButtonBody>
 	);
 };
