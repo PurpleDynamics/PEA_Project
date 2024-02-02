@@ -1,14 +1,15 @@
 import { useState } from "react";
 import styled from "styled-components";
 
-import { COLOR } from "../../libs/styled-components";
+import { COLOR, FONT_SIZE } from "../../libs/styled-components";
 import { pickPaletteOneByText } from "../../utils/auto-color-manager";
 
 /**
  * @component
- * @parameter children : string - 카테고리 이름 (문자열 데이터 전달바랍니다.)
  * @parameter callbackFunc : voidFunction - 토글 (활성화/비활성화) 시, 실행로직
  * @parameter initActiveState : boolean - 활성화 초기 상태
+ * @parameter fontSize : string - 폰트 크기
+ * @parameter children : string - 카테고리 이름 (문자열 데이터 전달바랍니다.)
  * @returns {JSX.Element}
  *
  * @description
@@ -24,6 +25,7 @@ import { pickPaletteOneByText } from "../../utils/auto-color-manager";
 const CategoryToggle = ({
 	callbackFunc = () => {},
 	initActiveState = false,
+	fontSize = FONT_SIZE.md,
 	children = "no_string",
 	...rest
 }) => {
@@ -49,6 +51,7 @@ const CategoryToggle = ({
 			$palette={palette}
 			$bgColor={isActive ? COLOR.COMMON[200] : COLOR.COMMON[1000]}
 			$color={isActive ? palette.light : COLOR.COMMON[0]}
+			$fontSize={fontSize}
 			{...rest}
 		>
 			{children}
@@ -63,12 +66,18 @@ const ToggleWrapper = styled.div`
 	height: fit-content;
 	min-width: 4.2rem;
 	min-height: 2.4rem;
-	padding: 0.5rem 1rem;
+	padding: 0.1rem 0.5rem;
 
 	display: inline-block;
 
 	border: 0.2rem solid ${COLOR.COMMON[0]};
 	border-radius: 100rem;
+
+	font-size: ${({ $fontSize }) => {
+		return $fontSize;
+	}};
+
+	text-align: center;
 
 	background-color: ${({ $bgColor }) => {
 		return $bgColor;
