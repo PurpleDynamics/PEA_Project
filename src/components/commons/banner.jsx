@@ -132,7 +132,6 @@ const rising = keyframes`
 }
 `;
 const CenterContainer = styled.div`
-	margin: 9rem 0;
 	width: 100%;
 	height: fit-content;
 	animation: ${opacity_control} 0.5s ease-in-out forwards;
