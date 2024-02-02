@@ -1,9 +1,9 @@
 import { useState } from "react";
 import {
+	BsBagHeartFill,
 	BsChatQuoteFill,
 	BsHeart,
 	BsHeartFill,
-	BsHearts,
 } from "react-icons/bs";
 import styled, { css } from "styled-components";
 
@@ -125,7 +125,7 @@ const ProductCard = ({
 				</HighlightedText>
 				<VoteCountsSection>
 					<VoteCount>
-						<BsHearts />
+						<BsBagHeartFill />
 						{interestCount}
 					</VoteCount>
 					<VoteCount>
@@ -142,24 +142,17 @@ export default ProductCard;
 
 const CardWrapper = styled.div`
 	position: relative;
-
 	width: 21rem;
 	height: 35.8rem;
-
 	border-radius: 1.1rem;
 	box-shadow: ${COLOR.COMMON[200]} 0 0.5rem;
-
 	overflow: hidden;
-
 	display: grid;
 	grid-template-rows: 21.5rem 1fr 1.2fr 1fr;
 	grid-row-gap: 1px;
-
 	cursor: pointer;
 	background-color: ${COLOR.COMMON[1000]};
-
 	transition: all 0.1s;
-
 	${({ $disabled }) => {
 		return $disabled
 			? css`
@@ -213,11 +206,8 @@ const CategoriesSection = styled.section`
 const TitleSection = styled.section`
 	width: fit-content;
 	max-width: 14rem;
-
 	word-break: break-all;
-
 	font-size: ${FONT_SIZE.bg};
-
 	overflow: hidden;
 	white-space: nowrap;
 	text-overflow: ellipsis;
@@ -226,7 +216,6 @@ const PeriodSection = styled.section`
 	width: fit-content;
 	max-width: 5rem;
 	font-size: ${FONT_SIZE.ti};
-
 	overflow: hidden;
 	white-space: nowrap;
 	text-overflow: ellipsis;
@@ -247,12 +236,9 @@ const BlockFilter = styled.div`
 	position: absolute;
 	top: 0;
 	left: 0;
-
 	width: 100%;
 	height: 100%;
-
 	background-color: ${COLOR.COMMON[0] + "AA"}; // 배경을 약간 투명하게
-
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -265,6 +251,5 @@ const RotatedCompletionMessage = styled.h1`
 	-moz-transform: rotate(-45deg);
 	-o-transform: rotate(-45deg);
 	-moz-transform: rotate(-45deg);
-
 	text-shadow: 0.1rem 0.1rem 0.1rem ${COLOR.COMMON[0]};
 `;
