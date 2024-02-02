@@ -126,6 +126,7 @@ const TextButton = styled.button`
 	&:hover {
 		color: ${COLOR.COMMON[200]};
 		background-color: ${COLOR.COMMON[600]};
+		cursor: pointer;
 	}
 `;
 const Error = styled.div`
