@@ -3,6 +3,8 @@ import styled from "styled-components";
 /**
  * @components
  * @parameter children : 내부에 들어갈 dom요소
+ * @parameter tb : top, bottom 의 padding 값
+ * @parameter lr : left, right 의 padding 값
  * @returns {JSX.Element}
  *
  * @description
@@ -10,7 +12,7 @@ import styled from "styled-components";
  * - lr => left-right 입니다.
  */
 
-const CompressoionContainer = ({ lr = "0rem", tb = "0rem", children }) => {
+const CompressoionContainer = ({ lr = "20rem", tb = "20rem", children }) => {
 	return (
 		<>
 			<S.Wrapper $tb={tb} $lr={lr}>
