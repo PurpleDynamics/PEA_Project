@@ -93,7 +93,11 @@ const ProductCard = ({
 
 			<img src={imgUrl} width="100%" style={{ aspectRatio: "1/1" }} />
 			<SpaceBetweenFlex>
-				<CategoriesSection>
+				<CategoriesSection
+					onClick={(e) => {
+						e.stopPropagation();
+					}}
+				>
 					{categoriesArray.map((category, index) => {
 						return (
 							<CategoryToggle key={index} fontSize={FONT_SIZE.ti}>
@@ -102,15 +106,25 @@ const ProductCard = ({
 						);
 					})}
 				</CategoriesSection>
-				{isInterest ? (
-					<BsHeartFill
-						size={FONT_SIZE.lg}
-						color={COLOR.PALETTE.magenta.light}
-						onClick={onClickHeartIcon}
-					/>
-				) : (
-					<BsHeart size={FONT_SIZE.lg} onClick={onClickHeartIcon} />
-				)}
+
+				<InterestBtnSection
+					onClick={(e) => {
+						e.stopPropagation();
+					}}
+				>
+					{isInterest ? (
+						<BsHeartFill
+							size={FONT_SIZE.lg}
+							color={COLOR.PALETTE.magenta.light}
+							onClick={onClickHeartIcon}
+						/>
+					) : (
+						<BsHeart
+							size={FONT_SIZE.lg}
+							onClick={onClickHeartIcon}
+						/>
+					)}
+				</InterestBtnSection>
 			</SpaceBetweenFlex>
 
 			<SpaceBetweenFlex>
@@ -202,6 +216,10 @@ const SpaceBetweenFlex = styled.div`
 const CategoriesSection = styled.section`
 	display: flex;
 	gap: 1px;
+`;
+const InterestBtnSection = styled.section`
+	width: fit-content;
+	height: fit-content;
 `;
 const TitleSection = styled.section`
 	width: fit-content;
