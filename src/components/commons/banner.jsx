@@ -68,6 +68,9 @@ const Banner = () => {
 					{adData[curIdx]?.titleText}
 				</S.InfoTitle>
 				<S.InfoText $contentColor={adData[curIdx]?.contentColor}>
+					{/**google form에 입력양식을 띄어쓰기 두개입력시 줄바꿈으로 설정해두어서
+					 * 줄바꿈처리를 해주는 logic작성
+					 */}
 					{adData[curIdx]?.contentText
 						.split("  ")
 						.map((phrase, idx) => {
