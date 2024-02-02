@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 /**
  * @component
- * @parameter children : 내부에 들어갈 dom요소
+ * @parameter children : JSX.Element - 내부에 들어갈 dom요소
  * @parameter tb : string - top, bottom 의 padding 값
  * @parameter lr : string - left, right 의 padding 값
  * @returns {JSX.Element}
