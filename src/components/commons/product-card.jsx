@@ -70,7 +70,7 @@ const ProductCard = ({
 	};
 
 	return (
-		<CardWrapper
+		<S.CardWrapper
 			$activeEventShadowColor={palette.weight}
 			$disabled={disabled}
 			{...rest}
@@ -78,22 +78,22 @@ const ProductCard = ({
 			{
 				/** disabled 경우, Card 앞에 어두운 필터를 덮고, 클릭 등의 이벤트 차단  */
 				disabled && (
-					<BlockFilter
+					<S.BlockFilter
 						$disabled={disabled}
 						onClick={(e) => {
 							e.stopPropagation();
 						}}
 					>
-						<RotatedCompletionMessage>
+						<S.RotatedCompletionMessage>
 							거 래 완 료
-						</RotatedCompletionMessage>
-					</BlockFilter>
+						</S.RotatedCompletionMessage>
+					</S.BlockFilter>
 				)
 			}
 
 			<img src={imgUrl} width="100%" style={{ aspectRatio: "1/1" }} />
-			<SpaceBetweenFlex>
-				<CategoriesSection
+			<S.SpaceBetweenFlex>
+				<S.CategoriesSection
 					onClick={(e) => {
 						e.stopPropagation();
 					}}
@@ -105,9 +105,9 @@ const ProductCard = ({
 							</CategoryToggle>
 						);
 					})}
-				</CategoriesSection>
+				</S.CategoriesSection>
 
-				<InterestBtnSection
+				<S.InterestBtnSection
 					onClick={(e) => {
 						e.stopPropagation();
 					}}
@@ -124,31 +124,31 @@ const ProductCard = ({
 							onClick={onClickHeartIcon}
 						/>
 					)}
-				</InterestBtnSection>
-			</SpaceBetweenFlex>
+				</S.InterestBtnSection>
+			</S.SpaceBetweenFlex>
 
-			<SpaceBetweenFlex>
-				<TitleSection>{title}</TitleSection>
-				<PeriodSection>{period}</PeriodSection>
-			</SpaceBetweenFlex>
+			<S.SpaceBetweenFlex>
+				<S.TitleSection>{title}</S.TitleSection>
+				<S.PeriodSection>{period}</S.PeriodSection>
+			</S.SpaceBetweenFlex>
 
-			<SpaceBetweenFlex>
+			<S.SpaceBetweenFlex>
 				{/** 가격 */}
 				<HighlightedText color={palette.weight}>
 					{price.toLocaleString()}
 				</HighlightedText>
-				<VoteCountsSection>
-					<VoteCount>
+				<S.VoteCountsSection>
+					<S.VoteCount>
 						<BsBagHeartFill />
 						{interestCount}
-					</VoteCount>
-					<VoteCount>
+					</S.VoteCount>
+					<S.VoteCount>
 						<BsChatQuoteFill />
 						{chattingCount}
-					</VoteCount>
-				</VoteCountsSection>
-			</SpaceBetweenFlex>
-		</CardWrapper>
+					</S.VoteCount>
+				</S.VoteCountsSection>
+			</S.SpaceBetweenFlex>
+		</S.CardWrapper>
 	);
 };
 
@@ -270,3 +270,15 @@ const RotatedCompletionMessage = styled.h1`
 	-o-transform: rotate(-45deg);
 	-moz-transform: rotate(-45deg);
 `;
+const S = {
+	CardWrapper,
+	SpaceBetweenFlex,
+	CategoriesSection,
+	InterestBtnSection,
+	TitleSection,
+	PeriodSection,
+	VoteCountsSection,
+	VoteCount,
+	BlockFilter,
+	RotatedCompletionMessage,
+};
