@@ -4,7 +4,7 @@ import { BsChevronLeft, BsChevronRight } from "react-icons/bs";
 import styled, { keyframes } from "styled-components";
 
 import { COLOR, FONT_SIZE } from "../../libs/styled-components";
-import ResponsiveIcon from "./responsive-icon";
+import { ResponsiveIcon } from ".";
 /**
  * @component
  * @returns {JSX.Element}
