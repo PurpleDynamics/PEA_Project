@@ -15,7 +15,7 @@ import { ResponsiveIcon } from ".";
  */
 
 const Banner = () => {
-	const [adData, setAdData] = useState([]); // fetching된 data를담을 state
+	const [adDatas, setAdDatas] = useState([]); // fetching된 data를담을 state
 	const [curIdx, setCurIdx] = useState(null); // 배열로넘어온 data의 idx를담을 state
 
 	// github page로부터 광고데이터 fetching 진행
@@ -23,25 +23,25 @@ const Banner = () => {
 		const response = await axios.get(
 			"https://purpledynamics.github.io/ads/"
 		);
-		setAdData(response.data);
+		setAdDatas(response.data);
 		setCurIdx(0);
 	};
 
-	// adData or curIdx의 값이변하면 다시 fetching진행
+	// adDatas or curIdx의 값이변하면 다시 fetching진행
 	useEffect(() => {
 		fetchAdData();
-	}, [setAdData, setCurIdx]);
+	}, [setAdDatas, setCurIdx]);
 
 	// banner click event
 	const onClickBanner = () => {
-		window.open(adData[curIdx]?.redirectUrl); //해당사이트로 이동
+		window.open(adDatas[curIdx]?.redirectUrl); //해당사이트로 이동
 	};
 
 	//배너의 '<' 아이콘 click event
 	const onClickLeftIcon = () => {
 		setCurIdx((prev) => {
 			if (prev <= 0) {
-				return adData.length - 1;
+				return adDatas.length - 1;
 			}
 			return prev - 1;
 		});
@@ -49,7 +49,7 @@ const Banner = () => {
 	//배너의 '>' 아이콘 click event
 	const onClickRightIcon = () => {
 		setCurIdx((prev) => {
-			if (prev >= adData.length - 1) {
+			if (prev >= adDatas.length - 1) {
 				return 0;
 			}
 			return prev + 1;
@@ -59,19 +59,19 @@ const Banner = () => {
 	return (
 		<S.CenterContainer
 			key={curIdx}
-			$bgColor={adData[curIdx]?.backgroundColor}
+			$bgColor={adDatas[curIdx]?.backgroundColor}
 			onClick={onClickBanner}
 		>
 			<S.InfoWrapper>
-				<S.CompanyName>{adData[curIdx]?.companyName}</S.CompanyName>
-				<S.InfoTitle $titleColor={adData[curIdx]?.titleColor}>
-					{adData[curIdx]?.titleText}
+				<S.CompanyName>{adDatas[curIdx]?.companyName}</S.CompanyName>
+				<S.InfoTitle $titleColor={adDatas[curIdx]?.titleColor}>
+					{adDatas[curIdx]?.titleText}
 				</S.InfoTitle>
-				<S.InfoText $contentColor={adData[curIdx]?.contentColor}>
+				<S.InfoText $contentColor={adDatas[curIdx]?.contentColor}>
 					{/**google form에 입력양식을 띄어쓰기 두개입력시 줄바꿈으로 설정해두어서
 					 * 줄바꿈처리를 해주는 logic작성
 					 */}
-					{adData[curIdx]?.contentText
+					{adDatas[curIdx]?.contentText
 						.split("  ")
 						.map((phrase, idx) => {
 							return (
@@ -94,7 +94,7 @@ const Banner = () => {
 							icon={BsChevronLeft}
 							onClick={onClickLeftIcon}
 						/>
-						{curIdx + 1}/{adData.length}
+						{curIdx + 1}/{adDatas.length}
 						<ResponsiveIcon
 							color={COLOR.COMMON[1000]}
 							size={FONT_SIZE.bg}
@@ -105,7 +105,7 @@ const Banner = () => {
 				</S.InfoSlideBtn>
 			</S.InfoWrapper>
 			<S.ImageContainer>
-				<S.BannerImage src={adData[curIdx]?.imgUrl} />
+				<S.BannerImage src={adDatas[curIdx]?.imgUrl} />
 			</S.ImageContainer>
 		</S.CenterContainer>
 	);
