@@ -3,11 +3,11 @@ import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 import { Button, Input } from "../components/commons";
+import { VAILDATION } from "../constants";
 import { COLOR } from "../libs/styled-components";
 
 /**
  * @component
- * @parameter handleSubmit : form state에 관한 정보를 담고있는 객체입니다
  * @parameter register : input 요소를 리액트훅폼과 연결헤 검증규칙을 적용할수있게하는 메소드입니다
  * @parameter formState : form state에관한 정보를 담고있는 객체입니다
  * @returns {JSX.Element}
@@ -17,11 +17,10 @@ const SignupPage = () => {
 	const navigate = useNavigate();
 	const {
 		register,
-		handleSubmit,
 		validate,
 		formState: { errors },
 	} = useForm({ mode: "onChange" });
-	const onMoveSignPage = () => {
+	const onMoveSigninPage = () => {
 		navigate("/signin");
 	};
 	return (
@@ -41,11 +40,8 @@ const SignupPage = () => {
 							buttonText="중복확인"
 							errors={errors}
 							validate={{
-								required: "필수 응답 항목입니다.",
-								pattern: {
-									value: /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i,
-									message: "이메일 형식이 아닙니다.",
-								},
+								required: VAILDATION.COMMON_MESSAGE,
+								pattern: VAILDATION.EMAIL,
 							}}
 						/>
 						<Input
@@ -56,11 +52,8 @@ const SignupPage = () => {
 							type="password"
 							errors={errors}
 							validate={{
-								required: "필수 응답 항목입니다.",
-								pattern: {
-									value: /^(.{8,})$/,
-									message: "8글자이상 입력해주세요",
-								},
+								required: VAILDATION.COMMON_MESSAGE,
+								pattern: VAILDATION.PASSWORD,
 							}}
 						/>
 						<Input
@@ -71,10 +64,8 @@ const SignupPage = () => {
 							type="password"
 							errors={errors}
 							validate={{
-								required: "필수 응답 항목입니다.",
-								pattern: {
-									message: "비밀번호가 일치하지 않습니다",
-								},
+								required: VAILDATION.COMMON_MESSAGE,
+								pattern: VAILDATION.PASSWORD_CONFIRM,
 							}}
 						/>
 						<Input
@@ -85,11 +76,8 @@ const SignupPage = () => {
 							buttonText="중복확인"
 							errors={errors}
 							validate={{
-								required: "필수 응답 항목입니다.",
-								pattern: {
-									value: /^[a-zA-Z0-9]*$/,
-									message: "특수문자는 사용할 수 없습니다",
-								},
+								required: VAILDATION.COMMON_MESSAGE,
+								pattern: VAILDATION.NICKNAME,
 							}}
 							autoComplete="off"
 						/>
@@ -100,7 +88,7 @@ const SignupPage = () => {
 							placeholder="휴대폰번호를 입력하세요 (-제외)"
 							errors={errors}
 							validate={{
-								required: "필수 응답 항목입니다.",
+								required: VAILDATION.COMMON_MESSAGE,
 							}}
 						/>
 						<Input
@@ -111,14 +99,14 @@ const SignupPage = () => {
 							buttonText="검색"
 							errors={errors}
 							validate={{
-								required: "필수 응답 항목입니다.",
+								required: VAILDATION.COMMON_MESSAGE,
 							}}
 						/>
 						<Button
 							type="button"
 							width="48%"
 							style={{ backgroundColor: COLOR.COMMON[600] }}
-							onClick={onMoveSignPage}
+							onClick={onMoveSigninPage}
 						>
 							가입하기
 						</Button>
