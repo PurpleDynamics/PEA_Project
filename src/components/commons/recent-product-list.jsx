@@ -2,10 +2,7 @@ import { BsChevronDown, BsChevronUp } from "react-icons/bs";
 import styled from "styled-components";
 
 import { COLOR, FONT_SIZE } from "../../libs/styled-components";
-import RecentProduct from "./recent-product";
-import ResponsiveIcon from "./responsive-icon";
-import SideChatBtn from "./side-chat-button";
-import TopButton from "./top-button";
+import { RecentProduct, ResponsiveIcon, SideChatBtn, TopButton } from ".";
 
 /**
  * @component
@@ -17,27 +14,23 @@ import TopButton from "./top-button";
 
 const RecentProductList = () => {
 	return (
-		<RecentProductWrapper>
-			<S.RecentProductContainer>
-				<S.Title>최근 본 상품</S.Title>
-				<S.MovedItemButton onClick={() => {}}>
-					<ResponsiveIcon icon={BsChevronUp} size={FONT_SIZE.bg} />
-				</S.MovedItemButton>
-				<S.RecentProductListContainer>
-					<RecentProduct />
-				</S.RecentProductListContainer>
-				<S.MovedItemButton onClick={() => {}}>
-					<ResponsiveIcon icon={BsChevronDown} size={FONT_SIZE.bg} />
-				</S.MovedItemButton>
-				<TopButton />
-			</S.RecentProductContainer>
+		<>
+			<S.Title>최근 본 상품</S.Title>
+			<S.MovedItemButton onClick={() => {}}>
+				<ResponsiveIcon icon={BsChevronUp} size={FONT_SIZE.bg} />
+			</S.MovedItemButton>
+			<S.RecentProductListContainer>
+				<RecentProduct />
+			</S.RecentProductListContainer>
+			<S.MovedItemButton onClick={() => {}}>
+				<ResponsiveIcon icon={BsChevronDown} size={FONT_SIZE.bg} />
+			</S.MovedItemButton>
+			<TopButton />
 			<SideChatBtn />
-		</RecentProductWrapper>
+		</>
 	);
 };
 export default RecentProductList;
-
-const RecentProductWrapper = styled.div``;
 
 const RecentProductContainer = styled.div`
 	width: 10rem;
@@ -51,10 +44,7 @@ const RecentProductContainer = styled.div`
 	right: 5vw;
 `;
 
-const RecentProductListContainer = styled.div``;
-
 const Title = styled.p`
-	font-family: "SOYO_Maple_Bold";
 	font-size: ${FONT_SIZE.md};
 	grid-row: 1;
 `;

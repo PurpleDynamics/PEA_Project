@@ -23,7 +23,6 @@ const TopButton = () => {
 export default TopButton;
 
 const Button = styled.div`
-	font-family: "SOYO_Maple_Bold";
 	font-size: ${FONT_SIZE.sm};
 	text-align: center;
 	margin-top: 1rem;
