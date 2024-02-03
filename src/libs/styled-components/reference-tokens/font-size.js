@@ -1,4 +1,5 @@
 export const FONT_SIZE = {
+	xll: "4.8rem", // extreme large x 2
 	xl: "3.2rem", // extreme large
 	lg: "2.4rem", // large
 	bg: "1.8rem", // big
