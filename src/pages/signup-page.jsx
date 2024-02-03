@@ -6,14 +6,14 @@ import { Button, Input } from "../components/commons";
 import { COLOR } from "../libs/styled-components";
 
 /**
- * @components
+ * @component
  * @parameter handleSubmit : form state에 관한 정보를 담고있는 객체입니다
  * @parameter register : input 요소를 리액트훅폼과 연결헤 검증규칙을 적용할수있게하는 메소드입니다
  * @parameter formState : form state에관한 정보를 담고있는 객체입니다
  * @returns {JSX.Element}
  */
 
-const SigninPage = () => {
+const SignupPage = () => {
 	const navigate = useNavigate();
 	const {
 		register,
@@ -128,7 +128,7 @@ const SigninPage = () => {
 		</>
 	);
 };
-export default SigninPage;
+export default SignupPage;
 
 const CenterContainer = styled.div`
 	display: flex;
