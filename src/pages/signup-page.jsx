@@ -24,110 +24,106 @@ const SignupPage = () => {
 		navigate("/signin");
 	};
 	return (
-		<>
-			<S.CenterContainer>
-				<S.MainWrapper>
-					<S.ImageContainer>
-						<S.LogoImage src="https://buly.kr/74To5Al" />
-					</S.ImageContainer>
-					<S.TextInputForm>
-						<S.TitleText>P.E.A</S.TitleText>
-						<Input
-							register={register}
-							titleText="이메일"
-							registerKey="email"
-							placeholder="이메일을 입력하세요"
-							buttonText="중복확인"
-							errors={errors}
-							validate={{
-								required: VAILDATION.COMMON_MESSAGE,
-								pattern: VAILDATION.EMAIL,
-							}}
-						/>
-						<Input
-							register={register}
-							titleText="비밀번호"
-							registerKey="password"
-							placeholder="비밀번호를 입력하세요"
-							type="password"
-							errors={errors}
-							validate={{
-								required: VAILDATION.COMMON_MESSAGE,
-								pattern: VAILDATION.PASSWORD,
-							}}
-						/>
-						<Input
-							register={register}
-							titleText="비밀번호 확인"
-							registerKey="passwordConfirm"
-							placeholder="비밀번호를 다시 입력하세요"
-							type="password"
-							errors={errors}
-							validate={{
-								required: VAILDATION.COMMON_MESSAGE,
-								pattern: VAILDATION.PASSWORD_CONFIRM,
-							}}
-						/>
-						<Input
-							register={register}
-							titleText="닉네임"
-							registerKey="nickName"
-							placeholder="닉네임을 입력하세요"
-							buttonText="중복확인"
-							errors={errors}
-							validate={{
-								required: VAILDATION.COMMON_MESSAGE,
-								pattern: VAILDATION.NICKNAME,
-							}}
-							autoComplete="off"
-						/>
-						<Input
-							register={register}
-							titleText="휴대폰번호"
-							registerKey="phoneNumber"
-							placeholder="휴대폰번호를 입력하세요 (-제외)"
-							errors={errors}
-							validate={{
-								required: VAILDATION.COMMON_MESSAGE,
-							}}
-						/>
-						<Input
-							register={register}
-							titleText="주소"
-							registerKey="address"
-							placeholder="주소를 입력하세요"
-							buttonText="검색"
-							errors={errors}
-							validate={{
-								required: VAILDATION.COMMON_MESSAGE,
-							}}
-						/>
-						<Button
-							type="button"
-							width="48%"
-							style={{ backgroundColor: COLOR.COMMON[600] }}
-							onClick={onMoveSigninPage}
-						>
-							가입하기
-						</Button>
-					</S.TextInputForm>
-				</S.MainWrapper>
-			</S.CenterContainer>
-		</>
+		<S.MainWrapper>
+			<S.ImageContainer>
+				<S.LogoImage src="https://buly.kr/74To5Al" />
+			</S.ImageContainer>
+			<S.TextInputForm>
+				<S.TitleText>P.E.A</S.TitleText>
+				<Input
+					register={register}
+					titleText="이메일"
+					registerKey="email"
+					placeholder="이메일을 입력하세요"
+					buttonText="중복확인"
+					errors={errors}
+					validate={{
+						required: VAILDATION.COMMON_MESSAGE,
+						pattern: VAILDATION.EMAIL,
+					}}
+				/>
+				<Input
+					register={register}
+					titleText="비밀번호"
+					registerKey="password"
+					placeholder="비밀번호를 입력하세요"
+					type="password"
+					errors={errors}
+					validate={{
+						required: VAILDATION.COMMON_MESSAGE,
+						pattern: VAILDATION.PASSWORD,
+					}}
+				/>
+				<Input
+					register={register}
+					titleText="비밀번호 확인"
+					registerKey="passwordConfirm"
+					placeholder="비밀번호를 다시 입력하세요"
+					type="password"
+					errors={errors}
+					validate={{
+						required: VAILDATION.COMMON_MESSAGE,
+						pattern: VAILDATION.PASSWORD_CONFIRM,
+					}}
+				/>
+				<Input
+					register={register}
+					titleText="닉네임"
+					registerKey="nickName"
+					placeholder="닉네임을 입력하세요"
+					buttonText="중복확인"
+					errors={errors}
+					validate={{
+						required: VAILDATION.COMMON_MESSAGE,
+						pattern: VAILDATION.NICKNAME,
+					}}
+					autoComplete="off"
+				/>
+				<Input
+					register={register}
+					titleText="휴대폰번호"
+					registerKey="phoneNumber"
+					placeholder="휴대폰번호를 입력하세요 (-제외)"
+					errors={errors}
+					validate={{
+						required: VAILDATION.COMMON_MESSAGE,
+					}}
+				/>
+				<Input
+					register={register}
+					titleText="주소"
+					registerKey="address"
+					placeholder="주소를 입력하세요"
+					buttonText="검색"
+					errors={errors}
+					validate={{
+						required: VAILDATION.COMMON_MESSAGE,
+					}}
+				/>
+				<Button
+					type="button"
+					width="30rem"
+					style={{ backgroundColor: COLOR.COMMON[600] }}
+					onClick={onMoveSigninPage}
+				>
+					가입하기
+				</Button>
+			</S.TextInputForm>
+		</S.MainWrapper>
 	);
 };
 export default SignupPage;
 
-const CenterContainer = styled.div`
-	display: flex;
-	justify-content: center;
-	align-items: center;
-`;
 const MainWrapper = styled.div`
-	width: 125rem;
+	width: 100%;
 	height: 100vh;
 	display: grid;
-	grid-template-columns: 1fr 1fr;
+	grid-template-columns: 62.5rem 62.5rem;
+	justify-content: center;
+	align-items: center;
+	@media (max-width: ${BREAK_POINT.md}) {
+		grid-template-columns: 1fr; // 1개의 컬럼으로 변경
+	}
 `;
 const ImageContainer = styled.div`
 	width: 100%;
@@ -152,7 +148,6 @@ const TitleText = styled.div`
 `;
 
 const S = {
-	CenterContainer,
 	MainWrapper,
 	ImageContainer,
 	LogoImage,
