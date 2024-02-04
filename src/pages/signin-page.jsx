@@ -58,8 +58,8 @@ const SigninPage = () => {
 					errors={errors}
 				/>
 				<CheckboxWrapper>
-					<CheckBoxinput type="checkbox" />
-					<CheckBoxText>자동로그인</CheckBoxText>
+					<CheckboxInput type="checkbox" />
+					<CheckboxText>자동로그인</CheckboxText>
 				</CheckboxWrapper>
 				<S.ButtonWrapper>
 					<Button
@@ -120,11 +120,11 @@ const CheckboxWrapper = styled.div`
 	display: flex;
 	gap: 0.5rem;
 `;
-const CheckBoxinput = styled.input`
+const CheckboxInput = styled.input`
 	width: 2.5rem;
 	height: 2.5rem;
 `;
-const CheckBoxText = styled.div`
+const CheckboxText = styled.div`
 	font-size: ${FONT_SIZE.sm};
 	display: flex;
 	align-items: center;
@@ -141,8 +141,8 @@ const S = {
 	ImageContainer,
 	LogoImage,
 	CheckboxWrapper,
-	CheckBoxinput,
-	CheckBoxText,
+	CheckboxInput,
+	CheckboxText,
 	TextInputForm,
 	ButtonWrapper,
 };
