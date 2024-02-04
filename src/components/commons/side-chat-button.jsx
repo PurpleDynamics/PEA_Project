@@ -1,7 +1,7 @@
 import { BsChatDots } from "react-icons/bs";
 import styled from "styled-components";
 
-import { COLOR, FONT_SIZE } from "../../libs/styled-components";
+import { COLOR } from "../../libs/styled-components";
 import ResponsiveIcon from "./responsive-icon";
 
 /**
@@ -25,8 +25,8 @@ const SideChatBtn = () => {
 		<S.Icon onClick={handleChattingPage}>
 			<ResponsiveIcon
 				icon={BsChatDots}
-				size={FONT_SIZE.xll}
 				color={COLOR.PALETTE.cyan.base}
+				size={48}
 			/>
 		</S.Icon>
 	);
