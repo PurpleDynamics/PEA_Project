@@ -4,12 +4,14 @@ import styled from "styled-components";
 
 import { Button, Input } from "../components/commons";
 import { VAILDATION } from "../constants";
-import { COLOR } from "../libs/styled-components";
+import { BREAK_POINT, COLOR } from "../libs/styled-components";
 
 /**
  * @component
- * @parameter register : input 요소를 리액트훅폼과 연결헤 검증규칙을 적용할수있게하는 메소드입니다
- * @parameter formState : form state에관한 정보를 담고있는 객체입니다
+ * @parameter register : input 요소를 리액트훅폼과 연결해 검증규칙을 적용할수있게하는 메소드입니다
+ * @parameter formState : form state에관한 정보를 담고있는 객체입니다.
+ * @parameter vaildate : 유효성 검사를 위해 사용되는 parameter 입니다.
+ * @parameter handleSubmit : form 제출시 사용되는 parameter입니다.
  * @returns {JSX.Element}
  */
 
@@ -18,9 +20,10 @@ const SignupPage = () => {
 	const {
 		register,
 		validate,
+		handleSubmit,
 		formState: { errors },
 	} = useForm({ mode: "onChange" });
-	const onMoveSigninPage = () => {
+	const onSubmit = () => {
 		navigate("/signin");
 	};
 	return (
@@ -28,7 +31,7 @@ const SignupPage = () => {
 			<S.ImageContainer>
 				<S.LogoImage src="https://buly.kr/74To5Al" />
 			</S.ImageContainer>
-			<S.TextInputForm>
+			<S.TextInputForm onSubmit={handleSubmit(onSubmit)}>
 				<S.TitleText>P.E.A</S.TitleText>
 				<Input
 					register={register}
@@ -101,10 +104,9 @@ const SignupPage = () => {
 					}}
 				/>
 				<Button
-					type="button"
+					type="submit"
 					width="30rem"
 					style={{ backgroundColor: COLOR.COMMON[600] }}
-					onClick={onMoveSigninPage}
 				>
 					가입하기
 				</Button>
