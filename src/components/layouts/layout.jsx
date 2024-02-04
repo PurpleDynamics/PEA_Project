@@ -1,6 +1,6 @@
 import { Outlet } from "react-router-dom";
 
-import Spacer from "../commons/spacer";
+import { Spacer } from "../commons";
 import { Footer, Header } from ".";
 
 const RootLayout = () => {
