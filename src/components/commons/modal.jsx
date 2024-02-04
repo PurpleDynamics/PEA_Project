@@ -6,9 +6,9 @@ import { COLOR, FONT_SIZE } from "../../libs/styled-components";
  * @parameter ModalContents : JSX.Element - 모달의 제목 + 내용 전달 바랍니다
  * @parameter modalWidth : string || 30rem- 모달 가로사이즈
  * @parameter modalHeight : string - 모달 세로 사이즈
- * @parameter baseBtn : function - 기본 버튼 기능
- * @parameter addBtn : function - 추가 버튼 기능
- * @parameter addText : string - 추가 버튼 TEXT
+ * @parameter onClickBaseBtn : function - 기본 버튼의 기능
+ * @parameter addText : string - 추가되는 버튼 TEXT
+ * @parameter onClickAddBtn : function - 추가되는 버튼의 기능
  * @returns {JSX.Element}
  *
  * @description
@@ -23,9 +23,9 @@ import { COLOR, FONT_SIZE } from "../../libs/styled-components";
 const Modal = ({
 	modalContents: ModalContents,
 	modalWidth = "30rem",
-	baseBtn,
-	addBtn,
-	addText,
+	onClickBaseBtn,
+	onClickAddBtn,
+	addText, //addText가 전달되지않을경우 버튼은 baseBtn만 작동및 ui로 나타납니다
 }) => {
 	return (
 		<S.Wrapper width={modalWidth}>
@@ -33,26 +33,31 @@ const Modal = ({
 				<ModalContents />
 			</S.ModalContentBox>
 			<S.BtnBox addText={addText}>
-				{addText && <S.AddBtn onClick={addBtn}>{addText}</S.AddBtn>}
-				<S.BaseBtn onClick={baseBtn}>확인</S.BaseBtn>
+				{addText && (
+					<S.AddBtn onClick={onClickAddBtn}>{addText}</S.AddBtn>
+				)}
+				<S.BaseBtn onClick={onClickBaseBtn}>확인</S.BaseBtn>
 			</S.BtnBox>
 		</S.Wrapper>
 	);
 };
-// 모달기본 height 가 전달받고
-//원하는건 1 : 2없을시 절반최소 줘서 2번이 커지면  min사이즈 까지 줄이기평소에는 default=1절반 2 : 3 : 1과동일 그리고 사이즈 조절가능하게??
+
 export default Modal;
+
 const Wrapper = styled.div`
 	width: ${({ width }) => {
 		return width;
 	}};
-
 	height: fit-content;
 	min-height: 14rem;
-	border: 0.1rem solid ${COLOR.COMMON[600]};
-	color: ${COLOR.COMMON[400]};
 	border-radius: 8px;
+	border: 0.1rem solid ${COLOR.COMMON[600]};
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
 	display: grid;
+	color: ${COLOR.COMMON[400]};
 	grid-template-columns: 1fr;
 	grid-template-rows: auto auto;
 	font-family: "SOYO_Maple_Regular";
