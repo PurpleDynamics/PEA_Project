@@ -8,15 +8,13 @@ import ResponsiveIcon from "./responsive-icon";
  * @component
  * @returns {JSX.Element}
  *
- * @description
- * - 채팅 버튼을 랜더링하는 컴포넌트 입니다.
+ * @description 채팅 버튼을 랜더링하는 컴포넌트 입니다.
  */
 const SideChatBtn = () => {
 	/**
 	 * @function
 	 *
-	 * @description
-	 * - 채팅 버튼 클릭 시 호출되는 핸들러 함수입니다
+	 * @description 채팅 버튼 클릭 시 호출되는 핸들러 함수입니다
 	 */
 	const handleChattingPage = () => {
 		console.log("채팅 버튼 클릭");

@@ -6,8 +6,7 @@ import { COLOR, FONT_SIZE } from "../../libs/styled-components";
  * @component
  * @returns {JSX.Element}
  *
- * @description
- * - 페이지의 맨 위로 스크롤 하는 버튼입니다.
+ * @description 페이지의 맨 위로 스크롤 하는 버튼입니다.
  */
 
 const TopButton = () => {
