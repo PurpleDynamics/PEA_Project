@@ -8,23 +8,33 @@ import { BREAK_POINT, COLOR, FONT_SIZE } from "../libs/styled-components";
 
 /**
  * @component
- * @parameter register : input 요소를 리액트훅폼과 연결해 검증규칙을 적용할수있게하는 메소드입니다
- * @parameter formState : form state에관한 정보를 담고있는 객체입니다.
- * @parameter vaildate : 유효성 검사를 위해 사용되는 parameter 입니다.
- * @parameter handleSubmit : form 제출시 사용되는 parameter입니다.
  * @returns {JSX.Element}
- *
+ * @description
+ * - 로그인 버튼 클릭시 main-page인 productListPage로 이동합니다.
+ * - 회원가입 버튼 클릭시, signup-page로 이동합니다.
+ * - 이메일 과 비밀번호 형식이 맞으면 로그인버튼이 활성화 됩니다.
  */
 
 const SigninPage = () => {
 	const navigate = useNavigate();
+	/**
+	 * @component
+	 * @parameter register : input 요소를 리액트훅폼과 연결해 검증규칙을 적용할수있게하는 메소드입니다
+	 * @parameter formState : form state에관한 정보를 담고있는 객체입니다.
+	 * @parameter vaildate : 유효성 검사를 위해 사용되는 parameter 입니다.
+	 * @parameter handleSubmit : form 제출시 사용되는 parameter입니다.
+	 * @returns {JSX.Element}
+	 * @description use-hook-form 의 반환값입니다.
+	 *
+	 */
 	const {
 		register,
 		handleSubmit,
 		validate,
-		formState: { errors, isValid, dirtyFields },
+		formState: { errors, isValid, dirtyFields }, // isVaild: 현재 폼의 유효성 여부 , dirtyFields: 사용자가 입력한 값이 변경되었는지 여부 확인
 	} = useForm({ mode: "onChange" });
-	const onSubmit = () => {
+	const onSubmit = (e) => {
+		e.preventDefault();
 		navigate("");
 	};
 
@@ -57,10 +67,10 @@ const SigninPage = () => {
 					}}
 					errors={errors}
 				/>
-				<CheckboxWrapper>
+				<S.CheckboxWrapper>
 					<CheckboxInput type="checkbox" />
 					<CheckboxText>자동로그인</CheckboxText>
-				</CheckboxWrapper>
+				</S.CheckboxWrapper>
 				<S.ButtonWrapper>
 					<Button
 						type="submit"
