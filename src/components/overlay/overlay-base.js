@@ -1,9 +1,12 @@
 import React from "react";
 import styled, { css } from "styled-components";
 
+import { COLOR } from "../../libs/styled-components/index";
+
 /**
  * @component
  * @parameter position : "topLeft" | "topCenter" | "topLeft" | "midLeft" | "midCenter" | "midRight" | "bottomLeft" | "bottomCenter" | "bottomRight" - 오버레이 컴포넌트 위치
+ * @parameter isFiltered : boolean - 뒷 배경을 어둡게 할 필터를 적용할지 여부
  * @parameter children : JSX.Element - 오버레이 컴포넌트
  * @returns {JSX.Element}
  *
@@ -12,9 +15,18 @@ import styled, { css } from "styled-components";
  * - `position` props 를 통해 오버레이 컴포넌트의 위치를 조절할 수 있습니다. (기본값: midCenter)
  */
 
-const OverlayBase = ({ position = "midCenter", children }) => {
+const OverlayBase = ({
+	position = "midCenter",
+	isFiltered = false,
+	children,
+}) => {
 	return (
-		<OverlayContainer $positionCSS={position}>{children}</OverlayContainer>
+		<>
+			{isFiltered && <S.BackgroundFilter />}
+			<S.OverlayContainer $positionCSS={position}>
+				{children}
+			</S.OverlayContainer>
+		</>
 	);
 };
 
@@ -74,7 +86,7 @@ const OverlayContainer = styled.div`
 	left: 0;
 	z-index: 10000;
 
-	width: 100vw;
+	width: 100%;
 	height: 100vh;
 	padding: 1rem;
 
@@ -83,3 +95,21 @@ const OverlayContainer = styled.div`
 		return PositionCSS[$positionCSS];
 	}}
 `;
+
+const BackgroundFilter = styled.div`
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 9999;
+
+	width: 100%;
+	height: 100vh;
+
+	background-color: ${COLOR.COMMON[0]};
+	opacity: 0.6;
+`;
+
+const S = {
+	OverlayContainer,
+	BackgroundFilter,
+};

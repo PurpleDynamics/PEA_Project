@@ -9,23 +9,30 @@ export const OverlayContext = createContext({
 export const OverlayProvider = ({ children }) => {
 	/** 오버레이 컴포넌트 */
 	const OverlayComponent = useRef(null);
-	/** 오베레이 컴포넌트 생성 위치 */
-	const overlayPosition = useRef(null);
+	/** OverlayBase 에 전달될 props  */
+	const overlayBaseProps = useRef(null);
 	/** 오버레이 컴포넌트 에 전달할 props */
 	const [overlayComponentsProps, setOverlayComponentsProps] = useState({});
 
 	/**
 	 * @function
 	 * @parameter overlayComponent : JSX.Element - 열고 싶은 오버레이 컴포넌트
-	 * @parameter overlayPosition : "topLeft" | "topCenter" | "topLeft" | "midLeft" | "midCenter" | "midRight" | "bottomLeft" | "bottomCenter" | "bottomRight" - 오버레이 컴포넌트 위치
+	 * @parameter position : "topLeft" | "topCenter" | "topLeft" | "midLeft" | "midCenter" | "midRight" | "bottomLeft" | "bottomCenter" | "bottomRight" - 오버레이 컴포넌트 위치
+	 * @parameter isFiltered : boolean - 뒷 배경을 어둡게 할 필터를 적용할지 여부
 	 * @parameter props : object - 오버레이 컴포넌트에 전달할 props
 	 *
 	 * @description
 	 * 오버레이 컴포넌트가 등록될 경우, 해당 컴포넌트가 열립니다.
 	 */
-	const onOpenOverlay = ({ overlayComponent, position, ...props }) => {
+	const onOpenOverlay = ({
+		overlayComponent,
+		position,
+		isFiltered,
+		...props
+	}) => {
 		OverlayComponent.current = overlayComponent;
-		overlayPosition.current = position;
+		overlayBaseProps.current = { position, isFiltered };
+		console.log(overlayBaseProps.current);
 		/** 오버레이 컴포넌트 전달없이는 상태를 변화시킬 수 없습니다. */
 		if (
 			OverlayComponent.current &&
@@ -43,7 +50,7 @@ export const OverlayProvider = ({ children }) => {
 	 */
 	const onClose = () => {
 		OverlayComponent.current = null;
-		overlayPosition.current = null;
+		overlayBaseProps.current = null;
 		setOverlayComponentsProps(() => ({}));
 	};
 
@@ -52,7 +59,7 @@ export const OverlayProvider = ({ children }) => {
 			{children}
 
 			{OverlayComponent.current && (
-				<OverlayBase position={overlayPosition.current}>
+				<OverlayBase {...overlayBaseProps.current}>
 					<OverlayComponent.current
 						{...overlayComponentsProps}
 						onClose={onClose}
