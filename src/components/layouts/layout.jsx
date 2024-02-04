@@ -7,7 +7,7 @@ const RootLayout = () => {
 	return (
 		<>
 			<Header />
-			<Spacer size={110} axis="vertical" />
+			<Spacer height={11} />
 			<Outlet />
 			<RecentProductList />
 			<Footer />
