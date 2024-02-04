@@ -2,7 +2,7 @@ import { BsChatDots } from "react-icons/bs";
 import styled from "styled-components";
 
 import { COLOR } from "../../libs/styled-components";
-import ResponsiveIcon from "./responsive-icon";
+import { ResponsiveIcon } from ".";
 
 /**
  * @component
@@ -16,9 +16,7 @@ const SideChatBtn = () => {
 	 *
 	 * @description 채팅 버튼 클릭 시 호출되는 핸들러 함수입니다
 	 */
-	const handleChattingPage = () => {
-		console.log("채팅 버튼 클릭");
-	};
+	const handleChattingPage = () => {};
 	return (
 		<S.IconContainer onClick={handleChattingPage}>
 			<ResponsiveIcon
