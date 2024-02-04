@@ -17,6 +17,9 @@ import { BREAK_POINT, COLOR, FONT_SIZE } from "../libs/styled-components";
 
 const SigninPage = () => {
 	const navigate = useNavigate();
+	const onMoveSignupPage = () => {
+		navigate("/signup");
+	};
 	/**
 	 * @component
 	 * @parameter register : input 요소를 리액트훅폼과 연결해 검증규칙을 적용할수있게하는 메소드입니다
@@ -87,7 +90,11 @@ const SigninPage = () => {
 					>
 						로그인
 					</Button>
-					<Button type="button" width="30rem">
+					<Button
+						onClick={onMoveSignupPage}
+						type="button"
+						width="30rem"
+					>
 						회원가입
 					</Button>
 				</S.ButtonWrapper>
