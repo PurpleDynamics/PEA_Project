@@ -19,16 +19,7 @@ import ResponsiveIcon from "./responsive-icon";
  * - 각 상품 이미지를 클릭하면 해당 상품의 상세 페이지로 이동합니다.
  */
 
-const RecentProduct = ({
-	recentlyProducts = [
-		{ productId: 1, imgUrl: "https://source.unsplash.com/random" },
-		{ productId: 2, imgUrl: "https://source.unsplash.com/random" },
-		{ productId: 3, imgUrl: "https://source.unsplash.com/random" },
-		{ productId: 4, imgUrl: "https://source.unsplash.com/random" },
-	],
-	viewedCount = 3,
-	...rest
-}) => {
+const RecentProduct = ({ recentlyProducts = [], viewedCount = 3, ...rest }) => {
 	const navigate = useNavigate();
 
 	/** 최근 본 상품 정보 중 출력될 상품의 개수  */
@@ -42,14 +33,10 @@ const RecentProduct = ({
 	 * - 최근 본 상품 리스트의 이미지를 클릭할 경우, productId를 parma으로 하여 해당하는 상품의 상세 페이지로 이동합니다.
 	 */
 	const handleProductClick = (productId, e) => {
-		// 현재 recentlyProducts를 임의로 넣었기 때문에 상품 목록 페이지 작업 및 테스트 후 삭제될 코드입니다.
-		console.log(`상품 ID ${productId} 클릭`);
-		e.stopPropagation();
 		navigate(`/detail-product/${productId}`);
 	};
 
 	const removeRecentlyProductItem = (productId, e) => {
-		console.log(`상품 ID ${productId} 삭제`);
 		e.stopPropagation();
 	};
 
@@ -68,7 +55,7 @@ const RecentProduct = ({
 							alt="상품 이미지"
 						/>
 						{/* close icon 클릭 시 해당 productId의 상품이 최근 본 상품 목록에서 제거 */}
-						<S.CloseIcon
+						<S.CloseIconContainer
 							onClick={(e) =>
 								removeRecentlyProductItem(product.productId, e)
 							}
@@ -78,7 +65,7 @@ const RecentProduct = ({
 								size={FONT_SIZE.lg}
 								color={COLOR.COMMON[600]}
 							/>
-						</S.CloseIcon>
+						</S.CloseIconContainer>
 					</S.RecentlyProductItem>
 				))
 			) : (
@@ -109,12 +96,11 @@ const RecentlyProductItemImg = styled.img`
 	height: 8rem;
 	cursor: pointer;
 `;
-const CloseIcon = styled.div`
+const CloseIconContainer = styled.div`
 	position: absolute;
 	top: 0;
 	right: 0;
 	opacity: 0;
-	/* transition: opacity 0.3s ease; */
 	cursor: pointer;
 	&:hover {
 		opacity: 1;
@@ -122,7 +108,7 @@ const CloseIcon = styled.div`
 `;
 const S = {
 	Content,
-	CloseIcon,
+	CloseIconContainer,
 	RecentlyProduct,
 	RecentlyProductItem,
 	RecentlyProductItemImg,
