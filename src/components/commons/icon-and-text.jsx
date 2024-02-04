@@ -22,7 +22,7 @@ import { ResponsiveIcon } from ".";
 const IconAndText = ({
 	icon,
 	text,
-	amount,
+	amount = "",
 	unit = "",
 	iconColor = `${COLOR.COMMON[1000]}`,
 	amountColor,
@@ -33,13 +33,17 @@ const IconAndText = ({
 		<S.IconTextWrapper {...rest} onClick={callbackFunc()}>
 			<ResponsiveIcon color={iconColor} icon={icon} size="9rem" />
 			<S.IconText>{text}</S.IconText>
-			<S.Amount $amountColor={amountColor}>{amount + " " + unit}</S.Amount>
+			<S.Amount $amountColor={amountColor}>
+				{amount + " " + unit}
+			</S.Amount>
 		</S.IconTextWrapper>
 	);
 };
 export default IconAndText;
 
 const IconTextWrapper = styled.div`
+	width: fit-content;
+
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
