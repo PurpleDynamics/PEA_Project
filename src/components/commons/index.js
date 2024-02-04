@@ -3,6 +3,7 @@ import Button from "./button";
 import CategoryToggle from "./category-toggle";
 import CompressoionContainer from "./compression-container";
 import HighlightedText from "./highlighted-text";
+import IconAndText from "./icon-and-text";
 import Input from "./input";
 import ProductCard from "./product-card";
 import ResponsiveIcon from "./responsive-icon";
@@ -13,6 +14,7 @@ export {
 	CategoryToggle,
 	CompressoionContainer,
 	HighlightedText,
+	IconAndText,
 	Input,
 	ProductCard,
 	ResponsiveIcon,
