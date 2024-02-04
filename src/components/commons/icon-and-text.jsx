@@ -33,7 +33,7 @@ const IconAndText = ({
 		<S.IconTextWrapper {...rest} onClick={callbackFunc()}>
 			<ResponsiveIcon color={iconColor} icon={icon} size="9rem" />
 			<S.IconText>{text}</S.IconText>
-			<S.Amount $amountColor={amountColor}>{amount + "" + unit}</S.Amount>
+			<S.Amount $amountColor={amountColor}>{amount + " " + unit}</S.Amount>
 		</S.IconTextWrapper>
 	);
 };
