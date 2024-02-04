@@ -12,14 +12,14 @@ import styled from "styled-components";
  * - lr => left-right 입니다.
  */
 
-const CompressoionContainer = ({ lr = "20rem", tb = "20rem", children }) => {
+const CompressionContainer = ({ lr = "20rem", tb = "20rem", children }) => {
 	return (
 		<S.Wrapper $tb={tb} $lr={lr}>
 			{children}
 		</S.Wrapper>
 	);
 };
-export default CompressoionContainer;
+export default CompressionContainer;
 
 const Wrapper = styled.div`
 	width: 100%;
