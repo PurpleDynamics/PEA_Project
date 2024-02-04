@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { RouterProvider } from "react-router-dom";
 
-import { OverlayProvider } from "./contexts/overlay";
+import { OverlayProvider } from "./contexts";
 import { router } from "./libs/react-router-dom";
 import GlobalStyles from "./libs/styled-components";
 
