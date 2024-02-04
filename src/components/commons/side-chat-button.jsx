@@ -22,24 +22,24 @@ const SideChatBtn = () => {
 		console.log("채팅 버튼 클릭");
 	};
 	return (
-		<S.Icon onClick={handleChattingPage}>
+		<S.IconContainer onClick={handleChattingPage}>
 			<ResponsiveIcon
 				icon={BsChatDots}
 				color={COLOR.PALETTE.cyan.base}
 				size={48}
 			/>
-		</S.Icon>
+		</S.IconContainer>
 	);
 };
 
 export default SideChatBtn;
 
-const Icon = styled.div`
+const IconContainer = styled.div`
 	position: fixed;
 	top: 73vh;
 	right: 6.5vw;
 `;
 
 const S = {
-	Icon,
+	IconContainer,
 };
