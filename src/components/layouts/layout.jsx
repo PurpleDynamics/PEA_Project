@@ -1,6 +1,6 @@
 import { Outlet } from "react-router-dom";
 
-import { Spacer } from "../commons";
+import { RecentProductList, Spacer } from "../commons";
 import { Footer, Header } from ".";
 
 const RootLayout = () => {
@@ -9,6 +9,7 @@ const RootLayout = () => {
 			<Header />
 			<Spacer size={110} axis="vertical" />
 			<Outlet />
+			<RecentProductList />
 			<Footer />
 		</>
 	);
