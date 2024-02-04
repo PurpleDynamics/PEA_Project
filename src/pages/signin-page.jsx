@@ -3,12 +3,15 @@ import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 import { Button, Input } from "../components/commons";
+import { VAILDATION } from "../constants";
 import { BREAK_POINT, COLOR, FONT_SIZE } from "../libs/styled-components";
 
 /**
- * @components
- * @parameter register : input 요소를 리액트훅폼과 연결헤 검증규칙을 적용할수있게하는 메소드입니다
- * @parameter formState : form state에관한 정보를 담고있는 객체입니다
+ * @component
+ * @parameter register : input 요소를 리액트훅폼과 연결해 검증규칙을 적용할수있게하는 메소드입니다
+ * @parameter formState : form state에관한 정보를 담고있는 객체입니다.
+ * @parameter vaildate : 유효성 검사를 위해 사용되는 parameter 입니다.
+ * @parameter handleSubmit : form 제출시 사용되는 parameter입니다.
  * @returns {JSX.Element}
  *
  */
@@ -17,11 +20,12 @@ const SigninPage = () => {
 	const navigate = useNavigate();
 	const {
 		register,
+		handleSubmit,
 		validate,
 		formState: { errors, isValid, dirtyFields },
 	} = useForm({ mode: "onChange" });
-	const onMoveSignupPage = () => {
-		navigate("/signup");
+	const onSubmit = () => {
+		navigate("");
 	};
 
 	return (
@@ -29,15 +33,16 @@ const SigninPage = () => {
 			<S.ImageContainer>
 				<S.LogoImage src="https://url.kr/f7bvik" />
 			</S.ImageContainer>
-			<S.TextInputForm>
+			<S.TextInputForm onSubmit={handleSubmit(onSubmit)}>
 				<Input
 					register={register}
 					titleText="이메일"
 					registerKey="email"
 					placeholder="이메일을 입력하세요"
-					// validate={{
-					// 	required: ""
-					// }}
+					validate={{
+						required: VAILDATION.COMMON_MESSAGE,
+						pattern: VAILDATION.EMAIL,
+					}}
 					errors={errors}
 				/>
 				<Input
@@ -46,28 +51,36 @@ const SigninPage = () => {
 					registerKey="password"
 					placeholder="비밀번호를 입력하세요"
 					type="password"
+					validate={{
+						required: VAILDATION.COMMON_MESSAGE,
+						pattern: VAILDATION.PASSWORD,
+					}}
 					errors={errors}
 				/>
 				<CheckboxWrapper>
 					<CheckBoxinput type="checkbox" />
 					<CheckBoxText>자동로그인</CheckBoxText>
 				</CheckboxWrapper>
-				<Button
-					type="submit"
-					width="30rem"
-					style={{
-						backgroundColor:
-							dirtyFields.email && dirtyFields.password
-								? COLOR.COMMON[300]
-								: COLOR.COMMON[600],
-					}}
-					disabled={!isValid}
-				>
-					로그인
-				</Button>
-				<Button onClick={onMoveSignupPage} type="button" width="30rem">
-					회원가입
-				</Button>
+				<S.ButtonWrapper>
+					<Button
+						type="submit"
+						width="30rem"
+						style={{
+							backgroundColor:
+								dirtyFields.email &&
+								dirtyFields.password &&
+								isValid
+									? COLOR.COMMON[300]
+									: COLOR.COMMON[600],
+						}}
+						disabled={!isValid}
+					>
+						로그인
+					</Button>
+					<Button type="button" width="30rem">
+						회원가입
+					</Button>
+				</S.ButtonWrapper>
 			</S.TextInputForm>
 		</S.MainWrapper>
 	);
@@ -82,7 +95,7 @@ const MainWrapper = styled.div`
 	justify-content: center;
 	align-items: center;
 	@media (max-width: ${BREAK_POINT.md}) {
-		grid-template-columns: 1fr; // 1개의 컬럼으로 변경
+		grid-template-columns: 1fr;
 	}
 `;
 
@@ -116,6 +129,12 @@ const CheckBoxText = styled.div`
 	display: flex;
 	align-items: center;
 `;
+const ButtonWrapper = styled.div`
+	display: flex;
+	flex-direction: column;
+	margin-top: 6.5rem;
+	gap: 1.5rem;
+`;
 
 const S = {
 	MainWrapper,
@@ -125,4 +144,5 @@ const S = {
 	CheckBoxinput,
 	CheckBoxText,
 	TextInputForm,
+	ButtonWrapper,
 };
