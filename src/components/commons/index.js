@@ -8,8 +8,6 @@ import ProductCard from "./product-card";
 import ResponsiveIcon from "./responsive-icon";
 import SearchBar from "./search-bar";
 export {
-	Button,
-	CategoryToggle,
 	Banner,
 	Button,
 	CategoryToggle,
