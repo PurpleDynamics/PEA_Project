@@ -36,7 +36,14 @@ const Modal = ({
 			</S.ModalContentBox>
 			<S.BtnBox addText={addText}>
 				{addText && (
-					<S.AddBtn onClick={onClickAddBtn}>{addText}</S.AddBtn>
+					<S.AddBtn
+						onClick={() => {
+							onClickAddBtn();
+							onClose();
+						}}
+					>
+						{addText}
+					</S.AddBtn>
 				)}
 				<S.BaseBtn
 					onClick={() => {
