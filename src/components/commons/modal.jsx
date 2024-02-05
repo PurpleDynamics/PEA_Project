@@ -4,8 +4,7 @@ import { COLOR, FONT_SIZE } from "../../libs/styled-components";
 /**
  * @component
  * @parameter ModalContents : JSX.Element - 모달의 제목 + 내용 전달 바랍니다
- * @parameter modalWidth : string || 30rem- 모달 가로사이즈
- * @parameter modalHeight : string - 모달 세로 사이즈
+ * @parameter $modalWidth : string || 30rem- 모달 가로사이즈
  * @parameter onClickBaseBtn : function - 기본 버튼의 기능
  * @parameter addText : string - 추가되는 버튼 TEXT
  * @parameter onClickAddBtn : function - 추가되는 버튼의 기능
@@ -18,17 +17,17 @@ import { COLOR, FONT_SIZE } from "../../libs/styled-components";
  * "addText"이 추가 될시 화면상 왼쪽부분에 추가됩니다
  * "modalWidth"전달되지않을 경우 default값 30rem 사이즈가 출력됩니다
  * @example
- * - <Modal modalText="사용 가능한 이메일 입니다 modalContents={ModalContents} "modalWidth="30rem" baseBtn={BaseBtn} addBtn={AddBtn} addText="취소" />
+ * - <Modal modalText="사용 가능한 이메일 입니다 modalContents={ModalContents} "$modalWidth="40rem" baseBtn={BaseBtn} addBtn={AddBtn} addText="취소" />
  */
 const Modal = ({
 	modalContents: ModalContents,
-	modalWidth = "30rem",
+	$modalWidth = "30rem",
 	onClickBaseBtn,
 	onClickAddBtn,
 	addText, //addText가 전달되지않을경우 버튼은 baseBtn만 작동및 ui로 나타납니다
 }) => {
 	return (
-		<S.Wrapper width={modalWidth}>
+		<S.Wrapper width={$modalWidth}>
 			<S.ModalContentBox>
 				<ModalContents />
 			</S.ModalContentBox>
