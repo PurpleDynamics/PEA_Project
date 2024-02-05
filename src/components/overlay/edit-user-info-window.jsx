@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 import { Button, Input } from "../../components/commons";
 import { VAILDATION } from "../../constants";
-import { COLOR } from "../../libs/styled-components";
+import { COLOR, FONT_SIZE } from "../../libs/styled-components";
 /**
  * 회원 정보 수정 모달 컴포넌트
  * @component
@@ -29,20 +29,17 @@ const EditUserInfoWindow = ({ onClose }) => {
 	};
 
 	return (
-		<S.Container>
-			<S.Form onSubmit={handleSubmit(onSubmit)}>
-				<S.Title>회원 정보 수정</S.Title>
-				<S.Caution>
-					<span style={{ fontSize: "1.2rem", color: "red" }}>
-						*필수항목
-					</span>
-					은 꼭 입력해주세요
-				</S.Caution>
-				<S.Fields>
+		<S.EditUserInfoWindowContainer>
+			<S.EditUserInfoForm onSubmit={handleSubmit(onSubmit)}>
+				<S.EditUserInfoTitle>회원 정보 수정</S.EditUserInfoTitle>
+				<S.EditUserInfoCaution>
+					<S.Span>*필수항목</S.Span>은 꼭 입력해주세요
+				</S.EditUserInfoCaution>
+				<S.EditUserInfoInputFields>
 					<Input
-						titleText={
+						EditUserInfoTitleText={
 							<>
-								<span style={{ color: "red" }}>*</span>
+								<S.Span>*</S.Span>
 								닉네임
 							</>
 						}
@@ -59,9 +56,9 @@ const EditUserInfoWindow = ({ onClose }) => {
 						defaultValue={"유저닉네임로딩"}
 					/>
 					<Input
-						titleText={
+						EditUserInfoTitleText={
 							<>
-								<span style={{ color: "red" }}>*</span>
+								<S.Span>*</S.Span>
 								이메일
 							</>
 						}
@@ -73,13 +70,13 @@ const EditUserInfoWindow = ({ onClose }) => {
 							pattern: VAILDATION.EMAIL,
 						}}
 						readOnly={true}
-						borderBoxStyle={{ backgroundColor: "gray" }}
-						style={{ backgroundColor: "gray" }}
+						borderBoxStyle={{ backgroundColor: COLOR.COMMON[800] }}
+						style={{ backgroundColor: COLOR.COMMON[800] }}
 					/>
 					<Input
-						titleText={
+						EditUserInfoTitleText={
 							<>
-								<span style={{ color: "red" }}>*</span>
+								<S.Span>*</S.Span>
 								주소
 							</>
 						}
@@ -95,9 +92,9 @@ const EditUserInfoWindow = ({ onClose }) => {
 					/>
 
 					<Input
-						titleText={
+						EditUserInfoTitleText={
 							<>
-								<span style={{ color: "red" }}>*</span>
+								<S.Span>*</S.Span>
 								휴대폰 번호
 							</>
 						}
@@ -112,7 +109,7 @@ const EditUserInfoWindow = ({ onClose }) => {
 					/>
 
 					<Input
-						titleText="새 비밀번호"
+						EditUserInfoTitleText="새 비밀번호"
 						register={register}
 						registerKey="password"
 						placeholder="새 비밀번호를 입력하세요"
@@ -124,7 +121,7 @@ const EditUserInfoWindow = ({ onClose }) => {
 						}}
 					/>
 					<Input
-						titleText="새 비밀번호 확인"
+						EditUserInfoTitleText="새 비밀번호 확인"
 						register={register}
 						registerKey="passwordConfirm"
 						placeholder="새 비밀번호를 다시 입력하세요"
@@ -136,74 +133,78 @@ const EditUserInfoWindow = ({ onClose }) => {
 						}}
 					/>
 					<S.Buttons>
-						<Button
-							type="submit"
-							width="13rem"
-							style={{ backgroundColor: COLOR.COMMON[600] }}
-						>
+						<Button type="submit" width="13rem">
 							회원 탈퇴
 						</Button>
-						<Button
-							type="submit"
-							width="13rem"
-							style={{ backgroundColor: COLOR.COMMON[600] }}
-						>
+						<Button type="submit" width="13rem">
 							정보 변경
 						</Button>
 					</S.Buttons>
-				</S.Fields>
-			</S.Form>
-		</S.Container>
+				</S.EditUserInfoInputFields>
+			</S.EditUserInfoForm>
+		</S.EditUserInfoWindowContainer>
 	);
 };
 export default EditUserInfoWindow;
 
-const Container = styled.div`
-	width: 50%;
-	height: 90%;
-	background-color: white;
-	padding: 70px;
-	border-radius: 38px;
-	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+const EditUserInfoWindowContainer = styled.div`
+	width: 80rem;
+	max-height: 100vh;
+	overflow-y: auto;
+	background-color: ${COLOR.COMMON[1000]};
+	padding: 2rem;
+	border-radius: 3.8rem;
+	box-shadow: 0px 0.4rem 0.8rem rgba(${COLOR.COMMON[0]}, 0.1);
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 `;
 
-const Form = styled.form`
+const EditUserInfoForm = styled.form`
 	display: flex;
 	flex-direction: column;
 	width: 50%;
+	align-items: center;
 `;
 
-const Title = styled.div`
-	margin-bottom: 20px;
-	font-size: 3rem;
-	color: black;
+const EditUserInfoTitle = styled.div`
+	margin-bottom: 2rem;
+	font-size: ${FONT_SIZE.xl};
+	color: ${COLOR.COMMON[0]};
 	text-align: center;
 `;
 
-const Caution = styled.div`
-	margin-bottom: 30px;
-	font-size: 1.2rem;
-	text-align: right;
+const Span = styled.span`
+	color: ${COLOR.PALETTE.magenta.base};
 `;
 
-const Fields = styled.div`
+const EditUserInfoCaution = styled.div`
+	margin-bottom: 3rem;
+	font-size: ${FONT_SIZE.sm};
+	width: 17rem;
+	margin-left: 18rem;
+
+	span {
+		font-size: ${FONT_SIZE.sm};
+	}
+`;
+
+const EditUserInfoInputFields = styled.div`
 	align-self: center;
 `;
 
 const Buttons = styled.div`
 	display: flex;
 	justify-content: space-between;
-	margin-top: 12px;
+	margin-top: 1rem;
 `;
 
 const S = {
-	Container,
-	Form,
-	Title,
-	Caution,
-	Fields,
+	EditUserInfoWindowContainer,
+	EditUserInfoForm,
+	EditUserInfoTitle,
+	Span,
+	EditUserInfoCaution,
+	EditUserInfoInputFields,
 	Buttons,
 };
