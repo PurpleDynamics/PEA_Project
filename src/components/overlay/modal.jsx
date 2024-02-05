@@ -17,7 +17,8 @@ import { COLOR, FONT_SIZE } from "../../libs/styled-components";
  * 기본적으로 하나의 버튼만 보여집니다
  * "addText"이 추가 될시 화면상 왼쪽부분에 추가됩니다
  * "modalWidth"전달되지않을 경우 default값 30rem 사이즈가 출력됩니다
- * overlay 를 통해 modal사용시 baseBtn에서
+ * modal사용시 baseBtn 과 addBtn에서 onClose가 기본적으로 들어가있습니다
+ * ModalContentsBox와BtnBOX height는 7rem으로 설정했습니다
  * @example
  * - <Modal modalText="사용 가능한 이메일 입니다 modalContents={ModalContents} "$modalWidth="40rem" baseBtn={BaseBtn} addBtn={AddBtn} addText="취소" />
  */
