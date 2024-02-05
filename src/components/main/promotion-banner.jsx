@@ -87,6 +87,7 @@ const PromoContextSpan = styled.span`
 `;
 
 const ButtonBox = styled.div`
+	width: 30rem;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
