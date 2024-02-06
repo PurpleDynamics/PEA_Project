@@ -7,8 +7,8 @@ import { CompressionContainer, ProductCard } from "../commons";
  * @component
  * @parameter userData : object - user data를 받아옵니다 (ex) location필요)
  * @parameter eightProductData : array - product data를 받아옵니다.
- * @parameter salesCategory : string - "증고거래" || "무료나눔" 둘 중 하나로 보내줘야합니다.
- * @returns
+ * @parameter salesCategory : string - "중고거래" || "무료나눔" 둘 중 하나로 보내줘야합니다.
+ * @returns {JSX.Element}
  *
  * @description
  * - salesCategory에 중고거래 || 무료나눔을 입력받아 8개의 product card를 보여주는 컴포넌트입니다.
@@ -22,7 +22,7 @@ const EightProductGrid = ({ userData, eightProductData, salesCategory }) => {
 	);
 
 	return (
-		<CompressionContainer tb="12rem">
+		<CompressionContainer tb="4rem">
 			<S.Container>
 				<S.TextWrapper>
 					<S.LocationText>
@@ -30,15 +30,15 @@ const EightProductGrid = ({ userData, eightProductData, salesCategory }) => {
 						<S.UsedFreeText> {salesCategory}</S.UsedFreeText>
 					</S.LocationText>
 				</S.TextWrapper>
-				<S.ProductList>
-					{locationMatchData.length > 0 ? (
-						locationMatchData.map((data, index) => (
+				{locationMatchData.length > 0 ? (
+					<S.ProductList>
+						{locationMatchData.map((data, index) => (
 							<ProductCard key={index} title={data.title} />
-						))
-					) : (
-						<S.NoDataText>등록된 상품이 없습니다.</S.NoDataText>
-					)}
-				</S.ProductList>
+						))}
+					</S.ProductList>
+				) : (
+					<S.NoDataText>등록된 상품이 없습니다.</S.NoDataText>
+				)}
 			</S.Container>
 		</CompressionContainer>
 	);
@@ -57,7 +57,7 @@ const TextWrapper = styled.div`
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	padding: 3rem;
+	padding-bottom: 4rem;
 `;
 
 const LocationText = styled.p`
@@ -77,9 +77,15 @@ const ProductList = styled.div`
 		display: grid;
 		grid-template-columns: repeat(3, 1fr);
 	}
+	@media (max-width: 700px) {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+	}
 `;
 
-const NoDataText = styled.h1``;
+const NoDataText = styled.h1`
+	padding: 25rem;
+`;
 
 const S = {
 	Container,
