@@ -25,12 +25,12 @@ const EightProductGrid = ({ userData, eightProductData, salesCategory }) => {
 		<>
 			<CompressionContainer tb="12rem">
 				<S.Container>
-					<S.TextWrppaer>
+					<S.TextWrapper>
 						<S.LocationText>
 							{userData.location}
 							<S.UesdFreeText> {salesCategory}</S.UesdFreeText>
 						</S.LocationText>
-					</S.TextWrppaer>
+					</S.TextWrapper>
 					<S.ProductList>
 						{locationMatchData.length > 0 ? (
 							locationMatchData.map((data, index) => (
@@ -55,7 +55,7 @@ const Container = styled.div`
 	flex-direction: column;
 `;
 
-const TextWrppaer = styled.div`
+const TextWrapper = styled.div`
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -85,7 +85,7 @@ const NoDataText = styled.h1``;
 
 const S = {
 	Container,
-	TextWrppaer,
+	TextWrapper,
 	LocationText,
 	UesdFreeText,
 	NoDataText,
