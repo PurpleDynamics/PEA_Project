@@ -122,13 +122,13 @@ const ProductListPage = () => {
 				userData={user}
 				eightProductData={usedData}
 				salesCategory={"중고거래"}
-			></EightProductGrid>
+			/>
 			<Banner />
 			<EightProductGrid
 				userData={user}
 				eightProductData={freeData}
 				salesCategory={"무료나눔"}
-			></EightProductGrid>
+			/>
 		</>
 	);
 };
