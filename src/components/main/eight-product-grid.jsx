@@ -11,7 +11,7 @@ import { CompressionContainer, ProductCard } from "../commons";
  * @returns
  *
  * @description
- * - salesCategory에 중고판매 || 무료나눔을 입력받아 8개의 product card를 보여주는 컴포넌트입니다.
+ * - salesCategory에 중고거래 || 무료나눔을 입력받아 8개의 product card를 보여주는 컴포넌트입니다.
  * - userData의 location 값으로 어느 지역인지 보여줍니다
  * - eightProductData로 8개의 product data를 받아와서 보여줍니다
  */
@@ -22,27 +22,25 @@ const EightProductGrid = ({ userData, eightProductData, salesCategory }) => {
 	);
 
 	return (
-		<>
-			<CompressionContainer tb="12rem">
-				<S.Container>
-					<S.TextWrapper>
-						<S.LocationText>
-							{userData.location}
-							<S.UsedFreeText> {salesCategory}</S.UsedFreeText>
-						</S.LocationText>
-					</S.TextWrapper>
-					<S.ProductList>
-						{locationMatchData.length > 0 ? (
-							locationMatchData.map((data, index) => (
-								<ProductCard key={index} title={data.title} />
-							))
-						) : (
-							<S.NoDataText>등록된 상품이 없습니다.</S.NoDataText>
-						)}
-					</S.ProductList>
-				</S.Container>
-			</CompressionContainer>
-		</>
+		<CompressionContainer tb="12rem">
+			<S.Container>
+				<S.TextWrapper>
+					<S.LocationText>
+						{userData.location}
+						<S.UsedFreeText> {salesCategory}</S.UsedFreeText>
+					</S.LocationText>
+				</S.TextWrapper>
+				<S.ProductList>
+					{locationMatchData.length > 0 ? (
+						locationMatchData.map((data, index) => (
+							<ProductCard key={index} title={data.title} />
+						))
+					) : (
+						<S.NoDataText>등록된 상품이 없습니다.</S.NoDataText>
+					)}
+				</S.ProductList>
+			</S.Container>
+		</CompressionContainer>
 	);
 };
 
