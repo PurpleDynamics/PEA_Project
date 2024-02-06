@@ -28,7 +28,7 @@ const EightProductGrid = ({ userData, eightProductData, salesCategory }) => {
 					<S.TextWrapper>
 						<S.LocationText>
 							{userData.location}
-							<S.UesdFreeText> {salesCategory}</S.UesdFreeText>
+							<S.UsedFreeText> {salesCategory}</S.UsedFreeText>
 						</S.LocationText>
 					</S.TextWrapper>
 					<S.ProductList>
@@ -66,7 +66,7 @@ const LocationText = styled.p`
 	font-size: ${FONT_SIZE.bg};
 `;
 
-const UesdFreeText = styled.span`
+const UsedFreeText = styled.span`
 	font-size: ${FONT_SIZE.bg};
 	color: ${COLOR.SUB[600]};
 `;
@@ -87,7 +87,7 @@ const S = {
 	Container,
 	TextWrapper,
 	LocationText,
-	UesdFreeText,
+	UsedFreeText,
 	NoDataText,
 	ProductList,
 };
