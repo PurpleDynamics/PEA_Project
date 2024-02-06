@@ -8,7 +8,7 @@ import ProductCard from "./product-card";
 import RecentProductList from "./recent-product-list";
 import ResponsiveIcon from "./responsive-icon";
 import SearchBar from "./search-bar";
-import SideChatBtn from "./side-chat-button";
+import SideChatButton from "./side-chat-button";
 import Spacer from "./spacer";
 import TopButton from "./top-button";
 export {
@@ -22,7 +22,7 @@ export {
 	ResponsiveIcon,
 	SearchBar,
 	RecentProductList,
-	SideChatBtn,
+	SideChatButton,
 	Spacer,
 	TopButton,
 };

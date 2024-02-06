@@ -10,7 +10,7 @@ import { ResponsiveIcon } from ".";
  *
  * @description 채팅 버튼을 랜더링하는 컴포넌트 입니다.
  */
-const SideChatBtn = () => {
+const SideChatButton = () => {
 	/**
 	 * @function
 	 *
@@ -28,7 +28,7 @@ const SideChatBtn = () => {
 	);
 };
 
-export default SideChatBtn;
+export default SideChatButton;
 
 const IconContainer = styled.div`
 	position: fixed;
