@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 import { COLOR, FONT_SIZE } from "../../libs/styled-components";
-import { ResponsiveIcon, SideChatBtn, TopButton } from ".";
+import { ResponsiveIcon, SideChatButton, TopButton } from ".";
 
 /**
  * @component
@@ -34,10 +34,9 @@ const RecentProductList = ({
 	 * @function
 	 * @parameter productId : number - 상품 id
 	 *
-	 * @description
-	 * - 최근 본 상품 리스트의 이미지를 클릭할 경우, productId를 parma으로 하여 해당하는 상품의 상세 페이지로 이동합니다.
+	 * @description 최근 본 상품 리스트의 이미지를 클릭할 경우, productId를 parma으로 하여 해당하는 상품의 상세 페이지로 이동합니다.
 	 */
-	const handleProductClick = (productId, e) => {
+	const handleProductClick = (productId) => {
 		navigate(`/detail-product/${productId}`);
 	};
 
@@ -48,9 +47,13 @@ const RecentProductList = ({
 	return (
 		<S.RecentProductWrapper>
 			<S.Title>최근 본 상품</S.Title>
-			<S.MovedItemButton onClick={() => {}}>
-				<ResponsiveIcon icon={BsChevronUp} size={FONT_SIZE.bg} />
-			</S.MovedItemButton>
+			<S.MovedIconContainer>
+				<ResponsiveIcon
+					icon={BsChevronUp}
+					size={FONT_SIZE.bg}
+					onClick={() => {}}
+				/>
+			</S.MovedIconContainer>
 			<S.RecentlyProduct>
 				{displayedProducts.length > 0 ? (
 					displayedProducts.map((product) => (
@@ -60,7 +63,7 @@ const RecentProductList = ({
 								handleProductClick(product.productId, e)
 							}
 						>
-							<S.RecentlyProductItemImg
+							<S.RecentlyProductItemImage
 								src={product.imgUrl}
 								alt="상품 이미지"
 							/>
@@ -85,11 +88,15 @@ const RecentProductList = ({
 					<S.Content>최근 본 상품이 없습니다.</S.Content>
 				)}
 			</S.RecentlyProduct>
-			<S.MovedItemButton onClick={() => {}}>
-				<ResponsiveIcon icon={BsChevronDown} size={FONT_SIZE.bg} />
-			</S.MovedItemButton>
+			<S.MovedIconContainer>
+				<ResponsiveIcon
+					icon={BsChevronDown}
+					size={FONT_SIZE.bg}
+					onClick={() => {}}
+				/>
+			</S.MovedIconContainer>
 			<TopButton />
-			<SideChatBtn />
+			<SideChatButton />
 		</S.RecentProductWrapper>
 	);
 };
@@ -101,6 +108,7 @@ const RecentProductWrapper = styled.div`
 	padding: 1rem;
 	grid-row: 1;
 	display: grid;
+	/* 순서대로 Title, Icon, List, Icon, TopButton */
 	grid-template-rows: 1.5fr 1.25fr auto 1.25fr 1.5fr;
 	position: fixed;
 	top: 30vh;
@@ -112,7 +120,7 @@ const Title = styled.p`
 	grid-row: 1;
 `;
 
-const MovedItemButton = styled.div`
+const MovedIconContainer = styled.div`
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -136,7 +144,7 @@ const RecentlyProductItem = styled.div`
 	position: relative;
 `;
 
-const RecentlyProductItemImg = styled.img`
+const RecentlyProductItemImage = styled.img`
 	width: 8rem;
 	height: 8rem;
 	cursor: pointer;
@@ -155,11 +163,11 @@ const RemoveIconContainer = styled.div`
 
 const S = {
 	Content,
-	MovedItemButton,
+	MovedIconContainer,
 	RemoveIconContainer,
 	RecentlyProduct,
 	RecentlyProductItem,
-	RecentlyProductItemImg,
+	RecentlyProductItemImage,
 	RecentProductWrapper,
 	Title,
 };
