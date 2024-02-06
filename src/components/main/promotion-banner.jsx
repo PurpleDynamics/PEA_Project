@@ -19,8 +19,7 @@ const PromotionBanner = () => {
 						<S.PromoImg src="https://url.kr/wmz9uc" />
 						<S.PromoRightBox>
 							<S.PromoTitle>
-								"너, 참{" "}
-								<S.PromoTitleSpan>중고</S.PromoTitleSpan>
+								"너, 참<S.PromoTitleSpan>중고</S.PromoTitleSpan>
 								스럽다!"
 							</S.PromoTitle>
 							<S.PromoContext>
