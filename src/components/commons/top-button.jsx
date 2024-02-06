@@ -21,10 +21,11 @@ const TopButton = () => {
 };
 export default TopButton;
 
-const Button = styled.div`
+const Button = styled.button`
 	font-size: ${FONT_SIZE.sm};
 	text-align: center;
 	margin-top: 1rem;
+	background-color: ${COLOR.COMMON[1000]};
 	cursor: pointer;
 	&:hover {
 		color: ${COLOR.PALETTE.cyan.base};
