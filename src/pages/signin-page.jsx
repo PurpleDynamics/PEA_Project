@@ -4,7 +4,7 @@ import styled from "styled-components";
 
 import { Button, Input } from "../components/commons";
 import { VAILDATION } from "../constants";
-import { BREAK_POINT, COLOR, FONT_SIZE } from "../libs/styled-components";
+import { BREAK_POINT, FONT_SIZE } from "../libs/styled-components";
 
 /**
  * @component
@@ -78,15 +78,11 @@ const SigninPage = () => {
 					<Button
 						type="submit"
 						width="30rem"
-						style={{
-							backgroundColor:
-								dirtyFields.email &&
-								dirtyFields.password &&
-								isValid
-									? COLOR.COMMON[300]
-									: COLOR.COMMON[600],
-						}}
-						disabled={!isValid}
+						disabled={
+							!dirtyFields.email ||
+							!dirtyFields.password ||
+							!isValid
+						}
 					>
 						로그인
 					</Button>
