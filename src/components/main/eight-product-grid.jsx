@@ -37,7 +37,7 @@ const EightProductGrid = ({ userData, eightProductData, salesCategory }) => {
 								<ProductCard key={index} title={data.title} />
 							))
 						) : (
-							<S.NoDataText>No matching data found</S.NoDataText>
+							<S.NoDataText>등록된 상품이 없습니다.</S.NoDataText>
 						)}
 					</S.ProductList>
 				</S.Container>
