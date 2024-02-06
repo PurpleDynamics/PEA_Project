@@ -9,7 +9,7 @@ import styled from "styled-components";
  * @parameter rest : any
  * @returns {JSX.Element}
  *
- * @description - props로 전달받은 width, height에 따라 빈 공간을 생성하는 컴포넌트 입니다.
+ * @description props로 전달받은 width, height에 따라 빈 공간을 생성하는 컴포넌트 입니다.
  */
 
 const Spacer = ({ width, height, ...rest }) => {
