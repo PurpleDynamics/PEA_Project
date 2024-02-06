@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import { COLOR, FONT_SIZE } from "../../libs/styled-components";
+import { BREAK_POINT, COLOR, FONT_SIZE } from "../../libs/styled-components";
 import { Button, CompressionContainer } from "../commons";
 
 /**
@@ -52,16 +52,28 @@ const PromoWrapper = styled.div`
 const PromoContainer = styled.div`
 	display: grid;
 	grid-template-columns: repeat(2, 1fr);
+	@media (max-width: ${BREAK_POINT.lg}) {
+		display: block;
+	}
 `;
 
 const PromoImg = styled.img`
 	width: 75rem;
 	height: 45rem;
+	@media (max-width: ${BREAK_POINT.lg}) {
+		display: none;
+	}
 `;
 
 const PromoRightBox = styled.div`
 	width: 100%;
 	padding-top: 7rem;
+	@media (max-width: ${BREAK_POINT.lg}) {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+	}
 `;
 
 const PromoTitle = styled.p`
