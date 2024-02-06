@@ -7,7 +7,7 @@ import { Button, CompressionContainer } from "../commons";
  * @component
  * @returns {JSX.Element}
  *
- * @description - product list page에 제일 처음에 올라오는 컴포넌트입니다.
+ * @description product list page에 제일 처음에 올라오는 컴포넌트입니다.
  */
 
 const PromotionBanner = () => {
