@@ -34,8 +34,7 @@ const RecentProductList = ({
 	 * @function
 	 * @parameter productId : number - 상품 id
 	 *
-	 * @description
-	 * - 최근 본 상품 리스트의 이미지를 클릭할 경우, productId를 parma으로 하여 해당하는 상품의 상세 페이지로 이동합니다.
+	 * @description 최근 본 상품 리스트의 이미지를 클릭할 경우, productId를 parma으로 하여 해당하는 상품의 상세 페이지로 이동합니다.
 	 */
 	const handleProductClick = (productId, e) => {
 		navigate(`/detail-product/${productId}`);
