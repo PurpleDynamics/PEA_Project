@@ -32,6 +32,7 @@ const SigninPage = () => {
 		register,
 		handleSubmit,
 		validate,
+
 		formState: { errors, isValid }, // isVaild: 현재 폼의 유효성 여부
 	} = useForm({ mode: "onChange" });
 	const onSubmit = async (data) => {
@@ -42,6 +43,7 @@ const SigninPage = () => {
 		try {
 			const response = await instance.post("/signin", Data);
 			const token = response.data.token;
+
 			if (response.status === 200) {
 				if (autoLogin) {
 					setLocalToken("token", token);
