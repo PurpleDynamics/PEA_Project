@@ -14,7 +14,7 @@ export const getLocalToken = () => {
 
 /**
  * @function
- * @parameter token: string - 로컬스토리지에 저장될 토큰
+ * @parameter token: string - localStorage에 저장될 토큰
  *
  * @description localStorage에 key값("accessToken")으로 받아온 token을 저장하는 함수입니다.
  */
@@ -24,7 +24,7 @@ export const setLocalToken = (token) => {
 
 /**
  * @function
- * @parameter token : 세션스토리지에 저장될 토큰
+ * @parameter token : sessionStorage에 저장될 토큰
  *
  * @description sessionStorage에 key값("refreshToken")으로 받아온 token을 저장하는 함수입니다.
  */
