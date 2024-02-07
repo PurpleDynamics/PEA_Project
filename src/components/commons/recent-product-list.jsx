@@ -117,6 +117,7 @@ const RecentProductWrapper = styled.div`
 
 const Title = styled.p`
 	display: flex;
+	white-space: nowrap;
 	justify-content: center;
 	font-size: ${FONT_SIZE.sm};
 	grid-row: 1;
