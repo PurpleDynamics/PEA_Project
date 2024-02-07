@@ -1,3 +1,4 @@
 export * from "./auto-color-manager";
-export * from "./date-calculator";
-export * from "./data-editor";
+export * from "./data-calculator";
+export * from "./auth";
+export * from "./instance";
