@@ -5,7 +5,11 @@ import { COLOR } from "../../libs/styled-components";
 import ResponsiveIcon from "./responsive-icon";
 /**
  * @component
- * @parameter width: string - search bar의 넓이를 입력받습니다.
+ * @parameter width: string - search bar의 넓이를 입력받습니다. (default: 40, 단위 rem)
+ * @parameter height: string - search bar의 높이를 입력받습니다. (default: 3.5, 단위 rem)
+ * @parameter paddingLeft: string - search bar를 감싼 wrapper의 padding left를 설정합니다
+ * @parameter placeHolder: string - search bar의 placeholder를 입력받습니다.
+ *
  * @description 검색어 입력을 위한 검색창 component입니다.
  * @returns {JSX.Element}
  */
