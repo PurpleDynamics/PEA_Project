@@ -106,18 +106,20 @@ const RecentProductWrapper = styled.div`
 	width: 10rem;
 	border: 1px solid ${COLOR.COMMON[800]};
 	padding: 1rem;
-	grid-row: 1;
 	display: grid;
 	/* 순서대로 Title, Icon, List, Icon, TopButton */
 	grid-template-rows: 1.5fr 1.25fr auto 1.25fr 1.5fr;
 	position: fixed;
 	top: 30vh;
 	right: 5vw;
+	background-color: ${COLOR.COMMON[1000]};
 `;
 
 const Title = styled.p`
-	font-size: ${FONT_SIZE.md};
-	grid-row: 1;
+	display: flex;
+	justify-content: center;
+	font-size: ${FONT_SIZE.sm};
+	white-space: nowrap;
 `;
 
 const MovedIconContainer = styled.div`
