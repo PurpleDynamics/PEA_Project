@@ -71,8 +71,8 @@ const SigninPage = () => {
 					errors={errors}
 				/>
 				<S.CheckboxWrapper>
-					<CheckboxInput type="checkbox" />
-					<CheckboxText>자동로그인</CheckboxText>
+					<S.CheckboxInput type="checkbox" />
+					<S.CheckboxText>자동로그인</S.CheckboxText>
 				</S.CheckboxWrapper>
 				<S.ButtonWrapper>
 					<Button
