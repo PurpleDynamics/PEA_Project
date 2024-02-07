@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { RootLayout } from "../../components/layouts";
+import { getLocalToken, getSessionToken } from "../../utils";
 
 /**
  * @component
@@ -12,13 +13,14 @@ import { RootLayout } from "../../components/layouts";
  */
 
 const AdminRoute = () => {
-	const auth = localStorage.getItem("token");
-	console.log(auth);
+	const localToken = getLocalToken();
+	const sessionToken = getSessionToken();
 	const navigate = useNavigate();
-
 	useEffect(() => {
-		if (!auth) navigate("/signin");
-	}, [auth, navigate]);
+		if (!localToken && !sessionToken) {
+			navigate("/signin");
+		}
+	}, [localToken, sessionToken, navigate]);
 
 	return <RootLayout />;
 };
