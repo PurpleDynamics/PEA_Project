@@ -60,7 +60,7 @@ export const OverlayProvider = ({ children }) => {
 			{children}
 
 			{OverlayComponent.current && (
-				<OverlayBase {...overlayBaseProps.current}>
+				<OverlayBase {...overlayBaseProps.current} onClose={onClose}>
 					<OverlayComponent.current
 						{...overlayComponentsProps}
 						onClose={onClose}

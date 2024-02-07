@@ -21,14 +21,26 @@ const OverlayBase = ({
 	position = "midCenter",
 	isFiltered = false,
 	zIndex = 0,
+	onClose,
 	children,
 }) => {
 	if (typeof zIndex !== "number" || zIndex < 0) zIndex = 0;
 	return (
 		<OverlayProvider>
 			{isFiltered && <S.BackgroundFilter $zIndex={zIndex} />}
-			<S.OverlayContainer $positionCSS={position} $zIndex={zIndex}>
-				{children}
+			<S.OverlayContainer
+				$positionCSS={position}
+				$zIndex={zIndex}
+				onClick={onClose}
+			>
+				{/** overlay 컴포넌트 클릭이벤트 전파 방지 */}
+				<div
+					onClick={(e) => {
+						e.stopPropagation();
+					}}
+				>
+					{children}
+				</div>
 			</S.OverlayContainer>
 		</OverlayProvider>
 	);
