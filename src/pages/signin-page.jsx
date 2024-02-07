@@ -20,16 +20,6 @@ const SigninPage = () => {
 	const onMoveSignupPage = () => {
 		navigate("/signup");
 	};
-	/**
-	 * @component
-	 * @parameter register : input 요소를 리액트훅폼과 연결해 검증규칙을 적용할수있게하는 메소드입니다
-	 * @parameter formState : form state에관한 정보를 담고있는 객체입니다.
-	 * @parameter vaildate : 유효성 검사를 위해 사용되는 parameter 입니다.
-	 * @parameter handleSubmit : form 제출시 사용되는 parameter입니다.
-	 * @returns {JSX.Element}
-	 * @description use-hook-form 의 반환값입니다.
-	 *
-	 */
 	const {
 		register,
 		handleSubmit,
