@@ -6,7 +6,7 @@ import styled from "styled-components";
 import { Button, Input } from "../components/commons";
 import { VAILDATION } from "../constants";
 import { BREAK_POINT, FONT_SIZE } from "../libs/styled-components";
-import { setLocalToken, setSessionToken } from "../utils";
+import { setToken } from "../utils";
 import instance from "../utils/instance";
 
 /**
@@ -16,8 +16,6 @@ import instance from "../utils/instance";
  * - 로그인 버튼 클릭시 main-page인 productListPage로 이동합니다.
  * - 회원가입 버튼 클릭시, signup-page로 이동합니다.
  * - 이메일 과 비밀번호 형식이 맞으면 로그인버튼이 활성화 됩니다.
- * - 자동로그인 체크후 로그인시, LocalStorage에 저장되고 미체크후 로그인시 SessionStorage에 저장
- *
  * - email: test1@test.test
  * - password: qwer1234
  */
@@ -32,7 +30,7 @@ const SigninPage = () => {
 		register,
 		handleSubmit,
 		validate,
-		formState: { errors, isValid }, // isVaild: 현재 폼의 유효성 여부
+		formState: { errors, isValid, dirtyFields }, // isVaild: 현재 폼의 유효성 여부
 	} = useForm({ mode: "onChange" });
 	const onSubmit = async (data) => {
 		const Data = {
@@ -42,16 +40,13 @@ const SigninPage = () => {
 		try {
 			const response = await instance.post("/signin", Data);
 			const token = response.data.token;
+			setToken("token", token);
+			// 로그인이 성공하면 mainPage로 이동
 			if (response.status === 200) {
-				if (autoLogin) {
-					setLocalToken("token", token);
-				} else {
-					setSessionToken("token", token);
-				}
 				navigate("/");
 			}
 		} catch (error) {
-			alert("로그인 실패: 이메일 또는 비밀번호를 확인해주세요.");
+			console.error("Error", error);
 		}
 	};
 
