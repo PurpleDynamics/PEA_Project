@@ -44,7 +44,7 @@ const SigninPage = () => {
 	return (
 		<S.MainWrapper>
 			<S.ImageContainer>
-				<S.LogoImage src="https://url.kr/f7bvik" />
+				<img width="440rem" src="https://url.kr/f7bvik" />
 			</S.ImageContainer>
 			<S.TextInputForm onSubmit={handleSubmit(onSubmit)}>
 				<Input
@@ -118,9 +118,6 @@ const ImageContainer = styled.div`
 	justify-content: center;
 	align-items: center;
 `;
-const LogoImage = styled.img`
-	width: 50rem;
-`;
 const TextInputForm = styled.form`
 	width: 100%;
 	display: flex;
@@ -152,7 +149,6 @@ const ButtonWrapper = styled.div`
 const S = {
 	MainWrapper,
 	ImageContainer,
-	LogoImage,
 	CheckboxWrapper,
 	CheckboxInput,
 	CheckboxText,
