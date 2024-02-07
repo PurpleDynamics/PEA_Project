@@ -5,14 +5,19 @@ import { COLOR } from "../../libs/styled-components";
 import ResponsiveIcon from "./responsive-icon";
 /**
  * @component
+ * @parameter width: string - search bar의 넓이를 입력받습니다.
  * @description 검색어 입력을 위한 검색창 component입니다.
  * @returns {JSX.Element}
  */
-const SearchBar = () => {
+const SearchBar = ({ width, height, paddingLeft, placeHolder }) => {
 	return (
 		<>
-			<S.SearchWrapper>
-				<S.Input placeholder="상품명 또는 카테고리를 입력해주세요" />
+			<S.SearchWrapper paddingLeft={paddingLeft}>
+				<S.Input
+					placeholder={placeHolder}
+					width={width}
+					height={height}
+				/>
 				<S.IconContainer>
 					<ResponsiveIcon icon={BsSearch} />
 				</S.IconContainer>
@@ -24,21 +29,21 @@ export default SearchBar;
 
 const SearchWrapper = styled.form`
 	width: 100%;
-	padding-left: 14rem;
+	padding-left: ${({ paddingLeft }) => paddingLeft};
 	display: grid;
 	grid-template-columns: 1fr 1fr;
 `;
 
 const IconContainer = styled.button`
-	width: 3.5rem;
+	width: 2rem;
 	border-radius: 8px;
 	margin-left: -3.5rem;
 	z-index: 100;
 `;
 
 const Input = styled.input`
-	width: 40rem;
-	height: 3.5rem;
+	width: ${({ width }) => width || "40rem"};
+	height: ${({ height }) => height || "3.5rem"};
 	border-radius: 8px;
 	border: none;
 	background-color: ${COLOR.COMMON[900]};
