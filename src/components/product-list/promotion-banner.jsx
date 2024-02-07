@@ -13,7 +13,7 @@ import { Button, CompressionContainer } from "../commons";
 const PromotionBanner = () => {
 	return (
 		<S.PromoContainer>
-			<CompressionContainer tb="12rem">
+			<CompressionContainer tb="3rem">
 				<S.PromoCenterBox>
 					<S.PromoWrapper>
 						<S.PromoImg src="https://url.kr/wmz9uc" />
@@ -59,7 +59,7 @@ const PromoWrapper = styled.div`
 
 const PromoContainer = styled.div`
 	width: 100%;
-	height: 60rem;
+	height: 50rem;
 	display: flex;
 	justify-content: center;
 	align-items: center;
