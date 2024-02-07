@@ -22,7 +22,7 @@ const SideChatButton = () => {
 			<ResponsiveIcon
 				icon={BsChatDots}
 				color={COLOR.PALETTE.cyan.base}
-				size={48}
+				size={40}
 			/>
 		</S.IconContainer>
 	);
@@ -31,9 +31,9 @@ const SideChatButton = () => {
 export default SideChatButton;
 
 const IconContainer = styled.div`
-	position: fixed;
-	top: 73vh;
-	right: 6.5vw;
+	display: flex;
+	justify-content: center;
+	margin-top: 1rem;
 `;
 
 const S = {
