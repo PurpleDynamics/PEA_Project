@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
@@ -5,6 +6,8 @@ import styled from "styled-components";
 import { Button, Input } from "../components/commons";
 import { VAILDATION } from "../constants";
 import { BREAK_POINT, FONT_SIZE } from "../libs/styled-components";
+import { setLocalToken, setSessionToken } from "../utils";
+import instance from "../utils/instance";
 
 /**
  * @component
@@ -13,6 +16,10 @@ import { BREAK_POINT, FONT_SIZE } from "../libs/styled-components";
  * - 로그인 버튼 클릭시 main-page인 productListPage로 이동합니다.
  * - 회원가입 버튼 클릭시, signup-page로 이동합니다.
  * - 이메일 과 비밀번호 형식이 맞으면 로그인버튼이 활성화 됩니다.
+ * - 자동로그인 체크후 로그인시, LocalStorage에 저장되고 미체크후 로그인시 SessionStorage에 저장
+ *
+ * - email: test1@test.test
+ * - password: qwer1234
  */
 
 const SigninPage = () => {
@@ -20,15 +27,32 @@ const SigninPage = () => {
 	const onMoveSignupPage = () => {
 		navigate("/signup");
 	};
+	const [autoLogin, setAutoLogin] = useState(false);
 	const {
 		register,
 		handleSubmit,
 		validate,
-		formState: { errors, isValid, dirtyFields }, // isVaild: 현재 폼의 유효성 여부 , dirtyFields: 사용자가 입력한 값이 변경되었는지 여부 확인
+		formState: { errors, isValid }, // isVaild: 현재 폼의 유효성 여부
 	} = useForm({ mode: "onChange" });
-	const onSubmit = (e) => {
-		e.preventDefault();
-		navigate("");
+	const onSubmit = async (data) => {
+		const Data = {
+			email: data.email,
+			password: data.password,
+		};
+		try {
+			const response = await instance.post("/signin", Data);
+			const token = response.data.token;
+			if (response.status === 200) {
+				if (autoLogin) {
+					setLocalToken("token", token);
+				} else {
+					setSessionToken("token", token);
+				}
+				navigate("/");
+			}
+		} catch (error) {
+			alert("로그인 실패: 이메일 또는 비밀번호를 확인해주세요.");
+		}
 	};
 
 	return (
@@ -61,19 +85,14 @@ const SigninPage = () => {
 					errors={errors}
 				/>
 				<S.CheckboxWrapper>
-					<S.CheckboxInput type="checkbox" />
+					<S.CheckboxInput
+						type="checkbox"
+						onChange={(e) => setAutoLogin(e.target.checked)}
+					/>
 					<S.CheckboxText>자동로그인</S.CheckboxText>
 				</S.CheckboxWrapper>
 				<S.ButtonWrapper>
-					<Button
-						type="submit"
-						width="30rem"
-						disabled={
-							!dirtyFields.email ||
-							!dirtyFields.password ||
-							!isValid
-						}
-					>
+					<Button type="submit" width="30rem" disabled={!isValid}>
 						로그인
 					</Button>
 					<Button
