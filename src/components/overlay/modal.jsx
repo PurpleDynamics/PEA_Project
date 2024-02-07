@@ -19,11 +19,11 @@ import { COLOR, FONT_SIZE } from "../../libs/styled-components";
  * - "addText"이 추가 될시 화면상 왼쪽부분에 추가됩니다
  * - "modalWidth"전달되지않을 경우 default값 30rem 사이즈가 출력됩니다
  * - modal사용시 baseButton 과 addButton에서 onClose가 기본적으로 들어가있습니다
- * - ModalContentsBox와ButtonBOX height는 7rem으로 설정했습니다
+ * - ModalContentsBox와ButtonBox 의 min-height는 7rem으로 설정했고 ModalContentsBox는 contnet에따라 늘어납니다
  * @example
  * - const ModalContents=()=>{} 
  * - const { onOpenOverlay } = useOverlay();
-	const onButtonClick = () => {
+ * const onButtonClick = () => {
 		onOpenOverlay({
 			overlayComponent: Modal,
 			modalContents: ModalContents,
