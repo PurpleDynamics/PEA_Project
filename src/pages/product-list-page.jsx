@@ -1,5 +1,5 @@
 import { Banner } from "../components/commons";
-import { EightProductGrid, PromotionBanner } from "../components/main";
+import { EightProductGrid, PromotionBanner } from "../components/product-list";
 
 /**
  * @component
