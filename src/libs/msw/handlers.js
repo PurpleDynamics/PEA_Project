@@ -1,6 +1,6 @@
 import {
 	getProductsByCategories,
 	getProductsByPaymentMethod,
-} from "./services/products";
+} from "./services";
 
 export const handlers = [getProductsByPaymentMethod, getProductsByCategories];
