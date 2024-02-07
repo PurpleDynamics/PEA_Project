@@ -78,15 +78,10 @@ const Wrapper = styled.div`
 	min-height: 14rem;
 	border-radius: 8px;
 	border: 0.1rem solid ${COLOR.COMMON[600]};
-	/* display: flex;
-	align-items: center;
-	justify-content: center; */
 	flex-direction: column;
 	display: grid;
 	color: ${COLOR.COMMON[400]};
 	grid-template: auto 7rem /1fr;
-	/* grid-template-columns: 1fr;
-	grid-template-rows: auto 7rem; */
 	font-family: "SOYO_Maple_Regular";
 `;
 const ModalContentBox = styled.div`
@@ -101,8 +96,8 @@ const ButtonBox = styled.div`
 	height: 100%;
 	border-top: 1px solid ${COLOR.COMMON[600]};
 	display: flex;
-	justify-content: ${({ addButtonText }) => {
-		addButtonText ? "space-between" : "center";
+	justify-content: ${({ $addButtonText }) => {
+		$addButtonText ? "space-between" : "center";
 	}};
 	font-size: ${FONT_SIZE.bg};
 `;
@@ -114,8 +109,8 @@ const buttonStyle = css`
 const BaseButton = styled.button`
 	${buttonStyle}
 	color: ${COLOR.SYSTEM.success};
-	border-radius: ${({ addButtonText }) =>
-		addButtonText ? "0 8px 8px 0" : "8px"};
+	border-radius: ${({ $addButtonText }) =>
+		$addButtonText ? "0 8px 8px 0" : "8px"};
 `;
 const AddButton = styled.button`
 	${buttonStyle}
