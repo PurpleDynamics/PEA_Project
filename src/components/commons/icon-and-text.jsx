@@ -1,5 +1,7 @@
+import { useEffect } from "react";
 import styled from "styled-components";
 
+import { useFilterAmount } from "../../hooks/use-filter-amount";
 import { COLOR, FONT_SIZE } from "../../libs/styled-components";
 import { ResponsiveIcon } from ".";
 /**
@@ -15,22 +17,29 @@ import { ResponsiveIcon } from ".";
  *
  * @description
  * - detailPage, myPage에서 사용될 공용컴포넌트 입니다.
- * - 판매자의 정보를 보여주기 위하여 icon, text, amount, color을 입력받아 사용합니다.
+ * - 판매자의 정보를 보여주기 위하여 icon, text, color을 입력받아 사용합니다.
+ * - amountData 는 서버로부터 넘어온 수량정보를 넣어주시면 됩니다.
  * - 해당 컴포넌트를 click하면 각내용에 맞는 페이지로 이동이 가능합니다.
  * - 해당 컴포넌트의 배경색에는 weight가 사용될 예정이니 textColor는 pallate.light색상으로 사용해주셔야합니다.
  */
 const IconAndText = ({
 	icon,
 	text,
-	amount = "",
+	amountData = "",
 	unit = "",
 	iconColor = `${COLOR.COMMON[1000]}`,
 	amountColor,
 	callbackFunc = () => {},
 	...rest
 }) => {
+	const { amount, handleEditAmount } = useFilterAmount();
+
+	useEffect(() => {
+		handleEditAmount(amountData);
+	}, [handleEditAmount]);
+
 	return (
-		<S.IconTextWrapper {...rest} onClick={callbackFunc()}>
+		<S.IconTextWrapper {...rest} onClick={callbackFunc}>
 			<ResponsiveIcon color={iconColor} icon={icon} size="9rem" />
 			<S.IconText>{text}</S.IconText>
 			<S.Amount $amountColor={amountColor}>
@@ -43,14 +52,11 @@ export default IconAndText;
 
 const IconTextWrapper = styled.div`
 	width: fit-content;
-
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	&:hover {
-		cursor: pointer;
-	}
+	cursor: pointer;
 `;
 const IconText = styled.h3`
 	color: ${COLOR.COMMON[1000]};
