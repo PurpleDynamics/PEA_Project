@@ -1,7 +1,9 @@
 import { BsChatDots } from "react-icons/bs";
 import styled from "styled-components";
 
+import { useOverlay } from "../../hooks/use-overlay";
 import { COLOR } from "../../libs/styled-components";
+import ChatRoomList from "../overlay/chatting/chat-room-list";
 import { ResponsiveIcon } from ".";
 
 /**
@@ -16,7 +18,16 @@ const SideChatButton = () => {
 	 *
 	 * @description 채팅 버튼 클릭 시 호출되는 핸들러 함수입니다
 	 */
-	const handleChattingPage = () => {};
+
+	const { onOpenOverlay } = useOverlay();
+
+	const handleChattingPage = () => {
+		onOpenOverlay({
+			overlayComponent: ChatRoomList,
+			position: "bottomRight",
+			isFiltered: false,
+		});
+	};
 	return (
 		<S.IconContainer onClick={handleChattingPage}>
 			<ResponsiveIcon
