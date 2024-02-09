@@ -1,2 +1,3 @@
 export * from "./auto-color-manager";
-export * from "./data-calculator";
+export * from "./date-calculator";
+export * from "./data-editor";
