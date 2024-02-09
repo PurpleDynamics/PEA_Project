@@ -1,14 +1,13 @@
-import { useEffect } from "react";
 import styled from "styled-components";
 
-import { useFilterAmount } from "../../hooks/use-filter-amount";
 import { COLOR, FONT_SIZE } from "../../libs/styled-components";
+import { appendUnit } from "../../utils";
 import { ResponsiveIcon } from ".";
 /**
  * @component
  * @parameter icon : IconType - 아이콘 컴포넌트 (react-icons)
  * @parameter text : string - 어떤 정보가 들어갈지 string으로 작성.
- * @parameter amount : number - 서버에서 받아온 data중 해당 수량
+ * @parameter amountData : number - 서버에서 받아온 data중 해당 수량
  * @parameter unit : string - amount의 단위 (단위가 없다면 입력x)
  * @parameter iconColor : string - icon의 색상 token색상중 lightColor 사용할 것
  * @parameter amountColor : string - amount의 색상 token색상중 lightColor 사용할 것
@@ -32,18 +31,12 @@ const IconAndText = ({
 	callbackFunc = () => {},
 	...rest
 }) => {
-	const { amount, handleEditAmount } = useFilterAmount();
-
-	useEffect(() => {
-		handleEditAmount(amountData);
-	}, [handleEditAmount]);
-
 	return (
 		<S.IconTextWrapper {...rest} onClick={callbackFunc}>
 			<ResponsiveIcon color={iconColor} icon={icon} size="9rem" />
 			<S.IconText>{text}</S.IconText>
 			<S.Amount $amountColor={amountColor}>
-				{amount + " " + unit}
+				{appendUnit({ amountData: amountData, unit: unit })}
 			</S.Amount>
 		</S.IconTextWrapper>
 	);
