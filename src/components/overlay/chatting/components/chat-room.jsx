@@ -1,8 +1,8 @@
 import { useState } from "react";
 import styled from "styled-components";
 
-import { useOverlay } from "../../../hooks/use-overlay";
-import { COLOR, FONT_SIZE } from "../../../libs/styled-components";
+import { useOverlay } from "../../../../hooks/use-overlay";
+import { COLOR, FONT_SIZE } from "../../../../libs/styled-components";
 import { Chat } from ".";
 
 /**
@@ -39,7 +39,7 @@ const ChatRoom = ({ data }) => {
 				<S.RoomContainer
 					key={index}
 					onClick={(e) => handleChatRoomClick(e)}
-					value={index + 1}
+					// value={index + 1}
 				>
 					<S.UserProfile
 						src={item.imagesrc || "https://url.kr/5zjib4"}

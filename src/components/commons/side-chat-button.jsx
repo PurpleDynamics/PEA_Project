@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 import { useOverlay } from "../../hooks/use-overlay";
 import { COLOR } from "../../libs/styled-components";
-import ChatRoomList from "../overlay/chatting/chat-room-list";
+import { ChatRoomList } from "../overlay/chatting";
 import { ResponsiveIcon } from ".";
 
 /**

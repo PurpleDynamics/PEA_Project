@@ -3,8 +3,8 @@ import { useForm } from "react-hook-form";
 import { BsSendFill } from "react-icons/bs";
 import styled from "styled-components";
 
-import { COLOR, FONT_SIZE } from "../../../libs/styled-components";
-import ResponsiveIcon from "../../commons/responsive-icon";
+import { COLOR, FONT_SIZE } from "../../../../libs/styled-components";
+import { ResponsiveIcon } from "../../../commons";
 
 /**
  * @component
@@ -52,7 +52,7 @@ const Chat = ({ onClose }) => {
 				<S.ChatTitleImage src="https://url.kr/fm7ls1" />
 				<S.ChatTitleWrapper>
 					<S.ChatTitleText>
-						추후 user의 nickname이 올 예정입니다
+						판매자nickname이 들어갈 예정입니다.
 					</S.ChatTitleText>
 					<S.X_Button onClick={onClose}>x</S.X_Button>
 				</S.ChatTitleWrapper>
@@ -76,7 +76,7 @@ const Chat = ({ onClose }) => {
 					<S.ErrorMessage>{errors.message.message}</S.ErrorMessage>
 				)}
 				<S.SendButton>
-					<ResponsiveIcon icon={BsSendFill} />
+					<ResponsiveIcon icon={BsSendFill} size="2.25rem" />
 				</S.SendButton>
 			</S.ChatForm>
 		</S.ChatWrapper>
@@ -144,7 +144,7 @@ const Message = styled.div`
 `;
 const ChatInput = styled.input`
 	width: 100%;
-	padding: 0.5rem 5rem 0.5rem 0.5rem;
+	padding: 0.5rem 5rem 0.5rem 1rem;
 	border: 1px solid ${COLOR.COMMON[800]};
 	border-radius: 0.8rem;
 `;

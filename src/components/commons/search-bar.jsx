@@ -2,7 +2,8 @@ import { BsSearch } from "react-icons/bs";
 import styled from "styled-components";
 
 import { COLOR } from "../../libs/styled-components";
-import ResponsiveIcon from "./responsive-icon";
+import { ResponsiveIcon } from ".";
+
 /**
  * @component
  * @parameter width: string - search bar의 넓이를 입력받습니다. (default: 40, 단위 rem)
@@ -13,10 +14,15 @@ import ResponsiveIcon from "./responsive-icon";
  * @description 검색어 입력을 위한 검색창 component입니다.
  * @returns {JSX.Element}
  */
-const SearchBar = ({ width, height, paddingLeft, placeHolder }) => {
+const SearchBar = ({
+	width = "40rem",
+	height = "3.5rem",
+	paddingLeft,
+	placeHolder,
+}) => {
 	return (
 		<>
-			<S.SearchWrapper paddingLeft={paddingLeft}>
+			<S.SearchWrapper $paddingLeft={paddingLeft}>
 				<S.Input
 					placeholder={placeHolder}
 					width={width}
@@ -33,7 +39,7 @@ export default SearchBar;
 
 const SearchWrapper = styled.form`
 	width: 100%;
-	padding-left: ${({ paddingLeft }) => paddingLeft};
+	padding-left: ${({ $paddingLeft }) => $paddingLeft};
 	display: grid;
 	grid-template-columns: 1fr 1fr;
 `;
@@ -46,8 +52,8 @@ const IconContainer = styled.button`
 `;
 
 const Input = styled.input`
-	width: ${({ width }) => width || "40rem"};
-	height: ${({ height }) => height || "3.5rem"};
+	width: ${({ width }) => width};
+	height: ${({ height }) => height};
 	border-radius: 8px;
 	border: none;
 	background-color: ${COLOR.COMMON[900]};
