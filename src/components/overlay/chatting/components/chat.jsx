@@ -128,9 +128,7 @@ const X_Button = styled.button`
 	width: 3rem;
 	height: 3rem;
 	background-color: ${COLOR.COMMON[1000]};
-	&:hover {
-		cursor: pointer;
-	}
+	cursor: pointer;
 `;
 
 const Message = styled.div`
