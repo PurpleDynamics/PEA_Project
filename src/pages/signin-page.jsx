@@ -46,6 +46,7 @@ const SigninPage = () => {
 			const response = await axios.post(`${BASE_URL}/signin`, Data);
 			const token = response.data.token;
 
+			// 로그인이 성공적이고, 자동로그인 체크시 localStorage에 , 미체크시 sessionStorage에 토큰이 저장
 			if (response.status === 200) {
 				if (autoLogin) {
 					setLocalToken("accessToken", token);
