@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 import { COLOR, FONT_SIZE } from "../../../libs/styled-components";
 import { SearchBar } from "../../commons";
-import { ChatRoom } from "./components";
+import ChatRoom from "./chat-room";
 
 /**
  * @component

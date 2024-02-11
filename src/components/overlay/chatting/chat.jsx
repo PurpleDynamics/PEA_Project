@@ -3,8 +3,8 @@ import { useForm } from "react-hook-form";
 import { BsSendFill } from "react-icons/bs";
 import styled from "styled-components";
 
-import { COLOR, FONT_SIZE } from "../../../../libs/styled-components";
-import { ResponsiveIcon } from "../../../commons";
+import { COLOR, FONT_SIZE } from "../../../libs/styled-components";
+import { ResponsiveIcon } from "../../commons";
 
 /**
  * @component

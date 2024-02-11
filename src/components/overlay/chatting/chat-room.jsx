@@ -1,9 +1,9 @@
 import { useState } from "react";
 import styled from "styled-components";
 
-import { useOverlay } from "../../../../hooks/use-overlay";
-import { COLOR, FONT_SIZE } from "../../../../libs/styled-components";
-import { Chat } from ".";
+import { useOverlay } from "../../../hooks/use-overlay";
+import { COLOR, FONT_SIZE } from "../../../libs/styled-components";
+import Chat from "./chat";
 
 /**
  * @component
@@ -27,6 +27,7 @@ const ChatRoom = ({ data }) => {
 			overlayComponent: Chat,
 			position: "bottomRight",
 			isFiltered: false,
+			z,
 		});
 	};
 
@@ -51,7 +52,7 @@ const ChatRoom = ({ data }) => {
 					<S.SendTime>{item.createdAt}</S.SendTime>
 				</S.RoomContainer>
 			))}
-			{roomView !== null && <Chat />}
+			<Chat />
 		</S.RoomList>
 	);
 };
