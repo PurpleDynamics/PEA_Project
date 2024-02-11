@@ -7,7 +7,7 @@ import { ChatRoom } from "./components";
 
 /**
  * @component
- * @parameter onCloses: function - x 를 눌렀을 때 overlay를 닫아주는 함수입니다.
+ * @parameter onClose: function - x 를 눌렀을 때 overlay를 닫아주는 함수입니다.
  * @returns {JSX.Element}
  *
  * @description 채팅을 클릭했을 때 제일 먼저 나오는 페이지 입니다.
