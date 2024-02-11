@@ -1,3 +1,5 @@
+import axios from "axios";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
@@ -6,6 +8,7 @@ import { Button, Input } from "../components/commons";
 import { VAILDATION } from "../constants";
 import { BREAK_POINT, COLOR } from "../libs/styled-components";
 
+const BASE_URL = "http://49.165.177.17:3055";
 /**
  * @component
  * @parameter register : input 요소를 리액트훅폼과 연결해 검증규칙을 적용할수있게하는 메소드입니다
@@ -19,17 +22,104 @@ const SignupPage = () => {
 	const navigate = useNavigate();
 	const {
 		register,
-		validate,
 		handleSubmit,
-		formState: { errors },
+		watch,
+		formState: { errors, isValid },
 	} = useForm({ mode: "onChange" });
-	const onSubmit = () => {
-		navigate("/signin");
+
+	const [isEmailChecked, setIsEmailChecked] = useState(false);
+	const [isNicknameChecked, setIsNicknameChecked] = useState(false);
+
+	const [isEmailAvailable, setIsEmailAvilabl] = useState(false);
+	const [isNicknameAvailable, setIsNicknameAvailable] = useState(false);
+
+	const emailValue = watch("email");
+	const nicknameValue = watch("nickname");
+
+	const onSubmit = async (data) => {
+		const Data = {
+			email: data.email,
+			password: data.password,
+			nickname: data.nickname,
+			phone_number: data.phoneNumber,
+			location: data.location,
+		};
+		try {
+			const response = await axios.post(`${BASE_URL}/signup`, Data);
+			console.log(response, "response");
+			if (response.status === 200) {
+				navigate("/signin");
+			}
+		} catch (error) {
+			console.error("회원가입 오류", error);
+		}
 	};
+
+	const onEmailDup = async () => {
+		if (!emailValue) {
+			alert("이메일을 입력해주세요.");
+			return;
+		}
+		const emailUrl = `${BASE_URL}/check_email?email=${encodeURIComponent(emailValue)}`;
+		console.log("이메일 중복 체크", emailUrl);
+		try {
+			const response = await axios.get(emailUrl);
+			if (response.data.isAvailable) {
+				alert("사용가능한 이메일 입니다.");
+				setIsEmailChecked(true);
+				setIsEmailAvilabl(true);
+			} else {
+				alert("중복된 이메일입니다");
+				setIsEmailChecked(false);
+				setIsEmailAvilabl(false);
+			}
+			setIsEmailChecked(true);
+		} catch (error) {
+			console.error("중복확인 오류", error);
+		}
+	};
+	const onNicknameDup = async () => {
+		if (!nicknameValue) {
+			alert("닉네임을 입력해주세요");
+			return;
+		}
+
+		const nicknameUrl = `${BASE_URL}/check_nickname?nickname=${encodeURIComponent(nicknameValue)}`;
+		try {
+			const response = await axios.get(nicknameUrl);
+			if (response.data.isAvailable) {
+				alert("사용가능한 닉네임입니다");
+				setIsNicknameAvailable(true);
+				setIsNicknameChecked(true);
+			} else {
+				alert("중복된 닉네임입니다");
+				setIsNicknameAvailable(false);
+				setIsNicknameChecked(false);
+			}
+			setIsNicknameChecked(true);
+		} catch (error) {
+			console.error("중복확인 오류", error);
+		}
+	};
+	// 이메일 값이 변경될 때마다 중복 확인 상태를 초기화하기 위하여 사용
+	useEffect(() => {
+		setIsEmailChecked(false);
+	}, [emailValue]);
+
+	useEffect(() => {
+		setIsNicknameChecked(false);
+	}, [nicknameValue]);
+
+	const isSubmitDisabled =
+		!isEmailChecked ||
+		!isNicknameChecked ||
+		!isEmailAvailable ||
+		!isNicknameAvailable;
+
 	return (
 		<S.MainWrapper>
 			<S.ImageContainer>
-				<S.LogoImage src="https://buly.kr/74To5Al" />
+				<img width="500rem" src="https://buly.kr/74To5Al" />
 			</S.ImageContainer>
 			<S.TextInputForm onSubmit={handleSubmit(onSubmit)}>
 				<S.TitleText>P.E.A</S.TitleText>
@@ -39,6 +129,7 @@ const SignupPage = () => {
 					registerKey="email"
 					placeholder="이메일을 입력하세요"
 					buttonText="중복확인"
+					handleButton={() => onEmailDup()}
 					errors={errors}
 					validate={{
 						required: VAILDATION.COMMON_MESSAGE,
@@ -72,9 +163,10 @@ const SignupPage = () => {
 				<Input
 					register={register}
 					titleText="닉네임"
-					registerKey="nickName"
+					registerKey="nickname"
 					placeholder="닉네임을 입력하세요"
 					buttonText="중복확인"
+					handleButton={() => onNicknameDup()}
 					errors={errors}
 					validate={{
 						required: VAILDATION.COMMON_MESSAGE,
@@ -95,7 +187,7 @@ const SignupPage = () => {
 				<Input
 					register={register}
 					titleText="주소"
-					registerKey="address"
+					registerKey="location"
 					placeholder="주소를 입력하세요"
 					buttonText="검색"
 					errors={errors}
@@ -106,7 +198,8 @@ const SignupPage = () => {
 				<Button
 					type="submit"
 					width="30rem"
-					style={{ backgroundColor: COLOR.COMMON[600] }}
+					// style={{ backgroundColor: COLOR.COMMON[600] }}
+					disabled={isSubmitDisabled || !isValid}
 				>
 					가입하기
 				</Button>
@@ -133,9 +226,6 @@ const ImageContainer = styled.div`
 	justify-content: center;
 	align-items: center;
 `;
-const LogoImage = styled.img`
-	width: 50rem;
-`;
 const TextInputForm = styled.form`
 	width: 100%;
 	display: flex;
@@ -152,7 +242,6 @@ const TitleText = styled.div`
 const S = {
 	MainWrapper,
 	ImageContainer,
-	LogoImage,
 	TextInputForm,
 	TitleText,
 };
