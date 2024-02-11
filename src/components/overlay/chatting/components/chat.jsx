@@ -58,6 +58,7 @@ const Chat = ({ onClose }) => {
 				</S.ChatTitleWrapper>
 			</S.ChatTitleBox>
 			<S.ChatView>
+				{/* 배열로 저장된 message를 받아와서 각각 보여주는 map입니다. */}
 				{messages.map((message, index) => (
 					<S.Message key={index} sender={message.sender}>
 						{message.text}

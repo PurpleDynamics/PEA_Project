@@ -35,11 +35,11 @@ const ChatRoom = ({ data }) => {
 
 	return (
 		<S.RoomList>
+			{/* data의 정보를 chat room에 맡게 보여주는 map입니다. */}
 			{data.map((item, index) => (
 				<S.RoomContainer
 					key={index}
 					onClick={(e) => handleChatRoomClick(e)}
-					// value={index + 1}
 				>
 					<S.UserProfile
 						src={item.imagesrc || "https://url.kr/5zjib4"}
