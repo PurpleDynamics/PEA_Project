@@ -21,6 +21,7 @@ const BASE_URL = "http://49.165.177.17:3055";
  * - 이메일 과 비밀번호 형식이 맞으면 로그인버튼이 활성화 됩니다.
  * - 자동로그인 체크후 로그인시, LocalStorage에 저장되고 미체크후 로그인시 SessionStorage에 저장됩니다.
  *
+ * @example 참고해주세요!
  * - email: test1@test.test
  * - password: qwer1234
  */
