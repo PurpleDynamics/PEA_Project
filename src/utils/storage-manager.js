@@ -4,7 +4,7 @@
 
 /**
  * @function
- * @retruns {string | null} 저장된 token값 또는 token이 없을 경우 null
+ * @returns {string | null} 저장된 token값 또는 token이 없을 경우 null
  *
  * @description localStorage에 저장된 내용을 key값("accessToken")으로 가져오는 함수입니다.
  */
@@ -35,7 +35,7 @@ export const setSessionToken = (token) => {
 
 /**
  * @function
- * @retruns {string | null} 저장된 token값 또는 token이 없을 경우 null
+ * @returns {string | null} 저장된 token값 또는 token이 없을 경우 null
  *
  * @description sessionStorage에 key값("refreshToken")으로 받아온 token을 저장하는 함수입니다.
  */
