@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useState } from "react";
+import { useRef } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
@@ -31,7 +31,7 @@ const SigninPage = () => {
 	const onMoveSignupPage = () => {
 		navigate("/signup");
 	};
-	const [autoLogin, setAutoLogin] = useState(false);
+	const autoLoginRef = useRef(false);
 	const {
 		register,
 		handleSubmit,
@@ -48,7 +48,7 @@ const SigninPage = () => {
 
 			// 로그인이 성공적이고, 자동로그인 체크시 localStorage에 , 미체크시 sessionStorage에 토큰이 저장
 			if (response.status === 200) {
-				if (autoLogin) {
+				if (autoLoginRef.current) {
 					setLocalToken("accessToken", token);
 				} else {
 					setSessionToken("refreshToken", token);
@@ -92,7 +92,9 @@ const SigninPage = () => {
 				<S.CheckboxWrapper>
 					<S.CheckboxInput
 						type="checkbox"
-						onChange={(e) => setAutoLogin(e.target.checked)}
+						onChange={(e) =>
+							(autoLoginRef.current = e.target.checked)
+						}
 					/>
 					<S.CheckboxText>자동로그인</S.CheckboxText>
 				</S.CheckboxWrapper>
