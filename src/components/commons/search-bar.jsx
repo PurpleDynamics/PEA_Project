@@ -16,7 +16,7 @@ const SearchBar = ({
 }) => {
 	return (
 		<>
-			<S.SearchWrapper style={{ paddingLeft }}>
+			<S.SearchWrapper $paddingLeft={{ paddingLeft }}>
 				<S.Input
 					width={width}
 					height={height}
@@ -33,7 +33,7 @@ export default SearchBar;
 
 const SearchWrapper = styled.form`
 	width: 100%;
-	padding-left: ${(paddingLeft) => paddingLeft};
+	padding-left: ${({ $paddingLeft }) => $paddingLeft};
 	display: grid;
 	grid-template-columns: 1fr 1fr;
 `;
