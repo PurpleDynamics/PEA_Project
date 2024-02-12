@@ -4,6 +4,12 @@ import styled from "styled-components";
 import { COLOR } from "../../libs/styled-components";
 import { HighlightedText } from "../commons";
 
+/**
+ * @component
+ * @description
+ * - 등록 페이지 최상단에 위치
+ * - 페이지에 대한 안내 텍스트 출력 목적
+ */
 const PageNotice = () => {
 	return (
 		<S.Wrapper>

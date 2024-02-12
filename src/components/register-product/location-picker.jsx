@@ -3,6 +3,10 @@ import styled from "styled-components";
 import { COLOR } from "../../libs/styled-components";
 import { Input, Spacer } from "../commons";
 
+/**
+ * @component
+ * @description 상품 판매 지역 선택 section
+ */
 const LocationPicker = () => {
 	return (
 		<div>

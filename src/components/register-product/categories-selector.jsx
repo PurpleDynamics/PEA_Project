@@ -4,8 +4,17 @@ import styled from "styled-components";
 import { CATEGORIES_ARRAY } from "../../constants";
 import { CategoryToggle, Input, Spacer } from "../commons";
 
+/**
+ * @component
+ * @returns {JSX.Element}
+ * @description
+ * - 카테고리 선택 / 추가
+ * - 카테고리르 추가할 수 있도록 출력되는 카테고리 이름을 담은 배열을 상태로 관리
+ */
 const CategoriesSelector = () => {
-	const [categories, setCategories] = useState(CATEGORIES_ARRAY);
+	/** 화면에 출력되는 카테고리 이름을 담은 배열 */
+	const [printedCategories, setPrintedCategories] =
+		useState(CATEGORIES_ARRAY);
 
 	return (
 		<div>
@@ -17,7 +26,7 @@ const CategoriesSelector = () => {
 				buttonText="추가"
 			/>
 			<S.CategoryWrapper>
-				{categories.map((category, index) => (
+				{printedCategories.map((category, index) => (
 					<CategoryToggle key={index}>{category}</CategoryToggle>
 				))}
 			</S.CategoryWrapper>

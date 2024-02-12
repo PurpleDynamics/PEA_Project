@@ -3,6 +3,10 @@ import styled from "styled-components";
 
 import { COLOR } from "../../libs/styled-components";
 
+/**
+ * @component
+ * @description 이미지 등록 및 등록된 이미지 미리보기 목적
+ */
 const ImageLoader = () => {
 	return (
 		<S.Wrapper>

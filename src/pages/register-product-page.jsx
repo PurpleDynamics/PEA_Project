@@ -17,6 +17,10 @@ import {
 } from "../components/register-product";
 import { COLOR, FONT_SIZE } from "../libs/styled-components";
 
+/**
+ * @component
+ * @returns {JSX.Element}
+ */
 const RegisterProductPage = () => {
 	return (
 		<CompressionContainer tb="1rem" rl="10%">
