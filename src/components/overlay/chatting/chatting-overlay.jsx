@@ -53,14 +53,14 @@ const ChattingOverlay = ({ onClose }) => {
 	]);
 
 	return (
-		<S.ChatWrapper>
-			<S.ChatTitleBox>
-				<S.ChatTitleImage src="https://url.kr/fm7ls1" />
-				<S.ChatTitleWrapper>
-					<S.ChatTitleText>P.E.A Chat</S.ChatTitleText>
+		<S.Wrapper>
+			<S.TitleBox>
+				<S.TitleImage src="https://url.kr/fm7ls1" />
+				<S.TitleWrapper>
+					<S.TitleText>P.E.A Chat</S.TitleText>
 					<S.X_Button onClick={onClose}>x</S.X_Button>
-				</S.ChatTitleWrapper>
-			</S.ChatTitleBox>
+				</S.TitleWrapper>
+			</S.TitleBox>
 
 			<S.SearchContainer>
 				<SearchBar
@@ -70,12 +70,12 @@ const ChattingOverlay = ({ onClose }) => {
 				/>
 			</S.SearchContainer>
 			<ChatRoomList data={chatRoomList} />
-		</S.ChatWrapper>
+		</S.Wrapper>
 	);
 };
 export default ChattingOverlay;
 
-const ChatWrapper = styled.div`
+const Wrapper = styled.div`
 	width: 35rem;
 	height: 40rem;
 	border-radius: 0.6rem;
@@ -84,25 +84,25 @@ const ChatWrapper = styled.div`
 	background-color: ${COLOR.COMMON[1000]};
 `;
 
-const ChatTitleBox = styled.div`
+const TitleBox = styled.div`
 	display: flex;
 	justify-content: left;
 	align-items: center;
 `;
 
-const ChatTitleWrapper = styled.div`
+const TitleWrapper = styled.div`
 	width: 30rem;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 `;
 
-const ChatTitleImage = styled.img`
+const TitleImage = styled.img`
 	width: 4rem;
 	padding: 0.5rem;
 `;
 
-const ChatTitleText = styled.p`
+const TitleText = styled.p`
 	font-size: ${FONT_SIZE.md};
 `;
 
@@ -114,17 +114,15 @@ const X_Button = styled.button`
 	width: 3rem;
 	height: 3rem;
 	background-color: ${COLOR.COMMON[1000]};
-	&:hover {
-		cursor: pointer;
-	}
+	cursor: pointer;
 `;
 
 const S = {
-	ChatWrapper,
+	Wrapper,
 	X_Button,
-	ChatTitleBox,
-	ChatTitleImage,
-	ChatTitleText,
-	ChatTitleWrapper,
+	TitleBox,
+	TitleImage,
+	TitleText,
+	TitleWrapper,
 	SearchContainer,
 };
