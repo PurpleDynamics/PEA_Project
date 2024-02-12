@@ -14,7 +14,7 @@ const Header = () => {
 			<S.MainWrapper>
 				<S.Logo src="https://url.kr/trjdsn" />
 				<SearchBar
-					paddingLeft="14rem"
+					$paddingLeft="14rem"
 					placeholder="상품명 또는 카테고리를 입력해주세요"
 				/>
 				<S.IconsWrapper>
