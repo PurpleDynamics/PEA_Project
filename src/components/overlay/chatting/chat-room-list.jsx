@@ -6,7 +6,8 @@ import Chat from "./chat";
 
 /**
  * @component
- * @parameter data: Array - 임시로 방정보를 받오는 파라미터 입니다.
+ * @parameter roomData: Array<object> - 임시로 방정보를 받오는 파라미터 입니다.
+ *
  * @returns {JSX.Element}
  *
  * @description
