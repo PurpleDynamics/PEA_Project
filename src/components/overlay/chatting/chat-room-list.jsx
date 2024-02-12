@@ -25,6 +25,7 @@ const ChatRoomList = ({ roomData }) => {
 			overlayComponent: Chat,
 			position: "bottomRight",
 			isFiltered: false,
+			zIndex: 1,
 		});
 	};
 
