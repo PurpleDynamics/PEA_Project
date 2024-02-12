@@ -69,7 +69,7 @@ const ChattingOverlay = ({ onClose }) => {
 					placeholder="판매자명 또는 상품명을 입력해주세요"
 				/>
 			</S.SearchContainer>
-			<ChatRoomList data={chatRoomList} />
+			<ChatRoomList roomData={chatRoomList} />
 		</S.Wrapper>
 	);
 };

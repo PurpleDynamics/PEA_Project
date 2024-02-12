@@ -16,7 +16,7 @@ import Chat from "./chat";
  * - 채팅방 클릭 시 Chat component로 이동합니다.
  */
 
-const ChatRoomList = ({ data }) => {
+const ChatRoomList = ({ roomData }) => {
 	const { onOpenOverlay } = useOverlay();
 
 	const handleChatRoomClick = () => {
@@ -27,13 +27,13 @@ const ChatRoomList = ({ data }) => {
 		});
 	};
 
-	if (data.length === 0)
+	if (roomData.length === 0)
 		return <S.NoRoomData>채팅방이 없습니다</S.NoRoomData>;
 
 	return (
 		<S.RoomList>
 			{/* data의 정보를 chat room에 맡게 보여주는 map입니다. */}
-			{data.map((item, index) => (
+			{roomData.map((item, index) => (
 				<S.RoomContainer
 					key={index}
 					onClick={(e) => handleChatRoomClick(e)}

@@ -15,12 +15,12 @@ import { EightProductGrid, PromotionBanner } from "../components/product-list";
 
 const ProductListPage = () => {
 	// 임시 user data
-	const user = {
+	const userData = {
 		location: "역삼동",
 	};
 
 	// 임시 product data
-	const data = [
+	const productData = [
 		{
 			title: "물건1",
 			location: "역삼동",
@@ -103,15 +103,17 @@ const ProductListPage = () => {
 		},
 	];
 
-	const usedData = data
+	const usedData = productData
 		.filter(
-			(el) => el.salesCategory === "중고" && el.location === user.location
+			(el) =>
+				el.salesCategory === "중고" && el.location === userData.location
 		)
 		.slice(0, 8);
 
-	const freeData = data
+	const freeData = productData
 		.filter(
-			(el) => el.salesCategory !== "중고" && el.location === user.location
+			(el) =>
+				el.salesCategory !== "중고" && el.location === userData.location
 		)
 		.slice(0, 8);
 
@@ -119,13 +121,13 @@ const ProductListPage = () => {
 		<>
 			<PromotionBanner />
 			<EightProductGrid
-				userData={user}
+				userData={userData}
 				eightProductData={usedData}
 				salesCategory={"중고거래"}
 			/>
 			<Banner />
 			<EightProductGrid
-				userData={user}
+				userData={userData}
 				eightProductData={freeData}
 				salesCategory={"무료나눔"}
 			/>
