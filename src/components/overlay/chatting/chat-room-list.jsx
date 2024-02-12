@@ -48,7 +48,6 @@ const ChatRoomList = ({ data }) => {
 					<S.SendTime>{item.createdAt}</S.SendTime>
 				</S.RoomContainer>
 			))}
-			{/* <Chat /> */}
 		</S.RoomList>
 	);
 };
