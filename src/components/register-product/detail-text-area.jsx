@@ -2,6 +2,10 @@ import styled from "styled-components";
 
 import { COLOR } from "../../libs/styled-components";
 
+/**
+ * @component
+ * @description 상품에 대한 상세 내용 입력 section
+ */
 const DetailTextArea = () => {
 	return <S.DetailArea />;
 };
