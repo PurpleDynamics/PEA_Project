@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 import { COLOR } from "../../libs/styled-components";
-import SkeletonBase from "./skeleton-base";
+import SkeletonBase from ".";
 
 /**
  * @component
