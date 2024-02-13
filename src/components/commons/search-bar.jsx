@@ -9,17 +9,17 @@ import ResponsiveIcon from "./responsive-icon";
  * @returns {JSX.Element}
  */
 const SearchBar = ({
-	$width = "40rem",
-	$height = "3.5rem",
-	$paddingLeft,
+	width = "40rem",
+	height = "3.5rem",
+	paddingLeft,
 	placeholder,
 }) => {
 	return (
 		<>
-			<S.SearchWrapper paddingLeft={$paddingLeft}>
+			<S.SearchWrapper $paddingLeft={paddingLeft}>
 				<S.Input
-					width={$width}
-					height={$height}
+					width={width}
+					height={height}
 					placeholder={placeholder}
 				/>
 				<S.IconContainer>
@@ -33,7 +33,7 @@ export default SearchBar;
 
 const SearchWrapper = styled.form`
 	width: 100%;
-	padding-left: ${({ paddingLeft }) => paddingLeft};
+	padding-left: ${({ $paddingLeft }) => $paddingLeft};
 	display: grid;
 	grid-template-columns: 1fr 1fr;
 `;

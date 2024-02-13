@@ -64,8 +64,8 @@ const ChattingOverlay = ({ onClose }) => {
 
 			<S.SearchContainer>
 				<SearchBar
-					$width="32rem"
-					$paddingLeft="1.5rem"
+					width="32rem"
+					paddingLeft="1.5rem"
 					placeholder="판매자명 또는 상품명을 입력해주세요"
 				/>
 			</S.SearchContainer>
