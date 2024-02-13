@@ -36,7 +36,6 @@ const SigninPage = () => {
 			overlayComponent: Modal,
 			modalContents: ModalContents,
 			isFiltered: true,
-			onClickBaseButton: () => console.log(""),
 		});
 	};
 
