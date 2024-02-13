@@ -18,8 +18,8 @@ const SearchBar = ({
 		<>
 			<S.SearchWrapper $paddingLeft={paddingLeft}>
 				<S.Input
-					width={width}
-					height={height}
+					$width={width}
+					$height={height}
 					placeholder={placeholder}
 				/>
 				<S.IconContainer>
@@ -48,8 +48,8 @@ const IconContainer = styled.button`
 `;
 
 const Input = styled.input`
-	width: ${(props) => props.width};
-	height: ${(props) => props.height};
+	width: ${({ $width }) => $width};
+	height: ${({ $height }) => $height};
 	border-radius: 8px;
 	border: none;
 	background-color: ${COLOR.COMMON[900]};
