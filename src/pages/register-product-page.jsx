@@ -29,32 +29,32 @@ const RegisterProductPage = () => {
 		<CompressionContainer tb="1rem" rl="10%">
 			<PageNotice />
 			<Spacer height={2} />
-			<S.Divider />
+			<S.Divider $bgColor={COLOR.COMMON[0]} />
 			<Spacer height={1} />
 
 			<RegisterSection titleText="상품 이미지" additionalText="( 5 / 5 )">
 				<ImageLoader />
 			</RegisterSection>
 
-			<S.Divider $bgColor={COLOR.COMMON[900]} />
+			<S.Divider />
 
 			<RegisterSection titleText="상품명">
 				<Input />
 			</RegisterSection>
 
-			<S.Divider $bgColor={COLOR.COMMON[900]} />
+			<S.Divider />
 
 			<RegisterSection titleText="거래 방식">
 				<PaymentMethodToggle />
 			</RegisterSection>
 
-			<S.Divider $bgColor={COLOR.COMMON[900]} />
+			<S.Divider />
 
 			<RegisterSection titleText="가격">
 				<Input unitText="원" type="number" />
 			</RegisterSection>
 
-			<S.Divider $bgColor={COLOR.COMMON[900]} />
+			<S.Divider />
 
 			<RegisterSection
 				titleText="상품 설명"
@@ -63,13 +63,13 @@ const RegisterProductPage = () => {
 				<DetailTextArea />
 			</RegisterSection>
 
-			<S.Divider $bgColor={COLOR.COMMON[900]} />
+			<S.Divider />
 
 			<RegisterSection titleText="태그" additionalText="(최대 5개)">
 				<CategoriesSelector />
 			</RegisterSection>
 
-			<S.Divider $bgColor={COLOR.COMMON[900]} />
+			<S.Divider />
 
 			<RegisterSection titleText="거래 희망 장소">
 				<LocationPicker />
@@ -89,7 +89,7 @@ export default RegisterProductPage;
 const Divider = styled.div`
 	width: 100%;
 	height: 2px;
-	background-color: ${({ $bgColor = COLOR.COMMON[0] }) => $bgColor};
+	background-color: ${({ $bgColor = COLOR.COMMON[900] }) => $bgColor};
 `;
 const ButtonsWrapper = styled.div`
 	width: 100%;
