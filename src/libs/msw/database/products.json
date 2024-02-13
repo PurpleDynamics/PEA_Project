@@ -1,0 +1,512 @@
+{
+	"products": [
+		{
+			"id": "1",
+			"title": "혼다 CRF1100L, 몇번못탄 오토바이 입니다  잠잘시간이 부족해서 팔아요",
+			"price": "16000000",
+			"categoryList": ["남성패션/잡화", "스포츠/레저", "취미/게임/음반"],
+			"detail": "몇번못탄 오토바이 입니다  잠잘시간이 부족해서 팔아요",
+			"sellerId": "5",
+			"location": "서울시 강남구 서초동",
+			"interestCount": "4",
+			"chattingCount": "4",
+			"isOnSale": "true",
+			"createAt": "2023-06-24",
+			"imageSrcList": [
+				"https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMDA1MTlfMjMx%2FMDAxNTg5ODc4NTYzNzA3.yZULZNH24bKcMIE2TU1KTxV2gruUQ4CZOcENv4OQcJog.Y3DVdJLFxPk0kbtoQ6ymvvLYcI36WgU0lG57i6ZTb5Ig.JPEG.anybuddy%2F2020-Honda-CRF1100L-Africa-Twin-Adventure-Sports-01.jpg&type=a340",
+				"https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMzEwMDZfMTIz%2FMDAxNjk2NTgyMzk3ODUw.cggGgyW-XmrVe13pC0weRJcpiND2wsS7sRmZy36bkx0g.YWhWO0lCgZiDflagW0671F_CAeDj0IdfcOnVCYIlww0g.JPEG.supplyurs%2FS2.jpg&type=a340"
+			]
+		},
+		{
+			"id": "2",
+			"title": "카드지갑, 전여친이 준선물 팝니다",
+			"price": "1200000",
+			"categoryList": ["남성패션/잡화", "가전/인테리어"],
+			"detail": "전여친이 준선물 팝니다",
+			"sellerId": "1",
+			"location": "서울시 강남구 서초동",
+			"interestCount": "1",
+			"chattingCount": "5",
+			"isOnSale": "true",
+			"createAt": "2023-06-24",
+			"imageSrcList": [
+				"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqwcJobGwHVRS8C4J3CIWltdLxZ0fOHiGRjktwsXz6cK4UFIYpkclyMI6hIw&s",
+				"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRS7Gtf4YhMKP9p7Jpmtfn38qX8MUzkT1KTpKNp-f-bv1QaZYLazGHfjBx06g&s"
+			]
+		},
+		{
+			"id": "3",
+			"title": "크리스마스트리, 크리스마스 트리 둘곳이 없어서 나눔할게여",
+			"price": "0",
+			"categoryList": ["식물", "가전/인테리어", "취미/게임/음반"],
+			"detail": "크리스마스 트리 둘곳이 없어서 나눔할게여",
+			"sellerId": "3",
+			"location": "서울시 강남구 서초동",
+			"interestCount": "2",
+			"chattingCount": "3",
+			"isOnSale": "false",
+			"createAt": "2023-06-24",
+			"imageSrcList": [
+				"https://thumbnail9.coupangcdn.com/thumbnails/remote/230x230ex/image/retail/images/4269529717172654-7c660a73-7415-42bc-bbc0-a28e7640f65b.png"
+			]
+		},
+		{
+			"id": "4",
+			"title": "질레트 면도기, 제모 해서 날 제외하고 나눔합니다",
+			"price": "0",
+			"categoryList": ["남성패션/잡화", "여성잡화 "],
+			"detail": "제모 해서 날 제외하고 나눔합니다",
+			"sellerId": "5",
+			"location": "서울시 강남구 서초동",
+			"interestCount": "2",
+			"chattingCount": "4",
+			"isOnSale": "false",
+			"createAt": "2023-06-24",
+			"imageSrcList": [
+				"https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMDEyMTNfMjQ2%2FMDAxNjA3ODI4MTE0Nzc4.u1I6zpm-Gtl01oP47IBEgt7fOLngjs5P13WUK7599Wkg.1xpfX0ch15Z9kudJDgKW2Dn_MKvMSR-FkGkwHZ88_M8g.JPEG.kimcoach3%2F11_ProShieldManRazor_KR_DT.jpg&type=a340"
+			]
+		},
+		{
+			"id": "5",
+			"title": "맥칼랜 1947, 아내한테 걸려서 팔아요",
+			"price": "6000000",
+			"categoryList": ["가전/인테리어", "가공식품"],
+			"detail": "아내한테 걸려서 팔아요",
+			"sellerId": "9",
+			"location": "서울시 강남구 서초동",
+			"interestCount": "3",
+			"chattingCount": "4",
+			"isOnSale": "true",
+			"createAt": "2023-06-24",
+			"imageSrcList": [
+				"https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2F20150323_229%2Fhlqaa_14271222959585ImRc_PNG%2F%25C0%25CC%25B9%25CC%25C1%25F6_17-16.png&type=a340"
+			]
+		},
+		{
+			"id": "6",
+			"title": "넥슨 십만원 쿠폰, 메이플 망해서 나눔니다",
+			"price": "0",
+			"categoryList": ["티켓/교환권"],
+			"detail": "메이플 망해서 나눔니다",
+			"sellerId": "10",
+			"location": "서울시 강남구 서초동",
+			"interestCount": "5",
+			"chattingCount": "6",
+			"isOnSale": "false",
+			"createAt": "2023-06-24",
+			"imageSrcList": [
+				"https://search.pstatic.net/common/?src=http%3A%2F%2Fcafefiles.naver.net%2FMjAxODA0MDdfNTkg%2FMDAxNTIzMTA2NDk1MjE3.k6-8TlT0UEP2ZpFnqprSTuhJeuYxMp6VjX_7QpbKCYwg.WoKBdJJr68DbkAOUbJ3rvbq_XRk4UuSr0bqpkdYeAB0g.JPEG.skcnj10%2FKakaoTalk_20180407_220747726.jpg&type=a340"
+			]
+		},
+		{
+			"id": "7",
+			"title": "M1A1 톰슨, 저격에 맛들려서 팝니다",
+			"price": "3000000",
+			"categoryList": ["스포츠/레저", "남성패션/잡화", "취미/게임/음반"],
+			"detail": "저격에 맛들려서 팝니다",
+			"sellerId": "2",
+			"location": "서울시 강남구 서초동",
+			"interestCount": "2",
+			"chattingCount": "5",
+			"isOnSale": "false",
+			"createAt": "2023-06-24",
+			"imageSrcList": [
+				"https://search.pstatic.net/common/?src=http%3A%2F%2Fcafefiles.naver.net%2F20110509_101%2Fdbxogus1121_1304943120560gblnY_jpg%2F%25C5%25E8%25BD%25BCm1a1_dbxogus1121.jpg&type=l340_110",
+				"https://search.pstatic.net/sunny/?src=https%3A%2F%2Fi3.ruliweb.com%2Fimg%2F23%2F05%2F18%2F1882eb239bd13b068.jpg&type=a340",
+				"https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2F20120911_61%2Fb03280_1347356300846ehHPb_JPEG%2F03-1.jpg&type=a340",
+				"https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMTAyMjBfMjc1%2FMDAxNjEzODA1MzU0Nzc3.JOiR3w1b9eGH-0WkoCdx_2JKxZr03q8RKYS2GxJxlBgg.XFzgIE5hIffD8q2B8x81sq3jXj7Jn4BGcm1WcyKsTm0g.JPEG.dlwlsdyd147%2F1A-post-part-2-M1A1.jpg&type=a340",
+				"https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2F20091110_280%2Fkyh09405_1257855569903KOBzU_jpg%2F75864b_kyh09405_kyh09405.jpg&type=a340"
+			]
+		},
+		{
+			"id": "8",
+			"title": "2023 맥북 프로 14 m3, 삼성으로 갈아타서 팔아요",
+			"price": "2500000",
+			"categoryList": ["생활가전", "디지털기기", "가전/인테리어 "],
+			"detail": "삼성으로 갈아타서 팔아요",
+			"sellerId": "9",
+			"location": "서울시 강남구 서초동",
+			"interestCount": "1",
+			"chattingCount": "4",
+			"isOnSale": "false",
+			"createAt": "2023-06-24",
+			"imageSrcList": [
+				"https://thumbnail9.coupangcdn.com/thumbnails/remote/230x230ex/image/retail/images/2119768668797193-b109eb1a-fd30-4420-850f-04faf0aea2f9.jpg",
+				"https://image6.coupangcdn.com/image/retail/images/8182704572386281-4b0ec197-8476-4742-87fd-7caa22aae4cc.jpg"
+			]
+		},
+		{
+			"id": "9",
+			"title": "베라 파운드 쿠폰,다이어트 중이라 나눔 합니다",
+			"price": "0",
+			"categoryList": ["티켓/교환권"],
+			"detail": "다이어트 중이라 나눔 합니다",
+			"sellerId": "4",
+			"location": "서울시 강남구 서초동",
+			"interestCount": "2",
+			"chattingCount": "4",
+			"isOnSale": "true",
+			"createAt": "2023-06-24",
+			"imageSrcList": [
+				"https://search.pstatic.net/common/?src=http%3A%2F%2Fcafefiles.naver.net%2FMjAyMDAxMTVfMTIz%2FMDAxNTc5MDYwNjc4MTI2.Bzbul0XzbC4Ct4KTw90xsicejPjl7HKsBN8bxThrA0Ug.llluG1zTvzw4nxPcdu38MxzXbegtPOGEIdb_mrQmqNAg.JPEG%2FexternalFile.jpg&type=ofullfill340_600_png"
+			]
+		},
+		{
+			"id": "10",
+			"title": "코스모스, e-book으로 읽기시작해서 나눔합니다",
+			"price": "0",
+			"categoryList": ["도서", "취미/게임/음반", "가전/인테리어 "],
+			"detail": "e-book으로 읽기시작해서 나눔합니다",
+			"sellerId": "3",
+			"location": "서울시 강남구 서초동",
+			"interestCount": "2",
+			"chattingCount": "3",
+			"isOnSale": "true",
+			"createAt": "2023-06-25",
+			"imageSrcList": [
+				"https://thumbnail8.coupangcdn.com/thumbnails/remote/230x230ex/image/vendor_inventory/922e/6758ee6454f7612a8cbe3042c0c4b284e7583649a1060723be262fd1214b.jpg "
+			]
+		},
+		{
+			"id": "11",
+			"title": "아기신발, 아기한테 사이즈 안맞아서 나눔합니다",
+			"price": "0",
+			"categoryList": ["유아동"],
+			"detail": "아기한테 사이즈 안맞아서 나눔합니다",
+			"sellerId": "10",
+			"location": "서울시 강남구 서초동",
+			"interestCount": "3",
+			"chattingCount": "11",
+			"isOnSale": "false",
+			"createAt": "2023-06-25",
+			"imageSrcList": [
+				"https://thumbnail10.coupangcdn.com/thumbnails/remote/230x230ex/image/vendor_inventory/0c4f/612bed3e49d782de7dc4586224314c8f7182495b88ea72c59d1af1cca1a7.jpg"
+			]
+		},
+
+		{
+			"id": "12",
+			"title": "강아지 선글라스, 저희 강아지는 안좋아해서 팝니다",
+			"price": "2000",
+			"categoryList": ["반려동물용품", "뷰티/미용"],
+			"detail": "저희 강아지는 안좋아해서 팝니다",
+			"sellerId": "1",
+			"location": "서울시 강남구 서초동",
+			"interestCount": "1",
+			"chattingCount": "12",
+			"isOnSale": "false",
+			"createAt": "2023-06-26",
+			"imageSrcList": [
+				"https://thumbnail8.coupangcdn.com/thumbnails/remote/230x230ex/image/vendor_inventory/94c3/3e79d85dededdd6b4a944ba64d0dad234fa9785fe59778efa0e055f37773.jpg"
+			]
+		},
+		{
+			"id": "13",
+			"title": "동전파스",
+			"price": "10000",
+			"categoryList": ["생활/주방", " 기타중고물품"],
+			"detail": "일본에서 너무 많이사와서 팝니다",
+			"sellerId": "3",
+			"location": "서울시 강남구 서초동",
+			"interestCount": "2",
+			"chattingCount": "1",
+			"isOnSale": "false",
+			"createAt": "2023-06-27",
+			"imageSrcList": [
+				"https://thumbnail6.coupangcdn.com/thumbnails/remote/230x230ex/image/vendor_inventory/7616/f6854c5fe4652ec1206311ac9bd6c62ae34093447ead5fa476236f5a4125.jpg"
+			]
+		},
+
+		{
+			"id": "14",
+			"title": "하리보 한통, 당뇨와서 팝니다",
+			"price": "3500",
+			"categoryList": ["가공식품"],
+			"detail": "당뇨와서 팝니다",
+			"sellerId": "9",
+			"location": "서울시 강남구 서초동",
+			"interestCount": "3",
+			"chattingCount": "42",
+			"isOnSale": "true",
+			"createAt": "2023-06-27",
+			"imageSrcList": [
+				"https://thumbnail8.coupangcdn.com/thumbnails/remote/230x230ex/image/retail/images/3538308240938580-b1f77183-7b96-418a-8f58-cc034e3efd05.jpg"
+			]
+		},
+		{
+			"id": "15",
+			"title": "가디건, 저한테 핏이 안맞는데 태그 때서 팝니다",
+			"price": "245000",
+			"categoryList": ["여성의류", "여성잡화"],
+			"detail": "저한테 핏이 안맞는데 태그 때서 팝니다",
+			"sellerId": "4",
+			"location": "서울시 강남구 서초동",
+			"interestCount": "0",
+			"chattingCount": "15",
+			"isOnSale": "true",
+			"createAt": "2023-06-27",
+			"imageSrcList": [
+				"https://thumbnail7.coupangcdn.com/thumbnails/remote/230x230ex/image/vendor_inventory/5c9c/cc83cd04f405da693f21a37689f88fad139911685f6083a1b45231f219d6.jpg"
+			]
+		},
+		{
+			"id": "16",
+			"title": "어그, 어그 선물받아서 중고 나눔해요",
+			"price": "30000",
+			"categoryList": ["여성의류", "여성잡화 "],
+			"detail": "어그 선물받아서 중고 나눔해요",
+			"sellerId": "4",
+			"location": "서울시 강남구 서초동",
+			"interestCount": "1",
+			"chattingCount": "16",
+			"isOnSale": "true",
+			"createAt": "2023-06-28",
+			"imageSrcList": [
+				"https://thumbnail8.coupangcdn.com/thumbnails/remote/230x230ex/image/vendor_inventory/1507/1654bacc2d2c0e0fc9000578b4aadce17ef0bdc1406b9a1ffde8009b191f.jpg "
+			]
+		},
+		{
+			"id": "17",
+			"title": "강아지 노즈워크 장난감, 강아지(허스키)가 너무커져서 나눔합니다",
+			"price": "0",
+			"categoryList": ["반려동물용품"],
+			"detail": "강아지(허스키)가 너무커져서 나눔합니다",
+			"sellerId": "9",
+			"location": "서울시 강남구 서초동",
+			"interestCount": "2",
+			"chattingCount": "4",
+			"isOnSale": "false",
+			"createAt": "2023-06-29",
+			"imageSrcList": [
+				"https://thumbnail9.coupangcdn.com/thumbnails/remote/230x230ex/image/rs_quotation_api/zafkqw6o/7b277a8702af4110b44a4288b4138f76.jpg"
+			]
+		},
+		{
+			"id": "18",
+			"title": "cherry 키보드",
+			"price": "0",
+			"categoryList": ["디지털기기", "취미/게임/음반", "가전/인테리어 "],
+			"detail": "노트북으로 갈아타서 나눔합니다",
+			"sellerId": "3",
+			"location": "서울시 강남구 서초동",
+			"interestCount": "1",
+			"chattingCount": "4",
+			"isOnSale": "true",
+			"createAt": "2023-06-30",
+			"imageSrcList": [
+				"https://thumbnail8.coupangcdn.com/thumbnails/remote/230x230ex/image/retail/images/8386682624520390-75443f05-a16c-41e5-b18c-f4bedc0fa3cf.jpg"
+			]
+		},
+		{
+			"id": "19",
+			"title": "참이슬 한박스, 진로 파인데 참이슬 받게되서 팝니다",
+			"price": "30000",
+			"categoryList": ["가공식품"],
+			"detail": "진로 파인데 참이슬 받게되서 팝니다",
+			"sellerId": "8",
+			"location": "서울시 강남구 서초동",
+			"interestCount": "1",
+			"chattingCount": "3",
+			"isOnSale": "false",
+			"createAt": "2023-06-30",
+			"imageSrcList": [
+				"https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMTA2MDJfMTc4%2FMDAxNjIyNjEwNDYxMTY1.xr8VRpXrUS0FQZWFoC_RRP5UleOJaamJk8iyMExPMOEg.TxBBoRYs_2UjbO8IOdUN3XNLQFiKe9LfvOznfc1VS7gg.JPEG.adorablemomo%2F20210602%25A3%25DF112835.jpg&type=a340"
+			]
+		},
+
+		{
+			"id": "20",
+			"title": "박카스 박스",
+			"price": "5000",
+			"categoryList": ["가공식품 "],
+			"detail": "카페인 중독 되기전에 팝니다",
+			"sellerId": "1",
+			"location": "서울시 강남구 서초동",
+			"interestCount": "4",
+			"chattingCount": "12",
+			"isOnSale": "true",
+			"createAt": "2023-06-30",
+			"imageSrcList": [
+				"https://thumbnail6.coupangcdn.com/thumbnails/remote/230x230ex/image/vendor_inventory/990a/9bc5321e31bb5e70fbaeccb9bb69c5929816e9c0a51819116bb9be976dea.png"
+			]
+		},
+		{
+			"id": "21",
+			"title": "문틀 철봉",
+			"price": "10000",
+			"categoryList": ["스포츠/레저", "가전/인테리어"],
+			"detail": "헬스 방을 만들어서 필요없게 되서 팝니다 ",
+			"sellerId": "1",
+			"location": "서울시 강남구 서초동",
+			"interestCount": "3",
+			"chattingCount": "9",
+			"isOnSale": "false",
+			"createAt": "2023-06-30",
+			"imageSrcList": [
+				"https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAxNzAzMDlfMjIz%2FMDAxNDg5MDQ0NDA5MTEy.GS1SHqFhPewHDN6Oso-M7NeKmd-Q7FjYIIn4UXmgtWcg.R8MQE6LOY8SygXJTUe-ACFMqyfvU5lUwTxgTIb-uMRUg.JPEG.kht84%2FIMG_0588.JPG&type=a340"
+			]
+		},
+		{
+			"id": "22",
+			"title": "자전거",
+			"price": "40000",
+			"categoryList": ["스포츠/레저", "취미/게임/음반", "남성패션/잡화 "],
+			"detail": "보드에 빠지게 되서 사기 위해 팝니다",
+			"sellerId": "6",
+			"location": "서울시 강남구 서초동",
+			"interestCount": "3",
+			"chattingCount": "4",
+			"isOnSale": "true",
+			"createAt": "2023-07-02",
+			"imageSrcList": [
+				"https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyNDAxMDlfMzAg%2FMDAxNzA0NzgyMTEyMTc5.D-_sVN9XrZdnWs2ZFFYsstwLX1hrV9VqOxLcI_QVsfEg.eotM8kxny4DXhdRrivoQQZyVGJZXJ1z8IgRBpkNQnwkg.PNG.ziksun001%2Fimage.png&type=a340"
+			]
+		},
+		{
+			"id": "23",
+			"title": "Apple Watch Series9",
+			"price": "200000",
+			"categoryList": ["뷰티/미용", "디지털 기기 "],
+			"detail": "노트북살려고 급매해여",
+			"sellerId": "3",
+			"location": "서울시 강남구 서초동",
+			"interestCount": "0",
+			"chattingCount": "6",
+			"isOnSale": "true",
+			"createAt": "2023-07-02",
+			"imageSrcList": [
+				"https://thumbnail7.coupangcdn.com/thumbnails/remote/230x230ex/image/retail/images/2023/09/26/9/6/20215e41-c8bd-44eb-bd17-7f29d011ffe0.jpg"
+			]
+		},
+
+		{
+			"id": "24",
+			"title": "나미야 잡화점의 기적",
+			"price": "4000",
+			"categoryList": ["도서"],
+			"detail": "e-book으로 읽기시작해서 나눔합니다",
+			"sellerId": "1",
+			"location": "서울시 강남구 서초동",
+			"interestCount": "1",
+			"chattingCount": "1",
+			"isOnSale": "true",
+			"createAt": "2023-07-02",
+			"imageSrcList": [
+				"https://thumbnail8.coupangcdn.com/thumbnails/remote/230x230ex/image/retail/images/2023/01/06/17/9/748b61ff-e74d-414a-b20a-1d98fe9338cf.jpg"
+			]
+		},
+		{
+			"id": "25",
+			"title": "카리나  목도리",
+			"price": "5000",
+			"categoryList": ["여성의류", "여성잡화", "뷰티/미용"],
+			"detail": "여친줄려고 샀다가 헤어저셔 팔아요",
+			"sellerId": "1",
+			"location": "서울시 강남구 서초동",
+			"interestCount": "0",
+			"chattingCount": "2",
+			"isOnSale": "true",
+			"createAt": "2023-07-02",
+			"imageSrcList": [
+				"https://thumbnail6.coupangcdn.com/thumbnails/remote/230x230ex/image/vendor_inventory/36bb/a816b4fb36cc035af7edb28751a4d028cc6b170cbfdd0538e5b9ef9a8351.png"
+			]
+		},
+		{
+			"id": "26",
+			"title": "에어팟 맥스",
+			"price": "500000",
+			"categoryList": [
+				"디지털기기",
+				"여성잡화",
+				"남성패션/잡화",
+				"취미/게임/음반",
+				"가전/인테리어"
+			],
+			"detail": "하나더 얻게 되서 팔아요",
+			"sellerId": "6",
+			"location": "서울시 강남구 서초동",
+			"interestCount": "2",
+			"chattingCount": "1",
+			"isOnSale": "false",
+			"createAt": "2023-07-07",
+			"imageSrcList": [
+				"https://thumbnail9.coupangcdn.com/thumbnails/remote/230x230ex/image/retail/images/2223265182127-5b60b976-d56b-4e8a-ac18-e96942977bdb.jpg"
+			]
+		},
+
+		{
+			"id": "27",
+			"title": "식사권",
+			"price": "0",
+			"categoryList": ["티켓/교환권"],
+			"detail": "강사님과 식사권입니다",
+			"sellerId": "8",
+			"location": "서울시 강남구 서초동",
+			"interestCount": "5",
+			"chattingCount": "32",
+			"isOnSale": "true",
+			"createAt": "2023-07-07",
+			"imageSrcList": [
+				"https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAxNzAxMTVfMjg5%2FMDAxNDg0NDg0MDQwODI2.vlGZHcwmK6p_-bXzYrRtLhUz1BHrUc8iwqsgFwh_SnUg.tHMjrVzkvSqE5b5xWpBgpu8fIHDATLfXI-sk7Dt_DX0g.JPEG.kha1318%2FIMG_9034.JPG&type=sc960_832"
+			]
+		},
+		{
+			"id": "28",
+			"title": "프로틴",
+			"price": "0",
+			"categoryList": [
+				"스포츠/레저",
+				"취미/게임/음반",
+				"남성패션/잡화",
+				"가공식품 "
+			],
+			"detail": "운동접었습니다-미개봉 ",
+			"sellerId": "6",
+			"location": "서울시 강남구 서초동",
+			"interestCount": "1",
+			"chattingCount": "34",
+			"isOnSale": "true",
+			"createAt": "2023-07-07",
+			"imageSrcList": [
+				"https://thumbnail9.coupangcdn.com/thumbnails/remote/230x230ex/image/vendor_inventory/1185/ed1ce3c630f84a7aab3167d324920a9c11aa3d8582da2ed9174c7395d276.jpg"
+			]
+		},
+		{
+			"id": "29",
+			"title": "공기 청정기",
+			"price": "0",
+			"categoryList": [
+				"생활가전",
+				"생활/주방",
+				"디지털기기",
+				"가전/인테리어 "
+			],
+			"detail": "공기좋은 산으로 이사갔습니다 ",
+			"sellerId": "10",
+			"location": "서울시 강남구 서초동",
+			"interestCount": "2",
+			"chattingCount": "14",
+			"isOnSale": "false",
+			"createAt": "2023-07-07",
+			"imageSrcList": [
+				"https://thumbnail9.coupangcdn.com/thumbnails/remote/230x230ex/image/retail/images/82574104139736-94657a6a-af17-439b-90e4-30b0be053b34.jpg"
+			]
+		},
+		{
+			"id": "30",
+			"title": "DEEPDIVE",
+			"price": "0",
+			"categoryList": ["도서", "취미/게임/음반", "가전/인테리어"],
+			"detail": "프론트 앤드 때려처요~",
+			"sellerId": "8",
+			"location": "서울시 강남구 서초동",
+			"interestCount": "7",
+			"chattingCount": "54",
+			"isOnSale": "false",
+			"createAt": "2023-07-07",
+			"imageSrcList": [
+				"https://thumbnail7.coupangcdn.com/thumbnails/remote/230x230ex/image/retail/images/2020/10/16/15/1/323ad9a1-0a96-4348-8a44-bc727ea6766a.jpg"
+			]
+		}
+	]
+}

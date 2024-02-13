@@ -1,6 +1,7 @@
 import React from "react";
 import styled, { css } from "styled-components";
 
+import { OverlayProvider } from "../../contexts";
 import { COLOR } from "../../libs/styled-components/index";
 
 /**
@@ -8,6 +9,7 @@ import { COLOR } from "../../libs/styled-components/index";
  * @parameter position : "topLeft" | "topCenter" | "topLeft" | "midLeft" | "midCenter" | "midRight" | "bottomLeft" | "bottomCenter" | "bottomRight" - 오버레이 컴포넌트 위치
  * @parameter isFiltered : boolean - 뒷 배경을 어둡게 할 필터를 적용할지 여부
  * @parameter children : JSX.Element - 오버레이 컴포넌트
+ * @parameter zIndex : number - 오버레이 컴포넌트 간의 z-index 상대값 (0 보다 큰 값)
  * @returns {JSX.Element}
  *
  * @description
@@ -18,15 +20,29 @@ import { COLOR } from "../../libs/styled-components/index";
 const OverlayBase = ({
 	position = "midCenter",
 	isFiltered = false,
+	zIndex = 0,
+	onClose,
 	children,
 }) => {
+	if (typeof zIndex !== "number" || zIndex < 0) zIndex = 0;
 	return (
-		<>
-			{isFiltered && <S.BackgroundFilter />}
-			<S.OverlayContainer $positionCSS={position}>
-				{children}
+		<OverlayProvider>
+			{isFiltered && <S.BackgroundFilter $zIndex={zIndex} />}
+			<S.OverlayContainer
+				$positionCSS={position}
+				$zIndex={zIndex}
+				onClick={onClose}
+			>
+				{/** overlay 컴포넌트 클릭이벤트 전파 방지 */}
+				<div
+					onClick={(e) => {
+						e.stopPropagation();
+					}}
+				>
+					{children}
+				</div>
 			</S.OverlayContainer>
-		</>
+		</OverlayProvider>
 	);
 };
 
@@ -84,11 +100,11 @@ const OverlayContainer = styled.div`
 	position: fixed;
 	top: 0;
 	left: 0;
-	z-index: 10000;
+	z-index: ${({ $zIndex }) => 10000 + $zIndex * 2};
 
 	width: 100%;
 	height: 100vh;
-	padding: 1rem;
+	padding: 1rem 5vw;
 
 	display: flex;
 	${({ $positionCSS }) => {
@@ -100,7 +116,8 @@ const BackgroundFilter = styled.div`
 	position: fixed;
 	top: 0;
 	left: 0;
-	z-index: 9999;
+	/** OverlayContainer 보다 한 층 아래 */
+	z-index: ${({ $zIndex }) => 10000 + $zIndex * 2 - 1};
 
 	width: 100%;
 	height: 100vh;
