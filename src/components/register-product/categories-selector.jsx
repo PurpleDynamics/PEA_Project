@@ -9,7 +9,7 @@ import { CategoryToggle, Input, Spacer } from "../commons";
  * @returns {JSX.Element}
  * @description
  * - 카테고리 선택 / 추가 ui
- * - 카테고리르 추가할 수 있도록 출력되는 카테고리 이름을 담은 배열을 상태로 관리
+ * - 카테고리를 추가할 수 있도록 출력되는 카테고리 이름을 담은 배열을 상태로 관리
  */
 const CategoriesSelector = () => {
 	/** 화면에 출력되는 카테고리 이름을 담은 배열 */
