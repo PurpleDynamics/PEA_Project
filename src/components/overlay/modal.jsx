@@ -24,13 +24,13 @@ import { COLOR, FONT_SIZE } from "../../libs/styled-components";
  * - const ModalContents=()=>{} 
  * - const { onOpenOverlay } = useOverlay();
  * const onButtonClick = () => {
-		onOpenOverlay({
-			overlayComponent: Modal,
-			modalContents: ModalContents,
-			modalWith: "40rem",
-			onClickBaseButton: 함수,
-		});
-	};
+      onOpenOverlay({
+         overlayComponent: Modal,
+         modalContents: ModalContents,
+         modalWith: "40rem",
+         onClickBaseButton: 함수,
+      });
+   };
  * - <button onClick={onButtonClick}>이 버튼 누르면 나온다.</button>
  */
 const Modal = ({
@@ -59,7 +59,7 @@ const Modal = ({
 				)}
 				<S.BaseButton
 					onClick={() => {
-						onClickBaseButton();
+						onClickBaseButton && onClickBaseButton();
 						onClose();
 					}}
 				>
@@ -83,6 +83,7 @@ const Wrapper = styled.div`
 	color: ${COLOR.COMMON[400]};
 	grid-template: auto 7rem /1fr;
 	font-family: "SOYO_Maple_Regular";
+	background-color: ${COLOR.COMMON[1000]};
 `;
 const ModalContentBox = styled.div`
 	width: 100%;
