@@ -1,11 +1,13 @@
 import axios from "axios";
-import { useRef } from "react";
+import { useCallback, useRef } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 import { Button, Input } from "../components/commons";
+import { Modal } from "../components/overlay";
 import { VAILDATION } from "../constants";
+import { useOverlay } from "../hooks/use-overlay";
 import { BREAK_POINT, FONT_SIZE } from "../libs/styled-components";
 import { setLocalToken, setSessionToken } from "../utils";
 
@@ -27,6 +29,21 @@ const BASE_URL = "http://49.165.177.17:3055";
  */
 
 const SigninPage = () => {
+	//로그인 실패시, modal 창 나옴
+	const { onOpenOverlay } = useOverlay();
+	const handleOpenModal = () => {
+		onOpenOverlay({
+			overlayComponent: Modal,
+			modalContents: ModalContents,
+			isFiltered: true,
+			onClickBaseButton: () => console.log(""),
+		});
+	};
+
+	const ModalContents = useCallback(() => {
+		return <div>로그인에 실패하였습니다.</div>;
+	}, []);
+
 	const navigate = useNavigate();
 	const onMoveSignupPage = () => {
 		navigate("/signup");
@@ -38,25 +55,25 @@ const SigninPage = () => {
 		formState: { errors, isValid }, // isVaild: 현재 폼의 유효성 여부
 	} = useForm({ mode: "onChange" });
 	const onSubmit = async (data) => {
-		const Data = {
+		const authData = {
 			email: data.email,
 			password: data.password,
 		};
 		try {
-			const response = await axios.post(`${BASE_URL}/signin`, Data);
+			const response = await axios.post(`${BASE_URL}/signin`, authData);
 			const token = response.data.token;
 
 			// 로그인이 성공적이고, 자동로그인 체크시 localStorage에 , 미체크시 sessionStorage에 토큰이 저장
 			if (response.status === 200) {
 				if (autoLoginRef.current) {
-					setLocalToken("accessToken", token);
+					setLocalToken({ token: token });
 				} else {
-					setSessionToken("refreshToken", token);
+					setSessionToken({ token: token });
 				}
 				navigate("/");
 			}
-		} catch (error) {
-			console.error("Error", error);
+		} catch {
+			handleOpenModal();
 		}
 	};
 
