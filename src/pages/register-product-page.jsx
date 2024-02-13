@@ -20,6 +20,9 @@ import { COLOR, FONT_SIZE } from "../libs/styled-components";
 /**
  * @component
  * @returns {JSX.Element}
+ * @description
+ * - 상품 등록 페이지 입니다.
+ * - 상품 이미지, 상품명, 거래 방식, 가격, 상품 설명, 태그, 거래 희망 장소 를 필수로 작성해야 합니다.
  */
 const RegisterProductPage = () => {
 	return (
@@ -104,17 +107,14 @@ const HeadingSection = styled.section`
 	justify-content: space-between;
 	align-items: center;
 `;
-
 const NoticeText = styled.p`
 	font-size: ${FONT_SIZE.sm};
 `;
-
 const Divider = styled.div`
 	width: 100%;
 	height: 2px;
 	background-color: ${({ $bgColor = COLOR.COMMON[0] }) => $bgColor};
 `;
-
 const RegisterSection = styled.section`
 	width: 100%;
 	height: fit-content;
@@ -123,7 +123,6 @@ const RegisterSection = styled.section`
 	grid-template-columns: 15rem 1fr; // 3rem: 섹션 제목, 나머지: 입력공간
 	gap: 1rem;
 `;
-
 const ButtonsWrapper = styled.div`
 	width: 100%;
 	height: fit-content;
