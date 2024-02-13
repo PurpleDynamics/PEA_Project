@@ -47,16 +47,16 @@ const Chat = ({ onClose }) => {
 		reset();
 	};
 	return (
-		<S.ChatWrapper>
-			<S.ChatTitleBox>
-				<S.ChatTitleImage src="https://url.kr/fm7ls1" />
-				<S.ChatTitleWrapper>
-					<S.ChatTitleText>
+		<S.Wrapper>
+			<S.TitleBox>
+				<S.TitleImage src="https://url.kr/fm7ls1" />
+				<S.TitleWrapper>
+					<S.TitleText>
 						판매자nickname이 들어갈 예정입니다.
-					</S.ChatTitleText>
+					</S.TitleText>
 					<S.X_Button onClick={onClose}>x</S.X_Button>
-				</S.ChatTitleWrapper>
-			</S.ChatTitleBox>
+				</S.TitleWrapper>
+			</S.TitleBox>
 			<S.ChatView>
 				{/* 배열로 저장된 message를 받아와서 각각 보여주는 map입니다. */}
 				{messages.map((message, index) => (
@@ -66,8 +66,8 @@ const Chat = ({ onClose }) => {
 				))}
 				<div ref={messageEndRef} />
 			</S.ChatView>
-			<S.ChatForm onSubmit={handleSubmit(onSubmit)}>
-				<S.ChatInput
+			<S.Form onSubmit={handleSubmit(onSubmit)}>
+				<S.Input
 					{...register("message", {
 						required: "",
 					})}
@@ -79,13 +79,13 @@ const Chat = ({ onClose }) => {
 				<S.SendButton>
 					<ResponsiveIcon icon={BsSendFill} size="2.25rem" />
 				</S.SendButton>
-			</S.ChatForm>
-		</S.ChatWrapper>
+			</S.Form>
+		</S.Wrapper>
 	);
 };
 export default Chat;
 
-const ChatWrapper = styled.div`
+const Wrapper = styled.div`
 	width: 35rem;
 	height: 40rem;
 	border-radius: 0.6rem;
@@ -94,25 +94,25 @@ const ChatWrapper = styled.div`
 	background-color: ${COLOR.COMMON[1000]};
 `;
 
-const ChatTitleBox = styled.div`
+const TitleBox = styled.div`
 	display: flex;
 	justify-content: left;
 	align-items: center;
 `;
 
-const ChatTitleWrapper = styled.div`
+const TitleWrapper = styled.div`
 	width: 30rem;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 `;
 
-const ChatTitleImage = styled.img`
+const TitleImage = styled.img`
 	width: 4rem;
 	padding: 0.5rem;
 `;
 
-const ChatTitleText = styled.p`
+const TitleText = styled.p`
 	font-size: ${FONT_SIZE.md};
 `;
 
@@ -141,7 +141,7 @@ const Message = styled.div`
 	align-self: ${(props) =>
 		props.sender === "user" ? "flex-end" : "flex-start"};
 `;
-const ChatInput = styled.input`
+const Input = styled.input`
 	width: 100%;
 	padding: 0.5rem 2rem 0.5rem 0.5rem;
 	border: none;
@@ -159,7 +159,7 @@ const SendButton = styled.button`
 	cursor: pointer;
 `;
 
-const ChatForm = styled.form`
+const Form = styled.form`
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -171,16 +171,16 @@ const ChatForm = styled.form`
 `;
 
 const S = {
-	ChatWrapper,
+	Wrapper,
 	X_Button,
-	ChatTitleBox,
-	ChatTitleImage,
-	ChatTitleText,
-	ChatTitleWrapper,
+	TitleBox,
+	TitleImage,
+	TitleText,
+	TitleWrapper,
 	ChatView,
 	Message,
 	ErrorMessage,
 	SendButton,
-	ChatInput,
-	ChatForm,
+	Input,
+	Form,
 };
