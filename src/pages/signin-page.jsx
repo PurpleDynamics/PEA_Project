@@ -1,34 +1,79 @@
+import axios from "axios";
+import { useCallback, useRef } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 import { Button, Input } from "../components/commons";
+import { Modal } from "../components/overlay";
 import { VAILDATION } from "../constants";
+import { useOverlay } from "../hooks/use-overlay";
 import { BREAK_POINT, FONT_SIZE } from "../libs/styled-components";
+import { setLocalToken, setSessionToken } from "../utils";
+
+const BASE_URL = "http://49.165.177.17:3055";
 
 /**
  * @component
  * @returns {JSX.Element}
+ *
  * @description
  * - 로그인 버튼 클릭시 main-page인 productListPage로 이동합니다.
  * - 회원가입 버튼 클릭시, signup-page로 이동합니다.
  * - 이메일 과 비밀번호 형식이 맞으면 로그인버튼이 활성화 됩니다.
+ * - 자동로그인 체크후 로그인시, LocalStorage에 저장되고 미체크후 로그인시 SessionStorage에 저장됩니다.
+ *
+ * @example 참고해주세요!
+ * - email: test1@test.test
+ * - password: qwer1234
  */
 
 const SigninPage = () => {
+	//로그인 실패시, modal 창 나옴
+	const { onOpenOverlay } = useOverlay();
+	const handleOpenModal = () => {
+		onOpenOverlay({
+			overlayComponent: Modal,
+			modalContents: ModalContents,
+			isFiltered: true,
+		});
+	};
+
+	const ModalContents = useCallback(() => {
+		return <div>로그인에 실패하였습니다.</div>;
+	}, []);
+
 	const navigate = useNavigate();
 	const onMoveSignupPage = () => {
 		navigate("/signup");
 	};
+	const autoLoginRef = useRef(false);
 	const {
 		register,
 		handleSubmit,
-		validate,
-		formState: { errors, isValid, dirtyFields }, // isVaild: 현재 폼의 유효성 여부 , dirtyFields: 사용자가 입력한 값이 변경되었는지 여부 확인
+		formState: { errors, isValid }, // isVaild: 현재 폼의 유효성 여부
 	} = useForm({ mode: "onChange" });
-	const onSubmit = (e) => {
-		e.preventDefault();
-		navigate("");
+	const onSubmit = async (data) => {
+		const authData = {
+			email: data.email,
+			password: data.password,
+		};
+		try {
+			const response = await axios.post(`${BASE_URL}/signin`, authData);
+			const token = response.data.token;
+
+			// 로그인이 성공적이고, 자동로그인 체크시 localStorage에 , 미체크시 sessionStorage에 토큰이 저장
+			if (response.status === 200) {
+				if (autoLoginRef.current) {
+					setLocalToken({ token: token });
+				} else {
+					setSessionToken({ token: token });
+				}
+				navigate("/");
+			}
+		} catch {
+			handleOpenModal();
+		}
 	};
 
 	return (
@@ -61,19 +106,16 @@ const SigninPage = () => {
 					errors={errors}
 				/>
 				<S.CheckboxWrapper>
-					<S.CheckboxInput type="checkbox" />
+					<S.CheckboxInput
+						type="checkbox"
+						onChange={(e) =>
+							(autoLoginRef.current = e.target.checked)
+						}
+					/>
 					<S.CheckboxText>자동로그인</S.CheckboxText>
 				</S.CheckboxWrapper>
 				<S.ButtonWrapper>
-					<Button
-						type="submit"
-						width="30rem"
-						disabled={
-							!dirtyFields.email ||
-							!dirtyFields.password ||
-							!isValid
-						}
-					>
+					<Button type="submit" width="30rem" disabled={!isValid}>
 						로그인
 					</Button>
 					<Button
