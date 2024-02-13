@@ -5,7 +5,7 @@ import { COLOR } from "../../libs/styled-components";
 
 /**
  * @component
- * @description 이미지 등록 및 등록된 이미지 미리보기 목적
+ * @description 이미지 등록 및 등록된 이미지 미리보기 목적의 ui
  */
 const ImageLoader = () => {
 	return (

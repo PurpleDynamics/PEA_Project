@@ -5,7 +5,7 @@ import { Input, Spacer } from "../commons";
 
 /**
  * @component
- * @description 상품 판매 지역 선택 section
+ * @description 상품 판매 지역 선택 ui
  */
 const LocationPicker = () => {
 	return (

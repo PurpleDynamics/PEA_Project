@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 /**
  * @component
- * @description 거래 형태 선택 section
+ * @description 거래 형태 선택 ui
  */
 const PaymentMethodToggle = () => {
 	return (

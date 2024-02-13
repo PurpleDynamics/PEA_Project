@@ -4,7 +4,7 @@ import ImageLoader from "./image-loader";
 import LocationPicker from "./location-picker";
 import PageNotice from "./page-notice";
 import PaymentMethodToggle from "./payment-method-toggle";
-import SectionHeadingTexts from "./section-heading-texts";
+import RegisterSection from "./register-section";
 export {
 	CategoriesSelector,
 	DetailTextArea,
@@ -12,5 +12,5 @@ export {
 	LocationPicker,
 	PageNotice,
 	PaymentMethodToggle,
-	SectionHeadingTexts,
+	RegisterSection,
 };
