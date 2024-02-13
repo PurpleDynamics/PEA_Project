@@ -4,9 +4,9 @@ import { COLOR } from "../../libs/styled-components";
 
 /**
  * @component
- * @parameter $width : string - 넓이를 입력 받습니다.
- * @parameter $height : string - 높이를 입력 받습니다.
- * @parameter $borderRadius : string - border-radius값을 입력 받습니다.
+ * @parameter width : string - 넓이를 입력 받습니다.
+ * @parameter height : string - 높이를 입력 받습니다.
+ * @parameter borderRadius : string - border-radius값을 입력 받습니다.
  * @returns {JSX.Element}
  *
  * @description
@@ -18,12 +18,12 @@ import { COLOR } from "../../libs/styled-components";
  * - 이런식으로 사용하시면 됩니다.
  */
 
-const SkeletonBase = ({ $width, $height, $borderRadius }) => {
+const SkeletonBase = ({ width, height, borderRadius }) => {
 	return (
 		<S.Skeleton
-			width={$width}
-			height={$height}
-			borderRadius={$borderRadius}
+			$width={width}
+			$height={height}
+			$borderRadius={borderRadius}
 		/>
 	);
 };
@@ -40,11 +40,11 @@ const loadingAnimation = keyframes`
 
 const Skeleton = styled.div`
 	background-color: ${COLOR.COMMON[800]};
-	border-radius: ${({ borderRadius }) => borderRadius};
+	border-radius: ${({ $borderRadius }) => $borderRadius};
 	overflow: hidden;
 	position: relative;
-	width: ${({ width }) => width};
-	height: ${({ height }) => height};
+	width: ${({ $width }) => $width};
+	height: ${({ $height }) => $height};
 
 	&::after {
 		content: "";
