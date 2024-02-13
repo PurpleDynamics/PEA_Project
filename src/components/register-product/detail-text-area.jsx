@@ -4,7 +4,7 @@ import { COLOR } from "../../libs/styled-components";
 
 /**
  * @component
- * @description 상품에 대한 상세 내용 입력 section
+ * @description 상품에 대한 상세 내용 입력 ui
  */
 const DetailTextArea = () => {
 	return <S.DetailArea />;
