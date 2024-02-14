@@ -1,3 +1,4 @@
 import Modal from "./modal";
 import OverlayBase from "./overlay-base";
-export { OverlayBase, Modal };
+import SearchPostcodeModal from "./search-postcode";
+export { OverlayBase, Modal, SearchPostcodeModal };
