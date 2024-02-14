@@ -9,12 +9,11 @@ import { COLOR } from "../../libs/styled-components";
  * @parameter borderRadius : string - border-radius값을 입력 받습니다.
  * @returns {JSX.Element}
  *
- * @description
- * - skeleton ui component 입니다.
+ * @description skeleton ui component 입니다.
  * @example
- * - <div>
- * - 	<SkeletonBase width="1rem" height="1rem" borderRadius="1rem" />
- * - </div>
+ * <div>
+ * <SkeletonBase width="1rem" height="1rem" borderRadius="1rem" />
+ * </div>
  * - 이런식으로 사용하시면 됩니다.
  */
 

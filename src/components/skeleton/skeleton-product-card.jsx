@@ -27,7 +27,7 @@ const SkeletonWrapper = styled.div`
 	height: 35.8rem;
 	display: grid;
 	grid-template-rows: 21.5rem 1fr 1.2fr 1fr;
-	grid-row-gap: 1px;
+	grid-row-gap: 0.1rem;
 	border: 0.1rem solid ${COLOR.COMMON[800]};
 	border-radius: 1.1rem;
 	overflow: hidden;
