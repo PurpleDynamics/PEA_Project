@@ -11,9 +11,9 @@ import { COLOR } from "../../libs/styled-components";
  *
  * @description
  * - skeleton ui component 입니다.
- * - ex)
+ * @example
  * - <div>
- * - 	<SkeletonBase $width="1rem" $height="1rem" $borderRadius="1rem" />
+ * - 	<SkeletonBase width="1rem" height="1rem" borderRadius="1rem" />
  * - </div>
  * - 이런식으로 사용하시면 됩니다.
  */
