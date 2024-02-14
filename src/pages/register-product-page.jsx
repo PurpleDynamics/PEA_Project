@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 import {
 	Button,
-	CompressionContainer,
+	CompressionWrapper,
 	Input,
 	Spacer,
 } from "../components/commons";
@@ -26,7 +26,7 @@ import { COLOR } from "../libs/styled-components";
  */
 const RegisterProductPage = () => {
 	return (
-		<CompressionContainer tb="1rem" rl="10%">
+		<CompressionWrapper lr="15%">
 			<PageNotice />
 			<Spacer height={2} />
 			<S.Divider $bgColor={COLOR.COMMON[0]} />
@@ -81,7 +81,7 @@ const RegisterProductPage = () => {
 				<Button palette="mint">등록</Button>
 				<Button>취소</Button>
 			</S.ButtonsWrapper>
-		</CompressionContainer>
+		</CompressionWrapper>
 	);
 };
 export default RegisterProductPage;

@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 import { BREAK_POINT, COLOR, FONT_SIZE } from "../../libs/styled-components";
-import { CompressionContainer, ProductCard } from "../commons";
+import { CompressionWrapper, ProductCard } from "../commons";
 
 /**
  * @component
@@ -22,41 +22,33 @@ const EightProductGrid = ({ userData, eightProductData, salesCategory }) => {
 	);
 
 	return (
-		<CompressionContainer tb="4rem">
-			<S.Container>
-				<S.TextWrapper>
-					<S.LocationText>
-						{userData.location}
-						<S.UsedFreeText> {salesCategory}</S.UsedFreeText>
-					</S.LocationText>
-				</S.TextWrapper>
-				{locationMatchData.length > 0 ? (
-					<S.ProductList>
-						{locationMatchData.map((data, index) => (
-							<ProductCard key={index} title={data.title} />
-						))}
-					</S.ProductList>
-				) : (
-					<S.NoDataText>등록된 상품이 없습니다.</S.NoDataText>
-				)}
-			</S.Container>
-		</CompressionContainer>
+		<CompressionWrapper tb="4rem" lr="15%">
+			<S.TextWrapper>
+				<S.LocationText>
+					{userData.location}
+					<S.UsedFreeText> {salesCategory}</S.UsedFreeText>
+				</S.LocationText>
+			</S.TextWrapper>
+			{locationMatchData.length > 0 ? (
+				<S.ProductList>
+					{locationMatchData.map((data, index) => (
+						<ProductCard key={index} title={data.title} />
+					))}
+				</S.ProductList>
+			) : (
+				<S.NoDataText>등록된 상품이 없습니다.</S.NoDataText>
+			)}
+		</CompressionWrapper>
 	);
 };
 
 export default EightProductGrid;
 
-const Container = styled.div`
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	flex-direction: column;
-`;
-
 const TextWrapper = styled.div`
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	width: 100%;
 	padding-bottom: 4rem;
 `;
 
@@ -88,7 +80,6 @@ const NoDataText = styled.h1`
 `;
 
 const S = {
-	Container,
 	TextWrapper,
 	LocationText,
 	UsedFreeText,
