@@ -24,9 +24,14 @@ import OverlayBase from "./overlay-base";
  */
 
 const SearchPostcodeModal = ({ isOpen, onClose, onComplete }) => {
-	const handleComplete = () => {};
+	const handleComplete = (data) => {
+		onComplete(data);
+		onClose();
+	};
 
-	const onClickClose = () => {};
+	const onClickClose = () => {
+		onClose();
+	};
 
 	return (
 		<>
