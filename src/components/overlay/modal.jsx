@@ -29,32 +29,32 @@ const Modal = ({
 	};
 	return (
 		<S.Wrapper>
-			<NoticeTextSection>{noticeText}</NoticeTextSection>
-			<ButtonWrapper>
+			<S.NoticeTextSection>{noticeText}</S.NoticeTextSection>
+			<S.ButtonWrapper>
 				{isCancelButton ? (
 					<>
-						<ModalButton
+						<S.ModalButton
 							$color={COLOR.COMMON[600]}
 							onClick={onClose}
 						>
 							취소
-						</ModalButton>
-						<ModalButton
+						</S.ModalButton>
+						<S.ModalButton
 							$color={COLOR.SYSTEM[modalState]}
 							onClick={onClickAccess}
 						>
 							{buttonText}
-						</ModalButton>
+						</S.ModalButton>
 					</>
 				) : (
-					<ModalButton
+					<S.ModalButton
 						$color={COLOR.SYSTEM[modalState]}
 						onClick={onClickAccess}
 					>
 						{buttonText}
-					</ModalButton>
+					</S.ModalButton>
 				)}
-			</ButtonWrapper>
+			</S.ButtonWrapper>
 		</S.Wrapper>
 	);
 };
@@ -98,14 +98,15 @@ const ModalButton = styled.button`
 	height: 100%;
 	color: ${({ $color }) => $color};
 	background-color: transparent;
-
 	&:hover {
 		color: ${COLOR.COMMON[400]};
 	}
-
 	cursor: pointer;
 `;
 
 const S = {
 	Wrapper,
+	NoticeTextSection,
+	ButtonWrapper,
+	ModalButton,
 };
