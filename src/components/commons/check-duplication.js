@@ -9,7 +9,7 @@ const BASE_URL = "http://49.165.177.17:3055";
  * @parameter value: string - 중복을 확인할 실제 값
  * @parameter avilableRef: Ref boolean -  함수를 호출한 곳으로 반환할 결과를 저장하는 useRef로 생성된 참조
  * @parameter handleOpenModal: function - modal 관리하는 함수
- * @parameter errors: string - 폼 유효성 검사시 발생한 오류를 나타내는 객체
+ * @parameter errors: {object} - 폼 유효성 검사시 발생한 오류를 나타내는 객체
  * @returns {JSX.Element}
  *
  * @description - 이메일과 닉네임 중복확인을 검사하는 함수입니다.

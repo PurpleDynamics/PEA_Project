@@ -4,9 +4,8 @@ import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
-import { Button, Input } from "../components/commons";
+import { Button, CheckDuplication, Input } from "../components/commons";
 import { Modal } from "../components/overlay";
-import { ModalContent } from "../components/signup/signup-modal-contents";
 import { VAILDATION } from "../constants";
 import { useOverlay } from "../hooks/use-overlay";
 import { BREAK_POINT, COLOR } from "../libs/styled-components";
@@ -23,14 +22,14 @@ const BASE_URL = "http://49.165.177.17:3055";
 
 const SignupPage = () => {
 	const { onOpenOverlay } = useOverlay();
-	const handleOpenModal = (message) => {
+	const handleOpenModal = (type) => {
 		onOpenOverlay({
 			overlayComponent: Modal,
-			modalContents: ModalContent(message),
-			isFiltered: true,
+			noticeText: type,
+			buttonText: "확인",
+			modalState: "success",
 		});
 	};
-	``;
 
 	const navigate = useNavigate();
 	const {
@@ -43,7 +42,7 @@ const SignupPage = () => {
 	const isEmailAvailable = useRef(false); //이메일 중복 여부
 	const isNicknameAvailable = useRef(false); //닉네임 중복 여부
 
-	const [isSubmitDisabled, setIsSubmitDisabled] = useState(true); // 가입하기 버튼 홀성화 여부
+	const [isSubmitDisabled, setIsSubmitDisabled] = useState(true); // 가입하기 버튼 활성화 여부
 
 	const emailValue = watch("email");
 	const nicknameValue = watch("nickname");
@@ -56,11 +55,11 @@ const SignupPage = () => {
 			phone_number: data.phoneNumber,
 			location: data.location,
 		};
-		//비밀번호 확인하는 로직
+		//비밀번호 와 비밀번호확인이 같은지 확인하는 함수
 		if (data.password !== data.passwordConfirm) {
-			return alert("비밀번호 오류");
+			handleOpenModal("비밀번호가 일치하지않습니다");
+			return;
 		}
-
 		try {
 			const response = await axios.post(`${BASE_URL}/signup`, authData);
 			console.log(response, "response");
@@ -79,50 +78,29 @@ const SignupPage = () => {
 		}
 	};
 
-	/**
-	 *
-	 * @function
-	 * @parameter type: string - 중복확인할 값의 종류를 나타내는 매개변수
-	 * @parameter value: string - 중복을 확인할 실제 값
-	 * @parameter avilableRef: Ref<boolean> -  함수를 호출한 곳으로 반환할 결과를 저장하는 useRef로 생성된 참조
-	 * @returns {JSX.Element}
-	 *
-	 * @description - 이메일과 닉네임 중복확인을 검사하는 함수입니다.
-	 */
-	const checkDuplication = async (type, value, avilableRef) => {
-		//만약 해당 유형에 대한 오류가 정의되어있다면 함수를 종료하고 , 중복확인 X
-		if (typeof errors[type] !== "undefined") return;
-		if (!value) {
-			// alert(`${type}을(를) 입력해주세요.`);
-			handleOpenModal("이메일을(를) 입력해주세요.");
-			return;
-		}
-		//중복확인요청
-		const url = `${BASE_URL}/check_${type}?${type}=${encodeURIComponent(value)}`;
-		try {
-			const response = await axios.get(url);
-			if (response.data.isAvailable) {
-				alert(`사용가능한 ${type}입니다.`);
-				avilableRef.current = true;
-			} else {
-				alert(`중복된 ${type}입니다`);
-				avilableRef.current = false;
-			}
-		} catch (error) {
-			console.error(`중복확인 오류 (${type})`, error);
-		}
-	};
 	//이메일 중복 확인함수
 	const onEmailDup = async () => {
-		await checkDuplication("email", emailValue, isEmailAvailable);
+		await CheckDuplication(
+			"email",
+			emailValue,
+			isEmailAvailable,
+			handleOpenModal,
+			errors
+		);
 		enableIfAllTrue();
 	};
 	//닉네임 중복 확인함수
 	const onNicknameDup = async () => {
-		await checkDuplication("nickname", nicknameValue, isNicknameAvailable);
+		await CheckDuplication(
+			"nickname",
+			nicknameValue,
+			isNicknameAvailable,
+			handleOpenModal,
+			errors
+		);
 		enableIfAllTrue();
 	};
-	//input 창에 값이 변경될때 가입하기 버튼 활성화 여부 설정하는 함수
+	//input 창에 값이 변경될때 가입하기 버튼 비활성화 시키는 함수
 	useEffect(() => {
 		if (emailValue && nicknameValue) {
 			setIsSubmitDisabled(true);
@@ -248,7 +226,7 @@ const TextInputForm = styled.form`
 	flex-direction: column;
 `;
 const TitleText = styled.div`
-	margin-bottom: 30px;
+	padding-bottom: 3rem;
 	font-size: 4.5rem;
 	color: ${COLOR.MAIN[800]};
 `;
