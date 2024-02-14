@@ -27,14 +27,23 @@ const SignupPage = () => {
 		formState: { errors, isValid },
 	} = useForm({ mode: "onChange" });
 
-	const [isEmailChecked, setIsEmailChecked] = useState(false);
-	const [isNicknameChecked, setIsNicknameChecked] = useState(false);
+	// const [isEmailChecked, setIsEmailChecked] = useState(false);
+	// const [isNicknameChecked, setIsNicknameChecked] = useState(false);
 
-	const [isEmailAvailable, setIsEmailAvilabl] = useState(false);
-	const [isNicknameAvailable, setIsNicknameAvailable] = useState(false);
+	// const [isEmailAvailable, setIsEmailAvilabl] = useState(false);
+	// const [isNicknameAvailable, setIsNicknameAvailable] = useState(false);
+
+	const [formState, setFormState] = useState({
+		isEmailChecked: false,
+		isNicknameChecked: false,
+		isEmailAvailable: false,
+		isNicknameAvailable: false,
+	});
 
 	const emailValue = watch("email");
 	const nicknameValue = watch("nickname");
+	const passwordValue = watch("password");
+	const passwordConfirmValue = watch("passwordConfirm");
 
 	const onSubmit = async (data) => {
 		const Data = {
@@ -44,6 +53,7 @@ const SignupPage = () => {
 			phone_number: data.phoneNumber,
 			location: data.location,
 		};
+
 		try {
 			const response = await axios.post(`${BASE_URL}/signup`, Data);
 			console.log(response, "response");
@@ -52,6 +62,12 @@ const SignupPage = () => {
 			}
 		} catch (error) {
 			console.error("회원가입 오류", error);
+		}
+	};
+
+	const handlePasswordConfirm = () => {
+		if (passwordConfirmValue !== passwordValue) {
+			alert("비밀번호 틀렸다 임마");
 		}
 	};
 
@@ -66,14 +82,23 @@ const SignupPage = () => {
 			const response = await axios.get(emailUrl);
 			if (response.data.isAvailable) {
 				alert("사용가능한 이메일 입니다.");
-				setIsEmailChecked(true);
-				setIsEmailAvilabl(true);
+				setFormState((prev) => ({
+					...prev,
+					isEmailChecked: true,
+					isEmailAvailable: true,
+				}));
 			} else {
 				alert("중복된 이메일입니다");
-				setIsEmailChecked(false);
-				setIsEmailAvilabl(false);
+				setFormState((prev) => ({
+					...prev,
+					isEmailChecked: false,
+					isEmailAvailable: false,
+				}));
 			}
-			setIsEmailChecked(true);
+			setFormState((prev) => ({
+				...prev,
+				isEmailChecked: true,
+			}));
 		} catch (error) {
 			console.error("중복확인 오류", error);
 		}
@@ -89,32 +114,50 @@ const SignupPage = () => {
 			const response = await axios.get(nicknameUrl);
 			if (response.data.isAvailable) {
 				alert("사용가능한 닉네임입니다");
-				setIsNicknameAvailable(true);
-				setIsNicknameChecked(true);
+				setFormState((prev) => ({
+					...prev,
+					isNicknameChecked: true,
+					isNicknameAvailable: true,
+				}));
 			} else {
 				alert("중복된 닉네임입니다");
-				setIsNicknameAvailable(false);
-				setIsNicknameChecked(false);
+				setFormState((prev) => ({
+					...prev,
+					isNicknameChecked: false,
+					isNicknameAvailable: false,
+				}));
 			}
-			setIsNicknameChecked(true);
+			setFormState((prev) => ({
+				...prev,
+				isNicknameChecked: true,
+			}));
 		} catch (error) {
 			console.error("중복확인 오류", error);
 		}
 	};
 	// 이메일 값이 변경될 때마다 중복 확인 상태를 초기화하기 위하여 사용
 	useEffect(() => {
-		setIsEmailChecked(false);
+		setFormState((prev) => ({
+			...prev,
+			isEmailChecked: false,
+			isEmailAvailable: false,
+		}));
 	}, [emailValue]);
 
 	useEffect(() => {
-		setIsNicknameChecked(false);
+		setFormState((prev) => ({
+			...prev,
+			isNicknameChecked: true,
+			isNicknameAvailable: true,
+		}));
 	}, [nicknameValue]);
 
 	const isSubmitDisabled =
-		!isEmailChecked ||
-		!isNicknameChecked ||
-		!isEmailAvailable ||
-		!isNicknameAvailable;
+		!formState.isEmailChecked ||
+		!formState.isNicknameChecked ||
+		!formState.isEmailAvailable ||
+		!formState.isNicknameAvailable ||
+		!isValid;
 
 	return (
 		<S.MainWrapper>
@@ -155,6 +198,7 @@ const SignupPage = () => {
 					placeholder="비밀번호를 다시 입력하세요"
 					type="password"
 					errors={errors}
+					handleButton={() => handlePasswordConfirm()}
 					validate={{
 						required: VAILDATION.COMMON_MESSAGE,
 						pattern: VAILDATION.PASSWORD_CONFIRM,
@@ -199,7 +243,7 @@ const SignupPage = () => {
 					type="submit"
 					width="30rem"
 					// style={{ backgroundColor: COLOR.COMMON[600] }}
-					disabled={isSubmitDisabled || !isValid}
+					disabled={isSubmitDisabled}
 				>
 					가입하기
 				</Button>
