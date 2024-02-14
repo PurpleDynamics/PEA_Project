@@ -5,6 +5,7 @@ import CompressionWrapper from "./compression-wrapper";
 import HighlightedText from "./highlighted-text";
 import IconAndText from "./icon-and-text";
 import Input from "./input";
+import PriceTrendChart from "./price-trend-chart";
 import ProductCard from "./product-card";
 import RecentProductList from "./recent-product-list";
 import ResponsiveIcon from "./responsive-icon";
@@ -21,6 +22,7 @@ export {
 	IconAndText,
 	Input,
 	ProductCard,
+	PriceTrendChart,
 	RecentProductList,
 	ResponsiveIcon,
 	SearchBar,
