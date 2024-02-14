@@ -59,9 +59,9 @@ const ChattingOverlay = ({ onClose }) => {
 				<S.TitleImage src="https://url.kr/fm7ls1" />
 				<S.TitleWrapper>
 					<S.TitleText>P.E.A Chat</S.TitleText>
-					<S.CancleButton onClick={onClose}>
-						<ResponsiveIcon icon={BsX} />
-					</S.CancleButton>
+					<S.CancelButton>
+						<ResponsiveIcon icon={BsX} onClick={onClose} />
+					</S.CancelButton>
 				</S.TitleWrapper>
 			</S.TitleBox>
 
@@ -113,16 +113,14 @@ const SearchContainer = styled.div`
 	padding: 1rem 0;
 `;
 
-const CancleButton = styled.div`
-	width: 3rem;
-	height: 3rem;
+const CancelButton = styled.button`
 	background-color: ${COLOR.COMMON[1000]};
 	cursor: pointer;
 `;
 
 const S = {
 	Wrapper,
-	CancleButton,
+	CancelButton,
 	TitleBox,
 	TitleImage,
 	TitleText,

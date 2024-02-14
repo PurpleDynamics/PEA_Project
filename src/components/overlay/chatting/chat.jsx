@@ -54,9 +54,9 @@ const Chat = ({ onClose }) => {
 					<S.TitleText>
 						판매자nickname이 들어갈 예정입니다.
 					</S.TitleText>
-					<S.X_Button onClick={onClose}>
-						<ResponsiveIcon icon={BsX} />
-					</S.X_Button>
+					<S.CancelButton>
+						<ResponsiveIcon icon={BsX} onClick={onClose} />
+					</S.CancelButton>
 				</S.TitleWrapper>
 			</S.TitleBox>
 			<S.ChatView>
@@ -126,13 +126,6 @@ const ChatView = styled.div`
 	padding: 2rem;
 `;
 
-const X_Button = styled.button`
-	width: 3rem;
-	height: 3rem;
-	background-color: ${COLOR.COMMON[1000]};
-	cursor: pointer;
-`;
-
 const Message = styled.div`
 	padding: 0.5rem;
 	margin: 0.5rem 0;
@@ -155,7 +148,6 @@ const ErrorMessage = styled.p`
 
 const SendButton = styled.button`
 	padding-right: 0.5rem;
-	border: none;
 	background-color: ${COLOR.COMMON[1000]};
 	cursor: pointer;
 `;
@@ -171,9 +163,14 @@ const Form = styled.form`
 	border-radius: 0.8rem;
 `;
 
+const CancelButton = styled.button`
+	background-color: ${COLOR.COMMON[1000]};
+	cursor: pointer;
+`;
+
 const S = {
 	Wrapper,
-	X_Button,
+	CancelButton,
 	TitleBox,
 	TitleImage,
 	TitleText,
