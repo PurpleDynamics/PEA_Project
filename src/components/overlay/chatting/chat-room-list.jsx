@@ -97,18 +97,14 @@ const UserProfile = styled.img`
 
 const TopTitle = styled.div`
 	display: grid;
-	justify-content: left;
+	justify-content: start;
 	grid-template-rows: repeat(2, 1fr);
 	width: 100%;
 `;
 
-const UserName = styled.p`
-	margin: 0;
-	font-weight: bold;
-`;
+const UserName = styled.p``;
 
 const SendTime = styled.p`
-	margin: 0;
 	color: ${COLOR.COMMON[600]};
 	font-size: ${FONT_SIZE.ti};
 	display: flex;
@@ -116,7 +112,6 @@ const SendTime = styled.p`
 `;
 
 const MessageText = styled.p`
-	margin: 0;
 	font-size: ${FONT_SIZE.sm};
 	line-height: 2rem;
 `;

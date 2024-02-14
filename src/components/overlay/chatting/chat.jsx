@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
-import { BsSendFill } from "react-icons/bs";
+import { BsSendFill, BsX } from "react-icons/bs";
 import styled from "styled-components";
 
 import { COLOR, FONT_SIZE } from "../../../libs/styled-components";
@@ -54,7 +54,9 @@ const Chat = ({ onClose }) => {
 					<S.TitleText>
 						판매자nickname이 들어갈 예정입니다.
 					</S.TitleText>
-					<S.X_Button onClick={onClose}>x</S.X_Button>
+					<S.X_Button onClick={onClose}>
+						<ResponsiveIcon icon={BsX} />
+					</S.X_Button>
 				</S.TitleWrapper>
 			</S.TitleBox>
 			<S.ChatView>
@@ -90,13 +92,12 @@ const Wrapper = styled.div`
 	height: 40rem;
 	border-radius: 0.6rem;
 	box-shadow: 0.1rem 0.2rem 0.4rem 0.1rem ${COLOR.COMMON[400]};
-
 	background-color: ${COLOR.COMMON[1000]};
 `;
 
 const TitleBox = styled.div`
 	display: flex;
-	justify-content: left;
+	justify-content: start;
 	align-items: center;
 `;
 
@@ -148,7 +149,7 @@ const Input = styled.input`
 `;
 
 const ErrorMessage = styled.p`
-	color: red;
+	color: ${COLOR.SYSTEM.error};
 	font-size: ${FONT_SIZE.sm};
 `;
 

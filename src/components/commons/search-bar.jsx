@@ -42,8 +42,6 @@ const IconContainer = styled.button`
 	width: 3.5rem;
 	border-radius: 8px;
 	margin-left: -3.5rem;
-	background: none;
-	border: none;
 	cursor: pointer;
 `;
 

@@ -1,8 +1,9 @@
 import { useState } from "react";
+import { BsX } from "react-icons/bs";
 import styled from "styled-components";
 
 import { COLOR, FONT_SIZE } from "../../../libs/styled-components";
-import { SearchBar } from "../../commons";
+import { ResponsiveIcon, SearchBar } from "../../commons";
 import ChatRoomList from "./chat-room-list";
 
 /**
@@ -58,7 +59,9 @@ const ChattingOverlay = ({ onClose }) => {
 				<S.TitleImage src="https://url.kr/fm7ls1" />
 				<S.TitleWrapper>
 					<S.TitleText>P.E.A Chat</S.TitleText>
-					<S.X_Button onClick={onClose}>x</S.X_Button>
+					<S.CancleButton onClick={onClose}>
+						<ResponsiveIcon icon={BsX} />
+					</S.CancleButton>
 				</S.TitleWrapper>
 			</S.TitleBox>
 
@@ -110,7 +113,7 @@ const SearchContainer = styled.div`
 	padding: 1rem 0;
 `;
 
-const X_Button = styled.button`
+const CancleButton = styled.div`
 	width: 3rem;
 	height: 3rem;
 	background-color: ${COLOR.COMMON[1000]};
@@ -119,7 +122,7 @@ const X_Button = styled.button`
 
 const S = {
 	Wrapper,
-	X_Button,
+	CancleButton,
 	TitleBox,
 	TitleImage,
 	TitleText,
