@@ -9,15 +9,22 @@ import { getRecent6MonthsArray } from "../../utils";
  * @parameter width : string - chart의 넓이
  * @parameter height : string - chart의 높이
  * @parameter barColor : string - bar의 색상 token.COLOR 에서 사용
+ * @parameter last6MothsPriceDataArr : Array - 최근 6개읠의 평균금액 data를 배열형태로 넘겨주어야합니다.
+ * @parameter handleClickEvent :function - bar클릭시 발생할 event
  * @returns {JSX.Element}
  * @description
  * - 해당 물품과 연관된 category의 평균가격을 보여주는 chart component입니다.
  * - 평균가격은 월 단위로 보여집니다.
  * - 현재 사용자의 '월'을 포함한 이전 6개월의 평균가격을 '월' 단위로 보여줍니다.
  */
-const PriceTrendChart = ({ width = "100%", height = "100%", barColor }) => {
+const PriceTrendChart = ({
+	width = "100%",
+	height = "100%",
+	barColor,
+	last6MothsPriceDataArr,
+	handleClickEvent,
+}) => {
 	useEffect(() => {
-		const last6MothsPriceDataArr = [3200, 2000, 500, 600, 1854, 200];
 		const highestPrice = Math.max(...last6MothsPriceDataArr); // 최근6개월 평균가격중 가장 높은 값
 		// 차트를 그리기위한 options xaxis,yaxis,bar,event에 대한 option들만 사용했습니다.
 		const options = {
@@ -28,11 +35,9 @@ const PriceTrendChart = ({ width = "100%", height = "100%", barColor }) => {
 				fontFamily: "SOYO_Maple_Bold",
 				events: {
 					dataPointSelection: function (
-						event,
-						chartContext,
-						{ dataPointIndex }
+						{ dataPointIndex } // click이벤트 발생시 클릭된 bar의 index를 반환
 					) {
-						console.log(event, chartContext, dataPointIndex);
+						handleClickEvent();
 					},
 				},
 				type: "bar",
