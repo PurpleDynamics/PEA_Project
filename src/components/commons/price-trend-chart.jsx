@@ -21,11 +21,11 @@ const PriceTrendChart = ({ width = "100%", height = "100%", barColor }) => {
 		 * @function
 		 * @returns {Array}
 		 * @description
-		 * - 현재사용자의 '월'을 포함한 최근6개월의 '월'정보를 받아오는 Array를 return해줍니다.
+		 * - 현재사용자의 '월'을 포함한 최근6개월의 '월'정보를 받아오는 Array를 return해줍니다.\
 		 * - 추후에 utils에 chart-editor.js 파일에 들어갈예정이니 참고해주세요***
 		 */
 		const getRecent6MonthsArray = () => {
-			const thisMonth = new Date().getMonth() + 1;
+			const thisMonth = new Date().getMonth() + 1; // 현재 '월'에서 -1된 값을 반환해서 +1해준겁니다.
 			return Array(6)
 				.fill()
 				.map((month, idx) => {
@@ -43,6 +43,7 @@ const PriceTrendChart = ({ width = "100%", height = "100%", barColor }) => {
 		const last6MothsPriceDataArr = [3200, 2000, 500, 600, 1854, 200];
 		const highestPrice = Math.max(...last6MothsPriceDataArr); // 최근6개월 평균가격중 가장 높은 값
 
+		// 차트를 그리기위한 options xaxis,yaxis,bar,event에 대한 option들만 사용했습니다.
 		const options = {
 			chart: {
 				toolbar: {
@@ -109,9 +110,13 @@ const PriceTrendChart = ({ width = "100%", height = "100%", barColor }) => {
 				colors: [barColor],
 			},
 		};
+		/*chart를 그리기위해서는 특정 dom요소를 가져와서 new ApexCharts((DOM요소),(option))를 해주어야함.
+			chart.render()를 실행하면 매개변수에 입력된 DOM요소와 해당 option에 맞는 차트를 그려줍니다.
+		*/
 		const chart = new ApexCharts(document.querySelector("#chart"), options);
 		chart.render();
-
+		/* React.RestricMode에의해 차트가 2번그려지는 것을 방지하기 위해
+		  chart가 존재한다면 chart.destroy()를통해 기존의 차트를 삭제*/
 		return () => {
 			if (chart) {
 				chart.destroy();
