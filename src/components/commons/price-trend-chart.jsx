@@ -16,12 +16,13 @@ import { getRecent6MonthsArray } from "../../utils";
  * - 해당 물품과 연관된 category의 평균가격을 보여주는 chart component입니다.
  * - 평균가격은 월 단위로 보여집니다.
  * - 현재 사용자의 '월'을 포함한 이전 6개월의 평균가격을 '월' 단위로 보여줍니다.
+ * - data fetching전이라 last6MothsPriceDataArr의 기본데이터를 [100, 200, 300, 400, 500, 600] 설정해두었습니다.
  */
 const PriceTrendChart = ({
 	width = "100%",
 	height = "100%",
 	barColor,
-	last6MothsPriceDataArr,
+	last6MothsPriceDataArr = [100, 200, 300, 400, 500, 600],
 	handleClickEvent,
 }) => {
 	useEffect(() => {
