@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import styled from "styled-components";
 
 import { COLOR } from "../../libs/styled-components";
+import { getRecent6MonthsArray } from "../../utils";
 /**
  * @component
  * @parameter width : string - chart의 넓이
@@ -14,35 +15,10 @@ import { COLOR } from "../../libs/styled-components";
  * - 평균가격은 월 단위로 보여집니다.
  * - 현재 사용자의 '월'을 포함한 이전 6개월의 평균가격을 '월' 단위로 보여줍니다.
  */
-
 const PriceTrendChart = ({ width = "100%", height = "100%", barColor }) => {
 	useEffect(() => {
-		/**
-		 * @function
-		 * @returns {Array}
-		 * @description
-		 * - 현재사용자의 '월'을 포함한 최근6개월의 '월'정보를 받아오는 Array를 return해줍니다.\
-		 * - 추후에 utils에 chart-editor.js 파일에 들어갈예정이니 참고해주세요***
-		 */
-		const getRecent6MonthsArray = () => {
-			const thisMonth = new Date().getMonth() + 1; // 현재 '월'에서 -1된 값을 반환해서 +1해준겁니다.
-			return Array(6)
-				.fill()
-				.map((month, idx) => {
-					let target = 0;
-					if (thisMonth - idx < 1) {
-						target = thisMonth - idx + 12;
-					} else {
-						target = thisMonth - idx;
-					}
-					month = target;
-					return month;
-				})
-				.reverse();
-		};
 		const last6MothsPriceDataArr = [3200, 2000, 500, 600, 1854, 200];
 		const highestPrice = Math.max(...last6MothsPriceDataArr); // 최근6개월 평균가격중 가장 높은 값
-
 		// 차트를 그리기위한 options xaxis,yaxis,bar,event에 대한 option들만 사용했습니다.
 		const options = {
 			chart: {
