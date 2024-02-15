@@ -1,4 +1,5 @@
 import { BsFileEarmarkText, BsGeoAlt, BsHeart, BsPerson } from "react-icons/bs";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 import { COLOR } from "../../libs/styled-components";
@@ -9,6 +10,8 @@ import { ResponsiveIcon, SearchBar } from "../commons";
  * @returns {JSX.Element}
  */
 const Header = () => {
+	const navi = useNavigate();
+
 	return (
 		<S.HeaderContainer>
 			<S.MainWrapper>
@@ -18,10 +21,20 @@ const Header = () => {
 					placeholder="상품명 또는 카테고리를 입력해주세요"
 				/>
 				<S.IconsWrapper>
-					<ResponsiveIcon icon={BsFileEarmarkText} />
+					<ResponsiveIcon
+						icon={BsFileEarmarkText}
+						onClick={() => {
+							navi("/register-product");
+						}}
+					/>
 					<ResponsiveIcon icon={BsGeoAlt} />
 					<ResponsiveIcon icon={BsHeart} />
-					<ResponsiveIcon icon={BsPerson} />
+					<ResponsiveIcon
+						icon={BsPerson}
+						onClick={() => {
+							navi("/my-info");
+						}}
+					/>
 				</S.IconsWrapper>
 			</S.MainWrapper>
 		</S.HeaderContainer>
