@@ -35,13 +35,14 @@ export const getProductsByCategories = async ({
 };
 /**
  * @function
- * @parameter productId : number - 상품의 고유 식별자
+ * @parameter userId : number - 조회하는 사용자의 id
+ * @parameter productId : number - 조회된 상품의 id
  * @description 해당 상품에 관련된 상세 정보를 반환합니다.
  */
-export const getProductOne = async ({ productId }) => {
+export const getProductOne = async ({ userId, productId }) => {
 	const response = await axiosInstance.get(`/products/${productId}`, {
 		params: {
-			userId: "1",
+			userId: userId,
 		},
 	});
 	return response.data;
