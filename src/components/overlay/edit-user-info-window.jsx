@@ -4,8 +4,9 @@ import styled from "styled-components";
 
 import { Button, Input } from "../../components/commons";
 import { VAILDATION } from "../../constants";
+import { useOverlay } from "../../hooks";
 import { COLOR, FONT_SIZE } from "../../libs/styled-components";
-import TestModal from "./testModal";
+import Modal from "./modal";
 
 /**
  * 회원 정보 수정 오버레이 컴포넌트
@@ -30,7 +31,8 @@ const EditUserInfoWindow = ({ onClose }) => {
 
 	const newPassword = watch("password");
 
-	const [isModalOpen, setModalOpen] = useState(false);
+	const { onOpenOverlay } = useOverlay();
+
 	const [modalType, setModalType] = useState("");
 
 	const onSubmit = (data) => {
@@ -40,43 +42,40 @@ const EditUserInfoWindow = ({ onClose }) => {
 				delete data.passwordConfirm;
 			}
 			console.log("정보 변경 처리", data);
-			setModalOpen(false);
+			onOpenOverlay(null);
 		}
 	};
 
 	const handleOpenModal = (type) => {
-		if (type === "deleteAccount") {
-			setModalType(type);
-			setModalOpen(true);
-		} else if (type === "updateInfo") {
-			if (!Object.keys(errors).length) {
-				setModalType(type);
-				setModalOpen(true);
-			} else {
-				const errorKeys = [
-					"nickName",
-					"email",
-					"address",
-					"phoneNumber",
-					"password",
-					"passwordConfirm",
-				];
-				for (let key of errorKeys) {
-					if (errors[key]) {
-						alert(errors[key].message);
-						break;
-					}
-				}
+		if (type === "updateInfo" && Object.keys(errors).length) {
+			const errorKeys = [
+				"nickName",
+				"email",
+				"address",
+				"phoneNumber",
+				"password",
+				"passwordConfirm",
+			].find((key) => errors[key]);
+
+			if (errorKeys) {
+				alert(errors[errorKeys].message);
+				return;
 			}
 		}
+		setModalType(type);
+		onOpenOverlay({
+			overlayComponent: Modal,
+			position: "midCenter",
+			isFiltered: true,
+		});
 	};
 
 	const handleCancelModal = () => {
-		setModalOpen(false);
+		onOpenOverlay(null);
 	};
 
 	const onCloseEditUserInfoWindow = () => {
-		setModalOpen(false);
+		onOpenOverlay(null);
 		if (onClose) onClose();
 	};
 
@@ -96,12 +95,12 @@ const EditUserInfoWindow = ({ onClose }) => {
 						pattern: VAILDATION.NICKNAME,
 					}}
 					autoComplete="off"
-					value={""}
+					defaultValue={""}
 				/>
 				<Input
 					titleText="이메일"
 					placeholder="이메일을 입력하세요"
-					value={""}
+					defaultValue={""}
 					errors={errors}
 					validate={{
 						required: VAILDATION.COMMON_MESSAGE,
@@ -134,7 +133,7 @@ const EditUserInfoWindow = ({ onClose }) => {
 					validate={{
 						required: VAILDATION.COMMON_MESSAGE,
 					}}
-					value={""}
+					defaultValue={""}
 				/>
 
 				<Input
@@ -178,16 +177,20 @@ const EditUserInfoWindow = ({ onClose }) => {
 						정보 변경
 					</Button>
 				</S.ButtonBox>
-				{isModalOpen && (
-					<S.ModalContainer>
-						<TestModal
-							modalType={modalType}
-							onSubmit={handleSubmit(onSubmit)}
-							onCancel={handleCancelModal}
-							onClose={onCloseEditUserInfoWindow}
-						/>
-					</S.ModalContainer>
-				)}
+				{/* <S.ModalContainer>
+					<Modal
+						modalType={modalType}
+						noticeText={
+							modalType === "deleteAccount"
+								? "정말 탈퇴하시겠습니까?"
+								: "이대로 변경 하시겠습니까?"
+						}
+						onSubmit={handleSubmit(onSubmit)}
+						onCancel={handleCancelModal}
+						onClose={onCloseEditUserInfoWindow}
+						isCancelButton="true"
+					/>
+				</S.ModalContainer> */}
 			</S.EditUserInfoForm>
 		</S.EditUserInfoWindowContainer>
 	);
@@ -228,24 +231,9 @@ const ButtonBox = styled.div`
 	margin-top: 1rem;
 `;
 
-const ModalContainer = styled.div`
-	position: absolute;
-	background-color: blue;
-	top: 50%;
-	transform: translate(0, -50%);
-	width: 30rem;
-	text-align: center;
-	height: 15rem;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-`;
-
 const S = {
 	EditUserInfoWindowContainer,
 	EditUserInfoForm,
 	EditUserInfoTitle,
 	ButtonBox,
-	ModalContainer,
 };
