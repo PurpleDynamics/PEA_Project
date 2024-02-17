@@ -1,12 +1,12 @@
 import axios from "axios";
-import { useCallback, useRef } from "react";
+import { useRef } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 import { Button, Input } from "../components/commons";
 import { Modal } from "../components/overlay";
-import { VAILDATION } from "../constants";
+import { VALIDATION } from "../constants";
 import { useOverlay } from "../hooks/use-overlay";
 import { BREAK_POINT, FONT_SIZE } from "../libs/styled-components";
 import { setLocalToken, setSessionToken } from "../utils";
@@ -34,14 +34,11 @@ const SigninPage = () => {
 	const handleOpenModal = () => {
 		onOpenOverlay({
 			overlayComponent: Modal,
-			modalContents: ModalContents,
-			isFiltered: true,
+			noticeText: "이메일 혹은 비밀번호를 확인해주세요.",
+			buttonText: "확인",
+			modalState: "success",
 		});
 	};
-
-	const ModalContents = useCallback(() => {
-		return <div>로그인에 실패하였습니다.</div>;
-	}, []);
 
 	const navigate = useNavigate();
 	const onMoveSignupPage = () => {
@@ -88,8 +85,8 @@ const SigninPage = () => {
 					registerKey="email"
 					placeholder="이메일을 입력하세요"
 					validate={{
-						required: VAILDATION.COMMON_MESSAGE,
-						pattern: VAILDATION.EMAIL,
+						required: VALIDATION.COMMON_MESSAGE,
+						pattern: VALIDATION.EMAIL,
 					}}
 					errors={errors}
 				/>
@@ -100,8 +97,8 @@ const SigninPage = () => {
 					placeholder="비밀번호를 입력하세요"
 					type="password"
 					validate={{
-						required: VAILDATION.COMMON_MESSAGE,
-						pattern: VAILDATION.PASSWORD,
+						required: VALIDATION.COMMON_MESSAGE,
+						pattern: VALIDATION.PASSWORD,
 					}}
 					errors={errors}
 				/>

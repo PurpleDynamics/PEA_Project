@@ -25,7 +25,7 @@ const NICKNAME = {
 };
 const COMMON_MESSAGE = "필수 응답 항목입니다.";
 
-export const VAILDATION = {
+export const VALIDATION = {
 	EMAIL,
 	PASSWORD,
 	PASSWORD_CONFIRM,

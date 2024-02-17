@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 import { Button, Input } from "../components/commons";
-import { VAILDATION } from "../constants";
+import { VALIDATION } from "../constants";
 import { BREAK_POINT, COLOR } from "../libs/styled-components";
 
 /**
@@ -41,8 +41,8 @@ const SignupPage = () => {
 					buttonText="중복확인"
 					errors={errors}
 					validate={{
-						required: VAILDATION.COMMON_MESSAGE,
-						pattern: VAILDATION.EMAIL,
+						required: VALIDATION.COMMON_MESSAGE,
+						pattern: VALIDATION.EMAIL,
 					}}
 				/>
 				<Input
@@ -53,8 +53,8 @@ const SignupPage = () => {
 					type="password"
 					errors={errors}
 					validate={{
-						required: VAILDATION.COMMON_MESSAGE,
-						pattern: VAILDATION.PASSWORD,
+						required: VALIDATION.COMMON_MESSAGE,
+						pattern: VALIDATION.PASSWORD,
 					}}
 				/>
 				<Input
@@ -65,8 +65,8 @@ const SignupPage = () => {
 					type="password"
 					errors={errors}
 					validate={{
-						required: VAILDATION.COMMON_MESSAGE,
-						pattern: VAILDATION.PASSWORD_CONFIRM,
+						required: VALIDATION.COMMON_MESSAGE,
+						pattern: VALIDATION.PASSWORD_CONFIRM,
 					}}
 				/>
 				<Input
@@ -77,8 +77,8 @@ const SignupPage = () => {
 					buttonText="중복확인"
 					errors={errors}
 					validate={{
-						required: VAILDATION.COMMON_MESSAGE,
-						pattern: VAILDATION.NICKNAME,
+						required: VALIDATION.COMMON_MESSAGE,
+						pattern: VALIDATION.NICKNAME,
 					}}
 					autoComplete="off"
 				/>
@@ -89,7 +89,7 @@ const SignupPage = () => {
 					placeholder="휴대폰번호를 입력하세요 (-제외)"
 					errors={errors}
 					validate={{
-						required: VAILDATION.COMMON_MESSAGE,
+						required: VALIDATION.COMMON_MESSAGE,
 					}}
 				/>
 				<Input
@@ -100,7 +100,7 @@ const SignupPage = () => {
 					buttonText="검색"
 					errors={errors}
 					validate={{
-						required: VAILDATION.COMMON_MESSAGE,
+						required: VALIDATION.COMMON_MESSAGE,
 					}}
 				/>
 				<Button
