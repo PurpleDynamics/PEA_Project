@@ -14,6 +14,19 @@ const GlobalStyles = createGlobalStyle`
 
     /** 폰트 설정 */
     font-family: 'SOYO_Maple_Bold';
+
+    /* 스크롤바 스타일링 */
+	  ::-webkit-scrollbar {
+      width: 0.5rem;
+      height: 0.5rem;
+      background-color: transparent;
+    }
+    ::-webkit-scrollbar-thumb {
+      width: 1rem;
+      height: 1rem;
+      border-radius: 1rem;
+      background-color: ${COLOR.COMMON[600]};
+    }
   }
   html{
     /** 배경 색상 */

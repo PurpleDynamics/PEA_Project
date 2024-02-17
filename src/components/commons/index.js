@@ -1,8 +1,9 @@
 import Banner from "./banner";
 import Button from "./button";
 import CategoryToggle from "./category-toggle";
-import CompressionContainer from "./compression-container";
+import CompressionWrapper from "./compression-wrapper";
 import HighlightedText from "./highlighted-text";
+import IconAndText from "./icon-and-text";
 import Input from "./input";
 import ProductCard from "./product-card";
 import RecentProductList from "./recent-product-list";
@@ -15,13 +16,14 @@ export {
 	Banner,
 	Button,
 	CategoryToggle,
-	CompressionContainer,
+	CompressionWrapper,
 	HighlightedText,
+	IconAndText,
 	Input,
 	ProductCard,
+	RecentProductList,
 	ResponsiveIcon,
 	SearchBar,
-	RecentProductList,
 	SideChatButton,
 	Spacer,
 	TopButton,
