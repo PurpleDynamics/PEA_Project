@@ -1,13 +1,30 @@
 import { useQuery } from "react-query";
 
-import { getProductsByPaymentMethod } from "../axios/base";
+import {
+	getProductsByCategories,
+	getProductsByPaymentMethod,
+} from "../axios/base";
 
 // 상품 관련
 
-export const useGetProductList = ({ axiosParams }) => {
-	console.log(axiosParams);
+export const useGetProductListByPaymentMethod = ({ userId, paymentMethod }) => {
 	return useQuery({
-		queryKey: "getProductListQueryKey",
-		queryFn: () => getProductsByPaymentMethod({ ...axiosParams }),
+		queryKey: "getProductListByPaymentMethodQueryKey",
+		queryFn: () =>
+			getProductsByPaymentMethod({
+				userId: userId,
+				paymentMethod: paymentMethod,
+			}),
+	});
+};
+
+export const useGetProductListByCategories = ({ userId, categories }) => {
+	return useQuery({
+		queryKey: "getProductListByCategoryQueryKey",
+		queryFn: () =>
+			getProductsByCategories({
+				userId: userId,
+				categories: categories,
+			}),
 	});
 };
