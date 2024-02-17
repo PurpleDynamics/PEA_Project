@@ -37,6 +37,7 @@ const SigninPage = () => {
 			noticeText: "이메일 혹은 비밀번호를 확인해주세요.",
 			buttonText: "확인",
 			modalState: "success",
+			isFiltered: true,
 		});
 	};
 
