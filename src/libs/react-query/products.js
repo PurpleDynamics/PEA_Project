@@ -1,6 +1,11 @@
 import { useQuery } from "react-query";
 
 import {
+	GET_PRODUCT_LIST_BY_CATEGORIES_KEY,
+	GET_PRODUCT_LIST_BY_PAYMENT_METHOD_KEY,
+	GET_PRODUCT_ONE_KEY,
+} from "../../constants";
+import {
 	getProductOne,
 	getProductsByCategories,
 	getProductsByPaymentMethod,
@@ -13,7 +18,7 @@ import {
  */
 export const useGetProductListByPaymentMethod = ({ userId, paymentMethod }) => {
 	return useQuery({
-		queryKey: "getProductListByPaymentMethodQueryKey",
+		queryKey: GET_PRODUCT_LIST_BY_PAYMENT_METHOD_KEY,
 		queryFn: () =>
 			getProductsByPaymentMethod({
 				userId: userId,
@@ -28,7 +33,7 @@ export const useGetProductListByPaymentMethod = ({ userId, paymentMethod }) => {
  */
 export const useGetProductListByCategories = ({ userId, categories }) => {
 	return useQuery({
-		queryKey: "getProductListByCategoryQueryKey",
+		queryKey: GET_PRODUCT_LIST_BY_CATEGORIES_KEY,
 		queryFn: () =>
 			getProductsByCategories({
 				userId: userId,
@@ -43,7 +48,7 @@ export const useGetProductListByCategories = ({ userId, categories }) => {
  */
 export const useGetProductOne = ({ userId, productId }) => {
 	return useQuery({
-		queryKey: "getProductOneQueryKey",
+		queryKey: GET_PRODUCT_ONE_KEY,
 		queryFn: () =>
 			getProductOne({
 				userId: userId,
