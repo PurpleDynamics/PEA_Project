@@ -29,6 +29,7 @@ const SignupPage = () => {
 			noticeText: type,
 			buttonText: "확인",
 			modalState: "success",
+			isFiltered: true,
 		});
 	};
 
