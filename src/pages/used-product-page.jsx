@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 import { Banner, Spacer } from "../components/commons";
 import { FreeShare, UsedTrade } from "../components/used-product";
-import { COLOR } from "../libs/styled-components";
+import { BREAK_POINT, COLOR } from "../libs/styled-components";
 
 /**
  * @component
@@ -96,6 +96,10 @@ const TradeTypeSelector = styled.button`
 const TradeTypeWrapper = styled.div`
 	width: 115.2rem;
 	padding: 3rem 3rem;
+	@media (max-width: ${BREAK_POINT.lg}) {
+		width: 90rem;
+		/* padding-left: 20rem; */
+	}
 `;
 
 const S = {

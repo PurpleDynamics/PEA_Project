@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import { COLOR, FONT_SIZE } from "../../libs/styled-components";
+import { BREAK_POINT, COLOR, FONT_SIZE } from "../../libs/styled-components";
 import { HighlightedText, ProductCard } from "../commons";
 
 /**
@@ -55,6 +55,9 @@ const Wrapper = styled.div`
 	justify-content: center;
 	align-items: center;
 	flex-direction: column;
+	@media (max-width: ${BREAK_POINT.lg}) {
+		width: 90rem;
+	}
 `;
 
 const LocationTitle = styled.div`
@@ -69,6 +72,9 @@ const ProductCardWrapper = styled.div`
 	display: grid;
 	grid-template-columns: repeat(4, 1fr);
 	row-gap: 2rem;
+	@media (max-width: ${BREAK_POINT.lg}) {
+		grid-template-columns: repeat(3, 1fr);
+	}
 `;
 
 const S = {
