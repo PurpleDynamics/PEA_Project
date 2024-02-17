@@ -4,11 +4,12 @@ import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
-import { Button, CheckDuplication, Input } from "../components/commons";
+import { Button, Input } from "../components/commons";
 import { Modal } from "../components/overlay";
 import { VAILDATION } from "../constants";
 import { useOverlay } from "../hooks/use-overlay";
 import { BREAK_POINT, COLOR } from "../libs/styled-components";
+import { CheckDuplication } from "../utils";
 
 const BASE_URL = "http://49.165.177.17:3055";
 /**

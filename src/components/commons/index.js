@@ -1,7 +1,6 @@
 import Banner from "./banner";
 import Button from "./button";
 import CategoryToggle from "./category-toggle";
-import { CheckDuplication } from "./check-duplication";
 import CompressionWrapper from "./compression-wrapper";
 import HighlightedText from "./highlighted-text";
 import IconAndText from "./icon-and-text";
@@ -28,5 +27,4 @@ export {
 	SideChatButton,
 	Spacer,
 	TopButton,
-	CheckDuplication,
 };
