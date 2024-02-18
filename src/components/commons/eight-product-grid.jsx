@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import styled from "styled-components";
 
 import { BREAK_POINT, COLOR, FONT_SIZE } from "../../libs/styled-components";
@@ -7,26 +6,18 @@ import { ProductCard } from ".";
 /**
  * @component
  * @parameter productData : array<상품데이터> - product data를 받아옵니다.
- * @parameter onInterestButtonClick : function - 관심 버튼 클릭 시 일어나는 이벤트 함수
  * @returns {JSX.Element}
  *
  * @description 상품데이터를 받아와 8개의 product card를 보여주는 component입니다.
  */
 
-const EightProductGrid = ({ productData, onInterestButtonClick }) => {
-	const [eightProductData, setEightProductData] = useState([]);
-
-	const dataSlice = productData.slice(0, 8);
-
-	useEffect(() => {
-		setEightProductData(dataSlice);
-	}, [productData]);
-
+const EightProductGrid = ({ productData }) => {
+	const eightProductDataSlice = productData.slice(0, 8);
 	return (
 		<S.Wrapper>
-			{eightProductData.length > 0 ? (
+			{eightProductDataSlice.length > 0 ? (
 				<S.ProductList>
-					{eightProductData.map((data, index) => (
+					{eightProductDataSlice.map((data, index) => (
 						<ProductCard
 							key={index}
 							productId={data.productId}
@@ -38,10 +29,9 @@ const EightProductGrid = ({ productData, onInterestButtonClick }) => {
 							interestCount={data.interestCount}
 							chattingCount={data.chattingCount}
 							initIsInterest={data.initIsInterest}
-							onClickInterestButton={() =>
-								onInterestButtonClick(data.productId)
-							}
+							onClickInterestButton={() => {}} // product card 안에 관심 버튼 클릭 시 발동하는 이벤트 함수
 							disabled={data.disabled}
+							onClick={() => {}} // product card 클릭 시 발동하는 이벤트 함수
 						/>
 					))}
 				</S.ProductList>

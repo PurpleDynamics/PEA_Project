@@ -26,10 +26,6 @@ const ProductListPage = () => {
 		location: "역삼동",
 	};
 
-	const onClick = (productId) => {
-		console.log(`${productId} 클릭`);
-	};
-
 	// 임시 product data
 	const usedData = [
 		{
@@ -41,7 +37,6 @@ const ProductListPage = () => {
 			interestCount: 10,
 			chattingCount: 5,
 			initIsInterest: true,
-			onClickInterestButton: () => onClick(1),
 			disabled: false,
 		},
 		{
@@ -127,10 +122,7 @@ const ProductListPage = () => {
 					중고거래
 				</HighlightedText>
 			</S.TitleContainer>
-			<EightProductGrid
-				productData={usedData}
-				onInterestButtonClick={onClick}
-			/>
+			<EightProductGrid productData={usedData} />
 			<Banner />
 			<S.TitleContainer>
 				<HighlightedText
