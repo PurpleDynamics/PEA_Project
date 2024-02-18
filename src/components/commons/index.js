@@ -11,6 +11,7 @@ import ResponsiveIcon from "./responsive-icon";
 import SearchBar from "./search-bar";
 import SideChatButton from "./side-chat-button";
 import Spacer from "./spacer";
+import TextSpacer from "./text-spacer";
 import TopButton from "./top-button";
 export {
 	Banner,
@@ -27,4 +28,5 @@ export {
 	SideChatButton,
 	Spacer,
 	TopButton,
+	TextSpacer,
 };
