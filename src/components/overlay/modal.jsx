@@ -84,6 +84,7 @@ const NoticeTextSection = styled.section`
 	align-items: center;
 	text-align: center;
 	overflow-wrap: break-all;
+	padding: 1rem;
 `;
 const ButtonWrapper = styled.div`
 	width: 100%;
