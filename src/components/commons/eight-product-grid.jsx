@@ -15,7 +15,7 @@ const EightProductGrid = ({ productData }) => {
 	const eightProductDataSlice = productData.slice(0, 8);
 	return (
 		<S.Wrapper>
-			{eightProductDataSlice.length > 0 ? (
+			{eightProductDataSlice.length ? (
 				<S.ProductList>
 					{eightProductDataSlice.map((data, index) => (
 						<ProductCard
