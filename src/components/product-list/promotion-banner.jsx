@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 import { BREAK_POINT, COLOR, FONT_SIZE } from "../../libs/styled-components";
-import { Button, CompressionWrapper, HighlightedText } from "../commons";
+import { Button, HighlightedText } from "../commons";
 
 /**
  * @component
@@ -13,41 +13,39 @@ import { Button, CompressionWrapper, HighlightedText } from "../commons";
 const PromotionBanner = () => {
 	return (
 		<S.PromoContainer>
-			<CompressionWrapper lr="15%">
-				<S.PromoWrapper>
-					<S.PromoImage src="https://url.kr/wmz9uc" />
-					<S.PromoRightBox>
-						<S.PromoTitle>
-							"너, 참
-							<HighlightedText
-								fontSize={FONT_SIZE.xl}
-								color={COLOR.PALETTE.magenta.base}
-							>
-								중고
-							</HighlightedText>
-							스럽다!"
-						</S.PromoTitle>
-						<S.PromoContext>
-							<HighlightedText
-								fontSize={FONT_SIZE.lg}
-								color={COLOR.MAIN.base}
-							>
-								P.E.A
-							</HighlightedText>{" "}
-							에서 <br />
-							지금 당장 거래하세요.!
-						</S.PromoContext>
-						<S.ButtonBox>
-							<Button palette="orange" width="13rem">
-								중고거래
-							</Button>
-							<Button palette="mint" width="13rem">
-								무료나눔
-							</Button>
-						</S.ButtonBox>
-					</S.PromoRightBox>
-				</S.PromoWrapper>
-			</CompressionWrapper>
+			<S.PromoWrapper>
+				<S.PromoImage src="https://url.kr/wmz9uc" />
+				<S.PromoRightBox>
+					<S.PromoTitle>
+						"너, 참
+						<HighlightedText
+							fontSize={FONT_SIZE.xl}
+							color={COLOR.PALETTE.magenta.base}
+						>
+							중고
+						</HighlightedText>
+						스럽다!"
+					</S.PromoTitle>
+					<S.PromoContext>
+						<HighlightedText
+							fontSize={FONT_SIZE.lg}
+							color={COLOR.MAIN.base}
+						>
+							P.E.A
+						</HighlightedText>{" "}
+						에서 <br />
+						지금 당장 거래하세요.!
+					</S.PromoContext>
+					<S.ButtonBox>
+						<Button palette="orange" width="13rem">
+							중고거래
+						</Button>
+						<Button palette="mint" width="13rem">
+							무료나눔
+						</Button>
+					</S.ButtonBox>
+				</S.PromoRightBox>
+			</S.PromoWrapper>
 		</S.PromoContainer>
 	);
 };
@@ -58,6 +56,7 @@ const PromoContainer = styled.div`
 	height: 50rem;
 	background-color: ${COLOR.PALETTE.yellow.light};
 	display: flex;
+	justify-content: center;
 	align-items: center;
 `;
 const PromoWrapper = styled.div`
