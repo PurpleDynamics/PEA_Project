@@ -23,7 +23,7 @@ const PASSWORD_CONFIRM = {
 
 const NICKNAME = {
 	value: /^[a-zA-Z0-9가-힣]{1,8}$/,
-	message: "8글자 이하, 특수문자제외하고 입력해주세요",
+	message: "8글자 이하로 입력해주세요. 특수문자는 사용할 수 없습니다.",
 };
 
 const COMMON_MESSAGE = "필수 응답 항목입니다.";
