@@ -64,7 +64,6 @@ const SignupPage = () => {
 		}
 		try {
 			const response = await axios.post(`${BASE_URL}/signup`, authData);
-			console.log(response, "response");
 			if (response.status === 200) {
 				navigate("/signin");
 			}
