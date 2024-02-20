@@ -8,7 +8,7 @@ import {
 	TextSpacer,
 } from "../components/commons";
 import { PromotionBanner } from "../components/product-list";
-import { COLOR, FONT_SIZE } from "../libs/styled-components";
+import { BREAK_POINT, COLOR, FONT_SIZE } from "../libs/styled-components";
 
 /**
  * @component
@@ -116,7 +116,7 @@ const ProductListPage = () => {
 	};
 
 	return (
-		<>
+		<S.Wrapper>
 			<PromotionBanner />
 			<S.TitleContainer>
 				<HighlightedText
@@ -168,10 +168,17 @@ const ProductListPage = () => {
 				</S.MoreTextButton>
 			</S.MoreViewContainer>
 			<EightProductGrid productData={freeData} />
-		</>
+		</S.Wrapper>
 	);
 };
 export default ProductListPage;
+
+const Wrapper = styled.div`
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+`;
 
 const TitleContainer = styled.div`
 	display: flex;
@@ -181,23 +188,29 @@ const TitleContainer = styled.div`
 `;
 
 const MoreViewContainer = styled.div`
+	width: 115.2rem;
 	display: flex;
-	justify-content: center;
+	justify-content: start;
 	align-items: center;
+	@media (max-width: ${BREAK_POINT.lg}) {
+		width: 87rem;
+	}
+	@media (max-width: 700px) {
+		width: 58rem;
+	}
 `;
 
 const MoreTextButton = styled.div`
-	width: 115.2rem;
 	padding: 0.4rem 5rem;
 	display: flex;
-	justify-content: end;
 	font-size: ${FONT_SIZE.ti};
 	color: ${COLOR.COMMON[400]};
+	z-index: 999;
 	cursor: pointer;
-	background-color: ${COLOR.COMMON[1000]};
 `;
 
 const S = {
+	Wrapper,
 	TitleContainer,
 	MoreViewContainer,
 	MoreTextButton,
