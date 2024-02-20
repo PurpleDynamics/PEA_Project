@@ -3,13 +3,14 @@ import { useEffect } from "react";
 import styled from "styled-components";
 
 import { COLOR } from "../../libs/styled-components";
-import { getRecent6MonthsArray } from "../../utils";
 /**
  * @component
  * @parameter width : string - chart의 넓이
  * @parameter height : string - chart의 높이
  * @parameter barColor : string - bar의 색상 token.COLOR 에서 사용
- * @parameter last6MothsPriceDataArr : Array - 최근 6개읠의 평균금액 data를 배열형태로 넘겨주어야합니다.
+ * @parameter priceDataArr : Array - 평균금액 data를 배열형태로 넘겨주어야합니다.
+ * @parameter xaxisArray : Array - x축에 전달될 값을 배열형태로 넘겨줍니다.
+ * @parameter xaxisUnit : string - x축의 단위
  * @parameter handleClickEvent :function - bar클릭시 발생할 event
  * @returns {JSX.Element}
  * @description
@@ -22,11 +23,13 @@ const PriceTrendChart = ({
 	width = "100%",
 	height = "100%",
 	barColor,
-	last6MothsPriceDataArr,
+	priceDataArr,
+	xaxisArray,
+	xaxisUnit,
 	handleClickEvent,
 }) => {
 	useEffect(() => {
-		const highestPrice = Math.max(...last6MothsPriceDataArr); // 최근6개월 평균가격중 가장 높은 값
+		const highestPrice = Math.max(...priceDataArr); // 최근6개월 평균가격중 가장 높은 값
 		// 차트를 그리기위한 options xaxis,yaxis,bar,event에 대한 option들만 사용했습니다.
 		const options = {
 			chart: {
@@ -38,7 +41,7 @@ const PriceTrendChart = ({
 					dataPointSelection: function (
 						{ dataPointIndex } // click이벤트 발생시 클릭된 bar의 index를 반환
 					) {
-						handleClickEvent();
+						handleClickEvent(dataPointIndex);
 					},
 				},
 				type: "bar",
@@ -47,7 +50,7 @@ const PriceTrendChart = ({
 				{
 					show: false,
 					name: "평균가격",
-					data: last6MothsPriceDataArr,
+					data: priceDataArr,
 				},
 			],
 			plotOptions: {
@@ -60,10 +63,10 @@ const PriceTrendChart = ({
 				},
 			},
 			xaxis: {
-				categories: getRecent6MonthsArray(),
+				categories: xaxisArray,
 				labels: {
 					formatter: function (value) {
-						return value + "월";
+						return value + xaxisUnit;
 					},
 				},
 			},
@@ -104,7 +107,7 @@ const PriceTrendChart = ({
 				chart.destroy();
 			}
 		};
-	}, []);
+	}, [last6MothsPriceDataArr]);
 
 	return <S.Chart id="chart" $width={width} $height={height} />;
 };
