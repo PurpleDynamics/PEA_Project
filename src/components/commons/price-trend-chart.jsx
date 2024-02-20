@@ -22,7 +22,7 @@ const PriceTrendChart = ({
 	width = "100%",
 	height = "100%",
 	barColor,
-	last6MothsPriceDataArr = [100, 200, 300, 400, 500, 600],
+	last6MothsPriceDataArr,
 	handleClickEvent,
 }) => {
 	useEffect(() => {
