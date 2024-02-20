@@ -65,12 +65,13 @@ const Wrapper = styled.div`
 	width: 40rem;
 	height: fit-content;
 	min-height: 20rem;
+	border: 1px solid ${COLOR.COMMON[800]};
 	border-radius: 1rem;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	justify-content: space-between;
-	color: ${COLOR.COMMON[600]};
+	color: ${COLOR.COMMON[400]};
 	background-color: ${COLOR.COMMON[1000]};
 	font-family: "SOYO_Maple_Regular";
 `;
@@ -83,6 +84,7 @@ const NoticeTextSection = styled.section`
 	align-items: center;
 	text-align: center;
 	overflow-wrap: break-all;
+	padding: 1rem;
 `;
 const ButtonWrapper = styled.div`
 	width: 100%;
