@@ -11,7 +11,7 @@ import { useOverlay } from "../hooks/use-overlay";
 import { BREAK_POINT, COLOR } from "../libs/styled-components";
 import { CheckDuplication } from "../utils";
 
-const BASE_URL = "http://49.165.177.17:3055";
+const BASE_URL = "https://topdragon.co.kr/api/user";
 /**
  * @component
  * @returns {JSX.Element}
@@ -47,28 +47,30 @@ const SignupPage = () => {
 	const [isSubmitDisabled, setIsSubmitDisabled] = useState(true); // 가입하기 버튼 활성화 여부
 
 	const emailValue = watch("email");
-	const nicknameValue = watch("nickname");
+	const nicknameValue = watch("nickName");
 
 	const onSubmit = async (data) => {
 		const authData = {
 			email: data.email,
-			password: data.password,
-			nickname: data.nickname,
-			phone_number: data.phoneNumber,
-			location: data.location,
+			pw: data.pw,
+			nickName: data.nickName,
+			phone: data.phone,
+			region: data.region,
 		};
 		//비밀번호 와 비밀번호확인이 같은지 확인하는 함수
-		if (data.password !== data.passwordConfirm) {
+		if (data.pw !== data.passwordConfirm) {
 			handleOpenModal("비밀번호가 일치하지않습니다");
 			return;
 		}
 		try {
-			const response = await axios.post(`${BASE_URL}/signup`, authData);
+			const response = await axios.post(`${BASE_URL}`, authData);
 			if (response.status === 200) {
 				navigate("/signin");
 			}
+			console.log(response, "resss");
 		} catch (error) {
 			console.error("회원가입 오류", error);
+			handleOpenModal("회원가입에 실패했습니다. 다시 시도해주세요.");
 		}
 	};
 
@@ -81,24 +83,24 @@ const SignupPage = () => {
 
 	//이메일 중복 확인함수
 	const onEmailDup = async () => {
-		await CheckDuplication(
-			"email",
-			emailValue,
-			isEmailAvailable,
-			handleOpenModal,
-			errors
-		);
-		enableIfAllTrue();
+		await CheckDuplication({
+			type: "email",
+			value: emailValue,
+			avilableRef: isEmailAvailable,
+			handleOpenModal: handleOpenModal,
+			errors: errors,
+		});
+		enableIfAllTrue(); //중복확인 버튼을 눌렀는지 체크해주는 함수
 	};
 	//닉네임 중복 확인함수
 	const onNicknameDup = async () => {
-		await CheckDuplication(
-			"nickname",
-			nicknameValue,
-			isNicknameAvailable,
-			handleOpenModal,
-			errors
-		);
+		await CheckDuplication({
+			type: "nickName",
+			value: nicknameValue,
+			avilableRef: isNicknameAvailable,
+			handleOpenModal: handleOpenModal,
+			errors: errors,
+		});
 		enableIfAllTrue();
 	};
 	//input 창에 값이 변경될때 가입하기 버튼 비활성화 시키는 함수
@@ -131,7 +133,7 @@ const SignupPage = () => {
 				<Input
 					register={register}
 					titleText="비밀번호"
-					registerKey="password"
+					registerKey="pw"
 					placeholder="비밀번호를 입력하세요"
 					type="password"
 					errors={errors}
@@ -156,7 +158,7 @@ const SignupPage = () => {
 				<Input
 					register={register}
 					titleText="닉네임"
-					registerKey="nickname"
+					registerKey="nickName"
 					placeholder="닉네임을 입력하세요"
 					buttonText="중복확인"
 					handleButton={() => onNicknameDup()}
@@ -170,8 +172,8 @@ const SignupPage = () => {
 				<Input
 					register={register}
 					titleText="휴대폰번호"
-					registerKey="phoneNumber"
-					placeholder="휴대폰번호를 입력하세요 (-제외)"
+					registerKey="phoneq"
+					placeholder="휴대폰번호를 입력하세요 (-)"
 					errors={errors}
 					validate={{
 						required: VAILDATION.COMMON_MESSAGE,
@@ -181,7 +183,7 @@ const SignupPage = () => {
 				<Input
 					register={register}
 					titleText="주소"
-					registerKey="location"
+					registerKey="region"
 					placeholder="주소를 입력하세요"
 					buttonText="검색"
 					errors={errors}

@@ -29,7 +29,7 @@ const NICKNAME = {
 const COMMON_MESSAGE = "필수 응답 항목입니다.";
 
 const PHONE_NUMBER = {
-	value: /^[0-9]+$/,
+	value: /^\d{3}-\d{4}-\d{4}$/,
 	message: "숫자만 입력가능합니다",
 };
 

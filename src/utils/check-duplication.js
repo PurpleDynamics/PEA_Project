@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASE_URL = "http://49.165.177.17:3055";
+const BASE_URL = "https://topdragon.co.kr/api/user";
 
 /**
  *
@@ -15,13 +15,13 @@ const BASE_URL = "http://49.165.177.17:3055";
  * @description - 이메일과 닉네임 중복확인을 검사하는 함수입니다.
  */
 
-export const CheckDuplication = async (
+export const CheckDuplication = async ({
 	type,
 	value,
 	avilableRef,
 	handleOpenModal,
-	errors
-) => {
+	errors,
+}) => {
 	//만약 해당 유형에 대한 오류가 정의되어있다면 함수를 종료하고 , 중복확인 X
 	if (typeof errors[type] !== "undefined") return;
 	if (!value) {
@@ -29,10 +29,11 @@ export const CheckDuplication = async (
 		return;
 	}
 	//중복확인요청
-	const url = `${BASE_URL}/check_${type}?${type}=${encodeURIComponent(value)}`;
+	const url = `${BASE_URL}/check/${type}?${type}=${encodeURIComponent(value)}`;
+
 	try {
 		const response = await axios.get(url);
-		if (response.data.isAvailable) {
+		if (response.data.message) {
 			handleOpenModal(`사용가능한 ${type}입니다.`);
 			avilableRef.current = true;
 		} else {
@@ -40,6 +41,10 @@ export const CheckDuplication = async (
 			avilableRef.current = false;
 		}
 	} catch (error) {
-		console.error(`중복확인 오류 (${type})`, error);
+		if (error.response.status === 404) {
+			handleOpenModal("404error");
+		} else {
+			console.error(`중복확인 오류 (${type})`, error);
+		}
 	}
 };
