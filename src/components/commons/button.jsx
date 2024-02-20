@@ -91,10 +91,10 @@ const TextAndIconContainer = styled.div`
 	border-radius: 0.8rem;
 
 	display: flex;
-	justify-content: space-around;
+	justify-content: center;
 	align-items: center;
 
-	gap: 0.5rem;
+	gap: 1rem;
 
 	padding: 0 0.5rem;
 

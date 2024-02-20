@@ -1,8 +1,8 @@
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
 
-import { CompressionWrapper } from "../components/commons";
-import { DetailProduct } from "../components/detail-product";
+import { DetailProduct, SellerBanner } from "../components/detail-product";
+import { TagProducts } from "../components/detail-product/tag-products";
 import productList from "../libs/msw/database/products.json";
 
 const DetailProductPage = () => {
@@ -28,19 +28,23 @@ const DetailProductPage = () => {
 	//그래프
 	//태그관련상품
 	return (
-		<CompressionWrapper lr="15%">
-			<S.Wrapper>
-				<DetailProduct findProduct={findProduct} />
-			</S.Wrapper>
-		</CompressionWrapper>
+		<S.TagWrapper>
+			<DetailProduct findProduct={findProduct} />
+
+			<SellerBanner findProduct={findProduct} />
+			{/* <PriceTrendChart/>*/}
+
+			<TagProducts findProduct={findProduct} />
+		</S.TagWrapper>
 	);
 };
 export default DetailProductPage;
-
-const Wrapper = styled.div`
-	width: 100%;
+const TagWrapper = styled.div`
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
 `;
-
 const S = {
-	Wrapper,
+	TagWrapper,
 };

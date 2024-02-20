@@ -2,21 +2,23 @@ import styled from "styled-components";
 
 import DetailImages from "./detail-image";
 import DetailInfo from "./detail-info";
-import SellerBanner from "./seller-banner";
 
 const DetailProduct = ({ findProduct }) => {
 	return (
-		<div>
-			<S.ProductContainer>
+		<S.Wrapper>
+			<S.ProductWrapper>
 				<DetailImages findProduct={findProduct} />
 				<DetailInfo findProduct={findProduct} />
-			</S.ProductContainer>
-			<SellerBanner findProduct={findProduct} />
-		</div>
+			</S.ProductWrapper>
+		</S.Wrapper>
 	);
 };
 export default DetailProduct;
-const ProductContainer = styled.div`
+
+const Wrapper = styled.div`
+	width: 115.2rem;
+`;
+const ProductWrapper = styled.div`
 	width: 100%;
 	height: auto;
 	display: flex;
@@ -24,5 +26,6 @@ const ProductContainer = styled.div`
 	gap: 7rem;
 `;
 const S = {
-	ProductContainer,
+	Wrapper,
+	ProductWrapper,
 };

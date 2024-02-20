@@ -1,15 +1,21 @@
 import { useEffect, useState } from "react";
+import {
+	BsChatQuote,
+	BsChatQuoteFill,
+	BsClockHistory,
+	BsCreditCard2BackFill,
+	BsHeartPulseFill,
+	BsShare,
+} from "react-icons/bs";
 import styled from "styled-components";
 
 import { COLOR, FONT_SIZE } from "../../libs/styled-components";
-import { Button, CategoryToggle } from "../commons";
+import { Button, CategoryToggle, ResponsiveIcon } from "../commons";
 
 const DetailInfo = ({ findProduct }) => {
 	const [categoryData, setCategoryData] = useState([]);
 	useEffect(() => {
-		console.log(2); // findProduct 객체 전체를 확인
 		if (findProduct.categoryList) {
-			console.log(1); // categoryList가 제대로 있는지 확인
 			setCategoryData(findProduct.categoryList);
 		}
 	}, [findProduct]);
@@ -27,9 +33,9 @@ const DetailInfo = ({ findProduct }) => {
 						</CategoryToggle>
 					))}
 				</S.TagContain>
-				<S.UserInterest>1{/*윤신님 import*/}</S.UserInterest>
+				<S.UserInterest>{/*윤신님 import*/}</S.UserInterest>
 			</S.TopContain>
-			import CategoryToggle from './../commons/category-toggle';
+
 			<S.ProductTitle>{findProduct.title}</S.ProductTitle>
 			<S.ProductSummary>
 				<S.ProductLocation>{findProduct.location}</S.ProductLocation>
@@ -39,38 +45,57 @@ const DetailInfo = ({ findProduct }) => {
 			</S.ProductSummary>
 			<S.ProductDetail>{findProduct.detail}</S.ProductDetail>
 			<S.ButtonContain>
-				<Button width="36.1rem" palette="cyan">
+				<Button width="36.1rem" palette="cyan" icon={BsChatQuote}>
 					채팅하기
 				</Button>
 				{/*saller가 들어오면 수정,삭제 ,판매완료?   */}
-				<Button width="36.1rem">공유하기</Button>
+				<Button width="36.1rem" icon={BsShare}>
+					공유하기
+				</Button>
 			</S.ButtonContain>
 			<S.ProductSpecsWrapper>
 				<S.ProductSpecsContain>
-					<div>아이콘</div>
-					<SpecsText>
+					<ResponsiveIcon
+						color={COLOR.PALETTE.cyan.base}
+						icon={BsClockHistory}
+						size={"3.5rem"}
+					/>
+					<S.SpecsText>
 						<SpecsMainText>6</SpecsMainText> 일 전에 등록됐어요.
-					</SpecsText>
+					</S.SpecsText>
 				</S.ProductSpecsContain>
 				<S.ProductSpecsContain>
-					<div>아이콘</div>
-					<SpecsText>
+					<ResponsiveIcon
+						color={COLOR.PALETTE.cyan.base}
+						icon={BsCreditCard2BackFill}
+						size={"3.5rem"}
+					/>
+					<S.SpecsText>
 						시세보다 <SpecsMainText>8%</SpecsMainText> 저렴해요.
-					</SpecsText>
+					</S.SpecsText>
 				</S.ProductSpecsContain>
 				<S.ProductSpecsContain>
-					<div>아이콘</div>
-					<SpecsText>
+					<ResponsiveIcon
+						color={COLOR.PALETTE.cyan.base}
+						icon={BsHeartPulseFill}
+						size={"3.5rem"}
+					/>
+
+					<S.SpecsText>
 						<SpecsMainText>34</SpecsMainText> 명이 관심을 가진
 						상품입니다.
-					</SpecsText>
+					</S.SpecsText>
 				</S.ProductSpecsContain>
 				<S.ProductSpecsContain>
-					<div>아이콘</div>
-					<SpecsText>
+					<ResponsiveIcon
+						color={COLOR.PALETTE.cyan.base}
+						icon={BsChatQuoteFill}
+						size={"3.5rem"}
+					/>
+					<S.SpecsText>
 						<SpecsMainText>49</SpecsMainText> 명과 채팅이
 						이뤄졌습니다.
-					</SpecsText>
+					</S.SpecsText>
 				</S.ProductSpecsContain>
 			</S.ProductSpecsWrapper>
 		</S.ProductInfoWrapper>
@@ -128,10 +153,13 @@ const ProductSpecsContain = styled.div`
 	width: 36rem;
 	height: 4.2rem;
 	display: flex;
+	align-items: center;
 	gap: 0.4rem;
 `;
-
-const SpecsText = styled.p`
+const SpecsText = styled.div`
+	padding: 0.5rem;
+	display: flex;
+	align-items: center;
 	font-size: ${FONT_SIZE.md};
 `;
 const SpecsMainText = styled.span`
@@ -151,6 +179,7 @@ const S = {
 	ButtonContain,
 	ProductSpecsWrapper,
 	ProductSpecsContain,
+
 	SpecsText,
 	SpecsMainText,
 };
