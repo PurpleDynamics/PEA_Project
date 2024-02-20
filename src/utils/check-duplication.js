@@ -25,24 +25,33 @@ export const CheckDuplication = async ({
 	//만약 해당 유형에 대한 오류가 정의되어있다면 함수를 종료하고 , 중복확인 X
 	if (typeof errors[type] !== "undefined") return;
 	if (!value) {
-		handleOpenModal(`${type}을 입력해주세요`);
+		handleOpenModal({
+			type: `${type}을 입력해주세요`,
+			modalState: "error",
+		});
 		return;
 	}
 	//중복확인요청
 	const url = `${BASE_URL}/check/${type}?${type}=${encodeURIComponent(value)}`;
-
 	try {
 		const response = await axios.get(url);
-		if (response.data.message) {
-			handleOpenModal(`사용가능한 ${type}입니다.`);
+		console.log(response, "response");
+		if (response.status) {
+			handleOpenModal({
+				type: `사용가능한 ${type}입니다.`,
+				modalState: "success",
+			});
 			avilableRef.current = true;
-		} else {
-			handleOpenModal(`중복된 ${type}입니다`);
-			avilableRef.current = false;
 		}
 	} catch (error) {
 		if (error.response.status === 404) {
 			handleOpenModal("404error");
+		} else if (error.response.status === 400) {
+			handleOpenModal({
+				type: `중복된 ${type}입니다`,
+				modalState: "error",
+			});
+			avilableRef.current = false;
 		} else {
 			console.error(`중복확인 오류 (${type})`, error);
 		}

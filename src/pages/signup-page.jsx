@@ -23,12 +23,12 @@ const BASE_URL = "https://topdragon.co.kr/api/user";
 
 const SignupPage = () => {
 	const { onOpenOverlay } = useOverlay();
-	const handleOpenModal = (type) => {
+	const handleOpenModal = ({ type, modalState }) => {
 		onOpenOverlay({
 			overlayComponent: Modal,
 			noticeText: type,
 			buttonText: "확인",
-			modalState: "success",
+			modalState: modalState,
 			isFiltered: true,
 		});
 	};
@@ -59,7 +59,10 @@ const SignupPage = () => {
 		};
 		//비밀번호 와 비밀번호확인이 같은지 확인하는 함수
 		if (data.pw !== data.passwordConfirm) {
-			handleOpenModal("비밀번호가 일치하지않습니다");
+			handleOpenModal({
+				type: "비밀번호가 일치하지않습니다",
+				modalState: "error",
+			});
 			return;
 		}
 		try {
@@ -86,7 +89,8 @@ const SignupPage = () => {
 			type: "email",
 			value: emailValue,
 			avilableRef: isEmailAvailable,
-			handleOpenModal: handleOpenModal,
+			handleOpenModal: ({ type, modalState }) =>
+				handleOpenModal({ type, modalState }),
 			errors: errors,
 		});
 		enableIfAllTrue(); //중복확인 버튼을 눌렀는지 체크해주는 함수
@@ -94,10 +98,11 @@ const SignupPage = () => {
 	//닉네임 중복 확인함수
 	const onNicknameDup = async () => {
 		await CheckDuplication({
-			type: "nickName",
+			type: "nickname",
 			value: nicknameValue,
 			avilableRef: isNicknameAvailable,
-			handleOpenModal: handleOpenModal,
+			handleOpenModal: ({ type, modalState }) =>
+				handleOpenModal({ type, modalState }),
 			errors: errors,
 		});
 		enableIfAllTrue();
