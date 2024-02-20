@@ -177,7 +177,7 @@ const SignupPage = () => {
 					register={register}
 					titleText="휴대폰번호"
 					registerKey="phoneq"
-					placeholder="휴대폰번호를 입력하세요 (-)"
+					placeholder="EX) 010-0000-0000"
 					errors={errors}
 					validate={{
 						required: VAILDATION.COMMON_MESSAGE,

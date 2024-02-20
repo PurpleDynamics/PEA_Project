@@ -30,7 +30,7 @@ const COMMON_MESSAGE = "필수 응답 항목입니다.";
 
 const PHONE_NUMBER = {
 	value: /^\d{3}-\d{4}-\d{4}$/,
-	message: "숫자만 입력가능합니다",
+	message: "(-)를 포함해서 번호를 입력해주세요.",
 };
 
 export const VAILDATION = {
