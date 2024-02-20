@@ -11,7 +11,6 @@ import { ResponsiveIcon, SearchBar } from "../commons";
  */
 const Header = () => {
 	const navi = useNavigate();
-
 	return (
 		<S.HeaderContainer>
 			<S.MainWrapper>
@@ -21,12 +20,7 @@ const Header = () => {
 					placeholder="상품명 또는 카테고리를 입력해주세요"
 				/>
 				<S.IconsWrapper>
-					<ResponsiveIcon
-						icon={BsFileEarmarkText}
-						onClick={() => {
-							navi("/register-product");
-						}}
-					/>
+					<ResponsiveIcon icon={BsFileEarmarkText} />
 					<ResponsiveIcon icon={BsGeoAlt} />
 					<ResponsiveIcon icon={BsHeart} />
 					<ResponsiveIcon
