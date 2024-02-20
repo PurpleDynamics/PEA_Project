@@ -9,15 +9,14 @@ import { COLOR } from "../../libs/styled-components";
  * @parameter height : string - chart의 높이
  * @parameter barColor : string - bar의 색상 token.COLOR 에서 사용
  * @parameter priceDataArr : Array - 평균금액 data를 배열형태로 넘겨주어야합니다.
- * @parameter xaxisArray : Array - x축에 전달될 값을 배열형태로 넘겨줍니다.
+ * @parameter xaxisArray : Array - x축에 전달될 값을 배열형태로
  * @parameter xaxisUnit : string - x축의 단위
  * @parameter handleClickEvent :function - bar클릭시 발생할 event
  * @returns {JSX.Element}
  * @description
  * - 해당 물품과 연관된 category의 평균가격을 보여주는 chart component입니다.
- * - 평균가격은 월 단위로 보여집니다.
- * - 현재 사용자의 '월'을 포함한 이전 6개월의 평균가격을 '월' 단위로 보여줍니다.
- * - data fetching전이라 last6MothsPriceDataArr의 기본데이터를 [100, 200, 300, 400, 500, 600] 설정해두었습니다.
+ * - 평균가격은 unit 단위로 보여집니다.
+ * - 현재 사용자의 'unit'을 포함한 이전 n개월의 평균가격을 'unit' 단위로 보여줍니다.
  */
 const PriceTrendChart = ({
 	width = "100%",
