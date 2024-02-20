@@ -67,7 +67,6 @@ const SignupPage = () => {
 			if (response.status === 200) {
 				navigate("/signin");
 			}
-			console.log(response, "resss");
 		} catch (error) {
 			console.error("회원가입 오류", error);
 			handleOpenModal("회원가입에 실패했습니다. 다시 시도해주세요.");
