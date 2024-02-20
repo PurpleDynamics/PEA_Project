@@ -106,7 +106,7 @@ const PriceTrendChart = ({
 				chart.destroy();
 			}
 		};
-	}, [last6MothsPriceDataArr]);
+	}, [priceDataArr]);
 
 	return <S.Chart id="chart" $width={width} $height={height} />;
 };
