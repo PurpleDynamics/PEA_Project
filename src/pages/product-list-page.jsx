@@ -1,9 +1,11 @@
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 import {
 	Banner,
 	EightProductGrid,
 	HighlightedText,
+	TextSpacer,
 } from "../components/commons";
 import { PromotionBanner } from "../components/product-list";
 import { COLOR, FONT_SIZE } from "../libs/styled-components";
@@ -104,6 +106,15 @@ const ProductListPage = () => {
 		},
 	];
 
+	const navigate = useNavigate();
+
+	// navigate에 type을 주어 어떤 버튼을 클릭했는지 값을 저장함.
+	// useLocation을 사용하여 data.type으로 확인가능.
+	const onClickNavigate = ({ type }) => {
+		const sendType = { type };
+		navigate("/used-product", { state: sendType });
+	};
+
 	return (
 		<>
 			<PromotionBanner />
@@ -114,14 +125,23 @@ const ProductListPage = () => {
 				>
 					{user.location}
 				</HighlightedText>
-				<p>&nbsp;</p>
+				<TextSpacer />
+
 				<HighlightedText
 					color={COLOR.PALETTE.orange.weight}
 					fontSize={FONT_SIZE.bg}
 				>
 					중고거래
 				</HighlightedText>
+				<TextSpacer spacer={1} />
 			</S.TitleContainer>
+			<S.MoreViewContainer>
+				<S.MoreTextButton
+					onClick={() => onClickNavigate({ type: "중고거래" })}
+				>
+					더보기
+				</S.MoreTextButton>
+			</S.MoreViewContainer>
 			<EightProductGrid productData={usedData} />
 			<Banner />
 			<S.TitleContainer>
@@ -138,7 +158,15 @@ const ProductListPage = () => {
 				>
 					무료나눔
 				</HighlightedText>
+				<TextSpacer spacer={1} />
 			</S.TitleContainer>
+			<S.MoreViewContainer>
+				<S.MoreTextButton
+					onClick={() => onClickNavigate({ type: "무료나눔" })}
+				>
+					더보기
+				</S.MoreTextButton>
+			</S.MoreViewContainer>
 			<EightProductGrid productData={freeData} />
 		</>
 	);
@@ -152,6 +180,25 @@ const TitleContainer = styled.div`
 	padding: 2rem 1rem 0;
 `;
 
+const MoreViewContainer = styled.div`
+	display: flex;
+	justify-content: center;
+	align-items: center;
+`;
+
+const MoreTextButton = styled.div`
+	width: 115.2rem;
+	padding: 0.4rem 5rem;
+	display: flex;
+	justify-content: end;
+	font-size: ${FONT_SIZE.ti};
+	color: ${COLOR.COMMON[400]};
+	cursor: pointer;
+	background-color: ${COLOR.COMMON[1000]};
+`;
+
 const S = {
 	TitleContainer,
+	MoreViewContainer,
+	MoreTextButton,
 };
