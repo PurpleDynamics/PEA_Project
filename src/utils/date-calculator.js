@@ -44,11 +44,12 @@ export const printPeriodAsString = ({ formattedDate }) => {
 /**
  * @function
  * @returns {Array}
+ * @parameter NthMonth : number - 현재 "월"을 포함한 이전 몇개의 "월"을 받아올지 입력.
  * @description 현재사용자의 '월'을 포함한 최근6개월의 '월'정보를 받아오는 Array를 return해줍니다.
  */
-export const getRecentNthMonthsArray = ({ Nmonth }) => {
+export const getRecentNthMonthsArray = ({ NthMonth }) => {
 	const thisMonth = new Date().getMonth() + 1; // 현재 '월'에서 -1된 값을 반환해서 +1해준겁니다.
-	return Array(Nmonth)
+	return Array(NthMonth)
 		.fill(thisMonth + 11)
 		.map((month, idx) => {
 			return ((month - idx) % 12) + 1;
