@@ -23,10 +23,10 @@ const BASE_URL = "https://topdragon.co.kr/api/user";
 
 const SignupPage = () => {
 	const { onOpenOverlay } = useOverlay();
-	const handleOpenModal = ({ type, modalState }) => {
+	const handleOpenModal = ({ keyType, modalState }) => {
 		onOpenOverlay({
 			overlayComponent: Modal,
-			noticeText: type,
+			noticeText: keyType,
 			buttonText: "확인",
 			modalState: modalState,
 			isFiltered: true,
@@ -60,7 +60,7 @@ const SignupPage = () => {
 		//비밀번호 와 비밀번호확인이 같은지 확인하는 함수
 		if (data.pw !== data.passwordConfirm) {
 			handleOpenModal({
-				type: "비밀번호가 일치하지않습니다",
+				keyType: "비밀번호가 일치하지않습니다",
 				modalState: "error",
 			});
 			return;
@@ -71,7 +71,6 @@ const SignupPage = () => {
 				navigate("/signin");
 			}
 		} catch (error) {
-			console.error("회원가입 오류", error);
 			handleOpenModal("회원가입에 실패했습니다. 다시 시도해주세요.");
 		}
 	};
@@ -86,11 +85,11 @@ const SignupPage = () => {
 	//이메일 중복 확인함수
 	const onEmailDup = async () => {
 		await CheckDuplication({
-			type: "email",
+			keyType: "email",
 			value: emailValue,
 			avilableRef: isEmailAvailable,
-			handleOpenModal: ({ type, modalState }) =>
-				handleOpenModal({ type, modalState }),
+			handleOpenModal: ({ keyType, modalState }) =>
+				handleOpenModal({ keyType, modalState }),
 			errors: errors,
 		});
 		enableIfAllTrue(); //중복확인 버튼을 눌렀는지 체크해주는 함수
@@ -98,11 +97,11 @@ const SignupPage = () => {
 	//닉네임 중복 확인함수
 	const onNicknameDup = async () => {
 		await CheckDuplication({
-			type: "nickname",
+			keyType: "nickname",
 			value: nicknameValue,
 			avilableRef: isNicknameAvailable,
-			handleOpenModal: ({ type, modalState }) =>
-				handleOpenModal({ type, modalState }),
+			handleOpenModal: ({ keyType, modalState }) =>
+				handleOpenModal({ keyType, modalState }),
 			errors: errors,
 		});
 		enableIfAllTrue();
@@ -176,7 +175,7 @@ const SignupPage = () => {
 				<Input
 					register={register}
 					titleText="휴대폰번호"
-					registerKey="phoneq"
+					registerKey="phone"
 					placeholder="EX) 010-0000-0000"
 					errors={errors}
 					validate={{
