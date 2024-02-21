@@ -52,7 +52,7 @@ const PromotionBanner = () => {
 							palette="orange"
 							width="13rem"
 							onClick={() =>
-								onClickNavigate({ type: "중고거래" })
+								onClickNavigate({ type: "usedTrade" })
 							}
 						>
 							중고거래
@@ -61,7 +61,7 @@ const PromotionBanner = () => {
 							palette="mint"
 							width="13rem"
 							onClick={() =>
-								onClickNavigate({ type: "무료나눔" })
+								onClickNavigate({ type: "freeShare" })
 							}
 						>
 							무료나눔
