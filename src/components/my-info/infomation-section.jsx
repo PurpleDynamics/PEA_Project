@@ -22,13 +22,13 @@ const InforMationSection = ({
 		<S.BgColorContainer>
 			<CompressionWrapper lr="15%">
 				<S.TitleContainer>
-				<Spacer width={5}/>
+					<Spacer width={5} />
 					<S.TitleText>마이페이지</S.TitleText>
 				</S.TitleContainer>
 				<S.DivideWrapper>
 					<S.ImageAndInfoWrapper>
 						<S.UserImage
-							src={profileImage || "https://url.kr/5zjib4"}
+							src={profileImage || "https://url.kr/5zjib4"} //profileImage요청이 제대로 이루어지지 않았다면 기본 이미지를 보여주도록
 						/>
 						<S.InfoWrapper>
 							<S.NickNameAndIconWrapper>

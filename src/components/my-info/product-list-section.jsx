@@ -6,7 +6,7 @@ import { CompressionWrapper, EightProductGrid } from "../commons";
 
 const ProductListSection = () => {
 	const [isClicked, setIsClicked] = useState(null);
-	const handleClick = (id) => {
+	const handleClick = ({ id }) => {
 		setIsClicked(id);
 	};
 	// 임시 user data
@@ -119,14 +119,14 @@ const ProductListSection = () => {
 				<S.SaleOrUsedArea>
 					<S.Sale
 						id={1}
-						onClick={() => handleClick(1)}
+						onClick={() => handleClick({ id: 1 })}
 						isClicked={isClicked === 1}
 					>
 						판매
 					</S.Sale>
 					<S.Used
 						id={2}
-						onClick={() => handleClick(2)}
+						onClick={() => handleClick({ id: 2 })}
 						isClicked={isClicked === 2}
 					>
 						나눔

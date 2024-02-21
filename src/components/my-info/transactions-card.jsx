@@ -44,7 +44,8 @@ const TransactionsCardWrapper = styled.div`
 	border-radius: 2rem;
 	box-shadow: 0 2px 4px ${COLOR.COMMON[800]};
 	padding: 1.8rem;
-	background-color: ${({ isClicked }) => isClicked && "yellow"};
+	background-color: ${({ isClicked }) =>
+		isClicked && COLOR.PALETTE.yellow.light};
 `;
 const CardContainer = styled.div`
 	display: flex;

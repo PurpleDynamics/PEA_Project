@@ -7,8 +7,9 @@ import { CompressionWrapper, HighlightedText, Spacer } from "../commons";
 import { TransactionsCard } from ".";
 
 const GraphSection = ({ price = "3,800,000" }) => {
+	const CARD_TITLE_TEXT = ["총 금액", "판매 금액", "구매 금액"];
 	const [isClicked, setIsClicked] = useState(false);
-	const handleClick = (id) => {
+	const handleClick = ({ id }) => {
 		setIsClicked(id);
 	};
 	return (
@@ -29,36 +30,22 @@ const GraphSection = ({ price = "3,800,000" }) => {
 					</S.PrcieInformation>
 				</S.TitleAndTotalPriceArea>
 				<S.CardArea>
-					<TransactionsCard
-						title="총 금액"
-						icon={<BsWallet2 size={FONT_SIZE.lg} />}
-						month="1월"
-						totalPrice="3,000,000원"
-						monthlyPrice="690,000원"
-						id={1}
-						isClicked={isClicked === 1}
-						onClick={() => handleClick(1)}
-					/>
-					<TransactionsCard
-						title="판매 금액"
-						icon={<BsWallet2 size={FONT_SIZE.lg} />}
-						month="1월"
-						totalPrice="3,000,000원"
-						monthlyPrice="690,000원"
-						id={2}
-						isClicked={isClicked === 2}
-						onClick={() => handleClick(2)}
-					/>
-					<TransactionsCard
-						title="구매 금액"
-						icon={<BsWallet2 size={FONT_SIZE.lg} />}
-						month="1월"
-						totalPrice="3,000,000원"
-						monthlyPrice="690,000원"
-						id={3}
-						isClicked={isClicked === 3}
-						onClick={() => handleClick(3)}
-					/>
+					{Array(3)
+						.fill()
+						.map((_, idx) => {
+							return (
+								<TransactionsCard
+									title={CARD_TITLE_TEXT[idx]}
+									icon={<BsWallet2 size={FONT_SIZE.lg} />}
+									month="1월"
+									totalPrice="3,000,000원"
+									monthlyPrice="690,000원"
+									id={1}
+									isClicked={isClicked === idx + 1}
+									onClick={() => handleClick({ id: idx + 1 })}
+								/>
+							);
+						})}
 				</S.CardArea>
 				<S.ChartArea>
 					<S.Chart />
@@ -92,13 +79,6 @@ const CardArea = styled.div`
 	align-items: center;
 	justify-content: space-between;
 `;
-const Card = styled.div`
-	// 임시 카드컴포넌트
-	width: 25rem;
-	height: 12rem;
-	background-color: yellow;
-`;
-
 const ChartArea = styled.div`
 	grid-row: 3;
 	width: 100%;
@@ -117,7 +97,6 @@ const S = {
 	Title,
 	PrcieInformation,
 	CardArea,
-	Card,
 	ChartArea,
 	Chart,
 };
