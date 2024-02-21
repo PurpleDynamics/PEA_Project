@@ -16,8 +16,8 @@ const PromotionBanner = () => {
 
 	// navigate에 type을 주어 어떤 버튼을 클릭했는지 값을 저장함.
 	// useLocation을 사용하여 data.type으로 확인가능.
-	const onClickNavigate = ({ type }) => {
-		const sendType = { type };
+	const onClickNavigate = ({ keyType }) => {
+		const sendType = { keyType };
 		navigate("/used-product", { state: sendType });
 	};
 
@@ -52,7 +52,7 @@ const PromotionBanner = () => {
 							palette="orange"
 							width="13rem"
 							onClick={() =>
-								onClickNavigate({ type: "usedTrade" })
+								onClickNavigate({ keyType: "usedTrade" })
 							}
 						>
 							중고거래
@@ -61,7 +61,7 @@ const PromotionBanner = () => {
 							palette="mint"
 							width="13rem"
 							onClick={() =>
-								onClickNavigate({ type: "freeShare" })
+								onClickNavigate({ keyType: "freeShare" })
 							}
 						>
 							무료나눔

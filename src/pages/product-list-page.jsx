@@ -110,8 +110,8 @@ const ProductListPage = () => {
 
 	// navigate에 type을 주어 어떤 버튼을 클릭했는지 값을 저장함.
 	// useLocation을 사용하여 data.type으로 확인가능.
-	const onClickNavigate = ({ type }) => {
-		const sendType = { type };
+	const onClickNavigate = ({ keyType }) => {
+		const sendType = { keyType };
 		navigate("/used-product", { state: sendType });
 	};
 
@@ -137,7 +137,7 @@ const ProductListPage = () => {
 			</S.TitleContainer>
 			<S.MoreViewContainer>
 				<S.MoreTextButton
-					onClick={() => onClickNavigate({ type: "중고거래" })}
+					onClick={() => onClickNavigate({ keyType: "usedTrade" })}
 				>
 					더보기
 				</S.MoreTextButton>
@@ -162,7 +162,7 @@ const ProductListPage = () => {
 			</S.TitleContainer>
 			<S.MoreViewContainer>
 				<S.MoreTextButton
-					onClick={() => onClickNavigate({ type: "무료나눔" })}
+					onClick={() => onClickNavigate({ keyType: "freeShare" })}
 				>
 					더보기
 				</S.MoreTextButton>
