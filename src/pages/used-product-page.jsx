@@ -1,19 +1,25 @@
 import { useState } from "react";
+import { useLocation } from "react-router-dom";
 import styled from "styled-components";
 
 import { Banner, Spacer } from "../components/commons";
-import { FreeShare, UsedTrade } from "../components/used-product";
+import UsedFreeList from "../components/used-product/used-free-list";
 import { BREAK_POINT, COLOR } from "../libs/styled-components";
 
 /**
- * @component
+ * @function
  * @returns {JSX.Element}
- * @description "중고거래" 버튼 혹은 "무료나눔" 버튼 클릭시, 해당 컴포넌트를 불러오는 페이지입니다.
+ * @description "중고거래" 버튼 혹은 "무료나눔" 버튼 클릭시, 해당 데이터를 불러오는 페이지입니다.
  */
 
 const UsedProductPage = () => {
-	const [selectedButton, setSelectedButton] = useState("usedTrade");
-	//임시 데이터
+	const location = useLocation();
+
+	//메인페이지에서 "중고거래" 혹은 "무료나눔" 중 어떤값을 클릭했는지에 대한 값
+	const typeData = location.state?.type;
+
+	const [selectedButton, setSelectedButton] = useState(typeData);
+
 	const usedProductsData = [
 		{ title: "최하영", price: "1000000", location: "역삼동" },
 		{ title: "김진솔", price: "1000000", location: "역삼동" },
@@ -38,14 +44,8 @@ const UsedProductPage = () => {
 	];
 
 	// 버튼 클릭시, 버튼색 변경하는 이벤트함수
-	const onClickTypeSelector = (buttonKey) => {
-		const defaultColor = `${COLOR.COMMON[400]}`;
-		if (buttonKey === selectedButton) {
-			return buttonKey === "usedTrade"
-				? `${COLOR.PALETTE.orange.weight}`
-				: `${COLOR.PALETTE.mint.weight}`;
-		}
-		return defaultColor;
+	const onClickTypeSelector = ({ id }) => {
+		setSelectedButton(id);
 	};
 
 	return (
@@ -55,22 +55,30 @@ const UsedProductPage = () => {
 				<Banner />
 				<S.TradeTypeWrapper>
 					<S.TradeTypeSelector
-						onClick={() => setSelectedButton("usedTrade")}
-						$textColor={onClickTypeSelector("usedTrade")}
+						id="usedTrade"
+						onClick={() => onClickTypeSelector({ id: "usedTrade" })}
+						$isSelected={selectedButton === "usedTrade"}
 					>
 						중고거래
 					</S.TradeTypeSelector>
 					<S.TradeTypeSelector
-						onClick={() => setSelectedButton("freeShare")}
-						$textColor={onClickTypeSelector("freeShare")}
+						id="freeShare"
+						onClick={() => onClickTypeSelector({ id: "freeShare" })}
+						$isSelected={selectedButton === "freeShare"}
 					>
 						무료나눔
 					</S.TradeTypeSelector>
 					{selectedButton === "usedTrade" && (
-						<UsedTrade usedData={usedProductsData} />
+						<UsedFreeList
+							productData={usedProductsData}
+							type={"usedTrade"}
+						/>
 					)}
 					{selectedButton === "freeShare" && (
-						<FreeShare freeData={freeProductsData} />
+						<UsedFreeList
+							productData={freeProductsData}
+							type={"freeShare"}
+						/>
 					)}
 				</S.TradeTypeWrapper>
 			</S.Wrapper>
@@ -90,7 +98,12 @@ const TradeTypeSelector = styled.button`
 	padding: 0 2rem;
 	cursor: pointer;
 	background-color: ${COLOR.COMMON[1000]};
-	color: ${(props) => props.$textColor};
+	color: ${({ $isSelected, id }) =>
+		$isSelected
+			? id === "usedTrade"
+				? COLOR.PALETTE.orange.weight
+				: COLOR.PALETTE.mint.weight
+			: COLOR.COMMON[400]};
 `;
 
 const TradeTypeWrapper = styled.div`
@@ -98,7 +111,6 @@ const TradeTypeWrapper = styled.div`
 	padding: 3rem 3rem;
 	@media (max-width: ${BREAK_POINT.lg}) {
 		width: 90rem;
-		/* padding-left: 20rem; */
 	}
 `;
 
