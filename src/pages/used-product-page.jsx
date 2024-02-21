@@ -55,29 +55,39 @@ const UsedProductPage = () => {
 				<Banner />
 				<S.TradeTypeWrapper>
 					<S.TradeTypeSelector
-						id="usedTrade"
 						onClick={() => onClickTypeSelector({ id: "usedTrade" })}
-						$isSelected={selectedButton === "usedTrade"}
+						$isSelected={
+							selectedButton === "usedTrade"
+								? COLOR.PALETTE.orange.weight
+								: COLOR.COMMON[400]
+						}
 					>
 						중고거래
 					</S.TradeTypeSelector>
 					<S.TradeTypeSelector
-						id="freeShare"
 						onClick={() => onClickTypeSelector({ id: "freeShare" })}
-						$isSelected={selectedButton === "freeShare"}
+						$isSelected={
+							selectedButton === "freeShare"
+								? COLOR.PALETTE.mint.weight
+								: COLOR.COMMON[400]
+						}
 					>
 						무료나눔
 					</S.TradeTypeSelector>
 					{selectedButton === "usedTrade" && (
 						<UsedFreeList
 							productData={usedProductsData}
-							type={"usedTrade"}
+							freeOrUsed={
+								selectedButton === "usedTrade" && "중고거래"
+							}
 						/>
 					)}
 					{selectedButton === "freeShare" && (
 						<UsedFreeList
 							productData={freeProductsData}
-							type={"freeShare"}
+							freeOrUsed={
+								selectedButton === "freeShare" && "무료나눔"
+							}
 						/>
 					)}
 				</S.TradeTypeWrapper>
@@ -98,12 +108,7 @@ const TradeTypeSelector = styled.button`
 	padding: 0 2rem;
 	cursor: pointer;
 	background-color: ${COLOR.COMMON[1000]};
-	color: ${({ $isSelected, id }) =>
-		$isSelected
-			? id === "usedTrade"
-				? COLOR.PALETTE.orange.weight
-				: COLOR.PALETTE.mint.weight
-			: COLOR.COMMON[400]};
+	color: ${({ $isSelected }) => $isSelected};
 `;
 
 const TradeTypeWrapper = styled.div`

@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import styled from "styled-components";
 
 import { BREAK_POINT, COLOR, FONT_SIZE } from "../../libs/styled-components";
@@ -7,28 +6,14 @@ import { HighlightedText, ProductCard, TextSpacer } from "../commons";
 /**
  * @component
  * @parameter productData : array<상품데이터> - used-product페이지안에  usedProductsData 데이터를 받아옵니다.
- * @parameter type : string - 표시할 상품유형 | usedTrade | freeShare
+ * @parameter freeOrUsed : string - 표시할 상품유형 | 중고거래 | 무료나눔
  * @returns {JSX.Element}
  *
  * @description
  * - used-product-page 에서 사용되는 컴포넌트입니다.
  * - 중고거래/무료나눔에 해당하는 productCard를 보여줍니다.
  */
-const UsedFreeList = ({ productData, type }) => {
-	const [title, setTitle] = useState("");
-	const [$color, setColor] = useState("");
-
-	//중고거래/무료나눔 버튼 클릭시, 색상 변경
-	useEffect(() => {
-		if (type === "usedTrade") {
-			setTitle("중고거래");
-			setColor(COLOR.PALETTE.orange.weight);
-		} else {
-			setTitle("무료나눔");
-			setColor(COLOR.PALETTE.mint.weight);
-		}
-	}, []);
-
+const UsedFreeList = ({ productData, freeOrUsed }) => {
 	return (
 		<S.Wrapper>
 			<S.LocationTitleContainer>
@@ -36,8 +21,15 @@ const UsedFreeList = ({ productData, type }) => {
 					<S.LocationTitle>
 						{productData[0]?.location}
 						<TextSpacer />
-						<HighlightedText color={$color} fontSize={FONT_SIZE.bg}>
-							{title}
+						<HighlightedText
+							color={
+								freeOrUsed === "중고거래"
+									? COLOR.PALETTE.orange.weight
+									: COLOR.PALETTE.mint.weight
+							}
+							fontSize={FONT_SIZE.bg}
+						>
+							{freeOrUsed}
 						</HighlightedText>
 					</S.LocationTitle>
 				) : (
