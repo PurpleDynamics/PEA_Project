@@ -1,5 +1,12 @@
-import { Banner } from "../components/commons";
-import { EightProductGrid, PromotionBanner } from "../components/product-list";
+import styled from "styled-components";
+
+import {
+	Banner,
+	EightProductGrid,
+	HighlightedText,
+} from "../components/commons";
+import { PromotionBanner } from "../components/product-list";
+import { COLOR, FONT_SIZE } from "../libs/styled-components";
 
 /**
  * @component
@@ -20,116 +27,131 @@ const ProductListPage = () => {
 	};
 
 	// 임시 product data
-	const data = [
+	const usedData = [
 		{
-			title: "물건1",
-			location: "역삼동",
-			salesCategory: "중고",
+			productId: 1,
+			title: "중고1",
+			createdAt: "2024-02-18",
+			price: "1000",
+			categoriesArray: ["음식", "사람"],
+			interestCount: 10,
+			chattingCount: 5,
+			initIsInterest: true,
+			disabled: false,
 		},
 		{
-			title: "물건2",
-			location: "독산동",
-			salesCategory: "새상품",
+			title: "중고2",
+			price: "1000",
 		},
 		{
-			title: "물건3",
-			location: "역삼동",
-			salesCategory: "새상품",
+			title: "중고3",
+			price: "1000",
 		},
 		{
-			title: "물건4",
-			location: "독산동",
-			salesCategory: "중고",
+			title: "중고4",
+			price: "1000",
 		},
 		{
-			title: "물건1",
-			location: "역삼동",
-			salesCategory: "중고",
+			title: "중고5",
+			price: "1000",
 		},
 		{
-			title: "물건2",
-			location: "독산동",
-			salesCategory: "새상품",
+			title: "중고6",
+			price: "1000",
 		},
 		{
-			title: "물건3",
-			location: "역삼동",
-			salesCategory: "새상품",
+			title: "중고7",
+			price: "1000",
 		},
 		{
-			title: "물건4",
-			location: "독산동",
-			salesCategory: "중고",
-		},
-		{
-			title: "물건1",
-			location: "역삼동",
-			salesCategory: "중고",
-		},
-		{
-			title: "물건2",
-			location: "독산동",
-			salesCategory: "새상품",
-		},
-		{
-			title: "물건3",
-			location: "역삼동",
-			salesCategory: "새상품",
-		},
-		{
-			title: "물건4",
-			location: "독산동",
-			salesCategory: "중고",
-		},
-		{
-			title: "물건1",
-			location: "역삼동",
-			salesCategory: "중고",
-		},
-		{
-			title: "물건2",
-			location: "독산동",
-			salesCategory: "새상품",
-		},
-		{
-			title: "물건3",
-			location: "역삼동",
-			salesCategory: "새상품",
-		},
-		{
-			title: "물건4",
-			location: "역삼동",
-			salesCategory: "중고",
+			title: "중고8",
+			price: "1000",
 		},
 	];
 
-	const usedData = data
-		.filter(
-			(el) => el.salesCategory === "중고" && el.location === user.location
-		)
-		.slice(0, 8);
-
-	const freeData = data
-		.filter(
-			(el) => el.salesCategory !== "중고" && el.location === user.location
-		)
-		.slice(0, 8);
+	const freeData = [
+		{
+			title: "무료1",
+			price: "0",
+		},
+		{
+			title: "무료2",
+			price: "0",
+		},
+		{
+			title: "무료3",
+			price: "0",
+		},
+		{
+			title: "무료4",
+			price: "0",
+		},
+		{
+			title: "무료5",
+			price: "0",
+		},
+		{
+			title: "무료6",
+			price: "0",
+		},
+		{
+			title: "무료7",
+			price: "0",
+		},
+		{
+			title: "무료8",
+			price: "0",
+		},
+	];
 
 	return (
 		<>
 			<PromotionBanner />
-			<EightProductGrid
-				userData={user}
-				eightProductData={usedData}
-				salesCategory={"중고거래"}
-			/>
+			<S.TitleContainer>
+				<HighlightedText
+					color={COLOR.COMMON[400]}
+					fontSize={FONT_SIZE.bg}
+				>
+					{user.location}
+				</HighlightedText>
+				<p>&nbsp;</p>
+				<HighlightedText
+					color={COLOR.PALETTE.orange.weight}
+					fontSize={FONT_SIZE.bg}
+				>
+					중고거래
+				</HighlightedText>
+			</S.TitleContainer>
+			<EightProductGrid productData={usedData} />
 			<Banner />
-			<EightProductGrid
-				userData={user}
-				eightProductData={freeData}
-				salesCategory={"무료나눔"}
-			/>
+			<S.TitleContainer>
+				<HighlightedText
+					color={COLOR.COMMON[400]}
+					fontSize={FONT_SIZE.bg}
+				>
+					{user.location}
+				</HighlightedText>
+				<p>&nbsp;</p>
+				<HighlightedText
+					color={COLOR.PALETTE.mint.weight}
+					fontSize={FONT_SIZE.bg}
+				>
+					무료나눔
+				</HighlightedText>
+			</S.TitleContainer>
+			<EightProductGrid productData={freeData} />
 		</>
 	);
 };
 export default ProductListPage;
+
+const TitleContainer = styled.div`
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 2rem 1rem 0;
+`;
+
+const S = {
+	TitleContainer,
+};
