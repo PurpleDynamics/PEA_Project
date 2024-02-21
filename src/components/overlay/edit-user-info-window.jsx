@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import { useForm } from "react-hook-form";
 import styled from "styled-components";
 
@@ -31,56 +31,66 @@ const EditUserInfoWindow = ({ onClose }) => {
 
 	// password를 지켜보면서 실시간으로 변화하는 값을 passwordConfirm과 비교하기 위한 변수 newPassword를 정의한다.
 	const newPassword = watch("password");
-	const [modalType, setModalType] = useState("");
 	const updatedData = useRef();
 	const { onOpenOverlay } = useOverlay();
 
 	// type="submit" 인 버튼을 눌렀을 때, modalType이 "updateInfo" 이면 data가 updatedData.current 에 저장된다.
 	// password 가 입력되지 않으면, data 값에서 password 와 passwordConfirm 값을 삭제한다.
 	const onSubmit = (data) => {
-		if (modalType === "updateInfo") {
-			if (!data.password) {
-				delete data.password;
-				delete data.passwordConfirm;
-			}
-			updatedData.current = data;
+		if (!data.password) {
+			delete data.password;
+			delete data.passwordConfirm;
 		}
+		updatedData.current = data;
+		console.log(data);
 	};
 
-	// "정보 변경" 버튼에서 "확인" 버튼을 누르면 updatedData.current 에 저장한 값을 서버에 보내서 회원 정보가 수정되는 기능을 구현할 예정이다.
-	const handleUpdateData = () => {};
+	// "정보 변경" 클릭 이벤트
+	const handleUpdateUserInfoClick = () => {
+		const errorKey = Object.keys(errors)[0];
+		if (errorKey) {
+			const fieldTitles = {
+				nickName: "닉네임",
+				email: "이메일",
+				address: "주소",
+				phoneNumber: "휴대폰 번호",
+				password: "새 비밀번호",
+				passwordConfirm: "새 비밀번호 확인",
+			};
 
-	// 모달창을 overlay 기능으로 구현한다. 모달의 type 에 따라 "회원 탈퇴" 또는 "정보 변경" 모달을 불러온다.
-	const handleOpenModal = (type) => {
-		setModalType(type);
+			const errorMessage = `${fieldTitles[errorKey]} : ${errors[errorKey].message}`;
 
-		// 에러가 있을 경우 상위의 에러가 alert 되도록 한다.
-		if (type === "updateInfo" && Object.keys(errors).length) {
-			const errorKeys = [
-				"nickName",
-				"email",
-				"address",
-				"phoneNumber",
-				"password",
-				"passwordConfirm",
-			].find((key) => errors[key]);
-
-			if (errorKeys) {
-				alert(errors[errorKeys].message);
-				return;
-			}
+			onOpenOverlay({
+				overlayComponent: Modal,
+				position: "midCenter",
+				isFiltered: true,
+				noticeText: errorMessage,
+			});
+			return;
 		}
+
+		// "정보 변경" 버튼에서 "확인" 버튼을 누르면 updatedData.current 에 저장한 값을 서버에 보내서 회원 정보가 수정되는 기능을 구현할 예정이다.
+		const handleUpdateData = () => {};
 
 		onOpenOverlay({
 			overlayComponent: Modal,
 			position: "midCenter",
 			isFiltered: true,
 			isCancelButton: "true",
-			noticeText:
-				type === "deleteAccount"
-					? "정말 탈퇴하시겠습니까?"
-					: "이대로 변경하시겠습니까?",
-			callbackFunc: type === "deleteAccount" ? onClose : handleUpdateData,
+			noticeText: "이대로 변경하시겠습니까?",
+			callbackFunc: handleUpdateData,
+		});
+	};
+
+	// "회원 탈퇴" 클릭 이벤트
+	const handleDeleteAccountClick = () => {
+		onOpenOverlay({
+			overlayComponent: Modal,
+			position: "midCenter",
+			isFiltered: true,
+			isCancelButton: "true",
+			noticeText: "정말 탈퇴하시겠습니까?",
+			callbackFunc: onClose,
 		});
 	};
 
@@ -137,6 +147,7 @@ const EditUserInfoWindow = ({ onClose }) => {
 					errors={errors}
 					validate={{
 						required: VAILDATION.COMMON_MESSAGE,
+						pattern: VAILDATION.PHONE_NUMBER,
 					}}
 					defaultValue={""}
 				/>
@@ -169,15 +180,13 @@ const EditUserInfoWindow = ({ onClose }) => {
 				/>
 				<S.ButtonBox>
 					<Button
-						onClick={() => handleOpenModal("deleteAccount")}
+						onClick={handleDeleteAccountClick}
+						type="button"
 						width="13rem"
 					>
 						회원 탈퇴
 					</Button>
-					<Button
-						onClick={() => handleOpenModal("updateInfo")}
-						width="13rem"
-					>
+					<Button onClick={handleUpdateUserInfoClick} width="13rem">
 						정보 변경
 					</Button>
 				</S.ButtonBox>
