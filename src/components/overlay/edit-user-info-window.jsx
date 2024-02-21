@@ -34,7 +34,6 @@ const EditUserInfoWindow = ({ onClose }) => {
 	const updatedData = useRef();
 	const { onOpenOverlay } = useOverlay();
 
-	// type="submit" 인 버튼을 눌렀을 때, modalType이 "updateInfo" 이면 data가 updatedData.current 에 저장된다.
 	// password 가 입력되지 않으면, data 값에서 password 와 passwordConfirm 값을 삭제한다.
 	const onSubmit = (data) => {
 		if (!data.password) {
@@ -42,7 +41,6 @@ const EditUserInfoWindow = ({ onClose }) => {
 			delete data.passwordConfirm;
 		}
 		updatedData.current = data;
-		console.log(data);
 	};
 
 	// "정보 변경" 클릭 이벤트
