@@ -110,8 +110,8 @@ const ProductListPage = () => {
 
 	// navigate에 type을 주어 어떤 버튼을 클릭했는지 값을 저장함.
 	// useLocation을 사용하여 data.type으로 확인가능.
-	const onClickNavigate = ({ keyType }) => {
-		const sendType = { keyType };
+	const onClickNavigate = ({ type }) => {
+		const sendType = { type };
 		navigate("/used-product", { state: sendType });
 	};
 
