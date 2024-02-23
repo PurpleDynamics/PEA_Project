@@ -162,7 +162,7 @@ const ProductListPage = () => {
 			</S.TitleContainer>
 			<S.MoreViewContainer>
 				<S.MoreTextButton
-					onClick={() => onClickNavigate({ keyType: "freeShare" })}
+					onClick={() => onClickNavigate({ type: "freeShare" })}
 				>
 					더보기
 				</S.MoreTextButton>
@@ -205,7 +205,6 @@ const MoreTextButton = styled.div`
 	display: flex;
 	font-size: ${FONT_SIZE.ti};
 	color: ${COLOR.COMMON[400]};
-	z-index: 999;
 	cursor: pointer;
 `;
 
