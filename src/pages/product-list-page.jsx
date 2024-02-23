@@ -1,12 +1,14 @@
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 import {
 	Banner,
 	EightProductGrid,
 	HighlightedText,
+	TextSpacer,
 } from "../components/commons";
 import { PromotionBanner } from "../components/product-list";
-import { COLOR, FONT_SIZE } from "../libs/styled-components";
+import { BREAK_POINT, COLOR, FONT_SIZE } from "../libs/styled-components";
 
 /**
  * @component
@@ -104,8 +106,17 @@ const ProductListPage = () => {
 		},
 	];
 
+	const navigate = useNavigate();
+
+	// navigate에 type을 주어 어떤 버튼을 클릭했는지 값을 저장함.
+	// useLocation을 사용하여 data.type으로 확인가능.
+	const onClickNavigate = ({ type }) => {
+		const sendType = { type };
+		navigate("/used-product", { state: sendType });
+	};
+
 	return (
-		<>
+		<S.Wrapper>
 			<PromotionBanner />
 			<S.TitleContainer>
 				<HighlightedText
@@ -114,14 +125,23 @@ const ProductListPage = () => {
 				>
 					{user.location}
 				</HighlightedText>
-				<p>&nbsp;</p>
+				<TextSpacer />
+
 				<HighlightedText
 					color={COLOR.PALETTE.orange.weight}
 					fontSize={FONT_SIZE.bg}
 				>
 					중고거래
 				</HighlightedText>
+				<TextSpacer spacer={1} />
 			</S.TitleContainer>
+			<S.MoreViewContainer>
+				<S.MoreTextButton
+					onClick={() => onClickNavigate({ keyType: "usedTrade" })}
+				>
+					더보기
+				</S.MoreTextButton>
+			</S.MoreViewContainer>
 			<EightProductGrid productData={usedData} />
 			<Banner />
 			<S.TitleContainer>
@@ -138,12 +158,27 @@ const ProductListPage = () => {
 				>
 					무료나눔
 				</HighlightedText>
+				<TextSpacer spacer={1} />
 			</S.TitleContainer>
+			<S.MoreViewContainer>
+				<S.MoreTextButton
+					onClick={() => onClickNavigate({ type: "freeShare" })}
+				>
+					더보기
+				</S.MoreTextButton>
+			</S.MoreViewContainer>
 			<EightProductGrid productData={freeData} />
-		</>
+		</S.Wrapper>
 	);
 };
 export default ProductListPage;
+
+const Wrapper = styled.div`
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+`;
 
 const TitleContainer = styled.div`
 	display: flex;
@@ -152,6 +187,30 @@ const TitleContainer = styled.div`
 	padding: 2rem 1rem 0;
 `;
 
+const MoreViewContainer = styled.div`
+	width: 115.2rem;
+	display: flex;
+	justify-content: start;
+	align-items: center;
+	@media (max-width: ${BREAK_POINT.lg}) {
+		width: 87rem;
+	}
+	@media (max-width: 700px) {
+		width: 58rem;
+	}
+`;
+
+const MoreTextButton = styled.div`
+	padding: 0.4rem 5rem;
+	display: flex;
+	font-size: ${FONT_SIZE.ti};
+	color: ${COLOR.COMMON[400]};
+	cursor: pointer;
+`;
+
 const S = {
+	Wrapper,
 	TitleContainer,
+	MoreViewContainer,
+	MoreTextButton,
 };
