@@ -1,6 +1,7 @@
 import Banner from "./banner";
 import Button from "./button";
 import CategoryToggle from "./category-toggle";
+import CenterBox from "./center-box";
 import CompressionWrapper from "./compression-wrapper";
 import EightProductGrid from "./eight-product-grid";
 import HighlightedText from "./highlighted-text";
@@ -16,21 +17,22 @@ import Spacer from "./spacer";
 import TextSpacer from "./text-spacer";
 import TopButton from "./top-button";
 export {
-	EightProductGrid,
 	Banner,
 	Button,
 	CategoryToggle,
+	CenterBox,
 	CompressionWrapper,
+	EightProductGrid,
 	HighlightedText,
 	IconAndText,
 	Input,
-	ProductCard,
 	PriceTrendChart,
+	ProductCard,
 	RecentProductList,
 	ResponsiveIcon,
 	SearchBar,
 	SideChatButton,
 	Spacer,
-	TopButton,
 	TextSpacer,
+	TopButton,
 };

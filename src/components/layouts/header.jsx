@@ -16,7 +16,7 @@ const Header = () => {
 			<S.MainWrapper>
 				<S.Logo src="https://url.kr/trjdsn" />
 				<SearchBar
-					$paddingLeft="14rem"
+					paddingLeft={"14rem"}
 					placeholder="상품명 또는 카테고리를 입력해주세요"
 				/>
 				<S.IconsWrapper>
@@ -53,7 +53,7 @@ const MainWrapper = styled.div`
 	display: grid;
 	grid-template-columns: 2fr 5fr 1.5fr;
 	align-items: center;
-	width: 125rem;
+	width: 115.2rem;
 	height: 8rem;
 `;
 const IconsWrapper = styled.ul`
