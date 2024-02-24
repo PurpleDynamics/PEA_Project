@@ -1,15 +1,24 @@
 import { BsBagDash, BsCart2, BsFileEarmarkText, BsHeart } from "react-icons/bs";
 import styled from "styled-components";
 
-import { COLOR } from "../../libs/styled-components";
+import { BREAK_POINT, COLOR } from "../../libs/styled-components";
 import { appendUnit } from "../../utils";
-import { CompressionWrapper, IconAndText } from "../commons";
-const ManageProductsSection = ({ amount = "80000" }) => {
+import { CenterBox, IconAndText } from "../commons";
+/**
+ * @component
+ * @parameter mypageData: Object - "/api/user/my-page"요청에서 받아온 마이페이지 관련 정보
+ * @returns {JSX.Element}
+ * @description
+ * - user의 상품과 연관된 정보를 보여주는 컴포넌트입니다.
+ * - "등록상품", "구매상품", "판매완료", "관심상품" 4가지의 정보를 보여주며 각정보에 맞는 수량이 함께보여집니.
+ */
+
+const ManageProductsSection = ({ mypageData }) => {
 	const TEXT = ["등록상품", "구매상품", "판매완료", "관심상품"];
 	const ICON = [BsFileEarmarkText, BsCart2, BsBagDash, BsHeart];
 	return (
-		<BgColorContainer>
-			<CompressionWrapper lr="15%">
+		<CenterBox bgColor={COLOR.PALETTE.cyan.weight}>
+			<MainWrapper>
 				<S.TitleContainer>
 					<S.TitleText>나의 상품 관리</S.TitleText>
 				</S.TitleContainer>
@@ -18,7 +27,7 @@ const ManageProductsSection = ({ amount = "80000" }) => {
 						.fill()
 						.map((_, idx) => {
 							return (
-								<S.IconAndTextBox id={idx}>
+								<S.IconAndTextBox key={idx}>
 									<IconAndText
 										icon={ICON[idx]}
 										text={TEXT[idx]}
@@ -33,7 +42,8 @@ const ManageProductsSection = ({ amount = "80000" }) => {
 									/>
 									<S.Amount>
 										{appendUnit({
-											amountData: amount,
+											amountData:
+												mypageData.productsCount,
 											unit: "건",
 										})}
 									</S.Amount>
@@ -41,16 +51,18 @@ const ManageProductsSection = ({ amount = "80000" }) => {
 							);
 						})}
 				</S.IconAndTextArea>
-			</CompressionWrapper>
-		</BgColorContainer>
+			</MainWrapper>
+		</CenterBox>
 	);
 };
 export default ManageProductsSection;
 
-const BgColorContainer = styled.div`
+const MainWrapper = styled.div`
 	width: 100%;
 	height: 30rem;
-	background-color: ${COLOR.PALETTE.cyan.weight};
+	@media (max-width: ${BREAK_POINT.lg}) {
+		width: 90%;
+	}
 `;
 const TitleContainer = styled.div`
 	width: 100%;
@@ -58,6 +70,9 @@ const TitleContainer = styled.div`
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	@media (max-width: ${BREAK_POINT.lg}) {
+		padding-left: 5rem;
+	}
 `;
 const TitleText = styled.h2`
 	color: ${COLOR.COMMON[1000]};
@@ -66,6 +81,9 @@ const IconAndTextArea = styled.div`
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
+	@media (max-width: ${BREAK_POINT.lg}) {
+		padding-left: 5rem;
+	}
 `;
 const IconAndTextBox = styled.div`
 	display: flex;
@@ -78,7 +96,7 @@ const Amount = styled.p`
 	color: ${COLOR.PALETTE.cyan.light};
 `;
 const S = {
-	BgColorContainer,
+	MainWrapper,
 	TitleContainer,
 	TitleText,
 	IconAndTextArea,

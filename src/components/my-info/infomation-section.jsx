@@ -2,25 +2,19 @@ import { BsPencil, BsThermometer } from "react-icons/bs";
 import styled from "styled-components";
 
 import { COLOR, FONT_SIZE } from "../../libs/styled-components";
-import {
-	CompressionWrapper,
-	HighlightedText,
-	ResponsiveIcon,
-	Spacer,
-} from "../commons";
-
-const InforMationSection = ({
-	id = 1,
-	nickName = "임시아이디",
-	profileImage,
-	email = "test1@test.com",
-	address = "강남구 테헤란로 111",
-	mobile = "010-0000-0000",
-	mannerRate = "36.5",
-}) => {
+import { appendUnit } from "../../utils";
+import { CenterBox, HighlightedText, ResponsiveIcon, Spacer } from "../commons";
+/**
+ * @component
+ * @parameter infoData: Object - "/api/user/info"요청에서 받아온 유저정보
+ * @parameter mypageData: Object - "/api/user/my-page"요청에서 받아온 마이페이지 관련 정보
+ * @returns {JSX.Element}
+ * @description myPage중 유저의 개인정보와 매너온도에 연관된 정보를 보여주는 컴포넌트입니다.
+ */
+const InforMationSection = ({ infoData, mypageData }) => {
 	return (
-		<S.BgColorContainer>
-			<CompressionWrapper lr="15%">
+		<CenterBox bgColor={COLOR.PALETTE.cyan.weight}>
+			<MainWrapper>
 				<S.TitleContainer>
 					<Spacer width={5} />
 					<S.TitleText>마이페이지</S.TitleText>
@@ -28,56 +22,51 @@ const InforMationSection = ({
 				<S.DivideWrapper>
 					<S.ImageAndInfoWrapper>
 						<S.UserImage
-							src={profileImage || "https://url.kr/5zjib4"} //profileImage요청이 제대로 이루어지지 않았다면 기본 이미지를 보여주도록
+							src={infoData.profileUrl || "https://url.kr/5zjib4"} //profileUrl요청이 제대로 이루어지지 않았다면 기본 이미지를 보여주도록
 						/>
 						<S.InfoWrapper>
 							<S.NickNameAndIconWrapper>
-								<S.NickName>{nickName} 님</S.NickName>
+								<S.NickName>{infoData.nickName} 님</S.NickName>
 								<ResponsiveIcon
 									icon={BsPencil}
 									color={COLOR.COMMON[1000]}
 									size={FONT_SIZE.bg}
 								/>
 							</S.NickNameAndIconWrapper>
-							<S.Email>이메일 : {email}</S.Email>
-							<S.Address>주소 : {address}</S.Address>
-							<S.Mobile>연락처 : {mobile}</S.Mobile>
+							<S.Email>이메일 : {infoData.email}</S.Email>
+							<S.Address>주소 : {infoData.region}</S.Address>
+							<S.Phone>연락처 : {infoData.phone}</S.Phone>
 						</S.InfoWrapper>
 					</S.ImageAndInfoWrapper>
-					{/* <IconAndText
-						icon={BsThermometer}
-						size={6}
-						text={mannerRate}
-						iconColor={COLOR.PALETTE.cyan.light}
-						textColor={COLOR.PALETTE.cyan.light}
-						gap={1}
-					/> */}
 					<S.MannerRateContainer>
 						<BsThermometer
 							size={62}
 							color={COLOR.PALETTE.cyan.light}
 						/>
+						<Spacer height={1} />
 						<HighlightedText color={COLOR.PALETTE.cyan.light}>
-							{mannerRate}
+							{appendUnit({
+								amountData: mypageData.ondo,
+								unit: "º",
+							})}
 						</HighlightedText>
 					</S.MannerRateContainer>
 					<Spacer />
 				</S.DivideWrapper>
-			</CompressionWrapper>
-		</S.BgColorContainer>
+			</MainWrapper>
+		</CenterBox>
 	);
 };
 export default InforMationSection;
-const BgColorContainer = styled.div`
+const MainWrapper = styled.div`
 	width: 100%;
-	height: 30rem;
-	background-color: ${COLOR.PALETTE.cyan.weight};
+	height: 25rem;
 `;
 const DivideWrapper = styled.div`
 	padding-top: ${FONT_SIZE.md};
 	display: flex;
 	align-items: center;
-	justify-content: space-between;
+	justify-content: space-around;
 `;
 const TitleContainer = styled.div`
 	width: 100%;
@@ -91,16 +80,20 @@ const TitleText = styled.p`
 `;
 const ImageAndInfoWrapper = styled.div`
 	display: grid;
-	grid-template-columns: 30% 70%;
-	width: 60%;
+	grid-template-columns: 10rem 30rem;
+	width: 40%;
 	height: 70%;
 	place-items: center;
+	padding-left: 3rem;
+	@media (max-width: 750px) {
+		grid-template-columns: 10rem 60rem;
+	}
 `;
 const UserImage = styled.img`
 	grid-column: 1;
 	aspect-ratio: 1/1;
 	border-radius: 50%;
-	width: 8rem;
+	width: 9rem;
 `;
 const InfoWrapper = styled.div`
 	grid-column: 2;
@@ -118,14 +111,19 @@ const NickName = styled.h2`
 `;
 const Email = styled.p``;
 const Address = styled.p``;
-const Mobile = styled.p``;
+const Phone = styled.p``;
 
 const MannerRateContainer = styled.div`
-	display: grid;
-	text-align: center;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	@media (max-width: 750px) {
+		display: none;
+	}
 `;
 const S = {
-	BgColorContainer,
+	MainWrapper,
 	DivideWrapper,
 	TitleContainer,
 	TitleText,
@@ -136,6 +134,6 @@ const S = {
 	NickName,
 	Email,
 	Address,
-	Mobile,
+	Phone,
 	MannerRateContainer,
 };

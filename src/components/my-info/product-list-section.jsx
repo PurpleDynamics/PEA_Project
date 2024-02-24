@@ -2,116 +2,22 @@ import { useState } from "react";
 import styled from "styled-components";
 
 import { COLOR } from "../../libs/styled-components";
-import { CompressionWrapper, EightProductGrid } from "../commons";
-
-const ProductListSection = () => {
+import { CenterBox, EightProductGrid } from "../commons";
+/**
+ * @component
+ * @parameter mypageProdcutListArray : Array - /api/user/my-page/product-list&page={page}?category={category} 로 불러온 상품데이터배열
+ * @returns {JSX.Element}
+ * @description
+ * - user와 연관된 상품들의 정보를 보여주는 컴포넌트입니다.
+ * - isClicked는 판매 || 나눔 인지에따라 해당 내용에 맞는 상품들을 보여줍니다.
+ */
+const ProductListSection = ({ mypageProdcutListArray }) => {
 	const [isClicked, setIsClicked] = useState(null);
 	const handleClick = ({ id }) => {
 		setIsClicked(id);
 	};
-	// 임시 user data
-	const user = {
-		location: "역삼동",
-	};
-
-	// 임시 product data
-	const data = [
-		{
-			title: "물건1",
-			location: "역삼동",
-			salesCategory: "중고",
-		},
-		{
-			title: "물건2",
-			location: "독산동",
-			salesCategory: "새상품",
-		},
-		{
-			title: "물건3",
-			location: "역삼동",
-			salesCategory: "새상품",
-		},
-		{
-			title: "물건4",
-			location: "독산동",
-			salesCategory: "중고",
-		},
-		{
-			title: "물건1",
-			location: "역삼동",
-			salesCategory: "중고",
-		},
-		{
-			title: "물건2",
-			location: "독산동",
-			salesCategory: "새상품",
-		},
-		{
-			title: "물건3",
-			location: "역삼동",
-			salesCategory: "새상품",
-		},
-		{
-			title: "물건4",
-			location: "독산동",
-			salesCategory: "중고",
-		},
-		{
-			title: "물건1",
-			location: "역삼동",
-			salesCategory: "중고",
-		},
-		{
-			title: "물건2",
-			location: "독산동",
-			salesCategory: "새상품",
-		},
-		{
-			title: "물건3",
-			location: "역삼동",
-			salesCategory: "새상품",
-		},
-		{
-			title: "물건4",
-			location: "독산동",
-			salesCategory: "중고",
-		},
-		{
-			title: "물건1",
-			location: "역삼동",
-			salesCategory: "중고",
-		},
-		{
-			title: "물건2",
-			location: "독산동",
-			salesCategory: "새상품",
-		},
-		{
-			title: "물건3",
-			location: "역삼동",
-			salesCategory: "새상품",
-		},
-		{
-			title: "물건4",
-			location: "역삼동",
-			salesCategory: "중고",
-		},
-	];
-
-	const usedData = data
-		.filter(
-			(el) => el.salesCategory === "중고" && el.location === user.location
-		)
-		.slice(0, 8);
-
-	const freeData = data
-		.filter(
-			(el) => el.salesCategory !== "중고" && el.location === user.location
-		)
-		.slice(0, 8);
-
 	return (
-		<CompressionWrapper lr="15%">
+		<CenterBox>
 			<S.MainWrapper>
 				<S.TitleContainer>
 					<S.TitleText>등록상품</S.TitleText>
@@ -120,21 +26,21 @@ const ProductListSection = () => {
 					<S.Sale
 						id={1}
 						onClick={() => handleClick({ id: 1 })}
-						isClicked={isClicked === 1}
+						$isClicked={isClicked === 1}
 					>
 						판매
 					</S.Sale>
 					<S.Used
 						id={2}
 						onClick={() => handleClick({ id: 2 })}
-						isClicked={isClicked === 2}
+						$isClicked={isClicked === 2}
 					>
 						나눔
 					</S.Used>
 				</S.SaleOrUsedArea>
-				<EightProductGrid productData={data} />
+				<EightProductGrid productData={mypageProdcutListArray} />
 			</S.MainWrapper>
-		</CompressionWrapper>
+		</CenterBox>
 	);
 };
 export default ProductListSection;
@@ -164,11 +70,11 @@ const SaleOrUsedArea = styled.div`
 `;
 const Sale = styled.h3`
 	cursor: pointer;
-	color: ${({ isClicked }) => isClicked && COLOR.PALETTE.orange.weight};
+	color: ${({ $isClicked }) => $isClicked && COLOR.PALETTE.orange.weight};
 `;
 const Used = styled.h3`
 	cursor: pointer;
-	color: ${({ isClicked }) => isClicked && COLOR.PALETTE.mint.weight};
+	color: ${({ $isClicked }) => $isClicked && COLOR.PALETTE.mint.weight};
 `;
 const S = {
 	MainWrapper,
