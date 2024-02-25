@@ -24,7 +24,7 @@ const AdminRoute = () => {
 		const fetchData = async () => {
 			// 만약 쿠키에 refreshToken이 존재하면 세션 토큰 저장
 			if (cookies.refreshToken) {
-				await setSessionToken(cookies.refreshToken);
+				setSessionToken(cookies.refreshToken);
 			}
 
 			// 업데이트된 세션 토큰 가져오기
