@@ -6,7 +6,7 @@ import styled from "styled-components";
 
 import { Button, Input } from "../components/commons";
 import { Modal } from "../components/overlay";
-import { VAILDATION } from "../constants";
+import { VALIDATION } from "../constants";
 import { useOverlay } from "../hooks/use-overlay";
 import { BREAK_POINT, COLOR } from "../libs/styled-components";
 import { CheckDuplication } from "../utils";
@@ -129,8 +129,8 @@ const SignupPage = () => {
 					handleButton={() => onEmailDup()}
 					errors={errors}
 					validate={{
-						required: VAILDATION.COMMON_MESSAGE,
-						pattern: VAILDATION.EMAIL,
+						required: VALIDATION.COMMON_MESSAGE,
+						pattern: VALIDATION.EMAIL,
 					}}
 				/>
 				<Input
@@ -141,8 +141,8 @@ const SignupPage = () => {
 					type="password"
 					errors={errors}
 					validate={{
-						required: VAILDATION.COMMON_MESSAGE,
-						pattern: VAILDATION.PASSWORD,
+						required: VALIDATION.COMMON_MESSAGE,
+						pattern: VALIDATION.PASSWORD,
 					}}
 				/>
 				<Input
@@ -154,8 +154,8 @@ const SignupPage = () => {
 					errors={errors}
 					handleButton={() => handlePasswordConfirm()}
 					validate={{
-						required: VAILDATION.COMMON_MESSAGE,
-						pattern: VAILDATION.PASSWORD_CONFIRM,
+						required: VALIDATION.COMMON_MESSAGE,
+						pattern: VALIDATION.PASSWORD_CONFIRM,
 					}}
 				/>
 				<Input
@@ -167,8 +167,8 @@ const SignupPage = () => {
 					handleButton={() => onNicknameDup()}
 					errors={errors}
 					validate={{
-						required: VAILDATION.COMMON_MESSAGE,
-						pattern: VAILDATION.NICKNAME,
+						required: VALIDATION.COMMON_MESSAGE,
+						pattern: VALIDATION.NICKNAME,
 					}}
 					autoComplete="off"
 				/>
@@ -179,8 +179,8 @@ const SignupPage = () => {
 					placeholder="EX) 010-0000-0000"
 					errors={errors}
 					validate={{
-						required: VAILDATION.COMMON_MESSAGE,
-						pattern: VAILDATION.PHONE_NUMBER,
+						required: VALIDATION.COMMON_MESSAGE,
+						pattern: VALIDATION.PHONE_NUMBER,
 					}}
 				/>
 				<Input
@@ -191,7 +191,7 @@ const SignupPage = () => {
 					buttonText="검색"
 					errors={errors}
 					validate={{
-						required: VAILDATION.COMMON_MESSAGE,
+						required: VALIDATION.COMMON_MESSAGE,
 					}}
 				/>
 				<Button
