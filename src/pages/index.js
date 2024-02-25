@@ -1,3 +1,4 @@
+import UsedFreeList from "../components/used-product/used-free-list";
 import NotFoundPage from "./404-page";
 import DetailProductPage from "./detail-product-page";
 import MyInfoPage from "./my-info-page";
@@ -16,4 +17,5 @@ export {
 	SignupPage,
 	UsedProductPage,
 	NotFoundPage,
+	UsedFreeList,
 };
