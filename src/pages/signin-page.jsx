@@ -6,7 +6,7 @@ import styled from "styled-components";
 
 import { Button, Input } from "../components/commons";
 import { Modal } from "../components/overlay";
-import { VAILDATION } from "../constants";
+import { VALIDATION } from "../constants";
 import { useOverlay } from "../hooks/use-overlay";
 import { setSessionToken } from "../libs/axios/auth";
 import { getUserRefreshToken, postUserLogin } from "../libs/axios/base";
@@ -114,8 +114,8 @@ const SigninPage = () => {
 					registerKey="email"
 					placeholder="이메일을 입력하세요"
 					validate={{
-						required: VAILDATION.COMMON_MESSAGE,
-						pattern: VAILDATION.EMAIL,
+						required: VALIDATION.COMMON_MESSAGE,
+						pattern: VALIDATION.EMAIL,
 					}}
 					errors={errors}
 				/>
@@ -126,8 +126,8 @@ const SigninPage = () => {
 					placeholder="비밀번호를 입력하세요"
 					type="password"
 					validate={{
-						required: VAILDATION.COMMON_MESSAGE,
-						pattern: VAILDATION.PASSWORD,
+						required: VALIDATION.COMMON_MESSAGE,
+						pattern: VALIDATION.PASSWORD,
 					}}
 					errors={errors}
 				/>

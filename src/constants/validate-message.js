@@ -33,7 +33,7 @@ const PHONE_NUMBER = {
 	message: "(-)를 포함해서 번호를 입력해주세요.",
 };
 
-export const VAILDATION = {
+export const VALIDATION = {
 	EMAIL,
 	PASSWORD,
 	PASSWORD_CONFIRM,
