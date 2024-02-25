@@ -1,5 +1,5 @@
-import axios from "axios";
-import { useCallback, useRef } from "react";
+import { useRef } from "react";
+import { useCookies } from "react-cookie";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
@@ -8,10 +8,9 @@ import { Button, Input } from "../components/commons";
 import { Modal } from "../components/overlay";
 import { VAILDATION } from "../constants";
 import { useOverlay } from "../hooks/use-overlay";
+import { setSessionToken } from "../libs/axios/auth";
+import { getUserRefreshToken, postUserLogin } from "../libs/axios/base";
 import { BREAK_POINT, FONT_SIZE } from "../libs/styled-components";
-import { setLocalToken, setSessionToken } from "../utils";
-
-const BASE_URL = "http://49.165.177.17:3055";
 
 /**
  * @component
@@ -21,59 +20,86 @@ const BASE_URL = "http://49.165.177.17:3055";
  * - 로그인 버튼 클릭시 main-page인 productListPage로 이동합니다.
  * - 회원가입 버튼 클릭시, signup-page로 이동합니다.
  * - 이메일 과 비밀번호 형식이 맞으면 로그인버튼이 활성화 됩니다.
- * - 자동로그인 체크후 로그인시, LocalStorage에 저장되고 미체크후 로그인시 SessionStorage에 저장됩니다.
- *
- * @example 참고해주세요!
- * - email: test1@test.test
- * - password: qwer1234
+ * - 자동로그인 체크 후 로그인시, 서버에서 넘어온 dang이란 이름을 가진 토큰 값을 cookies에 저장합니다
+ * - 창을 닫고 다시 접속했을 때, cookies에 RefreshToken이 존재하면 자동으로 메인페이지로 넘어가게됩니다.
+ * - 미체크후 로그인시 SessionStorage에 AccessToken이 저장됩니다.
  */
 
 const SigninPage = () => {
+	// react-cookie 훅 사용
+	const [cookies, setCookie, removeCookie] = useCookies(["dang"]);
 	//로그인 실패시, modal 창 나옴
 	const { onOpenOverlay } = useOverlay();
-	const handleOpenModal = () => {
-		onOpenOverlay({
-			overlayComponent: Modal,
-			modalContents: ModalContents,
-			isFiltered: true,
-		});
-	};
-
-	const ModalContents = useCallback(() => {
-		return <div>로그인에 실패하였습니다.</div>;
-	}, []);
-
 	const navigate = useNavigate();
-	const onMoveSignupPage = () => {
-		navigate("/signup");
-	};
+
 	const autoLoginRef = useRef(false);
 	const {
 		register,
 		handleSubmit,
 		formState: { errors, isValid }, // isVaild: 현재 폼의 유효성 여부
 	} = useForm({ mode: "onChange" });
+
+	const handleOpenModal = ({ noticeText, modalState }) => {
+		onOpenOverlay({
+			overlayComponent: Modal,
+			noticeText: noticeText,
+			buttonText: "확인",
+			modalState: modalState,
+			isFiltered: true,
+		});
+	};
+
 	const onSubmit = async (data) => {
 		const authData = {
 			email: data.email,
-			password: data.password,
+			pw: data.pw,
 		};
 		try {
-			const response = await axios.post(`${BASE_URL}/signin`, authData);
-			const token = response.data.token;
+			// 로그인 시도
+			const response = await postUserLogin({
+				email: authData.email,
+				pw: authData.pw,
+			});
 
-			// 로그인이 성공적이고, 자동로그인 체크시 localStorage에 , 미체크시 sessionStorage에 토큰이 저장
-			if (response.status === 200) {
+			// 토큰을 response.data에 tokenForHeader에서 가져옴
+			const accessToken = response.data.tokenForHeader;
+
+			// 응답이 존재하고, 응답에 status가 있는지 확인
+			if (response && response.status) {
+				// 로그인 성공일 때, 세션 토큰을 token으로 저장
+				setSessionToken(accessToken);
+
+				// /user/refreshToken에 요청을 보냄.
+				const refreshResponse = await getUserRefreshToken();
+
+				// autoLoginRef가 현재 true인지 확인 (자동 로그인 여부 체크)
 				if (autoLoginRef.current) {
-					setLocalToken({ token: token });
+					setCookie("refreshToken", refreshResponse, {
+						path: "/",
+					});
 				} else {
-					setSessionToken({ token: token });
+					removeCookie("refreshToken");
 				}
 				navigate("/");
 			}
-		} catch {
-			handleOpenModal();
+		} catch (error) {
+			// 만약 error.response와 status에 400에러가 존재하면,
+			if (error.response && error.response.status === 400) {
+				handleOpenModal({
+					noticeText: "이메일 또는 비밀번호가 다릅니다.",
+					modalState: "error",
+				});
+			} else {
+				handleOpenModal({
+					noticeText: "에러가 발생했습니다. 재접속해주세요.",
+					modalState: "error",
+				});
+			}
 		}
+	};
+
+	const onMoveSignupPage = () => {
+		navigate("/signup");
 	};
 
 	return (
@@ -96,7 +122,7 @@ const SigninPage = () => {
 				<Input
 					register={register}
 					titleText="비밀번호"
-					registerKey="password"
+					registerKey="pw"
 					placeholder="비밀번호를 입력하세요"
 					type="password"
 					validate={{
