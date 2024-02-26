@@ -146,7 +146,7 @@ export const refreshAccessToken = async () => {
  * - }
  */
 export const getUserMyPage = async () => {
-	const response = await axiosInstance().get("/user/my-page");
+	const response = await axiosInstance.get("/user/my-page");
 	return response.data;
 };
 
@@ -163,7 +163,7 @@ export const getUserMyPage = async () => {
  * - 요청결과  200("success") || 400("failure")
  */
 export const patchUserExceptProfileAndPassword = async ({ userData }) => {
-	const response = await axiosInstance().patch("/user", userData);
+	const response = await axiosInstance.patch("/user", userData);
 	return response;
 };
 /**
@@ -172,8 +172,10 @@ export const patchUserExceptProfileAndPassword = async ({ userData }) => {
  * @description user의 profile을 수정합니다
  * - 요청결과  200("success") || 400("failure")
  */
-export const patchUserProfileUrl = async ({ imageUrl }) => {
-	const response = await axiosInstance().patch("/user/profile", imageUrl);
+export const patchUserProfileUrl = async ({ image }) => {
+	const response = await axiosInstance.patch("/user/profile", {
+		image,
+	});
 	return response;
 };
 /**
@@ -183,7 +185,7 @@ export const patchUserProfileUrl = async ({ imageUrl }) => {
  * - 요청결과  200("success") || 400("failure")
  */
 export const patchUserPassword = async ({ password }) => {
-	const response = await axiosInstance().patch("/user/password", password);
+	const response = await axiosInstance.patch("/user/password", password);
 
 	return response;
 };
@@ -210,9 +212,10 @@ export const getUserProductListByPageAndCategory = async ({
 	page,
 	category,
 }) => {
-	const response = await axiosInstance().get(
-		`/user/my-page/product-list&page=${page}?category=${category}`
-	);
+	const response = await axiosInstance.get("/user/my-page/product-list", {
+		page,
+		category,
+	});
 	return response.data;
 };
 /**
@@ -221,8 +224,13 @@ export const getUserProductListByPageAndCategory = async ({
  * @description 찜하기 버튼을 누른 목록데이터를 불러옵니다.
  */
 export const getUserLikeProductListByPage = async ({ page }) => {
-	const response = await axiosInstance().get(
-		`/user/my-page/like-product-list?page=${page}`
+	const response = await axiosInstance.get(
+		"/user/my-page/like-product-list",
+		{
+			params: {
+				page,
+			},
+		}
 	);
 	return response.data;
 };
@@ -240,8 +248,13 @@ export const getUserAccoutBookByPageAndCategoryAndStartAndEnd = async ({
 	start,
 	end,
 }) => {
-	const response = await axiosInstance().get(
-		`/user/my-page/account-book?page=${page}&category=${category}&start=${start}&end=${end}`
-	);
+	const response = await axiosInstance.get("/user/my-page/account-book", {
+		params: {
+			page,
+			category,
+			start,
+			end,
+		},
+	});
 	return response.data;
 };
