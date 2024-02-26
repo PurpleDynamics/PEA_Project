@@ -1,3 +1,4 @@
+import { useState } from "react";
 import styled, { css } from "styled-components";
 
 import { COLOR } from "../../libs/styled-components";
@@ -13,13 +14,31 @@ import { COLOR } from "../../libs/styled-components";
  * - 판매 물품 정보 및 판매자와 채팅하는 부분을 담는 컴포넌트입니다
  */
 const DetailImages = ({ findProduct }) => {
+	const [imageIndex, setImageIndex] = useState(0);
 	const imageData = findProduct.imageSrcList;
-
+	const handleImage = (index) => {
+		setImageIndex(index);
+	};
+	const prevButton = () => {
+		setImageIndex((index) =>
+			index == 0 ? imageData.length - 1 : index - 1
+		);
+	};
+	const nextButton = () => {
+		setImageIndex((index) =>
+			index == imageData.length - 1 ? 0 : index + 1
+		);
+	};
 	return (
 		<S.ProductImageWrapper>
 			<S.ProductImageListContainer>
 				{imageData.map((image, index) => (
-					<S.ProductImage key={index} src={image}></S.ProductImage>
+					<S.ProductImage
+						key={index}
+						src={image}
+						$isSelected={imageIndex === index}
+						onClick={() => handleImage(index)}
+					></S.ProductImage>
 				))}
 			</S.ProductImageListContainer>
 			<S.MainImageContainer>
@@ -27,8 +46,20 @@ const DetailImages = ({ findProduct }) => {
 					src={imageData[imageIndex]}
 				></S.ProductMainImage>
 				<S.IndexButtonContainer>
-					<S.PrevButton>＜</S.PrevButton>
-					<S.NextButton>＞</S.NextButton>
+					<S.PrevButton
+						onClick={() => {
+							prevButton();
+						}}
+					>
+						＜
+					</S.PrevButton>
+					<S.NextButton
+						onClick={() => {
+							nextButton();
+						}}
+					>
+						＞
+					</S.NextButton>
 				</S.IndexButtonContainer>
 			</S.MainImageContainer>
 		</S.ProductImageWrapper>
@@ -58,6 +89,11 @@ const ProductImageListContainer = styled.div`
 const ProductImage = styled.img`
 	width: 9.2rem;
 	height: 9.2rem;
+	border: ${({ $isSelected }) =>
+		$isSelected
+			? `2px solid ${COLOR.PALETTE.cyan.weight}`
+			: `1px solid ${COLOR.COMMON[800]}`};
+	border-radius: 1.1rem;
 `;
 const IndexButtonContainer = styled.div`
 	position: absolute;
