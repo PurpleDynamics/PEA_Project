@@ -21,7 +21,7 @@ import { TransactionsCard } from ".";
  */
 const GraphSection = ({ priceData }) => {
 	const CARD_TITLE_TEXT = ["총 금액", "판매 금액", "구매 금액"];
-	const [isClicked, setIsClicked] = useState(false);
+	const [isClicked, setIsClicked] = useState(0);
 	const handleClick = ({ id }) => {
 		setIsClicked(id);
 	};
