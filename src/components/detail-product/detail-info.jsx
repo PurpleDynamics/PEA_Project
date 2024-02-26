@@ -33,14 +33,18 @@ const DetailInfo = ({ findProduct }) => {
 					<ResponsiveIcon icon={BsHeart} size={"2rem"} />
 				</S.UserInterest>
 			</S.TopWrapper>
-			<S.ProductTitle>{findProduct.title}</S.ProductTitle>
-			<S.ProductPriceAndLocation>
-				<S.ProductLocation>{findProduct.location}</S.ProductLocation>
-				<S.ProductPrice>
-					{parseInt(findProduct.price).toLocaleString()}원
-				</S.ProductPrice>
-			</S.ProductPriceAndLocation>
-			<S.ProductDetail>{findProduct.detail}</S.ProductDetail>
+			<S.MiddleWrapper>
+				<S.ProductTitle>{findProduct.title}</S.ProductTitle>
+				<S.ProductPriceAndLocation>
+					<S.ProductLocation>
+						{findProduct.location}
+					</S.ProductLocation>
+					<S.ProductPrice>
+						{parseInt(findProduct.price).toLocaleString()}원
+					</S.ProductPrice>
+				</S.ProductPriceAndLocation>
+				<S.ProductDetail>{findProduct.detail}</S.ProductDetail>
+			</S.MiddleWrapper>
 			<S.ButtonWrapper>
 				<Button width="36.1rem" palette="cyan" icon={BsChatQuote}>
 					채팅하기
@@ -57,6 +61,7 @@ export default DetailInfo;
 
 const ProductInfoWrapper = styled.div`
 	width: 50rem;
+	height: auto;
 	padding: 1.3rem 1.1rem;
 	display: flex;
 	flex-direction: column;
@@ -64,7 +69,13 @@ const ProductInfoWrapper = styled.div`
 `;
 const TopWrapper = styled.div`
 	display: flex;
-	gap: 18.7rem;
+	justify-content: space-between;
+`;
+const MiddleWrapper = styled.div`
+	display: flex;
+	flex-direction: column;
+	height: 28rem;
+	gap: 2rem;
 `;
 const TagContain = styled.div`
 	display: flex;
@@ -72,14 +83,15 @@ const TagContain = styled.div`
 `;
 
 const UserInterest = styled.div`
+	display: flex;
+	justify-content: center;
 	font-size: ${FONT_SIZE.bg};
+	align-items: center;
 `;
 const ProductTitle = styled.div`
-	width: 100%;
 	font-size: ${FONT_SIZE.bg};
 `;
 const ProductPriceAndLocation = styled.div`
-	width: 38rem;
 	display: flex;
 	justify-content: space-between;
 `;
@@ -91,7 +103,6 @@ const ProductPrice = styled.div`
 	color: ${COLOR.PALETTE.cyan.base};
 `;
 const ProductDetail = styled.div`
-	width: 38rem;
 	font-family: "SOYO_Maple_Regular";
 `;
 const ButtonWrapper = styled.div`
@@ -103,6 +114,7 @@ const ButtonWrapper = styled.div`
 const S = {
 	ProductInfoWrapper,
 	TopWrapper,
+	MiddleWrapper,
 	TagContain,
 	UserInterest,
 	ProductTitle,

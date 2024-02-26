@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
 
+import { CenterBox } from "../components/commons";
 import {
 	DetailImages,
 	DetailInfo,
@@ -8,6 +9,7 @@ import {
 } from "../components/detail-product";
 import { TagProducts } from "../components/detail-product/tag-product";
 import productList from "../libs/msw/database/products.json";
+import { BREAK_POINT, COLOR } from "../libs/styled-components";
 
 /**
  * @component
@@ -23,14 +25,18 @@ const DetailProductPage = () => {
 	); //삭제? useParams를 통해서 특정 제품 데이터를 가져오는건데(api사용하면 삭제할예정?)
 	return (
 		<S.TagWrapper>
-			<S.Wrapper>
+			<CenterBox>
 				<S.ProductWrapper>
 					<DetailImages findProduct={findProduct} />
 					<DetailInfo findProduct={findProduct} />
 				</S.ProductWrapper>
-			</S.Wrapper>
-			<SellerBanner findProduct={findProduct} />
-			<TagProducts findProduct={findProduct} />
+			</CenterBox>
+			<CenterBox bgColor={COLOR.PALETTE.cyan.weight}>
+				<SellerBanner findProduct={findProduct} />
+			</CenterBox>
+			<CenterBox>
+				<TagProducts findProduct={findProduct} />
+			</CenterBox>
 		</S.TagWrapper>
 	);
 };
@@ -38,21 +44,23 @@ export default DetailProductPage;
 const TagWrapper = styled.div`
 	display: flex;
 	flex-direction: column;
-	justify-content: center;
-	align-items: center;
 `;
-const Wrapper = styled.div`
-	width: 115.2rem;
-`;
+
 const ProductWrapper = styled.div`
 	width: 100%;
 	height: auto;
 	display: flex;
 	justify-content: space-between;
 	gap: 7rem;
+	@media (max-width: ${BREAK_POINT.lg}) {
+		display: flex;
+		flex-direction: column;
+
+		align-items: center;
+	}
 `;
 const S = {
 	TagWrapper,
-	Wrapper,
+
 	ProductWrapper,
 };

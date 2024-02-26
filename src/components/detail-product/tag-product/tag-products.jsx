@@ -39,8 +39,6 @@ const TagProducts = ({ findProduct }) => {
 
 export default TagProducts;
 const Wrapper = styled.div`
-	width: 115.2rem;
-
 	display: flex;
 	justify-content: center;
 	align-items: center;

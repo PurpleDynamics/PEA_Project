@@ -9,6 +9,7 @@ import styled from "styled-components";
 import { COLOR, FONT_SIZE } from "../../libs/styled-components";
 import { appendUnit } from "../../utils";
 import { IconAndText, Spacer } from "../commons";
+import { BREAK_POINT } from "./../../libs/styled-components/reference-tokens/break-point";
 /**
  * @component
  * @parameter findProduct : object<특정된 상품데이터> - detail-product-page 에서 Params로id를 특정해 받아옴
@@ -63,6 +64,7 @@ const SellerBanner = ({ findProduct }) => {
 							iconColor={data.iconColor}
 							text={data.iconText}
 							textColor={COLOR.COMMON[1000]}
+							size={7}
 							gap={3}
 						/>
 						{appendUnit({
@@ -77,14 +79,12 @@ const SellerBanner = ({ findProduct }) => {
 };
 export default SellerBanner;
 const SellerBannerWrapper = styled.div`
-	width: 100%;
 	height: 33.9rem;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
 	color: ${COLOR.COMMON[1000]};
-	background-color: ${COLOR.PALETTE.cyan.weight};
 `;
 const BannerIconWrapper = styled.div`
 	width: 104rem;
@@ -92,6 +92,12 @@ const BannerIconWrapper = styled.div`
 	justify-content: space-between;
 	font-size: ${FONT_SIZE.md};
 	color: ${COLOR.PALETTE.cyan.light};
+	@media (max-width: ${BREAK_POINT.lg}) {
+		width: 70rem;
+	}
+	@media (max-width: 700px) {
+		width: 50rem;
+	}
 `;
 const IconInfoWrapper = styled.div`
 	display: flex;

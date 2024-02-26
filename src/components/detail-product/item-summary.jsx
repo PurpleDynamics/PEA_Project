@@ -85,7 +85,6 @@ const ItemSummary = ({ findProduct }) => {
 export default ItemSummary;
 
 const ItemSummaryWrapper = styled.div`
-	height: 100%;
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-end;
