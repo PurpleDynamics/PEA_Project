@@ -61,10 +61,9 @@ const Chat = ({ roomId, sellerData, onClose }) => {
 
 		try {
 			const response = await postChatSend({
-				roomIdx: roomId,
+				room_idx: roomId,
 				message: message,
 			});
-			console.log(response);
 
 			const { createAt, message: responseMessage, User } = response;
 
@@ -80,6 +79,7 @@ const Chat = ({ roomId, sellerData, onClose }) => {
 		} catch (error) {
 			if (error.response) {
 				console.error("error response data: ", error.response.data);
+				console.error(error.response);
 			} else {
 				console.log("error:", error.message);
 			}
