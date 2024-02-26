@@ -20,7 +20,7 @@ export const getProduct = async () => {
 
 /**
  * @function
- * @parameter category : number - 등뢱된 상품의 카테고리(0:중고 1:무료)
+ * @parameter category : number - 등록된 상품의 카테고리(0:중고 1:무료)
  * @parameter keyword : string - 키워드
  * @parameter page : number - 검색하려는 상품의 페이지
  * @description 등록 물품 검색을 위한 API
