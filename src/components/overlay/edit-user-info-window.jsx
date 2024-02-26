@@ -2,7 +2,7 @@ import { useRef } from "react";
 import { useForm } from "react-hook-form";
 import styled from "styled-components";
 
-import { VAILDATION } from "../../constants";
+import { VALIDATION } from "../../constants";
 import { useOverlay } from "../../hooks";
 import { COLOR, FONT_SIZE } from "../../libs/styled-components";
 import { Button, Input } from "../commons";
@@ -104,8 +104,8 @@ const EditUserInfoWindow = ({ onClose }) => {
 					buttonText="중복확인"
 					errors={errors}
 					validate={{
-						required: VAILDATION.COMMON_MESSAGE,
-						pattern: VAILDATION.NICKNAME,
+						required: VALIDATION.COMMON_MESSAGE,
+						pattern: VALIDATION.NICKNAME,
 					}}
 					autoComplete="off"
 					defaultValue={""}
@@ -116,8 +116,8 @@ const EditUserInfoWindow = ({ onClose }) => {
 					defaultValue={""}
 					errors={errors}
 					validate={{
-						required: VAILDATION.COMMON_MESSAGE,
-						pattern: VAILDATION.EMAIL,
+						required: VALIDATION.COMMON_MESSAGE,
+						pattern: VALIDATION.EMAIL,
 					}}
 					readOnly={true}
 					borderBoxStyle={{ backgroundColor: COLOR.COMMON[800] }}
@@ -131,7 +131,7 @@ const EditUserInfoWindow = ({ onClose }) => {
 					buttonText="검색"
 					errors={errors}
 					validate={{
-						required: VAILDATION.COMMON_MESSAGE,
+						required: VALIDATION.COMMON_MESSAGE,
 					}}
 					defaultValue={"주소를 입력하세요"}
 					readOnly={true}
@@ -144,8 +144,8 @@ const EditUserInfoWindow = ({ onClose }) => {
 					placeholder="휴대폰번호를 입력하세요 (-제외)"
 					errors={errors}
 					validate={{
-						required: VAILDATION.COMMON_MESSAGE,
-						pattern: VAILDATION.PHONE_NUMBER,
+						required: VALIDATION.COMMON_MESSAGE,
+						pattern: VALIDATION.PHONE_NUMBER,
 					}}
 					defaultValue={""}
 				/>
@@ -158,7 +158,7 @@ const EditUserInfoWindow = ({ onClose }) => {
 					type="password"
 					errors={errors}
 					validate={{
-						pattern: VAILDATION.PASSWORD,
+						pattern: VALIDATION.PASSWORD,
 					}}
 				/>
 				<Input
@@ -169,11 +169,11 @@ const EditUserInfoWindow = ({ onClose }) => {
 					type="password"
 					errors={errors}
 					validate={{
-						pattern: VAILDATION.PASSWORD_CONFIRM,
+						pattern: VALIDATION.PASSWORD_CONFIRM,
 						validate: (value) =>
 							value === newPassword ||
 							(!value && !newPassword) ||
-							VAILDATION.PASSWORD_CONFIRM.message,
+							VALIDATION.PASSWORD_CONFIRM.message,
 					}}
 				/>
 				<S.ButtonBox>
