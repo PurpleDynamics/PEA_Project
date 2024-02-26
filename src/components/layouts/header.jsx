@@ -10,7 +10,7 @@ import { ResponsiveIcon, SearchBar } from "../commons";
  * @returns {JSX.Element}
  */
 const Header = () => {
-	const navi = useNavigate();
+	const navigate = useNavigate();
 	return (
 		<S.HeaderContainer>
 			<S.MainWrapper>
@@ -26,7 +26,7 @@ const Header = () => {
 					<ResponsiveIcon
 						icon={BsPerson}
 						onClick={() => {
-							navi("/my-info");
+							navigate("/my-info");
 						}}
 					/>
 				</S.IconsWrapper>
