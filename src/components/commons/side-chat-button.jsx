@@ -28,6 +28,7 @@ const SideChatButton = () => {
 			isFiltered: false,
 		});
 	};
+
 	return (
 		<>
 			<S.IconContainer onClick={handleChattingPage}>

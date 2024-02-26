@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { BsX } from "react-icons/bs";
 import styled from "styled-components";
 
+import { getChatChatRoomListByPage } from "../../../libs/axios/base/chat";
 import { COLOR, FONT_SIZE } from "../../../libs/styled-components";
 import { ResponsiveIcon, SearchBar } from "../../commons";
 import ChatRoomList from "./chat-room-list";
@@ -15,43 +16,21 @@ import ChatRoomList from "./chat-room-list";
  */
 
 const ChattingOverlay = ({ onClose }) => {
-	const [chatRoomList, setChatRoomList] = useState([
-		{
-			nickname: "김진솔",
-			createdAt: "20:26",
-			lastMessage: "아 너무 졸립고~",
-		},
-		{
-			nickname: "김진솔",
-			createdAt: "20:26",
-			lastMessage: "아 너무 졸립고~",
-		},
-		{
-			nickname: "김진솔",
-			createdAt: "20:26",
-			lastMessage: "아 너무 졸립고~",
-		},
-		{
-			nickname: "김진솔",
-			createdAt: "20:26",
-			lastMessage: "아 너무 졸립고~",
-		},
-		{
-			nickname: "김진솔",
-			createdAt: "20:26",
-			lastMessage: "아 너무 졸립고~",
-		},
-		{
-			nickname: "김진솔",
-			createdAt: "20:26",
-			lastMessage: "아 너무 졸립고~",
-		},
-		{
-			nickname: "김진솔",
-			createdAt: "20:26",
-			lastMessage: "아 너무 졸립고~",
-		},
-	]);
+	const [chatRoomList, setChatRoomList] = useState([]);
+
+	useEffect(() => {
+		const fetChatData = async () => {
+			try {
+				const response = await getChatChatRoomListByPage({
+					page: 1,
+				});
+				setChatRoomList([response.chats]);
+			} catch (error) {
+				console.log(error);
+			}
+		};
+		fetChatData();
+	}, []);
 
 	return (
 		<S.Wrapper>

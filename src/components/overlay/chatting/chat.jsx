@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import { BsSendFill, BsX } from "react-icons/bs";
 import styled from "styled-components";
 
+import { postChatSend } from "../../../libs/axios/base/chat";
 import { COLOR, FONT_SIZE } from "../../../libs/styled-components";
 import { ResponsiveIcon } from "../../commons";
 
@@ -17,13 +18,27 @@ import { ResponsiveIcon } from "../../commons";
  * - 빈값일 경우, 채팅이 보내지지 않습니다.
  */
 
-const Chat = ({ onClose }) => {
+const Chat = ({ roomId, sellerData, onClose }) => {
+	const [chatRoomList, setChatRoomList] = useState([]);
+	const [sellerName, setSellerName] = useState("");
+
 	const {
 		register,
 		handleSubmit,
 		reset,
 		formState: { errors },
 	} = useForm();
+
+	// sellerData을 가져와서 roomId와 sellerData의 idx와 비교하여 User.nick_name을 가져옴
+	useEffect(() => {
+		for (let i of sellerData) {
+			const found = i.find((item) => item.idx === roomId);
+			if (found) {
+				setSellerName(found.User.nick_name);
+				break;
+			}
+		}
+	});
 
 	const [messages, setMessages] = useState([]);
 
@@ -37,23 +52,45 @@ const Chat = ({ onClose }) => {
 		scrollIntoBottom();
 	}, [messages]);
 
-	const onSubmit = (data) => {
+	const onSubmit = async (data) => {
 		const { message } = data;
 		if (!message.trim()) return;
-		setMessages((prevMessages) => [
-			...prevMessages,
-			{ text: message, sender: "user" },
-		]);
-		reset();
+
+		console.log(roomId, "room id");
+		console.log(message, "message");
+
+		try {
+			const response = await postChatSend({
+				roomIdx: roomId,
+				message: message,
+			});
+			console.log(response);
+
+			const { createAt, message: responseMessage, User } = response;
+
+			setMessages((prevMessages) => [
+				...prevMessages,
+				{
+					text: responseMessage,
+					nickName: User.nick_name,
+					createAt: createAt,
+				},
+			]);
+			reset();
+		} catch (error) {
+			if (error.response) {
+				console.error("error response data: ", error.response.data);
+			} else {
+				console.log("error:", error.message);
+			}
+		}
 	};
 	return (
 		<S.Wrapper>
 			<S.TitleBox>
 				<S.TitleImage src="https://url.kr/fm7ls1" />
 				<S.TitleWrapper>
-					<S.TitleText>
-						판매자nickname이 들어갈 예정입니다.
-					</S.TitleText>
+					<S.TitleText>{sellerName}</S.TitleText>
 					<S.CancelButton>
 						<ResponsiveIcon icon={BsX} onClick={onClose} />
 					</S.CancelButton>

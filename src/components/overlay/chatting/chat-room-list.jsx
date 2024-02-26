@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 import { useOverlay } from "../../../hooks/use-overlay";
 import { COLOR, FONT_SIZE } from "../../../libs/styled-components";
+import { printPeriodAsString } from "../../../utils";
 import Chat from "./chat";
 
 /**
@@ -24,9 +25,11 @@ import Chat from "./chat";
 const ChatRoomList = ({ roomData }) => {
 	const { onOpenOverlay } = useOverlay();
 
-	const handleChatRoomClick = () => {
+	const handleChatRoomClick = (id) => {
 		onOpenOverlay({
 			overlayComponent: Chat,
+			roomId: id,
+			sellerData: roomData,
 			position: "bottomRight",
 			isFiltered: false,
 			zIndex: 1,
@@ -37,34 +40,52 @@ const ChatRoomList = ({ roomData }) => {
 		return <S.NoRoomData>채팅방이 없습니다</S.NoRoomData>;
 
 	return (
-		<S.RoomList>
+		<>
 			{/* data의 정보를 chat room에 맡게 보여주는 map입니다. */}
 			{roomData.map((item, index) => (
-				<S.RoomContainer
-					key={index}
-					onClick={(e) => handleChatRoomClick(e)}
-				>
-					<S.UserProfile
-						src={item.imagesrc || "https://url.kr/5zjib4"}
-					/>
-					<S.TopTitle>
-						<S.UserName>{item.nickname}</S.UserName>
-						<S.MessageText>{item.lastMessage}</S.MessageText>
-					</S.TopTitle>
-					<S.SendTime>{item.createdAt}</S.SendTime>
-				</S.RoomContainer>
+				<S.Wrppaer key={index}>
+					{item?.map((data) => (
+						<S.RoomContainer
+							key={data.idx}
+							onClick={() => handleChatRoomClick(data?.idx)}
+						>
+							<S.RoomBox>
+								<S.UserProfile
+									src={
+										item.imagesrc || "https://url.kr/5zjib4"
+									}
+								/>
+								<S.TopTitle>
+									<S.UserName>
+										{data?.User?.nick_name}
+									</S.UserName>
+									<S.MessageText>
+										{data?.lastMessage}
+									</S.MessageText>
+								</S.TopTitle>
+								<S.SendTime>
+									{printPeriodAsString({
+										formattedDate:
+											data?.lastMessageCreatedAt,
+									})}
+								</S.SendTime>
+							</S.RoomBox>
+						</S.RoomContainer>
+					))}
+				</S.Wrppaer>
 			))}
-		</S.RoomList>
+		</>
 	);
 };
 
 export default ChatRoomList;
 
+const Wrppaer = styled.div``;
 const RoomList = styled.div`
 	width: 100%;
 	height: 30rem;
 	display: flex;
-	justify-content: center;
+	justify-content: flex-start;
 	flex-direction: column;
 	overflow-y: auto;
 `;
@@ -75,17 +96,20 @@ const NoRoomData = styled.div`
 	padding: 2rem;
 `;
 
-const RoomContainer = styled.div`
+const RoomContainer = styled.div``;
+
+const RoomBox = styled.div`
 	display: grid;
 	grid-template-columns: 5rem 20rem 5rem;
 	justify-content: left;
 	align-items: center;
 	flex-direction: column;
 	padding: 1rem;
-	cursor: pointer;
+
 	&:hover {
 		background-color: ${COLOR.COMMON[800]};
 	}
+	cursor: pointer;
 `;
 
 const UserProfile = styled.img`
@@ -125,4 +149,6 @@ const S = {
 	SendTime,
 	MessageText,
 	NoRoomData,
+	RoomBox,
+	Wrppaer,
 };
