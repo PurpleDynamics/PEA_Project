@@ -7,7 +7,7 @@ import { COLOR } from "../../libs/styled-components";
  * @description 상품에 대한 상세 내용 입력 ui
  */
 const DetailTextArea = () => {
-	return <S.DetailArea />;
+	return <S.DetailArea maxLength={500} />;
 };
 
 export default DetailTextArea;
@@ -19,7 +19,6 @@ const DetailArea = styled.textarea`
 	border-radius: 0.5rem;
 	resize: none;
 	padding: 0.5rem;
-	font-family: "SOYO_Maple_Regular";
 `;
 const S = {
 	DetailArea,
