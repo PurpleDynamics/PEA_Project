@@ -1,3 +1,4 @@
+import { useState } from "react";
 import styled from "styled-components";
 
 /**
@@ -5,15 +6,33 @@ import styled from "styled-components";
  * @description 거래 형태 선택 ui
  */
 const PaymentMethodToggle = () => {
+	const [selectedOption, setSelectedOption] = useState(null);
+	const handleSelectedOption = ({ option }) => {
+		setSelectedOption(option);
+	};
 	return (
 		<S.ToggleContainer>
 			<S.RadioWrapper>
-				<input type="radio" />
-				<p>중고거래</p>
+				<input
+					type="radio"
+					id="usedTrade"
+					checked={selectedOption === "usedTrade"}
+					onChange={() =>
+						handleSelectedOption({ option: "usedTrade" })
+					}
+				/>
+				<label>중고거래</label>
 			</S.RadioWrapper>
 			<S.RadioWrapper>
-				<input type="radio" />
-				<p>무료나눔</p>
+				<input
+					type="radio"
+					id="freeShare"
+					checked={selectedOption === "freeShare"}
+					onChange={() =>
+						handleSelectedOption({ option: "freeShare" })
+					}
+				/>
+				<label>무료나눔</label>
 			</S.RadioWrapper>
 		</S.ToggleContainer>
 	);
