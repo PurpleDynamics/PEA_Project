@@ -7,7 +7,10 @@ import {
 	DetailInfo,
 	SellerBanner,
 } from "../components/detail-product";
-import { TagProducts } from "../components/detail-product/tag-product";
+import {
+	TagProductChart,
+	TagProducts,
+} from "../components/detail-product/tag-product";
 import productList from "../libs/msw/database/products.json";
 import { BREAK_POINT, COLOR } from "../libs/styled-components";
 
@@ -35,6 +38,7 @@ const DetailProductPage = () => {
 				<SellerBanner findProduct={findProduct} />
 			</CenterBox>
 			<CenterBox>
+				<TagProductChart findProduct={findProduct} />
 				<TagProducts findProduct={findProduct} />
 			</CenterBox>
 		</S.TagWrapper>

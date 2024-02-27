@@ -16,7 +16,7 @@ import Button from "../../commons/button";
  */
 const TagProducts = ({ findProduct }) => {
 	const mainTag = findProduct.categoryList[0];
-	const TagInProductList = productList.products.filter(
+	const tagInProductList = productList.products.filter(
 		(product) =>
 			product.categoryList.includes(mainTag) &&
 			product.id !== findProduct.id
@@ -26,10 +26,10 @@ const TagProducts = ({ findProduct }) => {
 			<S.TagProductsTexts>
 				<TagProductsTitle>같은 카테고리의 상품</TagProductsTitle>
 				<TagProductsCount>
-					총 {TagInProductList.length}건
+					총 {tagInProductList.length}건
 				</TagProductsCount>
 			</S.TagProductsTexts>
-			<EightProductGrid productData={TagInProductList} />
+			<EightProductGrid productData={tagInProductList} />
 			<Button width="15rem" icon={BsLightningFill}>
 				더보러가기
 			</Button>
