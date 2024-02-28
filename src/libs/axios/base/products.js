@@ -2,10 +2,33 @@ import { axiosInstance } from ".";
 
 /**
  * @function
+ * @parameter title : string - 등록하는 상품의 title
+ * @parameter price : number - 등록하는 상품의 가격
+ * @parameter description : string - 등록하는 상품에 대한 설명
+ * @parameter category : number - 등록하는 상품의 카테고리(0:중고 1:무료)
+ * @parameter region : string - 등록하는 상품의 판매 위치 (ex. 서울 강남구 역삼동)
+ * @parameter tag : string - 등록하는 상품의 태그 (["전자기기", "식물"])
+ * @parameter images : file - 등록하는 상품의 이미지 ([0]: main [1~4] sub)
  * @description 상품 등록 API
  */
-export const postProduct = async () => {
-	const response = await axiosInstance.post("/product");
+export const postProduct = async ({
+	title,
+	price,
+	description,
+	category,
+	region,
+	tag,
+	images,
+}) => {
+	const response = await axiosInstance.post("/product", {
+		title,
+		price,
+		description,
+		category,
+		region,
+		tag,
+		images,
+	});
 	return response.data;
 };
 
@@ -67,10 +90,42 @@ export const postProductLike = async () => {
 
 /**
  * @function
+ * @parameter idx : string - 수정할 상품의 index
+ * @parameter title : string - 수정할 상품의 title
+ * @parameter price : number - 수정할 상품의 가격
+ * @parameter description : string - 수정할 상품에 대한 설명
+ * @parameter category : number - 수정할 상품의 카테고리(0:중고 1:무료)
+ * @parameter region : string - 수정할 상품의 판매 위치 (ex. 서울 강남구 역삼동)
+ * @parameter tag : string - 수정할 상품의 태그 (["전자기기", "식물"])
+ * @parameter imgUrl : string - 서브 기존 이미지 url ([])
+ * @parameter mainUrl : string - 메인 기존 이미지 url
+ * @parameter images : file - 수정할 상품의 이미지 (main_url이 있다면 [0]~[3]sub, main_url이 없다면 [0]main, [1~3]sub)
  * @description 등록한 물품의 정보를 수정하는 API
  */
-export const patchProduct = async () => {
-	const response = await axiosInstance.patch("/product");
+export const patchProduct = async ({
+	idx,
+	title,
+	price,
+	description,
+	category,
+	region,
+	tag,
+	imgUrl,
+	mainUrl,
+	images,
+}) => {
+	const response = await axiosInstance.patch("/product", {
+		idx,
+		title,
+		price,
+		description,
+		category,
+		region,
+		tag,
+		imgUrl,
+		mainUrl,
+		images,
+	});
 	return response.data;
 };
 
