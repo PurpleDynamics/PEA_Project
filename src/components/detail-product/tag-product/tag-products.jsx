@@ -21,6 +21,7 @@ const TagProducts = ({ findProduct }) => {
 			product.categoryList.includes(mainTag) &&
 			product.id !== findProduct.id
 	);
+
 	return (
 		<S.Wrapper>
 			<S.TagProductsTexts>
