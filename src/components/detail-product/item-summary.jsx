@@ -55,12 +55,12 @@ const ItemSummary = ({ findProduct }) => {
 		<S.ItemSummaryWrapper>
 			{ItemSummaryDataList.map((data, index) => (
 				<S.ProductSpecsWrapper key={index}>
-					<S.iconContainer>
+					<S.IconContainer>
 						<data.icon
 							size={"3.5rem"}
 							color={COLOR.PALETTE.cyan.base}
 						/>
-					</S.iconContainer>
+					</S.IconContainer>
 					<S.SpecsText>
 						{data.SpecsStartText && (
 							<>
@@ -102,7 +102,7 @@ const SpecsText = styled.div`
 	align-items: center;
 	font-size: ${FONT_SIZE.md};
 `;
-const iconContainer = styled.div`
+const IconContainer = styled.div`
 	width: fit-content;
 	height: fit-content;
 	display: flex;
@@ -116,6 +116,6 @@ const S = {
 	ItemSummaryWrapper,
 	ProductSpecsWrapper,
 	SpecsText,
-	iconContainer,
+	IconContainer,
 	SpecsMainText,
 };
