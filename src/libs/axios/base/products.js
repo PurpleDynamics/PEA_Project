@@ -134,7 +134,7 @@ export const patchProduct = async ({
  * @parameter prodIdx : string - 삭제하려는 상품의 index
  * @description 등록한 물품을 삭제하는 API
  */
-export const deleteProduct = async ({ prodIdx }) => {
+export const deleteProductByProdIdx = async ({ prodIdx }) => {
 	const response = await axiosInstance.delete("/product", {
 		params: {
 			prod_idx: prodIdx,
