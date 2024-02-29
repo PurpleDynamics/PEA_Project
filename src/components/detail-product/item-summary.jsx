@@ -96,10 +96,9 @@ const ProductSpecsWrapper = styled.div`
 	align-items: center;
 	gap: 0.8rem;
 `;
-const SpecsText = styled.p`
+const SpecsText = styled.div`
 	padding: 0.5rem;
 	display: flex;
-
 	align-items: center;
 	font-size: ${FONT_SIZE.md};
 `;
@@ -110,7 +109,7 @@ const iconContainer = styled.div`
 	align-items: center;
 	justify-content: center;
 `;
-const SpecsMainText = styled.div`
+const SpecsMainText = styled.span`
 	color: ${COLOR.PALETTE.cyan.base};
 `;
 const S = {
