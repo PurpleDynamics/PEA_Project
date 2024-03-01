@@ -1,19 +1,18 @@
 import styled from "styled-components";
 
-import productList from "../../../libs/msw/database/products.json";
 import { COLOR } from "../../../libs/styled-components";
 import { getRecentNthMonthsArray } from "../../../utils";
 import { PriceTrendChart } from "../../commons";
+/**
+ * @component
+ * @parameter findProduct : object<특정된 상품데이터> - detail-product-page 에서 Params로id를 특정해 받아옴
+ * @returns {JSX.Element}
+ *
+ * @description
+ * - 판매 상품의 mainTag와 일치하는 제품들의 월별 시세와 비교값을 보여주는 DetailProduct Page 내부의 차트 컴포넌트입니다.
+ * - PriceTrendChart 를 통해 icon 및 ui를 보여집니다
+ */
 const TagProductChart = ({ findProduct }) => {
-	//태그를 기준으로 제품을을 선택하고 제품별로 만들어진 날짜 (달)에따라서 나누고 나눈 제품들끼리에 가격을 합쳐서  각 달마다 배열을 만들고 보낸다
-	const mainTag = findProduct.categoryList[0];
-	const tagInProductList = productList.products.filter(
-		(product) =>
-			product.categoryList.includes(mainTag) &&
-			product.id !== findProduct.id
-	);
-	const priceArr = [10000, 200000, 300000, 200000, 100000, 300000];
-
 	return (
 		<S.ChartWrapper>
 			<S.ChartTextWrapper>

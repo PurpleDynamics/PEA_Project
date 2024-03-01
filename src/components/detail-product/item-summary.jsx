@@ -11,12 +11,11 @@ import { TextSpacer } from "../commons";
 
 /**
  * @component
- * * @parameter findProduct : object<특정된 상품데이터> - detail-product-page 에서 Params로id를 특정해 받아옴
+ * @parameter findProduct : object<특정된 상품데이터> - detail-product-page 에서 Params로id를 특정해 받아옴
  * @returns {JSX.Element}
  *
  * @description
- * - DetailInfo속 컴포넌트입니다.
- * - 판매 물품 정보중 세부 데이터를 포함한 컴포넌트입니다
+ * - DetailInfo 컴포넌트중 "판매 물품의 세부사항을 수치로 나타내는 부분입니다"
  * - ItemSummaryDataList 배열로 데이터를 관리합니다
  */
 const ItemSummary = ({ findProduct }) => {

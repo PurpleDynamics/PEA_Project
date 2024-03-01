@@ -9,9 +9,7 @@ import ItemSummary from "./item-summary";
  * @parameter findProduct : object<특정된 상품데이터> - detail-product-page 에서 Params로id를 특정해 받아옴
  * @returns {JSX.Element}
  *
- * @description
- * - DetailProduct속 컴포넌트입니다.
- * - 판매 물품 정보 및 판매자와 채팅하는 부분을 담는 컴포넌트입니다
+ * @description DetailProduct page의 "판매 물품의 상세정보를 보여주는 부분입니다"
  */
 const DetailInfo = ({ findProduct }) => {
 	const categoryData = findProduct.categoryList;

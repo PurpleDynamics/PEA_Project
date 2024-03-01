@@ -10,9 +10,7 @@ import Button from "../../commons/button";
  * @parameter findProduct : object<특정된 상품데이터> - detail-product-page 에서 Params로id를 특정해 받아옴
  * @returns {JSX.Element}
  *
- * @description
- * - DetailProduct속 컴포넌트입니다.
- * - 특정된 제품의 product의 categoryList의 첫번째  category를 가지고 있는제품들을 보여지게 됩니다
+ * @description 판매 상품의 mainTag 와 일치하는 제품들을 보여주는 DetailProduct Page 내부 category 컴포넌트 부분입니다.
  */
 const TagProducts = ({ findProduct }) => {
 	const mainTag = findProduct.categoryList[0];

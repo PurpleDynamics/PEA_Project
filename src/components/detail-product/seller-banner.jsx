@@ -16,9 +16,8 @@ import { BREAK_POINT } from "./../../libs/styled-components/reference-tokens/bre
  * @returns {JSX.Element}
  *
  * @description
- * - DetailProduct속 컴포넌트입니다.
- * - 판매자 의 정보를  간편하게 요약하는  배너 입니다IconInfo속에 각각의 icon에 맞는 데이터를 담고있습니다
- * - bannerIconDataList를통해 데이터를 관리합니다
+ * - 판매자의 정보를 담고있는 DetailProduct Page의 배너 부분입니다
+ * - bannerIconDataList를 통해 icon 및 ui를 보여집니다
  * - 해당 Icon 을 click하면 각내용에 맞는 페이지로 이동이 가능합니다.
  */
 const SellerBanner = ({ findProduct }) => {
