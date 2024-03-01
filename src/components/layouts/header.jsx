@@ -1,4 +1,5 @@
 import { BsFileEarmarkText, BsGeoAlt, BsHeart, BsPerson } from "react-icons/bs";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 import { COLOR } from "../../libs/styled-components";
@@ -9,6 +10,7 @@ import { ResponsiveIcon, SearchBar } from "../commons";
  * @returns {JSX.Element}
  */
 const Header = () => {
+	const navigate = useNavigate();
 	return (
 		<S.HeaderContainer>
 			<S.MainWrapper>
@@ -21,7 +23,12 @@ const Header = () => {
 					<ResponsiveIcon icon={BsFileEarmarkText} />
 					<ResponsiveIcon icon={BsGeoAlt} />
 					<ResponsiveIcon icon={BsHeart} />
-					<ResponsiveIcon icon={BsPerson} />
+					<ResponsiveIcon
+						icon={BsPerson}
+						onClick={() => {
+							navigate("/my-info");
+						}}
+					/>
 				</S.IconsWrapper>
 			</S.MainWrapper>
 		</S.HeaderContainer>
