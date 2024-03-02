@@ -9,7 +9,7 @@ import { Modal } from "../components/overlay";
 import { VALIDATION } from "../constants";
 import { useOverlay } from "../hooks/use-overlay";
 import { setChattingToken, setSessionToken } from "../libs/axios/auth";
-import { getUserRefreshToken, postUserLogin } from "../libs/axios/base";
+import { postUserLogin } from "../libs/axios/base";
 import { BREAK_POINT, FONT_SIZE } from "../libs/styled-components";
 
 /**
@@ -72,12 +72,9 @@ const SigninPage = () => {
 				// 로그인 성공일 때, chatting토큰을 저장
 				setChattingToken(chattingToken);
 
-				// /user/refreshToken에 요청을 보냄.
-				const refreshResponse = await getUserRefreshToken();
-
 				// autoLoginRef가 현재 true인지 확인 (자동 로그인 여부 체크)
 				if (autoLoginRef.current) {
-					setCookie("refreshToken", refreshResponse, {
+					setCookie("accessToken", accessToken, {
 						path: "/",
 					});
 				} else {
