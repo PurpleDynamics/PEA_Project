@@ -40,7 +40,6 @@ const ChatRoomList = ({ roomData }) => {
 						return {
 							...room,
 							lastMessage: latestMessage.message,
-							lastMessageCreatedAt: latestMessage.createdAt,
 						};
 					}
 					return room;
