@@ -51,7 +51,6 @@ const ButtonBody = styled.button`
 	}};
 	min-width: 10rem;
 	height: 5rem;
-
 	padding: 0.5rem 0.5rem 1.2rem 0.5rem;
 	border-radius: 1.1rem;
 	background-color: ${COLOR.COMMON[200]};
@@ -89,12 +88,10 @@ const TextAndIconContainer = styled.div`
 	width: 100%;
 	height: 100%;
 	border-radius: 0.8rem;
-
 	display: flex;
-	justify-content: space-around;
 	align-items: center;
-
-	gap: 0.5rem;
+	justify-content: center;
+	gap: 1rem;
 
 	padding: 0 0.5rem;
 
