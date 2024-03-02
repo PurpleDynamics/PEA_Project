@@ -8,7 +8,7 @@ import { Button, Input } from "../components/commons";
 import { Modal } from "../components/overlay";
 import { VALIDATION } from "../constants";
 import { useOverlay } from "../hooks/use-overlay";
-import { setSessionToken } from "../libs/axios/auth";
+import { setChattingToken, setSessionToken } from "../libs/axios/auth";
 import { getUserRefreshToken, postUserLogin } from "../libs/axios/base";
 import { BREAK_POINT, FONT_SIZE } from "../libs/styled-components";
 
@@ -63,11 +63,14 @@ const SigninPage = () => {
 
 			// 토큰을 response.data에 tokenForHeader에서 가져옴
 			const accessToken = response.data.tokenForHeader;
+			const chattingToken = response.data.user.token;
 
 			// 응답이 존재하고, 응답에 status가 있는지 확인
 			if (response && response.status) {
 				// 로그인 성공일 때, 세션 토큰을 token으로 저장
 				setSessionToken(accessToken);
+				// 로그인 성공일 때, chatting토큰을 저장
+				setChattingToken(chattingToken);
 
 				// /user/refreshToken에 요청을 보냄.
 				const refreshResponse = await getUserRefreshToken();
