@@ -22,15 +22,19 @@ const ChattingOverlay = ({ onClose }) => {
 		const fetChatData = async () => {
 			try {
 				const response = await getChatChatRoomListByPage({
-					page: 1,
+					page: 0,
 				});
-				setChatRoomList([response.chats]);
+				setChatRoomList(response.chats);
 			} catch (error) {
 				console.log(error);
 			}
 		};
 		fetChatData();
 	}, []);
+
+	const handleClose = () => {
+		onClose();
+	};
 
 	return (
 		<S.Wrapper>
@@ -39,7 +43,7 @@ const ChattingOverlay = ({ onClose }) => {
 				<S.TitleWrapper>
 					<S.TitleText>P.E.A Chat</S.TitleText>
 					<S.CancelButton>
-						<ResponsiveIcon icon={BsX} onClick={onClose} />
+						<ResponsiveIcon icon={BsX} onClick={handleClose} />
 					</S.CancelButton>
 				</S.TitleWrapper>
 			</S.TitleBox>

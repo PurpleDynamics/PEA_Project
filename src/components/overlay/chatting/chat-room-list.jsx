@@ -1,17 +1,15 @@
+import { useEffect, useState } from "react";
 import styled from "styled-components";
 
 import { useOverlay } from "../../../hooks/use-overlay";
 import { COLOR, FONT_SIZE } from "../../../libs/styled-components";
 import { printPeriodAsString } from "../../../utils";
 import Chat from "./chat";
+import { useMessage } from "./message-context";
 
 /**
  * @component
- * @parameter roomData: Array<	key - value
- * 							nickname - string
- * 							createdAt - string
- * 							lastMessage - string
- * 								> - 임시로 방정보를 받오는 파라미터 입니다.
+ * @parameter roomData: Array<key - value, nickname - string, createdAt - string, lastMessage - string> - 임시로 방정보를 받오는 파라미터 입니다.
  *
  * @returns {JSX.Element}
  *
@@ -24,6 +22,32 @@ import Chat from "./chat";
 
 const ChatRoomList = ({ roomData }) => {
 	const { onOpenOverlay } = useOverlay();
+	const { messages } = useMessage();
+
+	const [updateRoomData, setUpdateRoomData] = useState(roomData);
+
+	useEffect(() => {
+		setUpdateRoomData(roomData);
+	}, [roomData]);
+
+	useEffect(() => {
+		// 새 메시지 수신 이벤트 리스너 등록
+		const latestMessage = messages[messages.length - 1];
+		if (latestMessage) {
+			setUpdateRoomData((prevRoomList) => {
+				return prevRoomList.map((room) => {
+					if (room.idx === latestMessage.room_idx) {
+						return {
+							...room,
+							lastMessage: latestMessage.message,
+							lastMessageCreatedAt: latestMessage.createdAt,
+						};
+					}
+					return room;
+				});
+			});
+		}
+	}, [messages]);
 
 	const handleChatRoomClick = (id) => {
 		onOpenOverlay({
@@ -36,18 +60,17 @@ const ChatRoomList = ({ roomData }) => {
 		});
 	};
 
-	if (roomData.length === 0)
-		return <S.NoRoomData>채팅방이 없습니다</S.NoRoomData>;
-
 	return (
 		<>
 			{/* data의 정보를 chat room에 맡게 보여주는 map입니다. */}
-			{roomData.map((item, index) => (
-				<S.Wrppaer key={index}>
-					{item?.map((data) => (
+			{updateRoomData.length === 0 ? (
+				<NoRoomData>채팅방이 없습니다</NoRoomData>
+			) : (
+				updateRoomData.map((item, index) => (
+					<S.Wrppaer key={index}>
 						<S.RoomContainer
-							key={data.idx}
-							onClick={() => handleChatRoomClick(data?.idx)}
+							key={item.idx}
+							onClick={() => handleChatRoomClick(item?.idx)}
 						>
 							<S.RoomBox>
 								<S.UserProfile
@@ -57,23 +80,23 @@ const ChatRoomList = ({ roomData }) => {
 								/>
 								<S.TopTitle>
 									<S.UserName>
-										{data?.User?.nick_name}
+										{item?.product.title}
 									</S.UserName>
 									<S.MessageText>
-										{data?.lastMessage}
+										{item?.lastMessage}
 									</S.MessageText>
 								</S.TopTitle>
 								<S.SendTime>
 									{printPeriodAsString({
 										formattedDate:
-											data?.lastMessageCreatedAt,
+											item?.lastMessageCreatedAt,
 									})}
 								</S.SendTime>
 							</S.RoomBox>
 						</S.RoomContainer>
-					))}
-				</S.Wrppaer>
-			))}
+					</S.Wrppaer>
+				))
+			)}
 		</>
 	);
 };
@@ -126,7 +149,12 @@ const TopTitle = styled.div`
 	width: 100%;
 `;
 
-const UserName = styled.p``;
+const UserName = styled.p`
+	width: 18rem;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+`;
 
 const SendTime = styled.p`
 	color: ${COLOR.COMMON[600]};
