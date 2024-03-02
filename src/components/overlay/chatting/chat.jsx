@@ -10,6 +10,7 @@ import {
 } from "../../../libs/axios/base/chat";
 import { getUserInfo } from "../../../libs/axios/base/user";
 import { COLOR, FONT_SIZE } from "../../../libs/styled-components";
+import { saleData } from "../../../utils";
 import { ResponsiveIcon } from "../../commons";
 import { useMessage } from "./message-context";
 
@@ -100,12 +101,10 @@ const Chat = ({ roomId, sellerData, onClose }) => {
 		joinRoom();
 
 		// 전체 채팅방 목록중 현재 선택된 roomId값과 item의 idx가 같으면 setSale
-		const saleData = () => {
-			const found = sellerData.find((item) => item.idx === roomId);
+		const roomData = saleData({ roomData: sellerData, roomId: roomId });
 
-			setCurrentRoomInfo(found);
-		};
-		saleData();
+		// 현재 방 정보를 저장
+		setCurrentRoomInfo(roomData);
 
 		// receiveMessage를 실행시키고 현재 사용자가 자신인지 확인하는 핸들러
 		const handleMessageReceive = (messageData) => {
