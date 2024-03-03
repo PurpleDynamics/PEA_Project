@@ -20,14 +20,10 @@ const ChattingOverlay = ({ onClose }) => {
 
 	useEffect(() => {
 		const fetChatData = async () => {
-			try {
-				const response = await getChatChatRoomListByPage({
-					page: 0,
-				});
-				setChatRoomList(response.chats);
-			} catch (error) {
-				console.log(error);
-			}
+			const response = await getChatChatRoomListByPage({
+				page: 0,
+			});
+			setChatRoomList(response.chats);
 		};
 		fetChatData();
 	}, []);

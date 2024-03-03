@@ -36,6 +36,8 @@ const Chat = ({ roomId, sellerData, onClose }) => {
 	const { messages, addMessage, updateMessages } = useMessage();
 	// sellerData로 현재방의 정보를 저장하기 위한 hook
 	const [currentRoomInfo, setCurrentRoomInfo] = useState();
+	// error 발생 시 저장될 state
+	const [error, setError] = useState("");
 
 	const {
 		register,
@@ -85,7 +87,7 @@ const Chat = ({ roomId, sellerData, onClose }) => {
 				updateMessages(updateMessage);
 			}
 		} catch (error) {
-			console.error("채팅 로그 불러오기 실패", error);
+			setError("채팅 내용을 불러오지 못했습니다.");
 		}
 	};
 
@@ -154,23 +156,18 @@ const Chat = ({ roomId, sellerData, onClose }) => {
 			isSeller: false,
 			$isSelf: true,
 		};
+		// message를 postChatSend로 서버에 전송, 저장
+		await postChatSend({
+			roomId,
+			message,
+		});
+		// message를 저장합니다
+		addMessage(messageData);
 
-		try {
-			// message를 postChatSend로 서버에 전송, 저장
-			await postChatSend({
-				roomId,
-				message,
-			});
-			// message를 저장합니다
-			addMessage(messageData);
+		// message를 전송합니다
+		socket.emit("sendMessage", messageData);
 
-			// message를 전송합니다
-			socket.emit("sendMessage", messageData);
-
-			reset();
-		} catch (error) {
-			console.error("메시지 저장 실패", error);
-		}
+		reset();
 	};
 
 	return (
@@ -185,6 +182,7 @@ const Chat = ({ roomId, sellerData, onClose }) => {
 				</S.TitleWrapper>
 			</S.TitleBox>
 			<S.ChatView>
+				{error && <S.ErrorMessage>{error}</S.ErrorMessage>}
 				{/* 배열로 저장된 message를 받아와서 각각 보여주는 map입니다. */}
 				{messages.map((message, index) => (
 					<S.MessageBox $isSelf={message.$isSelf} key={index}>
@@ -292,6 +290,8 @@ const Input = styled.input`
 const ErrorMessage = styled.p`
 	color: ${COLOR.SYSTEM.error};
 	font-size: ${FONT_SIZE.sm};
+	display: flex;
+	justify-content: center;
 `;
 
 const SendButton = styled.button`
