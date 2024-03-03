@@ -5,13 +5,8 @@ import { RouterProvider } from "react-router-dom";
 
 import { MessageProvider } from "./components/overlay/chatting/message-context";
 import { OverlayProvider } from "./contexts";
-// import { worker } from "./libs/msw/browser";
 import { router } from "./libs/react-router-dom";
 import GlobalStyles from "./libs/styled-components";
-
-// if (process.env.NODE_ENV === "development") {
-// 	worker.start();
-// }
 
 /**
  * react-query 로 관리할 모든 요청, 응답과 상호작용하는 객체
