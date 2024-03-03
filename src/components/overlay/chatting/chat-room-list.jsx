@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 
+import { useMessage } from "../../../contexts";
 import { useOverlay } from "../../../hooks/use-overlay";
 import { COLOR, FONT_SIZE } from "../../../libs/styled-components";
 import { printPeriodAsString } from "../../../utils";
 import Chat from "./chat";
-import { useMessage } from "./message-context";
 
 /**
  * @component

@@ -4,6 +4,7 @@ import { BsSendFill, BsX } from "react-icons/bs";
 import { io } from "socket.io-client";
 import styled from "styled-components";
 
+import { useMessage } from "../../../contexts";
 import {
 	getChatChatLogByRoomIdx,
 	postChatSend,
@@ -12,7 +13,6 @@ import { getUserInfo } from "../../../libs/axios/base/user";
 import { COLOR, FONT_SIZE } from "../../../libs/styled-components";
 import { saleData } from "../../../utils";
 import { ResponsiveIcon } from "../../commons";
-import { useMessage } from "./message-context";
 
 const socket = io(process.env.REACT_APP_PEA_CHAT_URL);
 

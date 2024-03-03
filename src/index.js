@@ -3,8 +3,7 @@ import ReactDOM from "react-dom/client";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { RouterProvider } from "react-router-dom";
 
-import { MessageProvider } from "./components/overlay/chatting/message-context";
-import { OverlayProvider } from "./contexts";
+import { MessageProvider, OverlayProvider } from "./contexts";
 import { router } from "./libs/react-router-dom";
 import GlobalStyles from "./libs/styled-components";
 
