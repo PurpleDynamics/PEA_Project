@@ -53,7 +53,7 @@ const Chat = ({ roomId, sellerData, onClose }) => {
 
 			// 현재 방 채팅 로그 받아오기
 			const chatLogsResponse = await getChatChatLogByRoomIdx({
-				room_idx: roomId,
+				roomId,
 			});
 
 			// 현채 채팅방 로그의 데이터, 채팅방 로그의 길이가 0 이상일 때
@@ -158,8 +158,8 @@ const Chat = ({ roomId, sellerData, onClose }) => {
 		try {
 			// message를 postChatSend로 서버에 전송, 저장
 			await postChatSend({
-				room_idx: roomId,
-				message: message,
+				roomId,
+				message,
 			});
 			// message를 저장합니다
 			addMessage(messageData);

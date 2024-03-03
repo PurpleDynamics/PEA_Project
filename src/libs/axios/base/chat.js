@@ -23,10 +23,10 @@ export const postChat = async ({ productId }) => {
  * - 채팅방 메세지 모두 읽기 api
  * - 따로 호출할 필요X, 필요한 경우에만 사용
  */
-export const postChatReadAllByRoomIdx = async ({ room_idx }) => {
+export const postChatReadAllByRoomIdx = async ({ roomId }) => {
 	const response = await axiosInstance.post("/chat/read-all", {
 		params: {
-			room_idx,
+			room_idx: roomId,
 		},
 	});
 	return response;
@@ -40,10 +40,10 @@ export const postChatReadAllByRoomIdx = async ({ room_idx }) => {
  *
  * @description 채팅방 메세지 저장 api
  */
-export const postChatSend = async ({ room_idx, message }) => {
+export const postChatSend = async ({ roomId, message }) => {
 	const response = await axiosInstance.post("/chat/send", {
-		room_idx,
-		message,
+		room_idx: roomId,
+		message: message,
 	});
 	return response.data;
 };
@@ -55,10 +55,10 @@ export const postChatSend = async ({ room_idx, message }) => {
  *
  * @description 채팅 로그 조회 api
  */
-export const getChatChatLogByRoomIdx = async ({ room_idx }) => {
+export const getChatChatLogByRoomIdx = async ({ roomId }) => {
 	const response = await axiosInstance.get("/chat/chat-log", {
 		params: {
-			room_idx,
+			room_idx: roomId,
 		},
 	});
 	return response;
@@ -74,7 +74,7 @@ export const getChatChatLogByRoomIdx = async ({ room_idx }) => {
 export const getChatChatRoomListByPage = async ({ page }) => {
 	const response = await axiosInstance.get("/chat/chat-room-list", {
 		params: {
-			page,
+			page: page,
 		},
 	});
 	return response.data;
@@ -89,13 +89,13 @@ export const getChatChatRoomListByPage = async ({ page }) => {
  * @description 특정 물품 채팅방 목록 조회 api
  */
 export const getChatProductChatListByPageAndProdIdx = async ({
-	prod_id,
+	prodId,
 	page,
 }) => {
 	const response = await axiosInstance.get("/chat/product-chat-list", {
 		params: {
-			page,
-			prod_id,
+			prod_id: prodId,
+			page: page,
 		},
 	});
 	return response;
