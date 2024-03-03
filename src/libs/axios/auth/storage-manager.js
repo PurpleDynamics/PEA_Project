@@ -20,7 +20,7 @@ export const setSessionToken = (token) => {
  * @parameter chatToken: string - sessingStorage에 저장될 user안의 socket 값
  * @returns {void}
  */
-export const setChattingToken = (chatToken) => {
+export const setChattingToken = ({ chatToken }) => {
 	return sessionStorage.setItem(CHAT_TOKEN, chatToken);
 };
 

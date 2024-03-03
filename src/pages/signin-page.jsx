@@ -70,7 +70,7 @@ const SigninPage = () => {
 				// 로그인 성공일 때, 세션 토큰을 token으로 저장
 				setSessionToken(accessToken);
 				// 로그인 성공일 때, chatting토큰을 저장
-				setChattingToken(chattingToken);
+				setChattingToken({ chatToken: chattingToken });
 
 				// autoLoginRef가 현재 true인지 확인 (자동 로그인 여부 체크)
 				if (autoLoginRef.current) {
