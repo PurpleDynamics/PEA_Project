@@ -12,7 +12,7 @@ const MessageContext = createContext();
 export const useMessage = () => useContext(MessageContext);
 
 /**
- * @customhook
+ * @component
  * @parameter children: components - 랜더링할 자식 컴포넌트들
  * @returns {JSX.Element}
  *
