@@ -27,14 +27,6 @@ import { extractRegionalUnitDong } from "../utils";
 const ProductListPage = () => {
 	const { isLoading, data } = useProductList();
 	const navigate = useNavigate();
-
-	// navigate에 type을 주어 어떤 버튼을 클릭했는지 값을 저장함.
-	// useLocation을 사용하여 data.type으로 확인가능.
-	const onClickNavigate = ({ type }) => {
-		const sendType = { type };
-		navigate("/used-product", { state: sendType });
-	};
-
 	return (
 		<>
 			{isLoading ? (
@@ -47,9 +39,13 @@ const ProductListPage = () => {
 							color={COLOR.COMMON[400]}
 							fontSize={FONT_SIZE.bg}
 						>
-							{extractRegionalUnitDong({
-								koreanRegion: data.region ?? "대한민국",
-							})}
+							{
+								// data.region 값이 있다면, "-동" 단위의 행정구역만 추출하여 출력
+								// data.region 값이 없다면, '대한민국' 출력
+								extractRegionalUnitDong({
+									koreanRegion: data.region ?? "대한민국",
+								})
+							}
 						</HighlightedText>
 						<TextSpacer />
 
@@ -63,9 +59,9 @@ const ProductListPage = () => {
 					</S.TitleContainer>
 					<S.MoreViewContainer>
 						<S.MoreTextButton
-							onClick={() =>
-								onClickNavigate({ keyType: "usedTrade" })
-							}
+							onClick={() => {
+								navigate("/used-product?payment-method=used");
+							}}
 						>
 							더보기
 						</S.MoreTextButton>
@@ -77,9 +73,13 @@ const ProductListPage = () => {
 							color={COLOR.COMMON[400]}
 							fontSize={FONT_SIZE.bg}
 						>
-							{extractRegionalUnitDong({
-								koreanRegion: data.region ?? "대한민국",
-							})}
+							{
+								// data.region 값이 있다면, "-동" 단위의 행정구역만 추출하여 출력
+								// data.region 값이 없다면, '대한민국' 출력
+								extractRegionalUnitDong({
+									koreanRegion: data.region ?? "대한민국",
+								})
+							}
 						</HighlightedText>
 						<p>&nbsp;</p>
 						<HighlightedText
@@ -92,9 +92,9 @@ const ProductListPage = () => {
 					</S.TitleContainer>
 					<S.MoreViewContainer>
 						<S.MoreTextButton
-							onClick={() =>
-								onClickNavigate({ type: "freeShare" })
-							}
+							onClick={() => {
+								navigate("/used-product?payment-method=free");
+							}}
 						>
 							더보기
 						</S.MoreTextButton>
