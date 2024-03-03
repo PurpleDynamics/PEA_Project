@@ -32,10 +32,6 @@ const ChattingOverlay = ({ onClose }) => {
 		fetChatData();
 	}, []);
 
-	const handleClose = () => {
-		onClose();
-	};
-
 	return (
 		<S.Wrapper>
 			<S.TitleBox>
@@ -43,7 +39,7 @@ const ChattingOverlay = ({ onClose }) => {
 				<S.TitleWrapper>
 					<S.TitleText>P.E.A Chat</S.TitleText>
 					<S.CancelButton>
-						<ResponsiveIcon icon={BsX} onClick={handleClose} />
+						<ResponsiveIcon icon={BsX} onClick={onClose} />
 					</S.CancelButton>
 				</S.TitleWrapper>
 			</S.TitleBox>
