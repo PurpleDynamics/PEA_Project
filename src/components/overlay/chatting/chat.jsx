@@ -77,7 +77,7 @@ const Chat = ({ roomId, sellerData, onClose }) => {
 					return {
 						...message,
 						createdAt: createdAtTimeOnly, // 새로 만든 00:00 형식으로 createdAt바꾸기
-						$isSelf:
+						isSelf:
 							message.User.nick_name ===
 							userInfoResponse.data.nick_name, // message의user nickname이 받아온 user info의 nickname과 같은지 비교
 						room_idx: roomId,
@@ -110,8 +110,8 @@ const Chat = ({ roomId, sellerData, onClose }) => {
 
 		// receiveMessage를 실행시키고 현재 사용자가 자신인지 확인하는 핸들러
 		const handleMessageReceive = (messageData) => {
-			const $isSelf = messageData.nick_name === userInfo.nick_name;
-			const updatedMessage = { ...messageData, $isSelf };
+			const isSelf = messageData.nick_name === userInfo.nick_name;
+			const updatedMessage = { ...messageData, isSelf };
 
 			addMessage(updatedMessage);
 		};
@@ -154,7 +154,7 @@ const Chat = ({ roomId, sellerData, onClose }) => {
 			nick_name: userInfo.nick_name,
 			message: message,
 			isSeller: false,
-			$isSelf: true,
+			isSelf: true,
 		};
 		// message를 postChatSend로 서버에 전송, 저장
 		await postChatSend({
@@ -185,11 +185,11 @@ const Chat = ({ roomId, sellerData, onClose }) => {
 				{error && <S.ErrorMessage>{error}</S.ErrorMessage>}
 				{/* 배열로 저장된 message를 받아와서 각각 보여주는 map입니다. */}
 				{messages.map((message, index) => (
-					<S.MessageBox $isSelf={message.$isSelf} key={index}>
-						<S.MessageTime $isSelf={message.$isSelf}>
+					<S.MessageBox $isSelf={message.isSelf} key={index}>
+						<S.MessageTime $isSelf={message.isSelf}>
 							{message.createdAt}
 						</S.MessageTime>
-						<S.Message $isSelf={message.$isSelf}>
+						<S.Message $isSelf={message.isSelf}>
 							{message.message}
 						</S.Message>
 					</S.MessageBox>
