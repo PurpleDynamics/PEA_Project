@@ -19,7 +19,7 @@ const socket = io(process.env.REACT_APP_PEA_CHAT_URL);
 /**
  * @component
  * @parameter onClose: function - x 버튼을 클릭 시 화면이 닫이는 함수입니다.
- * @parameter roomId : String - chatting room 의 id를 받아옵니다.
+ * @parameter roomId : string - chatting room 의 id를 받아옵니다.
  * @parameter sellerData : Array<전체 채팅방 목록> - 전체 채팅방의 목록을 가져옵니다.
  * @returns {JSX.Element}
  *
