@@ -10,7 +10,7 @@ import {
 import { PromotionBanner } from "../components/product-list";
 import { useProductList } from "../libs/react-query/products";
 import { BREAK_POINT, COLOR, FONT_SIZE } from "../libs/styled-components";
-import { extractRegionalUnitDong } from "../utils";
+import { extractRegionalUnit } from "../utils";
 
 /**
  * @component
@@ -42,7 +42,7 @@ const ProductListPage = () => {
 							{
 								// data.region 값이 있다면, "-동" 단위의 행정구역만 추출하여 출력
 								// data.region 값이 없다면, '대한민국' 출력
-								extractRegionalUnitDong({
+								extractRegionalUnit({
 									koreanRegion: data.region ?? "대한민국",
 								})
 							}
@@ -76,7 +76,7 @@ const ProductListPage = () => {
 							{
 								// data.region 값이 있다면, "-동" 단위의 행정구역만 추출하여 출력
 								// data.region 값이 없다면, '대한민국' 출력
-								extractRegionalUnitDong({
+								extractRegionalUnit({
 									koreanRegion: data.region ?? "대한민국",
 								})
 							}
