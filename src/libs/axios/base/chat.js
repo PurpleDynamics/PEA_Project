@@ -82,7 +82,7 @@ export const getChatChatRoomListByPage = async ({ page }) => {
 
 /**
  * @function
- * @parameter productId : number - 물품 id
+ * @parameter prodId : number - 물품 id
  * @parameter page : number - 목록을 조회할 페이지 번호
  * @returns {Promise}
  *

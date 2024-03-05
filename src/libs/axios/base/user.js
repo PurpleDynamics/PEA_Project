@@ -168,7 +168,7 @@ export const patchUserExceptProfileAndPassword = async ({ userData }) => {
 };
 /**
  * 10번요청
- * @parameter imageUrl : file - 수정하고싶은 user profileUrl
+ * @parameter image : file - 수정하고싶은 user profileUrl
  * @description user의 profile을 수정합니다
  * - 요청결과  200("success") || 400("failure")
  */
@@ -213,8 +213,10 @@ export const getUserProductListByPageAndCategory = async ({
 	category,
 }) => {
 	const response = await axiosInstance.get("/user/my-page/product-list", {
-		page,
-		category,
+		params: {
+			page,
+			category,
+		},
 	});
 	return response.data;
 };

@@ -66,7 +66,7 @@ const ChatRoomList = ({ roomData }) => {
 				<NoRoomData>채팅방이 없습니다</NoRoomData>
 			) : (
 				updateRoomData.map((item, index) => (
-					<S.Wrppaer key={index}>
+					<S.Wrapper key={index}>
 						<S.RoomContainer
 							key={item.idx}
 							onClick={() => handleChatRoomClick(item?.idx)}
@@ -93,7 +93,7 @@ const ChatRoomList = ({ roomData }) => {
 								</S.SendTime>
 							</S.RoomBox>
 						</S.RoomContainer>
-					</S.Wrppaer>
+					</S.Wrapper>
 				))
 			)}
 		</>
@@ -102,7 +102,7 @@ const ChatRoomList = ({ roomData }) => {
 
 export default ChatRoomList;
 
-const Wrppaer = styled.div``;
+const Wrapper = styled.div``;
 const RoomList = styled.div`
 	width: 100%;
 	height: 30rem;
@@ -177,5 +177,5 @@ const S = {
 	MessageText,
 	NoRoomData,
 	RoomBox,
-	Wrppaer,
+	Wrapper,
 };
