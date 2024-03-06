@@ -1,36 +1,30 @@
-import { useState } from "react";
 import styled from "styled-components";
 
 /**
  * @component
- * @description 거래 형태 선택 ui
+ * @parameter selectedOption : string - 현재 선택된 거래 형태 ("usedTrade" | "1")
+ * @parameter onSelectedOption : function - 거래 형태 선택시 ,
+ *
+ * @description 거래 형태를 선택하여 UI를 제공하는 컴포넌트입니다.
  */
-const PaymentMethodToggle = () => {
-	const [selectedOption, setSelectedOption] = useState(null);
-	const handleSelectedOption = ({ option }) => {
-		setSelectedOption(option);
-	};
+const PaymentMethodToggle = ({ selectedOption, onSelectedOption }) => {
 	return (
 		<S.ToggleContainer>
 			<S.RadioWrapper>
 				<input
 					type="radio"
-					id="usedTrade"
-					checked={selectedOption === "usedTrade"}
-					onChange={() =>
-						handleSelectedOption({ option: "usedTrade" })
-					}
+					id="0"
+					checked={selectedOption === "0"}
+					onChange={() => onSelectedOption({ option: "0" })}
 				/>
 				<label>중고거래</label>
 			</S.RadioWrapper>
 			<S.RadioWrapper>
 				<input
 					type="radio"
-					id="freeShare"
-					checked={selectedOption === "freeShare"}
-					onChange={() =>
-						handleSelectedOption({ option: "freeShare" })
-					}
+					id="1"
+					checked={selectedOption === "1"}
+					onChange={() => onSelectedOption({ option: "1" })}
 				/>
 				<label>무료나눔</label>
 			</S.RadioWrapper>

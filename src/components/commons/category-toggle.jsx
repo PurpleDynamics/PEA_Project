@@ -27,6 +27,7 @@ const CategoryToggle = ({
 	initActiveState = false,
 	fontSize = FONT_SIZE.md,
 	children = "no_string",
+	isDisabled = false,
 	...rest
 }) => {
 	const [isActive, setIsActive] = useState(initActiveState);
@@ -39,12 +40,11 @@ const CategoryToggle = ({
 	const palette = pickPaletteOneByText({ text: children });
 
 	const onClickToggle = () => {
-		setIsActive((prev) => {
-			return !prev;
-		});
-		callbackFunc();
+		if (!isDisabled) {
+			setIsActive((prev) => !prev);
+			callbackFunc();
+		}
 	};
-
 	return (
 		<S.ToggleWrapper
 			onClick={onClickToggle}

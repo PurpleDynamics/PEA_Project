@@ -32,6 +32,7 @@ const Input = ({
 	validate = {},
 	errors = {},
 	handleButton = () => {},
+	isDisabled = false,
 	...rest
 }) => {
 	return (
@@ -48,6 +49,7 @@ const Input = ({
 				}
 				{buttonText.trim() && (
 					<S.TextButton
+						disabled={isDisabled}
 						onClick={(e) => {
 							handleButton();
 							e.preventDefault(); // form 태그 내부에 작성된 버튼이기 때문에, 제출 이벤트를 방지합니다.

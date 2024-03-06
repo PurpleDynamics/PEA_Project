@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 import { COLOR } from "../../libs/styled-components";
-import { HighlightedText } from "../commons";
+import { HighlightedText, TextSpacer } from "../commons";
 
 /**
  * @component
@@ -24,7 +24,8 @@ const RegisterSection = ({
 		<S.SectionWrapper>
 			<div>
 				<h4>
-					{titleText}{" "}
+					{titleText}
+					<TextSpacer />
 					{isEssential && (
 						<HighlightedText color={COLOR.PALETTE.magenta.base}>
 							*
