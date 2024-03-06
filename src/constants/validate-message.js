@@ -32,7 +32,14 @@ const PHONE_NUMBER = {
 	value: /^\d{3}-\d{4}-\d{4}$/,
 	message: "(-)를 포함해서 번호를 입력해주세요.",
 };
-
+const PRODUCTNAME = {
+	value: /^.{3,}$/,
+	message: "3글자 이상 입력해주세요",
+};
+const TAGNAME = {
+	value: /^.{1,6}$/,
+	message: "최대 6글자까지 입력가능합니다",
+};
 export const VALIDATION = {
 	EMAIL,
 	PASSWORD,
@@ -40,4 +47,6 @@ export const VALIDATION = {
 	NICKNAME,
 	COMMON_MESSAGE,
 	PHONE_NUMBER,
+	PRODUCTNAME,
+	TAGNAME,
 };
