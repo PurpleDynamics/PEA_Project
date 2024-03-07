@@ -8,7 +8,9 @@ import {
 	TextSpacer,
 } from "../components/commons";
 import { PromotionBanner } from "../components/product-list";
+import { useProductList } from "../libs/react-query/products";
 import { BREAK_POINT, COLOR, FONT_SIZE } from "../libs/styled-components";
+import { extractRegionalUnit } from "../utils";
 
 /**
  * @component
@@ -23,152 +25,84 @@ import { BREAK_POINT, COLOR, FONT_SIZE } from "../libs/styled-components";
  */
 
 const ProductListPage = () => {
-	// 임시 user data
-	const user = {
-		location: "역삼동",
-	};
-
-	// 임시 product data
-	const usedData = [
-		{
-			productId: 1,
-			title: "중고1",
-			createdAt: "2024-02-18",
-			price: "1000",
-			categoriesArray: ["음식", "사람"],
-			interestCount: 10,
-			chattingCount: 5,
-			initIsInterest: true,
-			disabled: false,
-		},
-		{
-			title: "중고2",
-			price: "1000",
-		},
-		{
-			title: "중고3",
-			price: "1000",
-		},
-		{
-			title: "중고4",
-			price: "1000",
-		},
-		{
-			title: "중고5",
-			price: "1000",
-		},
-		{
-			title: "중고6",
-			price: "1000",
-		},
-		{
-			title: "중고7",
-			price: "1000",
-		},
-		{
-			title: "중고8",
-			price: "1000",
-		},
-	];
-
-	const freeData = [
-		{
-			title: "무료1",
-			price: "0",
-		},
-		{
-			title: "무료2",
-			price: "0",
-		},
-		{
-			title: "무료3",
-			price: "0",
-		},
-		{
-			title: "무료4",
-			price: "0",
-		},
-		{
-			title: "무료5",
-			price: "0",
-		},
-		{
-			title: "무료6",
-			price: "0",
-		},
-		{
-			title: "무료7",
-			price: "0",
-		},
-		{
-			title: "무료8",
-			price: "0",
-		},
-	];
-
+	const { isLoading, data } = useProductList();
 	const navigate = useNavigate();
-
-	// navigate에 type을 주어 어떤 버튼을 클릭했는지 값을 저장함.
-	// useLocation을 사용하여 data.type으로 확인가능.
-	const onClickNavigate = ({ type }) => {
-		const sendType = { type };
-		navigate("/used-product", { state: sendType });
-	};
-
 	return (
-		<S.Wrapper>
-			<PromotionBanner />
-			<S.TitleContainer>
-				<HighlightedText
-					color={COLOR.COMMON[400]}
-					fontSize={FONT_SIZE.bg}
-				>
-					{user.location}
-				</HighlightedText>
-				<TextSpacer />
+		<>
+			{isLoading ? (
+				<div>Loading</div>
+			) : (
+				<S.Wrapper>
+					<PromotionBanner />
+					<S.TitleContainer>
+						<HighlightedText
+							color={COLOR.COMMON[400]}
+							fontSize={FONT_SIZE.bg}
+						>
+							{
+								// data.region 값이 있다면, "-동" 단위의 행정구역만 추출하여 출력
+								// data.region 값이 없다면, '대한민국' 출력
+								extractRegionalUnit({
+									koreanRegion: data.region ?? "대한민국",
+								})
+							}
+						</HighlightedText>
+						<TextSpacer />
 
-				<HighlightedText
-					color={COLOR.PALETTE.orange.weight}
-					fontSize={FONT_SIZE.bg}
-				>
-					중고거래
-				</HighlightedText>
-				<TextSpacer spacer={1} />
-			</S.TitleContainer>
-			<S.MoreViewContainer>
-				<S.MoreTextButton
-					onClick={() => onClickNavigate({ keyType: "usedTrade" })}
-				>
-					더보기
-				</S.MoreTextButton>
-			</S.MoreViewContainer>
-			<EightProductGrid productData={usedData} />
-			<Banner />
-			<S.TitleContainer>
-				<HighlightedText
-					color={COLOR.COMMON[400]}
-					fontSize={FONT_SIZE.bg}
-				>
-					{user.location}
-				</HighlightedText>
-				<p>&nbsp;</p>
-				<HighlightedText
-					color={COLOR.PALETTE.mint.weight}
-					fontSize={FONT_SIZE.bg}
-				>
-					무료나눔
-				</HighlightedText>
-				<TextSpacer spacer={1} />
-			</S.TitleContainer>
-			<S.MoreViewContainer>
-				<S.MoreTextButton
-					onClick={() => onClickNavigate({ type: "freeShare" })}
-				>
-					더보기
-				</S.MoreTextButton>
-			</S.MoreViewContainer>
-			<EightProductGrid productData={freeData} />
-		</S.Wrapper>
+						<HighlightedText
+							color={COLOR.PALETTE.orange.weight}
+							fontSize={FONT_SIZE.bg}
+						>
+							중고거래
+						</HighlightedText>
+						<TextSpacer spacer={1} />
+					</S.TitleContainer>
+					<S.MoreViewContainer>
+						<S.MoreTextButton
+							onClick={() => {
+								navigate("/used-product?payment-method=used");
+							}}
+						>
+							더보기
+						</S.MoreTextButton>
+					</S.MoreViewContainer>
+					<EightProductGrid productData={data.usedProduct} />
+					<Banner />
+					<S.TitleContainer>
+						<HighlightedText
+							color={COLOR.COMMON[400]}
+							fontSize={FONT_SIZE.bg}
+						>
+							{
+								// data.region 값이 있다면, "-동" 단위의 행정구역만 추출하여 출력
+								// data.region 값이 없다면, '대한민국' 출력
+								extractRegionalUnit({
+									koreanRegion: data.region ?? "대한민국",
+								})
+							}
+						</HighlightedText>
+						<p>&nbsp;</p>
+						<HighlightedText
+							color={COLOR.PALETTE.mint.weight}
+							fontSize={FONT_SIZE.bg}
+						>
+							무료나눔
+						</HighlightedText>
+						<TextSpacer spacer={1} />
+					</S.TitleContainer>
+					<S.MoreViewContainer>
+						<S.MoreTextButton
+							onClick={() => {
+								navigate("/used-product?payment-method=free");
+							}}
+						>
+							더보기
+						</S.MoreTextButton>
+					</S.MoreViewContainer>
+					<EightProductGrid productData={data.freeProduct} />
+				</S.Wrapper>
+			)}
+		</>
 	);
 };
 export default ProductListPage;
