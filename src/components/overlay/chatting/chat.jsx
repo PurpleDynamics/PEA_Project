@@ -11,7 +11,7 @@ import {
 } from "../../../libs/axios/base/chat";
 import { getUserInfo } from "../../../libs/axios/base/user";
 import { COLOR, FONT_SIZE } from "../../../libs/styled-components";
-import { saleData } from "../../../utils";
+import { findRoom } from "../../../utils";
 import { ResponsiveIcon } from "../../commons";
 
 const socket = io(process.env.REACT_APP_PEA_CHAT_URL);
@@ -103,7 +103,7 @@ const Chat = ({ roomId, sellerData, onClose }) => {
 		joinRoom();
 
 		// 전체 채팅방 목록중 현재 선택된 roomId값과 item의 idx가 같으면 setSale
-		const roomData = saleData({ roomData: sellerData, roomId: roomId });
+		const roomData = findRoom({ roomData: sellerData, roomId: roomId });
 
 		// 현재 방 정보를 저장
 		setCurrentRoomInfo(roomData);

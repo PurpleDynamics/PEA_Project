@@ -7,7 +7,7 @@
  * @description 전체 방 데이터에서 현재 방의 id값을 비교하여 그에 맞는 방을 찾아오는 함수입니다.
  */
 
-export const saleData = ({ roomData, roomId }) => {
+export const findRoom = ({ roomData, roomId }) => {
 	const found = roomData.find((item) => item.idx === roomId);
 	return found;
 };
