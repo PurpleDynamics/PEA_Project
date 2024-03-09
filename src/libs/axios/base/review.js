@@ -79,8 +79,8 @@ export const patchReviewByReviewIdx = async ({
 	title,
 	content,
 	ondo,
-	img_url: imgUrl,
-	main_url: mainUrl,
+	imgUrl,
+	mainUrl,
 	images,
 }) => {
 	const response = await axiosInstance.patch(
