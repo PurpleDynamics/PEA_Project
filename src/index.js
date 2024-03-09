@@ -3,14 +3,9 @@ import ReactDOM from "react-dom/client";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { RouterProvider } from "react-router-dom";
 
-import { OverlayProvider } from "./contexts";
-import { worker } from "./libs/msw/browser";
+import { MessageProvider, OverlayProvider } from "./contexts";
 import { router } from "./libs/react-router-dom";
 import GlobalStyles from "./libs/styled-components";
-
-if (process.env.NODE_ENV === "development") {
-	worker.start();
-}
 
 /**
  * react-query 로 관리할 모든 요청, 응답과 상호작용하는 객체
@@ -28,11 +23,13 @@ const queryClient = new QueryClient({
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
 	<React.StrictMode>
-		<QueryClientProvider client={queryClient}>
-			<GlobalStyles />
-			<OverlayProvider>
-				<RouterProvider router={router} />
-			</OverlayProvider>
-		</QueryClientProvider>
+		<MessageProvider>
+			<QueryClientProvider client={queryClient}>
+				<GlobalStyles />
+				<OverlayProvider>
+					<RouterProvider router={router} />
+				</OverlayProvider>
+			</QueryClientProvider>
+		</MessageProvider>
 	</React.StrictMode>
 );

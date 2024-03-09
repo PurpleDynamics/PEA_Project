@@ -31,7 +31,7 @@ const ADMIN_ROUTER = {
 		},
 
 		{
-			path: "/detail-product",
+			path: "/detail-product/:productId",
 			element: <DetailProductPage />,
 		},
 		{
