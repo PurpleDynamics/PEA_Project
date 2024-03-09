@@ -11,14 +11,15 @@ import { TextSpacer } from "../commons";
 
 /**
  * @component
- * @parameter findProduct : object<특정된 상품데이터> - detail-product-page 에서 Params로id를 특정해 받아옴
+ * @parameter productData : object<특정상품데이터> - 툭정제품의 전체 정보를  가져오는 api데이터
+ * @parameter findProduct : object<특정상품검색데이터> - 특정 제품의 정보중 상세정보의 data
  * @returns {JSX.Element}
  *
  * @description
  * - DetailInfo 컴포넌트중 "판매 물품의 세부사항을 수치로 나타내는 부분입니다"
  * - ItemSummaryDataList 배열로 데이터를 관리합니다
  */
-const ItemSummary = ({ findProduct }) => {
+const ItemSummary = ({ productData, findProduct }) => {
 	const ItemSummaryDataList = [
 		{
 			icon: BsClockHistory,
@@ -37,14 +38,14 @@ const ItemSummary = ({ findProduct }) => {
 		},
 		{
 			icon: BsHeartPulseFill,
-			SpecsMainText: "34",
+			SpecsMainText: findProduct.liked.toString(),
 			SpecsMainUnit: "명",
 			SpecsStartText: "",
 			SpecsEndText: "이 관심을 가진상품입니다.",
 		},
 		{
 			icon: BsClockHistory,
-			SpecsMainText: "49",
+			SpecsMainText: productData.chat.length.toString(),
 			SpecsMainUnit: "명",
 			SpecsStartText: "",
 			SpecsEndText: "과 채팅이 이뤄졌습니다.",

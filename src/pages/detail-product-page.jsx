@@ -1,3 +1,5 @@
+import { useQuery } from "react-query";
+import { useParams } from "react-router-dom";
 import styled from "styled-components";
 
 import { CenterBox } from "../components/commons";
@@ -7,9 +9,10 @@ import {
 	SellerBanner,
 } from "../components/detail-product";
 import {
-	TagProductChart,
+	// 	TagProductChart,
 	TagProducts,
 } from "../components/detail-product/tag-product";
+import { getProductDetailByProdIdx } from "../libs/axios/base";
 import { BREAK_POINT, COLOR } from "../libs/styled-components";
 
 /**
@@ -21,20 +24,44 @@ import { BREAK_POINT, COLOR } from "../libs/styled-components";
  * - useParams를 통해서 product id를 특정한뒤product를 관리합니다
  */
 const DetailProductPage = () => {
+	const { productId } = useParams();
+	const {
+		data: productData,
+		isLoading,
+		error,
+	} = useQuery(
+		["DetailProductData", productId],
+		() => getProductDetailByProdIdx({ prodIdx: productId }),
+		{ enabled: !!productId }
+	);
+
+	if (isLoading) return <div>loading...</div>;
+	if (error) return <div>failed to load</div>;
+
+	const findProduct = productData.searchProduct;
+
+	const relatedProductData = productData.relatedProduct.product;
 	return (
 		<S.TagWrapper>
 			<CenterBox>
 				<S.ProductWrapper>
 					<DetailImages findProduct={findProduct} />
-					<DetailInfo findProduct={findProduct} />
+					<DetailInfo
+						productData={productData}
+						findProduct={findProduct}
+					/>
 				</S.ProductWrapper>
 			</CenterBox>
 			<CenterBox bgColor={COLOR.PALETTE.cyan.weight}>
-				<SellerBanner findProduct={findProduct} />
+				<SellerBanner
+					productData={productData}
+					findProduct={findProduct}
+					relatedProductData={relatedProductData}
+				/>
 			</CenterBox>
 			<CenterBox>
-				<TagProductChart findProduct={findProduct} />
-				<TagProducts findProduct={findProduct} />
+				{/* <TagProductChart findProduct={findProduct} /> */}
+				<TagProducts relatedProductData={relatedProductData} />
 			</CenterBox>
 		</S.TagWrapper>
 	);

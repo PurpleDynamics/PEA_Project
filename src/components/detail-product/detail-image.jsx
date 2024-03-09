@@ -5,31 +5,34 @@ import { COLOR } from "../../libs/styled-components";
 
 /**
  * @component
- * @parameter findProduct : object<특정된 상품데이터> - detail-product-page 에서 Params로id를 특정해 받아옴
+ * @parameter findProduct : object<특정상품검색데이터> - 특정 제품의 정보중 상세정보의 data
  * @returns {JSX.Element}
  *
  * @description DetailProduct 페이지의 "판매 물품 정보 의 이미지 부분입니다"
  */
 const DetailImages = ({ findProduct }) => {
 	const [imageIndex, setImageIndex] = useState(0);
-	const imageData = findProduct.imageSrcList;
+	const imageData = findProduct.ProductImages;
+	const mainImageData = findProduct.img_url;
+	const imgList = [mainImageData, ...imageData.map((item) => item.imgUrl)];
+	// const imgList = [
+	// 	findProduct.searchProduct.img_url,
+	// 	...findProduct.searchProduct.ProductImages.map((item) => item.imgUrl),
+	// ];
+
 	const handleImage = (index) => {
 		setImageIndex(index);
 	};
 	const prevButton = () => {
-		setImageIndex((index) =>
-			index == 0 ? imageData.length - 1 : index - 1
-		);
+		setImageIndex((index) => (index == 0 ? imgList.length - 1 : index - 1));
 	};
 	const nextButton = () => {
-		setImageIndex((index) =>
-			index == imageData.length - 1 ? 0 : index + 1
-		);
+		setImageIndex((index) => (index == imgList.length - 1 ? 0 : index + 1));
 	};
 	return (
 		<S.ProductImageWrapper>
 			<S.ProductImageListContainer>
-				{imageData.map((image, index) => (
+				{imgList.map((image, index) => (
 					<S.ProductImage
 						key={index}
 						src={image}
@@ -40,7 +43,8 @@ const DetailImages = ({ findProduct }) => {
 			</S.ProductImageListContainer>
 			<S.MainImageContainer>
 				<S.ProductMainImage
-					src={imageData[imageIndex]}
+					src={imgList[imageIndex]}
+					// src={mainImageData}
 				></S.ProductMainImage>
 				<S.IndexButtonContainer>
 					<S.PrevButton

@@ -6,13 +6,14 @@ import { Button, CategoryToggle, ResponsiveIcon } from "../commons";
 import ItemSummary from "./item-summary";
 /**
  * @component
- * @parameter findProduct : object<특정된 상품데이터> - detail-product-page 에서 Params로id를 특정해 받아옴
+ * @parameter productData : object<특정상품데이터> - 툭정제품의 전체 정보를  가져오는 api데이터
+ * @parameter findProduct : object<특정상품검색데이터> - 특정 제품의 정보중 상세정보의 data
  * @returns {JSX.Element}
  *
  * @description DetailProduct page의 "판매 물품의 상세정보를 보여주는 부분입니다"
  */
-const DetailInfo = ({ findProduct }) => {
-	const categoryData = findProduct.categoryList;
+const DetailInfo = ({ productData, findProduct }) => {
+	const categoryData = findProduct.ProductsTags;
 	return (
 		<S.ProductInfoWrapper>
 			<S.TopWrapper>
@@ -23,7 +24,7 @@ const DetailInfo = ({ findProduct }) => {
 							fontSize={FONT_SIZE.ti}
 							key={index}
 						>
-							{category}
+							{category.Tag.tag}
 						</CategoryToggle>
 					))}
 				</S.TagContain>
@@ -34,9 +35,7 @@ const DetailInfo = ({ findProduct }) => {
 			<S.MiddleWrapper>
 				<S.ProductTitle>{findProduct.title}</S.ProductTitle>
 				<S.ProductPriceAndLocation>
-					<S.ProductLocation>
-						{findProduct.location}
-					</S.ProductLocation>
+					<S.ProductLocation>{findProduct.region}</S.ProductLocation>
 					<S.ProductPrice>
 						{parseInt(findProduct.price).toLocaleString()}원
 					</S.ProductPrice>
@@ -51,7 +50,7 @@ const DetailInfo = ({ findProduct }) => {
 					공유하기
 				</Button>
 			</S.ButtonWrapper>
-			<ItemSummary findProduct={findProduct} />
+			<ItemSummary productData={productData} findProduct={findProduct} />
 		</S.ProductInfoWrapper>
 	);
 };

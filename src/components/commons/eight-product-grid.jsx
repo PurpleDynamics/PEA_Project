@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 import { BREAK_POINT, COLOR, FONT_SIZE } from "../../libs/styled-components";
@@ -12,7 +13,11 @@ import { ProductCard } from ".";
  */
 
 const EightProductGrid = ({ productData }) => {
+	const navigate = useNavigate();
 	const eightProductDataSlice = productData.slice(0, 8);
+	const handleNavigateProductClick = (e) => {
+		navigate(`/detail-product/${e}`);
+	};
 	return (
 		<S.Wrapper>
 			{eightProductDataSlice.length ? (
@@ -31,7 +36,7 @@ const EightProductGrid = ({ productData }) => {
 							initIsInterest={data.initIsInterest}
 							onClickInterestButton={() => {}} // product card 안에 관심 버튼 클릭 시 발동하는 이벤트 함수
 							disabled={data.disabled}
-							onClick={() => {}} // product card 클릭 시 발동하는 이벤트 함수
+							onClick={() => handleNavigateProductClick(data.idx)} // product card 클릭 시 발동하는 이벤트 함수
 						/>
 					))}
 				</S.ProductList>
