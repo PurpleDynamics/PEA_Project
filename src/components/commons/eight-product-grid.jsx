@@ -1,8 +1,9 @@
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
+import { CATEGORIES_ARRAY } from "../../constants";
 import { BREAK_POINT, COLOR, FONT_SIZE } from "../../libs/styled-components";
-import { ProductCard } from ".";
+import { ProductCard } from "./";
 
 /**
  * @component
@@ -22,23 +23,36 @@ const EightProductGrid = ({ productData }) => {
 		<S.Wrapper>
 			{eightProductDataSlice.length ? (
 				<S.ProductList>
-					{eightProductDataSlice.map((data, index) => (
-						<ProductCard
-							key={index}
-							productId={data.productId}
-							imgUrl={data.imgUrl}
-							title={data.title}
-							price={data.price}
-							createdAt={data.createdAt}
-							categoriesArray={data.categoriesArray}
-							interestCount={data.interestCount}
-							chattingCount={data.chattingCount}
-							initIsInterest={data.initIsInterest}
-							onClickInterestButton={() => {}} // product card 안에 관심 버튼 클릭 시 발동하는 이벤트 함수
-							disabled={data.disabled}
-							onClick={() => handleNavigateProductClick(data.idx)} // product card 클릭 시 발동하는 이벤트 함수
-						/>
-					))}
+					{eightProductDataSlice.map((productOne) => {
+						// 카테고리 배열 추출
+						const categoryArray = productOne.ProductsTags.map(
+							(tagInfo) => {
+								const category = tagInfo.Tag.tag;
+								if (CATEGORIES_ARRAY.includes(category))
+									return category;
+								else return "기타중고물품";
+							}
+						);
+						return (
+							<ProductCard
+								key={productOne.idx}
+								productId={productOne.idx}
+								imgUrl={productOne.img_url}
+								title={productOne.title}
+								price={productOne.price}
+								createdAt={productOne.createdAt}
+								categoriesArray={[...new Set(categoryArray)]}
+								interestCount={productOne.interestCount}
+								chattingCount={productOne.chattingCount}
+								initIsInterest={productOne.initIsInterest}
+								onClickInterestButton={() => {}} // product card 안에 관심 버튼 클릭 시 발동하는 이벤트 함수
+								disabled={productOne.state == "판매중"}
+								onClick={() =>
+									handleNavigateProductClick(data.idx)
+								} // product card 클릭 시 발동하는 이벤트 함수
+							/>
+						);
+					})}
 				</S.ProductList>
 			) : (
 				<S.NoDataText>등록된 상품이 없습니다.</S.NoDataText>
